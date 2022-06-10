@@ -66,58 +66,58 @@
 
     <div class="menu-inner-shadow"></div>
 
-    <ul class="menu-inner py-1">
-    @if(\Illuminate\Support\Facades\Auth::user()->role=='super_admin')
+{{--    <ul class="menu-inner py-1">--}}
+{{--    @if(\Illuminate\Support\Facades\Auth::user()->role=='super_admin')--}}
 
-        <!-- Dashboard -->
-            <li class="menu-item {{  request()->routeIs('admin.universities.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.universities.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-university"></i>
-                    <div data-i18n="Analytics">Universitetlar</div>
-                </a>
-            </li>
-            <li class="menu-item {{  request()->routeIs('admin.facultets.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.facultets.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-building"></i>
-                    <div data-i18n="Analytics">Fakultetlar</div>
-                </a>
-            </li>
-            <li class="menu-item {{  request()->routeIs('admin.groups.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.groups.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-layer-group"></i>
-                    <div data-i18n="Analytics">Guruhlar</div>
-                </a>
-            </li>
-            <li class="menu-item {{  request()->routeIs('admin.users.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.users.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-user"></i>
-                    <div data-i18n="Analytics">Xodimlar</div>
-                </a>
-            </li>
-        @endif
-        @if(\Illuminate\Support\Facades\Auth::user()->role=='user')
-            <li class="menu-item {{  request()->routeIs('admin.user.group') ? 'active' : '' }}">
-                <a href="{{ route('admin.user.group') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-user-astronaut"></i>
-                    <div data-i18n="Analytics">Talabalar</div>
-                </a>
-            </li>
-            <li class="menu-item {{  request()->routeIs('admin.statistic') ? 'active' : '' }}">
-                <a href="{{ route('admin.statistic') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-chart-bar"></i>
+{{--        <!-- Dashboard -->--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.universities.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.universities.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-university"></i>--}}
+{{--                    <div data-i18n="Analytics">Universitetlar</div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.facultets.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.facultets.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-building"></i>--}}
+{{--                    <div data-i18n="Analytics">Fakultetlar</div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.groups.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.groups.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-layer-group"></i>--}}
+{{--                    <div data-i18n="Analytics">Guruhlar</div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.users.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.users.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-user"></i>--}}
+{{--                    <div data-i18n="Analytics">Xodimlar</div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endif--}}
+{{--        @if(\Illuminate\Support\Facades\Auth::user()->role=='user')--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.user.group') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.user.group') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-user-astronaut"></i>--}}
+{{--                    <div data-i18n="Analytics">Talabalar</div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.statistic') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.statistic') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-chart-bar"></i>--}}
 {{--                    <i class="fa fa-bar-chart" aria-hidden="true"></i>--}}
-                    <div data-i18n="Analytics">Statistika</div>
-                </a>
-            </li>
-        @endif
+{{--                    <div data-i18n="Analytics">Statistika</div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endif--}}
 
-        @if(\Illuminate\Support\Facades\Auth::user()->role=='student')
-            <li class="menu-item {{  request()->routeIs('admin.works.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.works.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-folder"></i>
-                    <div data-i18n="Analytics">Korxonalar</div>
-                </a>
-            </li>
-        @endif
-    </ul>
+{{--        @if(\Illuminate\Support\Facades\Auth::user()->role=='student')--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.works.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.works.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-folder"></i>--}}
+{{--                    <div data-i18n="Analytics">Korxonalar</div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endif--}}
+{{--    </ul>--}}
 </aside>
