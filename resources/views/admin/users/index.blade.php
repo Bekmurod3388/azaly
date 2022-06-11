@@ -17,14 +17,6 @@
                 </div>
                 <hr>
                 <div class="card-body">
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-
-
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
@@ -58,9 +50,12 @@
                                     @endcan
                                     @can('role-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                        <button type="submit" class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
+                                            <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                    data-toggle="tooltip">
+                                            <span class="btn-label">
+                                                <i class="fa fa-trash"></i>
+                                            </span>
+                                            </button>
                                         {!! Form::close() !!}
                                     @endcan
                                 </td>
@@ -74,4 +69,36 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @if(session('success'))
+
+        <script>
+            swal({
+                icon: 'success',
+                text: 'Muvaffaqqiyatli bajarildi',
+                confirmButtonText: 'Continue',
+            })
+        </script>
+    @endif
+    <script>
+        $('.show_confirm').click(function (event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                title: `Haqiqatan ham bu yozuvni oʻchirib tashlamoqchimisiz?`,
+                text: "Agar siz buni o'chirib tashlasangiz, u abadiy yo'qoladi.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                buttons: ['Yo`q', 'Ha']
+            }).then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 @endsection
