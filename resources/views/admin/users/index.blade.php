@@ -1,6 +1,5 @@
 @extends('admin.master')
 @section('content')
-
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -10,7 +9,9 @@
                             <h2>Users Management</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Create New User</a>
+                            @can('role-create')
+                                <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Create New User</a>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -45,18 +46,23 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn btn-info" href="{{ route('admin.users.show',$user->id) }}">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-warning" href="{{ route('admin.users.edit',$user->id) }}">
-                                        <i class="fa fa-pen"></i>
-                                    </a>
-                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                    {{--                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}--}}
-                                    {!! Form::close() !!}
+                                    @can('role-list')
+                                        <a class="btn btn-info" href="{{ route('admin.users.show',$user->id) }}">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    @endcan
+                                    @can('role-edit')
+                                        <a class="btn btn-warning" href="{{ route('admin.users.edit',$user->id) }}">
+                                            <i class="fa fa-pen"></i>
+                                        </a>
+                                    @endcan
+                                    @can('role-delete')
+                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                        {!! Form::close() !!}
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
@@ -68,4 +74,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection

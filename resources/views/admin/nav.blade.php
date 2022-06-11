@@ -30,6 +30,9 @@
                                     <span
                                         class="fw-semibold d-block">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
                                     <small class="text-muted">
+                                        @foreach(\Illuminate\Support\Facades\Auth::user()->getRoleNames() as $v)
+                                            {{ $v }}
+                                        @endforeach
                                     </small>
                                 </div>
                             </div>

@@ -68,17 +68,19 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
+        @can('role-list')
         <li class="menu-item {{  request()->routeIs('admin.users.index') ? 'active' : '' }}">
             <a href="{{ route('admin.users.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons fas fa-university"></i>
+                <i class="menu-icon tf-icons fas fa-users"></i>
                 <div data-i18n="Analytics">Users Management</div>
             </a>
         </li>
         <li class="menu-item {{  request()->routeIs('admin.roles.index') ? 'active' : '' }}">
             <a href="{{ route('admin.roles.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons fas fa-university"></i>
+                <i class="menu-icon tf-icons fas fa-user-shield"></i>
                 <div data-i18n="Analytics">Role Management</div>
             </a>
         </li>
+        @endcan
     </ul>
 </aside>

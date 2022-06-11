@@ -35,9 +35,11 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $role->name }}</td>
                             <td>
+                                @can('role-list')
                                 <a class="btn btn-info" href="{{ route('admin.roles.show',$role->id) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
+                                @endcan
                                 @can('role-edit')
                                     <a class="btn btn-warning" href="{{ route('admin.roles.edit',$role->id) }}">
                                         <i class="fa fa-pen"></i>
@@ -48,7 +50,6 @@
                                     <button type="submit" class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
-                                    {{--                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}--}}
                                     {!! Form::close() !!}
                                 @endcan
                             </td>
