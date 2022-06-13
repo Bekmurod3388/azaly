@@ -82,5 +82,11 @@
             </a>
         </li>
         @endcan
+        <li class="menu-item {{  request()->routeIs('admin.categories.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.categories.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons fas fa-users"></i>
+                <div data-i18n="Analytics">Categories</div>
+            </a>
+        </li>
     </ul>
 </aside>
