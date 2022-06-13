@@ -53,8 +53,15 @@
                     @endforeach
                 </table>
 
-
-                {!! $roles->render() !!}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        @if ($roles->links())
+                            <div class="mt-4 p-4 box has-text-centered">
+                                {{ $roles->links() }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>

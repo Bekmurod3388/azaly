@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Arr;
@@ -137,6 +138,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if ($id == 1) abort(403);
         User::find($id)->delete();
         return redirect()->route('admin.users.index')
             ->with('success','User deleted successfully');

@@ -10,7 +10,7 @@
                             <h2>Category list</h2>
                         </div>
                         <div class="pull-right">
-                            @can('role-create')
+                            @can('category-create')
                                 <a class="btn btn-success" href="{{ route('admin.categories.create') }}"> Create New Category</a>
                             @endcan
                         </div>
@@ -32,17 +32,17 @@
                                 <td>{{ $user->slug }}</td>
 
                                 <td>
-                                    @can('role-list')
+                                    @can('category-list')
                                         <a class="btn btn-info" href="{{ route('admin.categories.show',$user->id) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     @endcan
-                                    @can('role-edit')
+                                    @can('category-edit')
                                         <a class="btn btn-warning" href="{{ route('admin.categories.edit',$user->id) }}">
                                             <i class="fa fa-pen"></i>
                                         </a>
                                     @endcan
-                                    @can('role-delete')
+                                    @can('category-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.categories.destroy', $user->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
@@ -58,7 +58,15 @@
                     </table>
 
 
-                    {!! $categories->render() !!}
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            @if ($categories->links())
+                                <div class="mt-4 p-4 box has-text-centered">
+                                    {{ $categories->links() }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

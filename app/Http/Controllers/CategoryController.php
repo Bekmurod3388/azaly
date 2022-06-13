@@ -14,9 +14,22 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:category-create', ['only' => ['create','store']]);
+        $this->middleware('permission:category-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:category-delete', ['only' => ['destroy']]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $categories = Category::orderby('id')->paginate(10);
+        $id = Auth::user()->id;
+        $categories = Category::where('parent_id', $id)->paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
 

@@ -26,6 +26,7 @@
                             <th class="w-25">Action</th>
                         </tr>
                         @foreach ($data as $key => $user)
+                            @if($user->id > 1 || \Illuminate\Support\Facades\Auth::user()->id == 1)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $user->name }}</td>
@@ -60,11 +61,20 @@
                                     @endcan
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                     </table>
 
 
-                    {!! $data->render() !!}
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            @if ($data->links())
+                                <div class="mt-4 p-4 box has-text-centered">
+                                    {{ $data->links() }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
