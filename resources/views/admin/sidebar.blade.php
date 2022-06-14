@@ -90,5 +90,13 @@
                 </a>
             </li>
         @endcan
+        @can('category-list')
+            <li class="menu-item {{  request()->routeIs('admin.sizes.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.sizes.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <div data-i18n="Analytics">Sizes</div>
+                </a>
+            </li>
+        @endcan
     </ul>
 </aside>

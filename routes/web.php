@@ -24,4 +24,5 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('roles', \App\Http\Controllers\RoleController::class);
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('categories',\App\Http\Controllers\CategoryController::class);
+    Route::resource('sizes',\App\Http\Controllers\SizeController::class);
 });
