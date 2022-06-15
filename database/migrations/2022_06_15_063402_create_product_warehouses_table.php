@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('product_warehouses', function (Blueprint $table) {
             $table->id();
-            $table->integer('warehouse_id');
+            $table->integer('box_id');
             $table->integer('product_id');
             $table->integer('count');
             $table->integer('size_id');

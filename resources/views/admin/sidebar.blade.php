@@ -114,5 +114,13 @@
                 </a>
             </li>
         @endcan
+        @can('category-list')
+            <li class="menu-item {{  request()->routeIs('admin.products.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.products.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <div data-i18n="Analytics">Products</div>
+                </a>
+            </li>
+        @endcan
     </ul>
 </aside>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product_warehouse extends Model
 {
     protected $fillable = [
-      'warehouse_id','product_id','count','size_id',
+      'box_id','product_id','count','size_id',
     ];
     use HasFactory;
 }
