@@ -98,5 +98,13 @@
                 </a>
             </li>
         @endcan
+        @can('category-list')
+            <li class="menu-item {{  request()->routeIs('admin.warehouses.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.warehouses.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <div data-i18n="Analytics">WareHouse</div>
+                </a>
+            </li>
+        @endcan
     </ul>
 </aside>
