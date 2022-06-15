@@ -36,27 +36,44 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Sell Sum:</strong>
-                                <input type="text" name="sell_sum" class="form-control" value="{{ $product->sell_sum }}">
+                                <input type="text" name="sell_sum" class="form-control"
+                                       value="{{ $product->sell_sum }}">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Sell Sale sum:</strong>
-                                <input type="text" name="sell_sale_sum" class="form-control" value="{{ $product->sell_sale_sum }}">
+                                <input type="text" name="sell_sale_sum" class="form-control"
+                                       value="{{ $product->sell_sale_sum }}">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Sale count:</strong>
-                                <input type="text" name="sale_count" class="form-control" value="{{ $product->sale_count }}">
+                                <input type="text" name="sale_count" class="form-control"
+                                       value="{{ $product->sale_count }}">
                             </div>
                         </div>
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Category id:</strong>
-                                <input type="text" name="category_id" class="form-control" value="{{ $product->category_id }}">
+                                <strong>Category :</strong>
+                                <select name="category_id" required id="building" class="form-select form-control">
+                                    @foreach($cate as $cat)
+                                        @if($product->category_id == $cat->id)
+                                            <option value="{{$cat->id}}"> {{ $cat->name }} </option>
+                                        @endif
+                                    @endforeach
+                                    @foreach($cate as $cat)
+                                        @if($product->category_id != $cat->id)
+                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
+
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Sale:</strong>

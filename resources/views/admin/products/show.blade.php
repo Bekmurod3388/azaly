@@ -39,9 +39,14 @@
                             {{ $product->sale_count }}
                         </div>
                         <div class="form-group">
-                            <strong>Category id:</strong>
-                            {{ $product->category_id }}
+                            <strong>Category :</strong>
+                            @foreach($cate as $cat)
+                                @if( $product->category_id == $cat->id )
+                                    {{ $cat->name }}
+                                @endif
+                            @endforeach
                         </div>
+
                         <div class="form-group">
                             <strong>Sale:</strong>
                             {{ $product->sale }}
