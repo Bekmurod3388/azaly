@@ -63,7 +63,7 @@
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
         <!-- Menu -->
-        @include('admin.sidebar')
+{{--        @include('admin.sidebar')--}}
         <!-- / Menu -->
 
         <!-- Layout container -->
