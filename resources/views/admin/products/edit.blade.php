@@ -6,26 +6,65 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Edit Sizes</h2>
+                            <h2>Edit Product</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.sizes.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-body">
 
-                <form action="{{route('admin.sizes.update',$size->id )}}" method="post">
+                <form action="{{route('admin.products.update',$product->id )}}" method="post">
                     @method('PUT')
                     @csrf
                     <div class="row">
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Size:</strong>
-                                <input type="text" name="size" class="form-control" value="{{$size->Size}}">
+                                <strong>Name:</strong>
+                                <input type="text" name="name" class="form-control" value="{{$product->name}}">
                             </div>
                         </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Buy Sum:</strong>
+                                <input type="text" name="buy_sum" class="form-control" value="{{ $product->buy_sum }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Sell Sum:</strong>
+                                <input type="text" name="sell_sum" class="form-control" value="{{ $product->sell_sum }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Sell Sale sum:</strong>
+                                <input type="text" name="sell_sale_sum" class="form-control" value="{{ $product->sell_sale_sum }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Sale count:</strong>
+                                <input type="text" name="sale_count" class="form-control" value="{{ $product->sale_count }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Category id:</strong>
+                                <input type="text" name="category_id" class="form-control" value="{{ $product->category_id }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Sale:</strong>
+                                <input type="text" name="sale" class="form-control" value="{{ $product->sale }}">
+                            </div>
+                        </div>
+
+
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
