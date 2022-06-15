@@ -42,7 +42,7 @@ class SizeController extends Controller
     public function store(Request $request)
     {
         Size::create($request->all());
-        return redirect()->route('admin.sizes.index');
+        return redirect()->route('admin.sizes.index')->with('success', 'Size yaratildi');
     }
 
     /**
@@ -84,7 +84,7 @@ class SizeController extends Controller
         $data = Size::find($id);
         $data->Size = $request->size;
         $data->save();
-        return redirect()->route('admin.sizes.index');
+        return redirect()->route('admin.sizes.index')->with('success', 'Size o`zgartirildi.');
 
     }
 
@@ -98,7 +98,7 @@ class SizeController extends Controller
     {
         $data = Size::find($id);
         $data->delete();
-        return redirect()->route('admin.sizes.index');
+        return redirect()->route('admin.sizes.index')->with('success', 'Size o`chirildi');
 
     }
 }

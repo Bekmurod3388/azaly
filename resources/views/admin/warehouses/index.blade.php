@@ -1,17 +1,133 @@
-
 @extends('admin.master')
 @section('content')
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-12 margin-tb">
+                            <div class="pull-left">
+                                <h2>Create New WareHouse</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('admin.warehouses.store')}}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Name:</strong>
+                                    <input type="text" name="name" class="form-control mb-3" placeholder="Name"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal1" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-12 margin-tb">
+                            <div class="pull-left">
+                                <h2>Edit WareHouse</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" id="editForm">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Name:</strong>
+                                    <input type="text" name="name" class="form-control mb-3" placeholder="Name" id="name"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Warehoues</h2>
+                            <h2>Warehouses</h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
-                                <a class="btn btn-success" href="{{ route('admin.warehouses.create') }}"> Create New WarseHouses</a>
+                                {{--                                <a class="btn btn-success" href="{{ route('admin.warehouses.create') }}"> Create New WarseHouses</a>--}}
+                                <button class="btn btn-success" id="myBtn">Create WareHouse</button>
                             @endcan
                         </div>
                     </div>
@@ -22,25 +138,25 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-{{--                            <th>slug</th>--}}
                             <th class="w-25">Action</th>
                         </tr>
                         @foreach ($warehouses as $warehoues)
                             <tr>
                                 <td>{{ $warehoues->id }}</td>
                                 <td>{{ $warehoues->name }}</td>
-{{--                                <td>{{ $warehoues->slug }}</td>--}}
-
                                 <td>
                                     @can('category-list')
-                                        <a class="btn btn-info" href="{{ route('admin.warehouses.show',$warehoues->id) }}">
+                                        <a class="btn btn-info"
+                                           href="{{ route('admin.warehouses.show',$warehoues->id) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     @endcan
                                     @can('category-edit')
-                                        <a class="btn btn-warning" href="{{ route('admin.warehouses.edit',$warehoues->id) }}">
-                                            <i class="fa fa-pen"></i>
-                                        </a>
+{{--                                        <a class="btn btn-warning"--}}
+{{--                                           href="{{ route('admin.warehouses.edit',$warehoues->id) }}">--}}
+{{--                                            <i class="fa fa-pen"></i>--}}
+{{--                                        </a>--}}
+                                        <button class="btn btn-warning" onclick="edit({{ $warehoues->id }})"><i class="fa fa-pen"></i></button>
                                     @endcan
                                     @can('category-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.warehouses.destroy', $warehoues->id],'style'=>'display:inline']) !!}
@@ -84,6 +200,50 @@
             })
         </script>
     @endif
+    <script>
+        let warehouses = @json($warehouses);
+        var modal = document.getElementById("myModal");
+        var modal1 = document.getElementById("myModal1");
+
+        var btn = document.getElementById("myBtn");
+
+        var span = document.getElementsByClassName("close")[0];
+        var span1 = document.getElementsByClassName("close")[1];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        function edit(id){
+            for (let i=0; i<warehouses['data'].length; i++) {
+                if (id == warehouses['data'][i]['id']){
+                    console.log(i);
+                    $('#name').val(warehouses['data'][i]['name']);
+                    break;
+                }
+            }
+
+            $('#editForm').attr('action','/admin/warehouses/'+id);
+            modal1.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        span1.onclick = function () {
+            modal1.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
     <script>
         $('.show_confirm').click(function (event) {
             var form = $(this).closest("form");
