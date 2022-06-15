@@ -106,5 +106,13 @@
                 </a>
             </li>
         @endcan
+        @can('category-list')
+            <li class="menu-item {{  request()->routeIs('admin.shelf.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.shelf.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <div data-i18n="Analytics">Shelf</div>
+                </a>
+            </li>
+        @endcan
     </ul>
 </aside>
