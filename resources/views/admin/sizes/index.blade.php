@@ -1,15 +1,11 @@
 @extends('admin.master')
 @section('content')
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
         /* The Modal (background) */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            z-index: 100; /* Sit on top */
             padding-top: 100px; /* Location of the box */
             left: 0;
             top: 0;
@@ -45,75 +41,78 @@
         }
     </style>
     <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-lg-12 margin-tb">
-                            <div class="pull-left">
-                                <h2>Create New Sizes</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form action="{{route('admin.sizes.store')}}" method="post">
-                        @csrf
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Size:</strong>
-                                    <input type="text" name="size" class="form-control mb-3" placeholder="Size">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- The Modal -->
-    <div id="myModal1" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-lg-12 margin-tb">
-                            <div class="pull-left">
-                                <h2>Edit Size</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form action="" method="post" id="editForm">
-                        @csrf
-                        @method('PUT')
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Size:</strong>
-                                    <input type="text" name="size" class="form-control" id="name">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-md-12">
+        <div class="form">
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-lg-12 margin-tb">
+                                    <div class="pull-left">
+                                        <h2>Create New Sizes</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{route('admin.sizes.store')}}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Size:</strong>
+                                            <input type="text" name="size" class="form-control mb-3" placeholder="Size">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- The Modal -->
+
+            <div id="myModal1" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-lg-12 margin-tb">
+                                    <div class="pull-left">
+                                        <h2>Edit Size</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="post" id="editForm">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Size:</strong>
+                                            <input type="text" name="size" class="form-control" id="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -123,7 +122,7 @@
                         </div>
                         <div class="pull-right">
                             @can('category-create')
-{{--                                <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
+                                {{--                                <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
                                 <button class="btn btn-success" id="myBtn">Create Size</button>
                             @endcan
                         </div>
@@ -143,16 +142,17 @@
                                 <td>{{ $size->Size }}</td>
 
                                 <td>
-{{--                                    @can('category-list')--}}
-{{--                                        <a class="btn btn-info" href="{{ route('admin.sizes.show',$user->id) }}">--}}
-{{--                                            <i class="fa fa-eye"></i>--}}
-{{--                                        </a>--}}
-{{--                                    @endcan--}}
+                                    {{--                                    @can('category-list')--}}
+                                    {{--                                        <a class="btn btn-info" href="{{ route('admin.sizes.show',$user->id) }}">--}}
+                                    {{--                                            <i class="fa fa-eye"></i>--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    @endcan--}}
                                     @can('category-edit')
-{{--                                        <a class="btn btn-warning" href="{{ route('admin.sizes.edit',$size->id) }}">--}}
-{{--                                            <i class="fa fa-pen"></i>--}}
-{{--                                        </a>--}}
-                                        <button class="btn btn-warning" onclick="edit({{ $size->id }})"><i class="fa fa-pen"></i></button>
+                                        {{--                                        <a class="btn btn-warning" href="{{ route('admin.sizes.edit',$size->id) }}">--}}
+                                        {{--                                            <i class="fa fa-pen"></i>--}}
+                                        {{--                                        </a>--}}
+                                        <button class="btn btn-warning" onclick="edit({{ $size->id }})"><i
+                                                class="fa fa-pen"></i></button>
                                     @endcan
                                     @can('category-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.sizes.destroy', $size->id],'style'=>'display:inline']) !!}
@@ -169,15 +169,15 @@
                         @endforeach
                     </table>
 
-{{--                    <div class="container">--}}
-{{--                        <div class="row justify-content-center">--}}
-{{--                            @if ($categories->links())--}}
-{{--                                <div class="mt-4 p-4 box has-text-centered">--}}
-{{--                                    {{ $categories->links() }}--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="container">--}}
+                    {{--                        <div class="row justify-content-center">--}}
+                    {{--                            @if ($categories->links())--}}
+                    {{--                                <div class="mt-4 p-4 box has-text-centered">--}}
+                    {{--                                    {{ $categories->links() }}--}}
+                    {{--                                </div>--}}
+                    {{--                            @endif--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -209,19 +209,21 @@
         btn.onclick = function () {
             modal.style.display = "block";
         }
-        function edit(id){
+
+        function edit(id) {
             // alert(id);
-            for (let i=0; i<warehouses.length; i++) {
-                if (id == warehouses[i]['id']){
+            for (let i = 0; i < warehouses.length; i++) {
+                if (id == warehouses[i]['id']) {
                     $('#name').val(warehouses[i]['Size']);
                     break;
                 }
             }
             // alert(id);
 
-            $('#editForm').attr('action','/admin/sizes/'+id);
+            $('#editForm').attr('action', '/admin/sizes/' + id);
             modal1.style.display = "block";
         }
+
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";

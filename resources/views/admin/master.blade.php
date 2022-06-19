@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+@if(\Illuminate\Support\Facades\Auth::user()->getRoleNames()[0] == 'Admin')
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -12,7 +14,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet"/>
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('/assets/vendor/fonts/boxicons.css') }}"/>
     <!-- Core CSS -->
@@ -24,7 +28,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"/>
     <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/apex-charts/apex-charts.css') }}"/>
     @yield('link')
-<!-- Page CSS -->
+    <!-- Page CSS -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
@@ -49,8 +53,6 @@
     <link rel="stylesheet" href="{{asset('/asset/css/atlantis.min.css')}}">
 
 
-
-
     <!-- Helpers -->
     <script src="{{ asset('/assets/vendor/js/helpers.js') }}"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -63,21 +65,21 @@
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
         <!-- Menu -->
-{{--        @include('admin.sidebar')--}}
+        @include('admin.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
             <!-- Navbar -->
-        @include('admin.nav')
-        <!-- / Navbar -->
+            @include('admin.nav')
+            <!-- / Navbar -->
 
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <!-- Content -->
-{{--                @include('alerts')--}}
+                {{--                @include('alerts')--}}
                 <div class="container-xxl flex-grow-1 container-p-y">
-                     @yield('content')
+                    @yield('content')
                 </div>
                 <!-- Content -->
             </div>
@@ -138,3 +140,6 @@
 @yield('script')
 </body>
 </html>
+@else
+    @include('admin.user')
+@endif
