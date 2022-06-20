@@ -6,11 +6,11 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Role Management</h2>
+                            <h2> Ro'l Boshqaruvi </h2>
                         </div>
                         <div class="pull-right">
                             @can('role-create')
-                                <a class="btn btn-success" href="{{ route('admin.roles.create') }}"> Create New Role</a>
+                                <a class="btn btn-success" href="{{ route('admin.roles.create') }}"> Yangi ro'l qo'shish </a>
                             @endcan
                         </div>
                     </div>
@@ -20,8 +20,8 @@
                 <table class="table table-bordered table-hover text-center">
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th class="w-25">Action</th>
+                        <th>Nomi</th>
+                        <th class="w-25">Amallar</th>
                     </tr>
                     @foreach ($roles as $key => $role)
                         <tr>
