@@ -82,7 +82,7 @@ class WareHousController extends Controller
     public function update(Request $request,$id)
     {
         $wareHous=$request->validate([
-            'name'=>'required'
+            'name'=>'required|unique:ware_houses,name'
         ]);
         $wareHous =  WareHous::findor($id);
         $wareHous['name'] = $request['name'];
