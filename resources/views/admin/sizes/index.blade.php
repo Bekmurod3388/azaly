@@ -52,7 +52,7 @@
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
-                                        <h2>Create New Sizes</h2>
+                                        <h2> Qo'shish </h2>
                                     </div>
                                 </div>
                             </div>
@@ -63,12 +63,12 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>Size:</strong>
+                                            <strong>razmer:</strong>
                                             <input type="text" name="size" class="form-control mb-3" placeholder="Size">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Saqlash</button>
                                     </div>
                                 </div>
                             </form>
@@ -87,7 +87,7 @@
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
-                                        <h2>Edit Size</h2>
+                                        <h2> Razmer tahrirlash </h2>
                                     </div>
                                 </div>
                             </div>
@@ -99,12 +99,12 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>Size:</strong>
+                                            <strong>Razmer:</strong>
                                             <input type="text" name="size" class="form-control" id="name">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary">Saqlash</button>
                                     </div>
                                 </div>
                             </form>
@@ -118,12 +118,12 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Size list</h2>
+                            <h2> Razmerlar: </h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
                                 {{--                                <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
-                                <button class="btn btn-success" id="myBtn">Create Size</button>
+                                <button class="btn btn-success" id="myBtn"> Qo'shish </button>
                             @endcan
                         </div>
                     </div>
@@ -133,8 +133,8 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th>Size</th>
-                            <th class="w-25">Action</th>
+                            <th>Razmer</th>
+                            <th class="w-25">Amallar</th>
                         </tr>
                         @foreach ($sizes as $key => $size)
                             <tr>

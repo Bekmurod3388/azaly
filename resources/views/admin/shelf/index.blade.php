@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 @section('content')
     <div class="col-md-12">
@@ -7,11 +6,11 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2> Shelf </h2>
+                            <h2> Tokchalar:  </h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
-                                <a class="btn btn-success" href="{{ route('admin.shelf.create') }}"> Create New Shelf</a>
+                                <a class="btn btn-success" href="{{ route('admin.shelf.create') }}"> Qo'shish </a>
                             @endcan
                         </div>
                     </div>
@@ -21,14 +20,21 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th>Warehouse_id</th>
-                            <th>Name</th>
-                            <th class="w-25">Action</th>
+                            <th>Omborxona</th>
+                            <th>Nom</th>
+                            <th class="w-25">
+                                <Amallar></Amallar>
+                            </th>
                         </tr>
                         @foreach ($shelfs as $shelf)
                             <tr>
                                 <td>{{ $shelf->id }}</td>
-                                <td>{{ $shelf->warehouse_id }}</td>
+                                @foreach($house as $h )
+                                    @if($shelf->warehouse_id == $h->id)
+                                        <td>{{ $h->name }}</td>
+                                    @endif
+                                @endforeach
+
                                 <td>{{$shelf->name}}</td>
                                 <td>
                                     @can('category-edit')

@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Create New Category</h2>
+                            <h2>Yangi Turkum qo'shish </h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.categories.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('admin.categories.index') }}"> Orqaga</a>
                         </div>
                     </div>
                 </div>
@@ -23,22 +23,22 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Name:</strong>
-                                <input type="text" name="name" class="form-control mb-3" placeholder="Name">
+                                <strong>Nom:</strong>
+                                <input type="text" name="name" class="form-control mb-3" placeholder="Nom">
 {{--                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control mb-3')) !!}--}}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Slug:</strong>
-                                <input type="text" name="slug" class="form-control mb-3" placeholder="Slug">
+                                <strong>Havola:</strong>
+                                <input type="text" name="slug" class="form-control mb-3" placeholder="Havola">
 {{--                                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control mb-3')) !!}--}}
                             </div>
                         </div>
 
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Saqlash</button>
                         </div>
                     </div>
                     {{--                {!! Form::close() !!}--}}

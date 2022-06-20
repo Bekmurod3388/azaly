@@ -10,7 +10,7 @@
                         </div>
                         <div class="pull-right">
                             @can('role-create')
-                                <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Yangi foydalanuvchi qo`shish </a>
+                                <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Qo`shish </a>
                             @endcan
                         </div>
                     </div>

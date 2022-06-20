@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
-                                <h2>Create New WareHouse</h2>
+                                <h2> Qo'shish </h2>
                             </div>
                         </div>
                     </div>
@@ -62,13 +62,13 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Name:</strong>
-                                    <input type="text" name="name" class="form-control mb-3" placeholder="Name"
+                                    <strong>Nom:</strong>
+                                    <input type="text" name="name" class="form-control mb-3" placeholder="Nom"
                                            required>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Saqlash</button>
                             </div>
                         </div>
                     </form>
@@ -86,7 +86,7 @@
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
-                                <h2>Edit WareHouse</h2>
+                                <h2> Tahrirlash </h2>
                             </div>
                         </div>
                     </div>
@@ -98,13 +98,13 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Name:</strong>
-                                    <input type="text" name="name" class="form-control mb-3" placeholder="Name" id="name"
+                                    <strong>Nom:</strong>
+                                    <input type="text" name="name" class="form-control mb-3" placeholder="Nom" id="name"
                                            required>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Saqlash</button>
                             </div>
                         </div>
                     </form>
@@ -118,12 +118,12 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Warehouses</h2>
+                            <h2> Omborxonalar:  </h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
                                 {{--                                <a class="btn btn-success" href="{{ route('admin.warehouses.create') }}"> Create New WarseHouses</a>--}}
-                                <button class="btn btn-success" id="myBtn">Create WareHouse</button>
+                                <button class="btn btn-success" id="myBtn"> Qo'shish  </button>
                             @endcan
                         </div>
                     </div>
@@ -133,8 +133,8 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th class="w-25">Action</th>
+                            <th>Nom</th>
+                            <th class="w-25"> Amallar </th>
                         </tr>
                         @foreach ($warehouses as $warehoues)
                             <tr>
@@ -142,10 +142,10 @@
                                 <td>{{ $warehoues->name }}</td>
                                 <td>
                                     @can('category-list')
-                                        <a class="btn btn-info"
-                                           href="{{ route('admin.warehouses.show',$warehoues->id) }}">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
+{{--                                        <a class="btn btn-info"--}}
+{{--                                           href="{{ route('admin.warehouses.show',$warehoues->id) }}">--}}
+{{--                                            <i class="fa fa-eye"></i>--}}
+{{--                                        </a>--}}
                                     @endcan
                                     @can('category-edit')
 {{--                                        <a class="btn btn-warning"--}}

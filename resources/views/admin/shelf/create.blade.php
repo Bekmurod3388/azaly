@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Create New shelfs</h2>
+                            <h2> Yangi tokcha qo'shing  </h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.shelf.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('admin.shelf.index') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label>WareHouse</label>
+                                <label> Omborxona </label>
                                 <select class="select2 form-control " name="warehouse_id"  data-placeholder="Yangi teg" style="width:100%">
                                     <option value="" selected>tanlang</option>
                                     @foreach($shelfs as $shelf)
@@ -33,14 +33,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <strong>Shelf:</strong>
-                                <input type="text" name="name" class="form-control mb-3" placeholder="name">
+                                <strong>Tokcha:</strong>
+                                <input type="text" name="name" class="form-control mb-3" placeholder="Nomi">
                             </div>
                         </div>
 
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Saqlash</button>
                         </div>
                     </div>
                 </form>

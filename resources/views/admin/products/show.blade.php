@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2> Show Product </h2>
+                            <h2> Mahsulot </h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Orqaga</a>
                         </div>
                     </div>
                 </div>
@@ -19,27 +19,27 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
 
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nom:</strong>
                             {{ $product->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Buy Sum:</strong>
+                            <strong>Sotib olish baxosi:</strong>
                             {{ $product->buy_sum }}
                         </div>
                         <div class="form-group">
-                            <strong>Sell Sum:</strong>
+                            <strong>Sotish baxosi:</strong>
                             {{ $product->sell_sum }}
                         </div>
                         <div class="form-group">
-                            <strong>Sell Sale sum:</strong>
+                            <strong>Aksiyada sotish baxosi :</strong>
                             {{ $product->sell_sale_sum }}
                         </div>
                         <div class="form-group">
-                            <strong>Sale count:</strong>
+                            <strong>sotish soni:</strong>
                             {{ $product->sale_count }}
                         </div>
                         <div class="form-group">
-                            <strong>Category :</strong>
+                            <strong> Kategoriya :</strong>
                             @foreach($cate as $cat)
                                 @if( $product->category_id == $cat->id )
                                     {{ $cat->name }}
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="form-group">
-                            <strong>Sale:</strong>
+                            <strong>Aksiya:</strong>
                             {{ $product->sale }}
                         </div>
 

@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Create New Product</h2>
+                            <h2> Yangi mahsulot qo'shing </h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
@@ -22,52 +22,55 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Name:</strong>
-                                    <input type="text" name="name" class="form-control mb-3" placeholder="Name" required >
+                                <strong>Nom:</strong>
+                                <input type="text" name="name" class="form-control mb-3" placeholder="Nom" required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Buy sum:</strong>
-                                <input type="number" name="buy_sum" class="form-control mb-3" placeholder="Buy sum" required>
+                                <strong> Sotib olish baxosi: </strong>
+                                <input type="number" name="buy_sum" class="form-control mb-3" placeholder="Sum"
+                                       required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Sell sum:</strong>
-                                <input type="number" name="sell_sum" class="form-control mb-3" placeholder="Sell sum" required>
+                                <strong> Sotish baxosi: </strong>
+                                <input type="number" name="sell_sum" class="form-control mb-3" placeholder="Sum"
+                                       required>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Sell Sale sum:</strong>
+                                <strong> Aksiyada sotish baxosi: </strong>
                                 <input type="number" name="sell_sale_sum" class="form-control mb-3"
-                                       placeholder="Sell Sale sum" required>
+                                       placeholder="Sum" required>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong> Count: </strong>
+                                <strong> Soni: </strong>
                                 <input type="number" name="count" class="form-control mb-3"
-                                       placeholder="Sale count" required>
+                                       placeholder="Sotish soni" required>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Sale count:</strong>
+                                <strong> Aksiya soni: </strong>
                                 <input type="number" name="sale_count" class="form-control mb-3"
-                                       placeholder="Sale count" required>
+                                       placeholder=" Aksiya soni " required>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="building"> Category </label>
-                                <select name="category_id" required id="building" class="form-select form-control" required>
-                                    <option value=""> Select Category</option>
+                                <label for="building"> Kategoriya </label>
+                                <select name="category_id" required id="building" class="form-select form-control"
+                                        required>
+                                    <option value=""> Kategoriya tanlang</option>
                                     @foreach($cate as $cat)
                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                                     @endforeach
@@ -77,9 +80,10 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="building"> WareHouse </label>
-                                <select name="shelf_id" required id="warehouse" class="form-select form-control" required>
-                                    <option value=""> Select WareHouse</option>
+                                <label for="building"> Omborxona </label>
+                                <select name="shelf_id" required id="warehouse" class="form-select form-control"
+                                        required>
+                                    <option value=""> Omborxonani tanlang</option>
                                     @foreach($ware as $w)
                                         <option value="{{$w->id}}">{{$w->name}}</option>
                                     @endforeach
@@ -89,39 +93,40 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="building"> Shelf </label>
+                                <label for="building"> Tokcha </label>
                                 <select name="shelf_id" required id="shelf" class="form-select form-control" required>
-                                    <option value=""> Select Shelf</option>
+                                    <option value=""> Tokchani tanlang</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="building"> Sizes </label> <br>
+                                <label for="building"> O'lcham </label> <br>
                                 @foreach($size as $size)
-                                    <input type="checkbox" name="size_id[]"  id="adopted" value="{{$size->id}}">
+                                    <input type="checkbox" name="size_id[]" id="adopted" value="{{$size->id}}">
                                     <label> {{$size->Size}} </label><br>
                                 @endforeach
                             </div>
-                            </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Sale:</strong>
-                                <input type="number" name="sale" class="form-control mb-3" placeholder="Sale" required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong> Aksiya: </strong>
+                            <input type="number" name="sale" class="form-control mb-3" placeholder="Aksiya" required>
                         </div>
                     </div>
-                </form>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                    </div>
 
             </div>
+            </form>
+
         </div>
+    </div>
     </div>
 @endsection
 

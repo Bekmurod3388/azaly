@@ -7,11 +7,11 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Products list</h2>
+                            <h2>Mahsulotlar:</h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
-                                <a class="btn btn-success" href="{{ route('admin.products.create') }}"> Create New Product</a>
+                                <a class="btn btn-success" href="{{ route('admin.products.create') }}"> Qo'shish </a>
                             @endcan
                         </div>
                     </div>
@@ -21,11 +21,11 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Buy Sum</th>
-                            <th>Sell Sum</th>
+                            <th>Nom</th>
+                            <th> Sotib olish </th>
+                            <th> Sotish </th>
 
-                            <th class="w-25">Action</th>
+                            <th class="w-25">Amallar</th>
                         </tr>
                         @foreach ($products as $key => $product)
                             <tr>
