@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Create New User</h2>
+                            <h2> Yangi foydalanuvchi qo`shish </h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.users.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('admin.users.index') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Name:</strong>
-                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control mb-3')) !!}
+                            <strong>Nomi:</strong>
+                            {!! Form::text('name', null, array('placeholder' => 'Nomi','class' => 'form-control mb-3')) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -42,19 +42,19 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Password:</strong>
-                            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control mb-3')) !!}
+                            <strong>Parol:</strong>
+                            {!! Form::password('password', array('placeholder' => 'Parol','class' => 'form-control mb-3')) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Confirm Password:</strong>
-                            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control mb-3')) !!}
+                            <strong>Parolni tasdiqlang:</strong>
+                            {!! Form::password('confirm-password', array('placeholder' => 'Parolni tasdiqlang','class' => 'form-control mb-3')) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Role:</strong>
+                            <strong>Ro`li:</strong>
                             <select name="roles" class="form-control form-select" multiple>
                                 @foreach($roles as $role)
                                     <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Saqlash</button>
                     </div>
                 </div>
                 {!! Form::close() !!}

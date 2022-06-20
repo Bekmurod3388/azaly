@@ -6,11 +6,11 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Users Management</h2>
+                            <h2> Foydalanuvchilar </h2>
                         </div>
                         <div class="pull-right">
                             @can('role-create')
-                                <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Create New User</a>
+                                <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Yangi foydalanuvchi qo`shish </a>
                             @endcan
                         </div>
                     </div>
@@ -20,10 +20,10 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Roles</th>
-                            <th class="w-25">Action</th>
+                            <th>Nomi</th>
+                            <th>Emaili</th>
+                            <th>Ro`li</th>
+                            <th class="w-25">Amallar</th>
                         </tr>
                         @foreach ($data as $key => $user)
                             @if($user->id > 1 || \Illuminate\Support\Facades\Auth::user()->id == 1)

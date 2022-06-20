@@ -46,14 +46,14 @@
                         <a class="dropdown-item"
                            href="{{ route('admin.users.show', \Illuminate\Support\Facades\Auth::id()) }}">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle"> Mening profilim </span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item"
                            href="{{ route('admin.users.edit', \Illuminate\Support\Facades\Auth::id()) }}">
                             <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
+                            <span class="align-middle"> Sozlamalar </span>
                         </a>
                     </li>
                     <li>
@@ -63,7 +63,7 @@
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="w-75" style="background-color: transparent; border: none">
-                                <i class="bx bx-power-off me-2"></i>Chiqish
+                                <i class="bx bx-power-off me-2"></i> Chiqish
                             </button>
                         </form>
                     </li>

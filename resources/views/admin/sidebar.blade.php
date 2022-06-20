@@ -72,13 +72,13 @@
             <li class="menu-item {{  request()->routeIs('admin.users.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.users.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
-                    <div data-i18n="Analytics">Users Management</div>
+                    <div data-i18n="Analytics"> Foydalanuvchilar </div>
                 </a>
             </li>
             <li class="menu-item {{  request()->routeIs('admin.roles.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.roles.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-user-shield"></i>
-                    <div data-i18n="Analytics">Role Management</div>
+                    <div data-i18n="Analytics"> Rollarni boshqarish </div>
                 </a>
             </li>
         @endcan
@@ -86,7 +86,7 @@
             <li class="menu-item {{  request()->routeIs('admin.categories.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.categories.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
-                    <div data-i18n="Analytics">Categories</div>
+                    <div data-i18n="Analytics"> Kategoriyalar </div>
                 </a>
             </li>
         @endcan
@@ -94,7 +94,7 @@
             <li class="menu-item {{  request()->routeIs('admin.sizes.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.sizes.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
-                    <div data-i18n="Analytics">Sizes</div>
+                    <div data-i18n="Analytics"> O'lchamlar </div>
                 </a>
             </li>
         @endcan
@@ -102,7 +102,7 @@
             <li class="menu-item {{  request()->routeIs('admin.warehouses.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.warehouses.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
-                    <div data-i18n="Analytics">WareHouse</div>
+                    <div data-i18n="Analytics"> Omborxona </div>
                 </a>
             </li>
         @endcan
@@ -110,7 +110,7 @@
             <li class="menu-item {{  request()->routeIs('admin.shelf.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.shelf.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
-                    <div data-i18n="Analytics">Shelf</div>
+                    <div data-i18n="Analytics"> Tokchalar </div>
                 </a>
             </li>
         @endcan
@@ -118,7 +118,7 @@
             <li class="menu-item {{  request()->routeIs('admin.products.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.products.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
-                    <div data-i18n="Analytics">Products</div>
+                    <div data-i18n="Analytics"> Mahsulotlar </div>
                 </a>
             </li>
         @endcan
