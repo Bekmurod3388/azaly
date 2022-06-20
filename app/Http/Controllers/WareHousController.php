@@ -40,10 +40,10 @@ class WareHousController extends Controller
     public function store(Request $request)
     {
         $data=$request->validate([
-            'name'=>'required'
+            'name'=>'required|unique:ware_houses,name'
         ]);
         WareHous::create($request->all());
-        return redirect()->route('admin.warehouses.index')->with('success','Warehous Nama yaratildi');
+        return redirect()->route('admin.warehouses.index')->with('success','Warehous Name yaratildi');
     }
 
     /**
