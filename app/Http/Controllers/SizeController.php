@@ -81,9 +81,9 @@ class SizeController extends Controller
     public function update(Request $request, $id)
     {
 //        Size::where('id', $id)->update($request->all());
-        $data = Size::find($id);
-        $data->Size = $request->size;
-        $data->save();
+        Size::find($id)->update($request->all());
+//        $data->Size = $request->size;
+//        $data->save();
         return redirect()->route('admin.sizes.index')->with('success', 'Size o`zgartirildi.');
 
     }
