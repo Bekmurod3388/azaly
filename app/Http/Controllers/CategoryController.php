@@ -67,7 +67,7 @@ class CategoryController extends Controller
             }
         }
         $bormi=Category::all()->where('slug',$slug);
-        if(count($bormi)==1){
+        if(count($bormi)>0){
             return redirect()->route('admin.categories.index')
                 ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
         }
@@ -117,25 +117,28 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, $id)
     {
         $category =  Category::find($id);
-        $category['name'] = $request['name'];
-        $data=$request['name'];
-        $data=strtolower($data);
-        $slug='';
-        for($i=0;$i<strlen($data);$i++){
-            if($data[$i]==' '){
-                $slug.='-';
-            }else{
-                if($data[$i]>='a' && $data[$i]<='z'){
-                    $slug.=$data[$i];
+        if($category['name'] != $request['name']) {
+
+            $category['name'] = $request['name'];
+            $data = $request['name'];
+            $data = strtolower($data);
+            $slug = '';
+            for ($i = 0; $i < strlen($data); $i++) {
+                if ($data[$i] == ' ') {
+                    $slug .= '-';
+                } else {
+                    if ($data[$i] >= 'a' && $data[$i] <= 'z') {
+                        $slug .= $data[$i];
+                    }
                 }
             }
+            $bormi = Category::all()->where('slug', $slug);
+            if (count($bormi) > 0) {
+                return redirect()->back()
+                    ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
+            }
+            $category['slug'] = $slug;
         }
-        $bormi=Category::all()->where('slug',$slug);
-        if(count($bormi)==2){
-            return redirect()->back()
-                ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
-        }
-        $category['slug'] = $slug;
         $category['parent_id'] = $request['parent_id'];
 
         $category->save();
