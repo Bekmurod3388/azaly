@@ -28,8 +28,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id;
-        $categories = Category::where('parent_id', $id)->paginate(10);
+
+        $categories = Category::paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -51,10 +51,27 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+
         $category = new Category();
         $category['name'] = $request['name'];
-        $category['slug'] = $request['slug'];
-        $category['parent_id'] = Auth::user()->id;
+        $data=$request['name'];
+        $data=strtolower($data);
+        $slug='';
+        for($i=0;$i<strlen($data);$i++){
+            if($data[$i]==' '){
+                $slug.='-';
+            }else{
+                if($data[$i]>='a' && $data[$i]<='z'){
+                    $slug.=$data[$i];
+                }
+            }
+        }
+        $bormi=Category::all()->where('slug',$slug);
+        if(count($bormi)==1){
+            return redirect()->route('admin.categories.index');
+        }
+        $category['slug'] = $slug;
+        $category['parent_id'] = $request['parent_id'];
         $category->save();
         return redirect()->route('admin.categories.index')->with('success','category created successfully');
     }
@@ -68,7 +85,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        return view('admin.categories.show',compact('category'));
+        return view('admin.categories.show',[
+            'category'=>$category,
+        ]);
     }
 
     /**
@@ -79,8 +98,12 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $c=Category::all();
         $category = Category::find($id);
-        return view('admin.categories.edit',compact('category'));
+        return view('admin.categories.edit',[
+            'category'=>$category,
+            'categories'=>$c
+        ]);
     }
 
     /**
@@ -94,9 +117,23 @@ class CategoryController extends Controller
     {
         $category =  Category::find($id);
         $category['name'] = $request['name'];
-        $category['slug'] = $request['slug'];
+        $data=$request['name'];
+        $data=strtolower($data);
+        $slug='';
+        for($i=0;$i<strlen($data);$i++){
+            if($data[$i]==' '){
+                $slug.='-';
+            }else{
+                if($data[$i]>='a' && $data[$i]<='z'){
+                    $slug.=$data[$i];
+                }
+            }
+        }
+        $category['slug'] = $slug;
+        $category['parent_id'] = $request['parent_id'];
+
         $category->save();
-        return redirect()->route('admin.categories.index')->with('success','category created successfully');
+        return redirect()->route('admin.categories.index')->with('success','category updated successfully');
     }
 
     /**
