@@ -93,7 +93,6 @@
 </div>
 <!-- / Layout wrapper -->
 
-
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
 <script src="{{ asset('/assets/vendor/libs/jquery/jquery.js') }}"></script>
@@ -137,6 +136,32 @@
 <!-- Atlantis JS -->
 <script src="{{asset('/asset/js/atlantis.min.js')}}">
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+
+<script>
+
+    let errors = @json($errors->all());
+    @if($errors->any())
+    console.log(errors);
+
+    let msg = '';
+    for (let i = 0; i < errors.length; i++) {
+        msg += (i + 1) + '-xatolik ' + errors[i] + '\n';
+        // msg += errors[i] + '\n';
+    }
+    console.log(msg);
+    if (msg != '') {
+        swal({
+            icon: 'error',
+            title: 'Xatolik',
+            text: msg,
+            confirmButtonText: 'Continue',
+        })
+    }
+    @endif
+
+
+</script>
+
 @yield('script')
 </body>
 </html>

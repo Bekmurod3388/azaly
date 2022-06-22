@@ -68,7 +68,8 @@ class CategoryController extends Controller
         }
         $bormi=Category::all()->where('slug',$slug);
         if(count($bormi)==1){
-            return redirect()->route('admin.categories.index');
+            return redirect()->route('admin.categories.index')
+                ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
         }
         $category['slug'] = $slug;
         $category['parent_id'] = $request['parent_id'];
@@ -129,6 +130,11 @@ class CategoryController extends Controller
                 }
             }
         }
+        $bormi=Category::all()->where('slug',$slug);
+        if(count($bormi)==2){
+            return redirect()->back()
+                ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
+        }
         $category['slug'] = $slug;
         $category['parent_id'] = $request['parent_id'];
 
@@ -144,6 +150,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $id=$category->id;
+        $eski=Category::all()->where('parent_id',$id);
+        foreach ($eski as $e){
+            $t=Category::find($e->id);
+            $t->parent_id=0;
+            $t->save();
+        }
         $category->delete();
         return redirect()->route('admin.categories.index')->with('success','category created successfully');
 
