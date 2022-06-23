@@ -48,15 +48,16 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-dark-gradient shadow-sm">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand text-black" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+{{--                    <span class="navbar-toggler-icon"></span>--}}
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -65,61 +66,61 @@
                     @can('role-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.users.index') }}"
-                               class="nav-link {{  request()->routeIs('admin.users.index') ? 'text-primary' : 'text-white' }}">
+                               class="nav-link {{  request()->routeIs('admin.users.index') ? 'text-primary' : 'text-black' }}">
 {{--                                <i class="menu-icon tf-icons fas fa-users"></i>--}}
-                                <div data-i18n="Analytics">Users Management</div>
+                                <div data-i18n="Analytics">Foydalanuvchilar</div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.roles.index') }}"
-                               class="nav-link {{  request()->routeIs('admin.roles.index') ? 'text-primary' : 'text-white' }}">
+                               class="nav-link {{  request()->routeIs('admin.roles.index') ? 'text-primary' : 'text-black' }}">
 {{--                                <i class="menu-icon tf-icons fas fa-user-shield"></i>--}}
-                                <div data-i18n="Analytics">Role Management</div>
+                                <div data-i18n="Analytics">Rollarni boshqarish</div>
                             </a>
                         </li>
                     @endcan
                     @can('category-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.categories.index') }}"
-                               class="nav-link {{  request()->routeIs('admin.categories.index') ? 'text-primary' : 'text-white' }}">
+                               class="nav-link {{  request()->routeIs('admin.categories.index') ? 'text-primary' : 'text-black' }}">
 {{--                                <i class="menu-icon tf-icons fas fa-users"></i>--}}
-                                <div data-i18n="Analytics">Categories</div>
+                                <div data-i18n="Analytics">Kategoriyalar</div>
                             </a>
                         </li>
                     @endcan
                     @can('category-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.sizes.index') }}"
-                               class="nav-link {{  request()->routeIs('admin.sizes.index') ? 'text-primary' : 'text-white' }}">
+                               class="nav-link {{  request()->routeIs('admin.sizes.index') ? 'text-primary' : 'text-black' }}">
 {{--                                <i class="menu-icon tf-icons fas fa-users"></i>--}}
-                                <div data-i18n="Analytics">Sizes</div>
+                                <div data-i18n="Analytics">O'lchamlar</div>
                             </a>
                         </li>
                     @endcan
                     @can('category-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.warehouses.index') }}"
-                               class="nav-link {{  request()->routeIs('admin.warehouses.index') ? 'text-primary' : 'text-white' }}">
+                               class="nav-link {{  request()->routeIs('admin.warehouses.index') ? 'text-primary' : 'text-black' }}">
 {{--                                <i class="menu-icon tf-icons fas fa-users"></i>--}}
-                                <div data-i18n="Analytics">WareHouse</div>
+                                <div data-i18n="Analytics">Omborxona</div>
                             </a>
                         </li>
                     @endcan
                     @can('category-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.shelf.index') }}"
-                               class="nav-link {{  request()->routeIs('admin.shelf.index') ? 'text-primary' : 'text-white' }}">
+                               class="nav-link {{  request()->routeIs('admin.shelf.index') ? 'text-primary' : 'text-black' }}">
 {{--                                <i class="menu-icon tf-icons fas fa-users"></i>--}}
-                                <div data-i18n="Analytics">Shelf</div>
+                                <div data-i18n="Analytics">Tokchalar</div>
                             </a>
                         </li>
                     @endcan
                     @can('category-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.products.index') }}"
-                               class="nav-link {{  request()->routeIs('admin.products.index') ? 'text-primary' : 'text-white' }}">
+                               class="nav-link {{  request()->routeIs('admin.products.index') ? 'text-primary' : 'text-black' }}">
 {{--                                <i class="menu-icon tf-icons fas fa-users"></i>--}}
-                                <div data-i18n="Analytics">Products</div>
+                                <div data-i18n="Analytics">Mahsulotlar</div>
                             </a>
                         </li>
                     @endcan
@@ -142,7 +143,7 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-black" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
@@ -151,7 +152,7 @@
                                 <a class="dropdown-item text-black" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Chiqish') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
