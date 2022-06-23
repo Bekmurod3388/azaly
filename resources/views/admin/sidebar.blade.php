@@ -2,9 +2,10 @@
     <div class="app-brand demo">
         <a href="{{ route('admin.home') }}" class="app-brand-link">
               <span class="app-brand-logo demo">
-               <img src="" alt="">
+
+               <img style="width: 100px; height: 100px; " src="{{ asset('/assets/img/avatars/logo.jpg') }}" alt="Bu rasm">
               </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin Panel</span>
+{{--            <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin Panel</span>--}}
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
