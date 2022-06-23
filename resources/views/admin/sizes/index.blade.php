@@ -40,10 +40,13 @@
             cursor: pointer;
         }
     </style>
+
     <!-- The Modal -->
     <div class="col-md-12">
         <div class="form">
+
             <div id="myModal" class="modal">
+
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -77,6 +80,7 @@
                 </div>
             </div>
             <!-- The Modal -->
+
 
             <div id="myModal1" class="modal">
                 <!-- Modal content -->
@@ -112,6 +116,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="card">
             <div class="card-header">
@@ -261,4 +266,32 @@
             });
         });
     </script>
+
+    <script>
+
+        let errors = @json($errors->all());
+        @if($errors->any())
+        console.log(errors);
+
+        let msg = '';
+        for (let i = 0; i < errors.length; i++) {
+            msg += (i + 1) + '-xatolik ' + errors[i] + '\n';
+            // msg += errors[i] + '\n';
+        }
+        console.log(msg);
+        if (msg != '') {
+            swal({
+                icon: 'error',
+                title: 'Xatolik',
+                text: msg,
+                confirmButtonText: 'Continue',
+            })
+        }
+        @endif
+
+
+    </script>
+
+
+
 @endsection

@@ -41,7 +41,10 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-        Size::create($request->all());
+        $data = $request->validate([
+           'size' => 'unique:sizes'
+        ]);
+        Size::create($data);
         return redirect()->route('admin.sizes.index')->with('success', 'Size yaratildi');
     }
 
@@ -81,8 +84,11 @@ class SizeController extends Controller
     public function update(Request $request, $id)
     {
 //        Size::where('id', $id)->update($request->all());
+        $d = $request->validate([
+            'size' => 'unique'
+        ]);
         $data = Size::find($id);
-        $data->Size = $request->size;
+        $data->Size = $d->size;
         $data->save();
         return redirect()->route('admin.sizes.index')->with('success', 'Size o`zgartirildi.');
 

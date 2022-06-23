@@ -22,10 +22,12 @@
                     <div class="row">
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
+                            <input type="hidden" value="{{ $id }}" name="id">
                             <div class="form-group">
                                 <strong>Nomi:</strong>
                                 <input type="text" name="name" class="form-control" value="{{$shelf->name}}">
                             </div>
+
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
