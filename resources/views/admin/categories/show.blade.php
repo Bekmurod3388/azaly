@@ -28,6 +28,16 @@
                             {{ $category->slug }}
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Parent-kategoriya:</strong>
+                           @if($category->parent_id==0)
+                               Yo'q
+                            @else
+                            {{ $category->cat2->name }}
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

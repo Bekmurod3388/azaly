@@ -28,8 +28,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id;
-        $categories = Category::where('parent_id', $id)->paginate(10);
+
+        $categories = Category::paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -51,10 +51,28 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+
         $category = new Category();
         $category['name'] = $request['name'];
-        $category['slug'] = $request['slug'];
-        $category['parent_id'] = Auth::user()->id;
+        $data=$request['name'];
+        $data=strtolower($data);
+        $slug='';
+        for($i=0;$i<strlen($data);$i++){
+            if($data[$i]==' '){
+                $slug.='-';
+            }else{
+                if($data[$i]>='a' && $data[$i]<='z'){
+                    $slug.=$data[$i];
+                }
+            }
+        }
+        $bormi=Category::all()->where('slug',$slug);
+        if(count($bormi)>0){
+            return redirect()->route('admin.categories.index')
+                ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
+        }
+        $category['slug'] = $slug;
+        $category['parent_id'] = $request['parent_id'];
         $category->save();
         return redirect()->route('admin.categories.index')->with('success','category created successfully');
     }
@@ -68,7 +86,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        return view('admin.categories.show',compact('category'));
+        return view('admin.categories.show',[
+            'category'=>$category,
+        ]);
     }
 
     /**
@@ -79,8 +99,12 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $c=Category::all();
         $category = Category::find($id);
-        return view('admin.categories.edit',compact('category'));
+        return view('admin.categories.edit',[
+            'category'=>$category,
+            'categories'=>$c
+        ]);
     }
 
     /**
@@ -93,10 +117,32 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, $id)
     {
         $category =  Category::find($id);
-        $category['name'] = $request['name'];
-        $category['slug'] = $request['slug'];
+        if($category['name'] != $request['name']) {
+
+            $category['name'] = $request['name'];
+            $data = $request['name'];
+            $data = strtolower($data);
+            $slug = '';
+            for ($i = 0; $i < strlen($data); $i++) {
+                if ($data[$i] == ' ') {
+                    $slug .= '-';
+                } else {
+                    if ($data[$i] >= 'a' && $data[$i] <= 'z') {
+                        $slug .= $data[$i];
+                    }
+                }
+            }
+            $bormi = Category::all()->where('slug', $slug);
+            if (count($bormi) > 0) {
+                return redirect()->back()
+                    ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
+            }
+            $category['slug'] = $slug;
+        }
+        $category['parent_id'] = $request['parent_id'];
+
         $category->save();
-        return redirect()->route('admin.categories.index')->with('success','category created successfully');
+        return redirect()->route('admin.categories.index')->with('success','category updated successfully');
     }
 
     /**
@@ -107,6 +153,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $id=$category->id;
+        $eski=Category::all()->where('parent_id',$id);
+        foreach ($eski as $e){
+            $t=Category::find($e->id);
+            $t->parent_id=0;
+            $t->save();
+        }
         $category->delete();
         return redirect()->route('admin.categories.index')->with('success','category created successfully');
 
