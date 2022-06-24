@@ -57,7 +57,9 @@
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
-                                        <h2> Qo'shish </h2>
+                                        @can('shelf-create')
+                                            <h2> Qo'shish </h2>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -135,10 +137,10 @@
                             <h2> Tokchalar: </h2>
                         </div>
                         <div class="pull-right">
-                            @can('category-create')
-{{--                                <a class="btn btn-success" href="{{ route('admin.shelf.create', ['id' => $id ]) }}">--}}
-{{--                                    Qo'shish </a>--}}
-                                <button class="btn btn-success" id="myBtn"> Qo'shish </button>
+                            @can('shelf-create')
+                                {{--                                <a class="btn btn-success" href="{{ route('admin.shelf.create', ['id' => $id ]) }}">--}}
+                                {{--                                    Qo'shish </a>--}}
+                                <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
 
                         </div>
@@ -159,15 +161,15 @@
                                 <td>{{ $shelf->id }}</td>
                                 <td>{{$shelf->name}}</td>
                                 <td>
-                                    @can('category-edit')
-{{--                                        <a class="btn btn-warning"--}}
-{{--                                           href="{{ route('admin.shelf.edit',[ 'shelf'=>$shelf->id, 'id'=>$id ]) }}">--}}
-{{--                                            <i class="fa fa-pen"></i>--}}
-{{--                                        </a>--}}
+                                    @can('shelf-edit')
+                                        {{--                                        <a class="btn btn-warning"--}}
+                                        {{--                                           href="{{ route('admin.shelf.edit',[ 'shelf'=>$shelf->id, 'id'=>$id ]) }}">--}}
+                                        {{--                                            <i class="fa fa-pen"></i>--}}
+                                        {{--                                        </a>--}}
                                         <button class="btn btn-warning" onclick="edit({{ $shelf->id }})"><i
                                                 class="fa fa-pen"></i></button>
                                     @endcan
-                                    @can('category-delete')
+                                    @can('shelf-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.shelf.destroy', $shelf->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">

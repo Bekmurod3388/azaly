@@ -55,7 +55,7 @@
                     @if($user->id != \Illuminate\Support\Facades\Auth::user()->id)
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Ro`li:</strong>
+                            <strong>Rol:</strong>
                             {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control mb-3','multiple')) !!}
                         </div>
                     </div>

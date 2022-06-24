@@ -99,7 +99,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('category-list')
+                    @can('size-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.sizes.index') }}"
                                class="nav-link {{  request()->routeIs('admin.sizes.index') ? 'text-primary' : 'text-black' }}">
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('category-list')
+                    @can('warehouse-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.warehouses.index') }}"
                                class="nav-link {{  request()->routeIs('admin.warehouses.index') ? 'text-primary' : 'text-black' }}">
@@ -126,7 +126,7 @@
 {{--                            </a>--}}
 {{--                        </li>--}}
 {{--                    @endcan--}}
-                    @can('category-list')
+                    @can('product-list')
                         <li class="nav-item">
                             <a href="{{ route('admin.products.index') }}"
                                class="nav-link {{  request()->routeIs('admin.products.index') ? 'text-primary' : 'text-black' }}">

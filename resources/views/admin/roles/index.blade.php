@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2> Ro'l Boshqaruvi </h2>
+                            <h2> Rollarni boshqarish </h2>
                         </div>
                         <div class="pull-right">
                             @can('role-create')

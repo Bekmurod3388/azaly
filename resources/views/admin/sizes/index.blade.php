@@ -55,7 +55,9 @@
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
-                                        <h2> Qo'shish </h2>
+                                        @can('size-create')
+                                            <h2> Qo'shish </h2>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +130,7 @@
                         <div class="pull-right">
                             @can('category-create')
                                 {{--                                <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
-                                <button class="btn btn-success" id="myBtn"> Qo'shish </button>
+                                <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
                         </div>
                     </div>
@@ -152,14 +154,14 @@
                                     {{--                                            <i class="fa fa-eye"></i>--}}
                                     {{--                                        </a>--}}
                                     {{--                                    @endcan--}}
-                                    @can('category-edit')
+                                    @can('size-edit')
                                         {{--                                        <a class="btn btn-warning" href="{{ route('admin.sizes.edit',$size->id) }}">--}}
                                         {{--                                            <i class="fa fa-pen"></i>--}}
                                         {{--                                        </a>--}}
                                         <button class="btn btn-warning" onclick="edit({{ $size->id }})"><i
                                                 class="fa fa-pen"></i></button>
                                     @endcan
-                                    @can('category-delete')
+                                    @can('size-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.sizes.destroy', $size->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
@@ -291,7 +293,5 @@
 
 
     </script>
-
-
 
 @endsection

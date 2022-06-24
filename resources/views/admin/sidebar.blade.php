@@ -39,7 +39,7 @@
                 </a>
             </li>
         @endcan
-        @can('category-list')
+        @can('size-list')
             <li class="menu-item {{  request()->routeIs('admin.sizes.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.sizes.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
@@ -47,7 +47,7 @@
                 </a>
             </li>
         @endcan
-        @can('category-list')
+        @can('warehouse-list')
             <li class="menu-item {{  request()->routeIs('admin.warehouses.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.warehouses.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>
@@ -66,7 +66,7 @@
 {{--            </li>--}}
 {{--        @endcan--}}
 
-        @can('category-list')
+        @can('product-list')
             <li class="menu-item {{  request()->routeIs('admin.products.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.products.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-users"></i>

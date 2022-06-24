@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class WareHousController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:warehouse-list|warehouse-create|warehouse-edit|warehouse-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:warehouse-create', ['only' => ['create','store']]);
+        $this->middleware('permission:warehouse-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:warehouse-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

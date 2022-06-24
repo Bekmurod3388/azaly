@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ShelfController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:shelf-list|shelf-create|shelf-edit|shelf-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:shelf-create', ['only' => ['create','store']]);
+        $this->middleware('permission:shelf-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:shelf-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

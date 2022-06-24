@@ -51,7 +51,9 @@
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
-                                <h2> Qo'shish </h2>
+                                @can('warehouse-create')
+                                    <h2> Qo'shish </h2>
+                                @endcan
                             </div>
                         </div>
                     </div>
@@ -147,22 +149,23 @@
                                 <td>{{ $warehoues->id }}</td>
                                 <td>{{ $warehoues->name }}</td>
                                 <td>
-                                        <a href="{{ route('admin.shelf.index',['id' => $warehoues->id]) }}" class="menu-link">
-                                            <i class=" btn btn-success fas fa-boxes"></i>
-                                          {{--   <div data-i18n="Analytics"> Tokchalar</div>--}}
-                                        </a>
+                                    <a href="{{ route('admin.shelf.index',['id' => $warehoues->id]) }}"
+                                       class="menu-link">
+                                        <i class=" btn btn-success fas fa-boxes"></i>
+                                        {{--   <div data-i18n="Analytics"> Tokchalar</div>--}}
+                                    </a>
 
                                     </li>
                                 </td>
 
                                 <td>
 
-                                    @can('category-edit')
+                                    @can('warehouse-edit')
                                         <button class="btn btn-warning" onclick="edit({{ $warehoues->id }})"><i
                                                 class="fa fa-pen"></i></button>
                                     @endcan
 
-                                    @can('category-delete')
+                                    @can('warehouse-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.warehouses.destroy', $warehoues->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
