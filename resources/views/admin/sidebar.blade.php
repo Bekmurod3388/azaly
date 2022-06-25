@@ -30,6 +30,12 @@
                     <div data-i18n="Analytics"> Rollarni boshqarish </div>
                 </a>
             </li>
+            <li class="menu-item {{  request()->routeIs('admin.agent.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.agent.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons fas fa-user-shield"></i>
+                    <div data-i18n="Analytics"> Kontragentlar </div>
+                </a>
+            </li>
         @endcan
         @can('category-list')
             <li class="menu-item {{  request()->routeIs('admin.categories.index') ? 'active' : '' }}">

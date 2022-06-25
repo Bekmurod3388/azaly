@@ -28,6 +28,8 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('warehouses',\App\Http\Controllers\WareHousController::class);
     Route::resource('products',\App\Http\Controllers\ProductController::class);
     Route::resource('shelf',\App\Http\Controllers\ShelfController::class);
+    Route::resource('agent',\App\Http\Controllers\AgentController::class);
+
 });
 
 Route::prefix('api')->name('api.')->group(function (){
