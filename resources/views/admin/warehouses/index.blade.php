@@ -51,7 +51,9 @@
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
-                                <h2> Qo'shish </h2>
+                                @can('warehouse-create')
+                                    <h2> Qo'shish </h2>
+                                @endcan
                             </div>
                         </div>
                     </div>
@@ -76,6 +78,7 @@
             </div>
         </div>
     </div>
+
     <!-- The Modal -->
     <div id="myModal1" class="modal">
         <!-- Modal content -->
@@ -112,19 +115,23 @@
             </div>
         </div>
     </div>
+
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2> Omborxonalar:  </h2>
+                            <h2> Omborxonalar: </h2>
                         </div>
                         <div class="pull-right">
+
                             @can('category-create')
-                                {{--                                <a class="btn btn-success" href="{{ route('admin.warehouses.create') }}"> Create New WarseHouses</a>--}}
-                                <button class="btn btn-success" id="myBtn"> Qo'shish  </button>
+                                {{-- <a class="btn btn-success" href="{{ route('admin.warehouses.create') }}"> Create New WarseHouses</a>--}}
+                                <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
+
                         </div>
                     </div>
                 </div>
@@ -134,27 +141,31 @@
                         <tr>
                             <th>Id</th>
                             <th>Nom</th>
-                            <th class="w-25"> Amallar </th>
+                            <th>Tokchalar</th>
+                            <th class="w-25"> Amallar</th>
                         </tr>
                         @foreach ($warehouses as $warehoues)
                             <tr>
                                 <td>{{ $warehoues->id }}</td>
                                 <td>{{ $warehoues->name }}</td>
                                 <td>
-                                    @can('category-list')
-{{--                                        <a class="btn btn-info"--}}
-{{--                                           href="{{ route('admin.warehouses.show',$warehoues->id) }}">--}}
-{{--                                            <i class="fa fa-eye"></i>--}}
-{{--                                        </a>--}}
+                                    <a href="{{ route('admin.shelf.index',['id' => $warehoues->id]) }}"
+                                       class="menu-link">
+                                        <i class=" btn btn-success fas fa-boxes"></i>
+                                        {{--   <div data-i18n="Analytics"> Tokchalar</div>--}}
+                                    </a>
+
+                                    </li>
+                                </td>
+
+                                <td>
+
+                                    @can('warehouse-edit')
+                                        <button class="btn btn-warning" onclick="edit({{ $warehoues->id }})"><i
+                                                class="fa fa-pen"></i></button>
                                     @endcan
-                                    @can('category-edit')
-{{--                                        <a class="btn btn-warning"--}}
-{{--                                           href="{{ route('admin.warehouses.edit',$warehoues->id) }}">--}}
-{{--                                            <i class="fa fa-pen"></i>--}}
-{{--                                        </a>--}}
-                                        <button class="btn btn-warning" onclick="edit({{ $warehoues->id }})"><i class="fa fa-pen"></i></button>
-                                    @endcan
-                                    @can('category-delete')
+
+                                    @can('warehouse-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.warehouses.destroy', $warehoues->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
@@ -196,6 +207,7 @@
             })
         </script>
     @endif
+
     <script>
         let warehouses = @json($warehouses);
         var modal = document.getElementById("myModal");
@@ -210,18 +222,20 @@
         btn.onclick = function () {
             modal.style.display = "block";
         }
-        function edit(id){
-            for (let i=0; i<warehouses['data'].length; i++) {
-                if (id == warehouses['data'][i]['id']){
+
+        function edit(id) {
+            for (let i = 0; i < warehouses['data'].length; i++) {
+                if (id == warehouses['data'][i]['id']) {
                     console.log(i);
                     $('#name').val(warehouses['data'][i]['name']);
                     break;
                 }
             }
 
-            $('#editForm').attr('action','/admin/warehouses/'+id);
+            $('#editForm').attr('action', '/admin/warehouses/' + id);
             modal1.style.display = "block";
         }
+
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";

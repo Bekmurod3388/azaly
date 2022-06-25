@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class SizeController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission:size-list|size-create|size-edit|size-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:size-create', ['only' => ['create','store']]);
+        $this->middleware('permission:size-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:size-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +49,10 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-        Size::create($request->all());
+        $data = $request->validate([
+           'size' => 'unique:sizes'
+        ]);
+        Size::create($data);
         return redirect()->route('admin.sizes.index')->with('success', 'Size yaratildi');
     }
 
@@ -81,9 +92,12 @@ class SizeController extends Controller
     public function update(Request $request, $id)
     {
 //        Size::where('id', $id)->update($request->all());
-        Size::find($id)->update($request->all());
-//        $data->Size = $request->size;
-//        $data->save();
+        $d = $request->validate([
+            'size' => 'unique'
+        ]);
+        $data = Size::find($id);
+        $data->Size = $d->size;
+        $data->save();
         return redirect()->route('admin.sizes.index')->with('success', 'Size o`zgartirildi.');
 
     }

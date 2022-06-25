@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shelf;
 use App\Models\WareHous;
 use Illuminate\Http\Request;
 
 class WareHousController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:warehouse-list|warehouse-create|warehouse-edit|warehouse-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:warehouse-create', ['only' => ['create','store']]);
+        $this->middleware('permission:warehouse-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:warehouse-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -99,6 +107,14 @@ class WareHousController extends Controller
     public function destroy($id)
     {
         $data=WareHous::find($id);
+
+        $d = Shelf::all();
+        foreach ($d as $a ){
+           if( $a['warehouse_id']==$id ){
+               $a->delete();
+           }
+        }
+
         $data->delete();
         return redirect()->route('admin.warehouses.index')->with('success','warehoues created successfully');
 

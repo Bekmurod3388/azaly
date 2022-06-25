@@ -10,7 +10,7 @@
                             <h2>Mahsulotlar:</h2>
                         </div>
                         <div class="pull-right">
-                            @can('category-create')
+                            @can('product-create')
                                 <a class="btn btn-success" href="{{ route('admin.products.create') }}"> Qo'shish </a>
                             @endcan
                         </div>
@@ -35,17 +35,17 @@
                                 <td>{{ $product->sell_sum }}</td>
 
                                 <td>
-                                    @can('category-list')
+                                    @can('product-list')
                                         <a class="btn btn-info" href="{{ route('admin.products.show',$product->id) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     @endcan
-                                    @can('category-edit')
+                                    @can('product-edit')
                                         <a class="btn btn-warning" href="{{ route('admin.products.edit',$product->id) }}">
                                             <i class="fa fa-pen"></i>
                                         </a>
                                     @endcan
-                                    @can('category-delete')
+                                    @can('product-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $product->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">

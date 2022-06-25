@@ -24,15 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $cnt = 0;
-//        foreach (Auth::user()->getRoleNames() as $v)
-//            if ($v == 'Admin') $cnt++;
-////        dd($cnt);
-        return view('admin.dashboard', [
-//            'cnt' => $cnt,
-        ]);
-//        if ($cnt > 0)
-//            return view('admin.dashboard');
-//        else return view('admin.user');
+        return view('admin.dashboard');
     }
 }

@@ -22,7 +22,7 @@
                             <th>Id</th>
                             <th>Nomi</th>
                             <th>Emaili</th>
-                            <th>Ro`li</th>
+                            <th>Rol</th>
                             <th class="w-25">Amallar</th>
                         </tr>
                         @foreach ($data as $key => $user)

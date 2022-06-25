@@ -29,3 +29,7 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('products',\App\Http\Controllers\ProductController::class);
     Route::resource('shelf',\App\Http\Controllers\ShelfController::class);
 });
+
+Route::prefix('api')->name('api.')->group(function (){
+    Route::resource('categories',\App\Http\Controllers\Api\CategoryController::class);
+});

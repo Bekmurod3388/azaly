@@ -40,10 +40,13 @@
             cursor: pointer;
         }
     </style>
+
     <!-- The Modal -->
     <div class="col-md-12">
         <div class="form">
+
             <div id="myModal" class="modal">
+
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -52,7 +55,9 @@
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
-                                        <h2> Qo'shish </h2>
+                                        @can('size-create')
+                                            <h2> Qo'shish </h2>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +82,7 @@
                 </div>
             </div>
             <!-- The Modal -->
+
 
             <div id="myModal1" class="modal">
                 <!-- Modal content -->
@@ -112,6 +118,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="card">
             <div class="card-header">
@@ -123,7 +130,7 @@
                         <div class="pull-right">
                             @can('category-create')
                                 {{--                                <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
-                                <button class="btn btn-success" id="myBtn"> Qo'shish </button>
+                                <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
                         </div>
                     </div>
@@ -147,14 +154,14 @@
                                     {{--                                            <i class="fa fa-eye"></i>--}}
                                     {{--                                        </a>--}}
                                     {{--                                    @endcan--}}
-                                    @can('category-edit')
+                                    @can('size-edit')
                                         {{--                                        <a class="btn btn-warning" href="{{ route('admin.sizes.edit',$size->id) }}">--}}
                                         {{--                                            <i class="fa fa-pen"></i>--}}
                                         {{--                                        </a>--}}
                                         <button class="btn btn-warning" onclick="edit({{ $size->id }})"><i
                                                 class="fa fa-pen"></i></button>
                                     @endcan
-                                    @can('category-delete')
+                                    @can('size-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.sizes.destroy', $size->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
@@ -261,4 +268,30 @@
             });
         });
     </script>
+
+    <script>
+
+        let errors = @json($errors->all());
+        @if($errors->any())
+        console.log(errors);
+
+        let msg = '';
+        for (let i = 0; i < errors.length; i++) {
+            msg += (i + 1) + '-xatolik ' + errors[i] + '\n';
+            // msg += errors[i] + '\n';
+        }
+        console.log(msg);
+        if (msg != '') {
+            swal({
+                icon: 'error',
+                title: 'Xatolik',
+                text: msg,
+                confirmButtonText: 'Continue',
+            })
+        }
+        @endif
+
+
+    </script>
+
 @endsection

@@ -24,6 +24,22 @@ class PermissionSeeder extends Seeder
             'category-create',
             'category-edit',
             'category-delete',
+            'size-list',
+            'size-create',
+            'size-edit',
+            'size-delete',
+            'warehouse-list',
+            'warehouse-create',
+            'warehouse-edit',
+            'warehouse-delete',
+            'shelf-list',
+            'shelf-create',
+            'shelf-edit',
+            'shelf-delete',
+            'product-list',
+            'product-create',
+            'product-edit',
+            'product-delete',
         ];
 
         foreach ($permissions as $permission) {

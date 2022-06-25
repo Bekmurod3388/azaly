@@ -8,18 +8,25 @@ use Illuminate\Http\Request;
 
 class ShelfController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:shelf-list|shelf-create|shelf-edit|shelf-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:shelf-create', ['only' => ['create','store']]);
+        $this->middleware('permission:shelf-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:shelf-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $shelf = Shelf::all();
-        $house = WareHous::all();
+        $id = $request->id;
+        $shelf = Shelf::where('warehouse_id', $id)->get();
         return view('admin.shelf.index', [
             'shelfs' => $shelf,
-            'house' => $house,
+            'id'=>$id,
         ]);
     }
 
@@ -28,12 +35,13 @@ class ShelfController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $shelf = WareHous::orderBydesc('id')->get();
+        $id = $request->id;
         return view('admin.shelf.create', [
-            'shelfs' => $shelf
+            'id'=>$id,
         ]);
+
     }
 
     /**
@@ -44,12 +52,13 @@ class ShelfController extends Controller
      */
     public function store(Request $request)
     {
+        $id = $request->id;
         $data = new Shelf();
-        $data->warehouse_id = $request->warehouse_id;
+        $data->warehouse_id = $request->id;
         $data->name = $request->name;
         $data->save();
 
-        return redirect(route('admin.shelf.index'));
+        return redirect(route('admin.shelf.index', [ 'id' => $id]))->with('success','Yangi tokcha yaratildi!.. ');
     }
 
     /**
@@ -58,9 +67,9 @@ class ShelfController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id )
     {
-        //
+       //
     }
 
     /**
@@ -69,11 +78,14 @@ class ShelfController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+
         $data = Shelf::find($id);
+        $warehouse= $request->id;
         return view('admin.shelf.edit', [
             'shelf' => $data,
+            'id'=>$warehouse,
         ]);
 
     }
@@ -87,10 +99,12 @@ class ShelfController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $idd = $request->id;
+
         $data = Shelf::find($id);
         $data->name = $request->name;
         $data->save();
-        return redirect(route('admin.shelf.index'));
+        return redirect(route('admin.shelf.index', [ 'id' => $idd]))->with('success','Ok!.. ');
     }
 
     /**
@@ -103,6 +117,6 @@ class ShelfController extends Controller
     {
         $data = Shelf::find($id);
         $data->delete();
-        return redirect(route('admin.shelf.index'));
+        return redirect(route('admin.warehouses.index'))->with('success','Ok!.. ');
     }
 }
