@@ -32,7 +32,7 @@
             </li>
             <li class="menu-item {{  request()->routeIs('admin.agent.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.agent.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-user-shield"></i>
+                    <i class="menu-icon tf-icons fas fa-user-tie"></i>
                     <div data-i18n="Analytics"> Kontragentlar </div>
                 </a>
             </li>
@@ -40,7 +40,7 @@
         @can('category-list')
             <li class="menu-item {{  request()->routeIs('admin.categories.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.categories.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <i class="menu-icon tf-icons fas fa-list-alt"></i>
                     <div data-i18n="Analytics"> Kategoriyalar </div>
                 </a>
             </li>
@@ -48,7 +48,7 @@
         @can('size-list')
             <li class="menu-item {{  request()->routeIs('admin.sizes.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.sizes.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <i class="menu-icon tf-icons fas fa-money-check "></i>
                     <div data-i18n="Analytics"> O'lchamlar </div>
                 </a>
             </li>
@@ -56,7 +56,7 @@
         @can('warehouse-list')
             <li class="menu-item {{  request()->routeIs('admin.warehouses.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.warehouses.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <i class="menu-icon tf-icons fas fa-warehouse"></i>
                     <div data-i18n="Analytics"> Omborxona </div>
                 </a>
             </li>
@@ -75,7 +75,7 @@
         @can('product-list')
             <li class="menu-item {{  request()->routeIs('admin.products.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.products.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-users"></i>
+                    <i class="menu-icon tf-icons fas fa-tshirt"></i>
                     <div data-i18n="Analytics"> Mahsulotlar </div>
                 </a>
             </li>
