@@ -2,19 +2,15 @@
 @extends('admin.master')
 @section('content')
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
         /* The Modal (background) */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
-            z-index: 1000000000000000000; /* Sit on top */
+            z-index: 100; /* Sit on top */
             padding-top: 100px; /* Location of the box */
-            left: 20%;
+            left: 0;
             top: 0;
-            width: 70%; /* Full width */
+            width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
             background-color: rgb(0, 0, 0); /* Fallback color */
@@ -32,18 +28,15 @@
 
         /* The Close Button */
         .close {
-            color: #920101;
-            float: end;
-            position: absolute;
-            left: 90%;
-            top: 0px;
-            font-size: 60px;
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
             font-weight: bold;
         }
 
         .close:hover,
         .close:focus {
-            color: #ae0505;
+            color: #000;
             text-decoration: none;
             cursor: pointer;
         }
