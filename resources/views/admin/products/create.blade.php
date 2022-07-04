@@ -29,6 +29,13 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
+                                <strong>Kod:</strong>
+                                <input type="text" name="cod" class="form-control mb-3" placeholder="Kod" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
                                 <strong> Sotib olish baxosi: </strong>
                                 <input type="number" name="buy_sum" class="form-control mb-3" placeholder="Sum"
                                        required>
@@ -55,15 +62,31 @@
                             <div class="form-group">
                                 <strong> Soni: </strong>
                                 <input type="number" name="count" class="form-control mb-3"
-                                       placeholder="Sotish soni" required>
+                                       placeholder="Soni" required>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong> Aksiya soni: </strong>
-                                <input type="number" name="sale_count" class="form-control mb-3"
-                                       placeholder=" Aksiya soni " required>
+                                <strong> Status: </strong>
+                                <input type="number" name="count" class="form-control mb-3"
+                                       placeholder="Status" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong> Optom sotish bahosi: </strong>
+                                <input type="number" name="optom_baho" class="form-control mb-3"
+                                       placeholder=" Optom baho " required>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong> Dona sotish bahosi: </strong>
+                                <input type="number" name="dona_baho" class="form-control mb-3"
+                                       placeholder=" Dona baho " required>
                             </div>
                         </div>
 
@@ -82,16 +105,29 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="building"> Omborxona </label>
-                                <select name="shelf_id" required id="warehouse" class="form-select form-control"
+                                <label for="building"> Xarid </label>
+                                <select name="category_id" required id="building" class="form-select form-control"
                                         required>
-                                    <option value=""> Omborxonani tanlang</option>
-                                    @foreach($ware as $w)
-                                        <option value="{{$w->id}}">{{$w->name}}</option>
+                                    <option value=""> Xaridni tanlang</option>
+                                    @foreach($cate as $cat)
+                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+
+{{--                        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="building"> Omborxona </label>--}}
+{{--                                <select name="shelf_id" required id="warehouse" class="form-select form-control"--}}
+{{--                                        required>--}}
+{{--                                    <option value=""> Omborxonani tanlang</option>--}}
+{{--                                    @foreach($ware as $w)--}}
+{{--                                        <option value="{{$w->id}}">{{$w->name}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
@@ -102,20 +138,20 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="building"> O'lcham </label> <br>
-                                @foreach($size as $size)
-                                    <input type="checkbox" name="size_id[]" id="adopted" value="{{$size->id}}">
-                                    <label> {{$size->Size}} </label><br>
-                                @endforeach
-                            </div>
-                        </div>
+{{--                        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="building"> O'lcham </label> <br>--}}
+{{--                                @foreach($size as $size)--}}
+{{--                                    <input type="checkbox" name="size_id[]" id="adopted" value="{{$size->id}}">--}}
+{{--                                    <label> {{$size->Size}} </label><br>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong> Aksiya: </strong>
-                            <input type="number" name="sale" class="form-control mb-3" placeholder="Aksiya" required>
+                            <strong> Artikul: </strong>
+                            <input type="text" name="sale" class="form-control mb-3" placeholder="Artikul" required>
                         </div>
                     </div>
 
@@ -124,8 +160,8 @@
                         <button type="submit" class="btn btn-primary">Saqlash</button>
                     </div>
 
-            </div>
-            </form>
+
+                </form>
 
         </div>
     </div>
