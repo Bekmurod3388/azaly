@@ -126,12 +126,6 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 
-
-
-
-
-
-
                 </div>
                 <br><br><br>
 
@@ -203,13 +197,6 @@
 {{--                    --}}{{--                            @endif--}}
 {{--                    --}}{{--                        </div>--}}
 {{--                    --}}{{--                    </div>--}}
-
-
-
-
-
-
-
 {{--                </div>--}}
 
             </div>
@@ -219,7 +206,6 @@
             <div class="form">
 
                 <div id="myModal" class="modal">
-
                     <!-- Modal content -->
                     <div class="modal-content">
                         <span class="close">&times;</span>
@@ -236,14 +222,96 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('admin.sizes.store')}}" method="post">
+                                <form action="{{route('admin.products.store')}}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>razmer:</strong>
-                                                <input type="text" name="size" class="form-control mb-3" placeholder="Size">
+                                                <strong>Nomi:</strong>
+                                                <input type="text" name="name" class="form-control mb-3">
                                             </div>
+
+                                            <div class="form-group">
+                                                <strong>Kod:</strong>
+                                                <input type="number" name="code" class="form-control mb-3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Artikul:</strong>
+                                                <input type="text" name="artikul" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Status:</strong>
+                                                <input type="text" name="status" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Foiz:</strong>
+                                                <input type="number" name="percent" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Soni:</strong>
+                                                <input type="text" name="count" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Kelgan bahosi:</strong>
+                                                <input type="text" name="sum_came" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Dona sotish bahosi:</strong>
+                                                <input type="text" name="sum_sell" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Optom sotish bahosi:</strong>
+                                                <input type="text" name="sum_sell_optom" class="form-control mb-3" >
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                    <strong> Xarid: </strong>
+                                                    <select name="purchase_id"  id="building" class="form-select form-control"
+                                                            required>
+                                                        <option value=""> Xaridni tanlang</option>
+                                                        @foreach($purchases as $purchase)
+                                                            <option value="{{$purchase->id}}">{{$purchase->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <strong> Kotegoriya: </strong>
+                                                    <select name="category_id"  id="building" class="form-select form-control"
+                                                            required>
+                                                        <option value=""> Kotegoriya tanglang</option>
+                                                        @foreach($cotegory as $cat)
+                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <strong> Tokcha tanlang: </strong>
+                                                    <select name="shelf_id"  id="building" class="form-select form-control"
+                                                            required>
+                                                        <option value=""> Tokcha tanlang</option>
+                                                        @foreach($ware as $cat)
+                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                             <button type="submit" class="btn btn-primary">Saqlash</button>
@@ -254,6 +322,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- The Modal -->
 
 
@@ -266,7 +335,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 margin-tb">
                                         <div class="pull-left">
-                                            <h2> Razmer tahrirlash </h2>
+                                            <h2> Mahsulotni tahrirlash </h2>
                                         </div>
                                     </div>
                                 </div>
@@ -278,8 +347,90 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>Razmer:</strong>
-                                                <input type="text" name="size" class="form-control" id="name">
+                                                <strong>Nomi:</strong>
+                                                <input type="text" name="name" class="form-control mb-3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Kod:</strong>
+                                                <input type="text" name="cod" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Artikul:</strong>
+                                                <input type="text" name="artikul" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Status:</strong>
+                                                <input type="text" name="status" class="form-control mb-3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Foiz:</strong>
+                                                <input type="text" name="percent" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Soni:</strong>
+                                                <input type="text" name="count" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Kelgan bahosi:</strong>
+                                                <input type="text" name="sum_came" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Dona sotish bahosi:</strong>
+                                                <input type="text" name="sum_sell" class="form-control mb-3" >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <strong>Optom sotish bahosi:</strong>
+                                                <input type="text" name="sum_sell_optom" class="form-control mb-3" >
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <strong> Xarid: </strong>
+                                                <select name="kontragent_id" required id="building" class="form-select form-control"
+                                                        required>
+                                                    <option value=""> Xaridni tanlang</option>
+                                                    @foreach($purchases as $purchase)
+                                                        <option value="{{$purchase->id}}">{{$purchase->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <strong> Kontragent: </strong>
+                                                    <select name="kontragent_id" required id="building" class="form-select form-control"
+                                                            required>
+                                                        <option value=""> Kontragent tanlang</option>
+                                                        @foreach($cotegory as $cat)
+                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <strong> Tokcha tanlang: </strong>
+                                                    <select name="kontragent_id" required id="building" class="form-select form-control"
+                                                            required>
+                                                        <option value=""> Tokcha tanlang</option>
+                                                        @foreach($ware as $cat)
+                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -292,6 +443,7 @@
                     </div>
                 </div>
 
+
             </div>
             <div class="card">
                 <div class="card-header">
@@ -302,7 +454,7 @@
                             </div>
                             <div class="pull-right">
                                 @can('category-create')
-                                    {{--                                <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
+                            {{--  <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
                                     <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                                 @endcan
                             </div>
@@ -313,40 +465,44 @@
                         <table class="table table-bordered table-hover">
                             <tr>
                                 <th>Id</th>
-                                <th>Razmer</th>
+                                <th>Nomi</th>
+                                <th>Kelgan bahosi</th>
+                                <th>Tokcha raqami</th>
                                 <th class="w-25">Amallar</th>
                             </tr>
-                            {{--                                    @foreach ($sizes as $key => $size)--}}
+                            @foreach ($products as $key => $p)
                             <tr>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $p->name }}</td>
+                                <td>{{ $p->sell_came }}</td>
+                                <td> {{ $p->shelf_id }}</td>
 
                                 <td>
-                                    {{--                                    @can('category-list')--}}
-                                    {{--                                        <a class="btn btn-info" href="{{ route('admin.sizes.show',$user->id) }}">--}}
-                                    {{--                                            <i class="fa fa-eye"></i>--}}
-                                    {{--                                        </a>--}}
-                                    {{--                                    @endcan--}}
+                                @can('category-list')
+                                    <a class="btn btn-info" href="{{ route('admin.products.show',$p->id) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                @endcan
                                     @can('size-edit')
-                                        {{--                                        <a class="btn btn-warning" href="{{ route('admin.sizes.edit',$size->id) }}">--}}
-                                        {{--                                            <i class="fa fa-pen"></i>--}}
-                                        {{--                                        </a>--}}
-                                        <button class="btn btn-warning" onclick="edit()"><i
+                                                <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">
+                                                    <i class="fa fa-pen"></i>
+                                                </a>
+                                        <button class="btn btn-warning" onclick="edit({{$p->id}})"><i
                                                 class="fa fa-pen"></i></button>
                                     @endcan
-                                    {{--                                                @can('size-delete')--}}
-                                    {{--                                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy',],'style'=>'display:inline']) !!}--}}
-                                    {{--                                                    <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-                                    {{--                                                            data-toggle="tooltip">--}}
-                                    {{--                                            <span class="btn-label">--}}
-                                    {{--                                                <i class="fa fa-trash"></i>--}}
-                                    {{--                                            </span>--}}
-                                    {{--                                                    </button>--}}
-                                    {{--                                                    {!! Form::close() !!}--}}
-                                    {{--                                                @endcan--}}
+                                            @can('size-delete')
+                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy',$size->id],'style'=>'display:inline']) !!}
+                                                <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                        data-toggle="tooltip">
+                                        <span class="btn-label">
+                                            <i class="fa fa-trash"></i>
+                                        </span>
+                                                </button>
+                                                {!! Form::close() !!}
+                                            @endcan
                                 </td>
                             </tr>
-                            {{--                                    @endforeach--}}
+                            @endforeach
                         </table>
 
                         {{--                    <div class="container">--}}
@@ -391,19 +547,19 @@
             modal.style.display = "block";
         }
 
-        function edit(id) {
-            // alert(id);
-            for (let i = 0; i < warehouses.length; i++) {
-                if (id == warehouses[i]['id']) {
-                    $('#name').val(warehouses[i]['Size']);
-                    break;
-                }
-            }
-            // alert(id);
-
-            $('#editForm').attr('action', '/admin/sizes/' + id);
-            modal1.style.display = "block";
-        }
+        // function edit(id) {
+        //     // alert(id);
+        //     for (let i = 0; i < warehouses.length; i++) {
+        //         if (id == warehouses[i]['id']) {
+        //             $('#name').val(warehouses[i]['Size']);
+        //             break;
+        //         }
+        //     }
+        //     // alert(id);
+        //
+        //     $('#editForm').attr('action', '/admin/sizes/' + id);
+        //     modal1.style.display = "block";
+        // }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {

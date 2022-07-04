@@ -25,8 +25,8 @@
                                 <label for="building"> Omborxona </label>
                                 <select name="warehouse_id" required id="warehouse" class="form-select form-control"
                                         required>
-                                    <option value=""> Xaridni tanlang</option>
-                                    @foreach($cate as $cat)
+                                    <option value=""> Omborxona tanlang</option>
+                                    @foreach( $ware as $cat)
                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                                     @endforeach
                                 </select>
@@ -66,27 +66,4 @@
     </div>
 @endsection
 
-@section('script')
-    <script>
-
-        let warehouse = @json($ware);
-        let shelf = @json($shelf);
-
-        $('#warehouse').on('change', function () {
-            var shelf_id = $(this).val();
-            $('#shelf').empty();
-            $('#shelf').append("<option value=''> Select Shelf </option>")
-            for (let i = 0; i < shelf.length; i++) {
-                if (shelf_id == shelf[i].warehouse_id) {
-                    var option = document.createElement("option");   // Create with DOM
-                    option.innerHTML = shelf[i].name;
-                    option.value = shelf[i].id;
-                    $('#shelf').append(option);
-                }
-            }
-        });
-
-    </script>
-
-@endsection
 

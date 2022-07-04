@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('percent');
             $table->integer('sum_sell_optom');
             $table->integer('sum_sell');
-            $table->integer('sheelf_id');
+            $table->integer('shelf_id');
             $table->timestamps();
         });
     }

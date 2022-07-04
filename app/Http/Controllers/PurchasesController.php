@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Purchases;
 use App\Models\Shelf;
 use App\Models\Size;
@@ -22,10 +23,14 @@ class PurchasesController extends Controller
         $date = Purchases::OrderBy('id','desc')->get();
         $kontr = Agent::all();
         $ware = WareHous::all();
+        $cotegory=Category::all();
+        $product = Product::all();
         return view('admin.products.index', [
             'purchases' => $date,
             'agent' => $kontr,
             'ware' => $ware,
+            'cotegory'=>$cotegory,
+            'products'=>$product,
         ]);
     }
 
@@ -38,9 +43,12 @@ class PurchasesController extends Controller
     {
         $kontr = Agent::all();
         $ware = WareHous::all();
+        $date = Product::all();
+
         return view('admin.products.create', [
             'agent' => $kontr,
             'ware' => $ware,
+
         ]);
     }
 

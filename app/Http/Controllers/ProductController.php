@@ -42,6 +42,7 @@ class ProductController extends Controller
     public function create()
     {
         $size = Size::all();
+        $products = Product::all();
         $shelf = Shelf::all();
         $ware = WareHous::all();
         $cate = Category::all();
@@ -50,6 +51,7 @@ class ProductController extends Controller
             'shelf' => $shelf,
             'ware' => $ware,
             'cate' => $cate,
+            'products'=>$products
         ]);
     }
 
@@ -62,26 +64,32 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $date = new Product();
+        $date->code = $request->code;
+        $date->purchase_id = $request->purchase_id;
         $date->name = $request->name;
-        $date->buy_sum = $request->buy_sum;
-        $date->sell_sum = $request->sell_sum;
-        $date->sell_sale_sum = $request->sell_sale_sum;
-        $date->sale_count = $request->sale_count;
+        $date->sum_sell_optom = $request->sum_sell_optom;
+        $date->count = $request->count;
         $date->category_id = $request->category_id;
-        $date->sale = $request->sale;
+        $date->sum_came = $request->sum_came;
+        $date->percent = $request->percent;
+        $date->sum_sell = $request->sum_sell;
+        $date->shelf_id = $request->shelf_id;
+        $date->status = $request->status;
+        $date->artikul = $request->artikul;
+//
         $date->save();
-        if ($request->size_id != NULL) {
-            foreach ($request->size_id as $size) {
-                $data = new Product_warehouse();
-                $data->shelf_id = $request->shelf_id;
-                $data->product_id = $date->id;
-                $data->count = $request->count;
-                $data->size_id = $size;
-                $data->save();
-            }
-        } else {
-            return redirect()->back()->withErrors(' kamida 1 ta kategoriyta tanlanishi kerak');
-        }
+//        if ($request->size_id != NULL) {
+//            foreach ($request->size_id as $size) {
+//                $data = new Product_warehouse();
+//                $data->shelf_id = $request->shelf_id;
+//                $data->product_id = $date->id;
+//                $data->count = $request->count;
+//                $data->size_id = $size;
+//                $data->save();
+//            }
+//        } else {
+//            return redirect()->back()->withErrors(' kamida 1 ta kategoriyta tanlanishi kerak');
+//        }
         return redirect()->route('admin.products.index');
     }
 
@@ -96,7 +104,7 @@ class ProductController extends Controller
         $date = Product::find($id);
         $cate = Category::all();
         return view('admin.products.show', [
-            'product' => $date,
+            'products' => $date,
             'cate' => $cate,
         ]);
     }
