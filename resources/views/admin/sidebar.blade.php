@@ -73,10 +73,10 @@
 {{--        @endcan--}}
 
         @can('product-list')
-            <li class="menu-item {{  request()->routeIs('admin.products.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.products.index') }}" class="menu-link">
+            <li class="menu-item {{  request()->routeIs('admin.purchases.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.purchases.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons fas fa-tshirt"></i>
-                    <div data-i18n="Analytics"> Mahsulotlar </div>
+                    <div data-i18n="Analytics"> Xaridlar </div>
                 </a>
             </li>
         @endcan
