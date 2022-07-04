@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('warehouse_id');
             $table->integer('kontragent_id');
-            $table->integer('AllSum');
+            $table->integer('AllSum')->default(0);
             $table->timestamps();
         });
     }

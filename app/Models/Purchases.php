@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Purchases extends Model
 {
     protected $fillable = [
-        'warehouse_id','kontragent_id','AllSum'
+        'warehouse_id','kontragent_id'
     ];
     use HasFactory;
 }
