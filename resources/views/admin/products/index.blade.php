@@ -1,6 +1,7 @@
 
 @extends('admin.master')
 @section('content')
+
     <style>
         /* The Modal (background) */
         .modal {
@@ -41,6 +42,7 @@
             cursor: pointer;
         }
     </style>
+
 
 
     <div class="col-md-12">
@@ -92,11 +94,16 @@
 
                                 <td>
                                     @can('product-list')
-                                        <a class="btn btn-info" href="{{ route('admin.purchases.show',$purchase->id) }}">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
+
+{{--                                            <a class="btn btn-info" href="{{ route('admin.purchases.show',$purchase->id) }}">--}}
+{{--                                                <i class="fa fa-eye"></i>--}}
+{{--                                            </a>--}}
+                                        <button class="btn btn-warning" onclick="fayzullo({{$purchase->id}})"><i
+                                                class="fa fa-eye"></i>
+                                        </button>
                                     @endcan
                                     @can('product-edit')
+
                                         <a class="btn btn-warning" href="{{ route('admin.purchases.edit',$purchase->id) }}">
                                             <i class="fa fa-pen"></i>
                                         </a>
@@ -202,6 +209,9 @@
             </div>
         </div>
 
+
+
+
         <div class="col-md-12">
             <div class="form">
 
@@ -253,64 +263,56 @@
 
                                             <div class="form-group">
                                                 <strong>Soni:</strong>
-                                                <input type="text" name="count" class="form-control mb-3" >
+                                                <input type="number" name="count" class="form-control mb-3" >
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Kelgan bahosi:</strong>
-                                                <input type="text" name="sum_came" class="form-control mb-3" >
+                                                <input type="number" name="sum_came" class="form-control mb-3" >
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Dona sotish bahosi:</strong>
-                                                <input type="text" name="sum_sell" class="form-control mb-3" >
+                                                <input type="number" name="sum_sell" class="form-control mb-3" >
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Optom sotish bahosi:</strong>
-                                                <input type="text" name="sum_sell_optom" class="form-control mb-3" >
+                                                <input type="number" name="sum_sell_optom" class="form-control mb-3" >
                                             </div>
-
 
 
                                             <div class="form-group">
-                                                    <strong> Xarid: </strong>
-                                                    <select name="purchase_id"  id="building" class="form-select form-control"
-                                                            required>
-                                                        <option value=""> Xaridni tanlang</option>
-                                                        @foreach($purchases as $purchase)
-                                                            <option value="{{$purchase->id}}">{{$purchase->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
 
+                                                <input  type="hidden" name="purchase_id" id="purchase_id1"  class="form-control mb-3" value="" >
+                                            </div>
 
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong> Kotegoriya: </strong>
-                                                    <select name="category_id"  id="building" class="form-select form-control"
-                                                            required>
-                                                        <option value=""> Kotegoriya tanglang</option>
-                                                        @foreach($cotegory as $cat)
-                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                            <div class="form-group">
+                                                <strong> Kotegoriya: </strong>
+                                                <select name="category_id"  id="building" class="form-select form-control"
+                                                        required>
+                                                    <option value=""> Kotegoriya tanglang</option>
+                                                    @foreach($cotegory as $cat)
+                                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
 
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong> Tokcha tanlang: </strong>
-                                                    <select name="shelf_id"  id="building" class="form-select form-control"
-                                                            required>
-                                                        <option value=""> Tokcha tanlang</option>
-                                                        @foreach($ware as $cat)
-                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+{{--                                            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+                                            <div class="form-group">
+                                                <strong> Tokcha tanlang: </strong>
+                                                <select name="shelf_id"  id="building" class="form-select form-control"
+                                                        required>
+                                                    <option value=""> Tokcha tanlang</option>
+
+                                                    @foreach($ware as $cat)
+                                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                    @endforeach
+
+                                                </select>
                                             </div>
+{{--                                            </div>--}}
 
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -445,7 +447,7 @@
 
 
             </div>
-            <div class="card">
+            <div id="show_table" style="display: none"  class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
@@ -455,7 +457,8 @@
                             <div class="pull-right">
                                 @can('category-create')
                             {{--  <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
-                                    <button class="btn btn-success" id="myBtn"> Qo'shish</button>
+                                    <input type="hidden" id="hidden_input" value="0">
+                                    <button class="btn btn-success" id="myBtn" > Qo'shish</button>
                                 @endcan
                             </div>
                         </div>
@@ -479,7 +482,8 @@
 
                                 <td>
                                 @can('category-list')
-                                    <a class="btn btn-info" href="{{ route('admin.products.show',$p->id) }}">
+
+                                    <a class="btn btn-info" href="{{ route('admin.products.show',$p->id) }}" >
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 @endcan
@@ -519,7 +523,11 @@
             </div>
         </div>
     </div>
+
 @endsection
+
+
+
 
 @section('script')
     @if(session('success'))
@@ -547,19 +555,38 @@
             modal.style.display = "block";
         }
 
-        // function edit(id) {
-        //     // alert(id);
-        //     for (let i = 0; i < warehouses.length; i++) {
-        //         if (id == warehouses[i]['id']) {
-        //             $('#name').val(warehouses[i]['Size']);
-        //             break;
-        //         }
-        //     }
-        //     // alert(id);
-        //
-        //     $('#editForm').attr('action', '/admin/sizes/' + id);
-        //     modal1.style.display = "block";
-        // }
+        function edit(id) {
+            // alert(id);
+            for (let i = 0; i < warehouses.length; i++) {
+                if (id == warehouses[i]['id']) {
+                    $('#name').val(warehouses[i]['Size']);
+                    break;
+                }
+            }
+            // alert(id);
+
+            $('#editForm').attr('action', '/admin/sizes/' + id);
+            modal1.style.display = "block";
+        }
+
+        function fayzullo(id) {
+            document.getElementById("hidden_input").value=id;
+            console.log(document.getElementById("hidden_input").value)
+            //table ga qiymat barib chiqasan qaysiki purchase_id==id table row
+            document.getElementById("purchase_id1").value=document.getElementById("hidden_input").value;
+
+
+
+
+            document.getElementById('show_table').style.display="block";
+
+
+
+
+            // $('#editForm').attr('action', '/admin/sizes/' + id);
+            // modal1.style.display = "block";
+        }
+
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {

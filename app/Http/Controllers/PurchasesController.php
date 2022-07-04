@@ -25,12 +25,14 @@ class PurchasesController extends Controller
         $ware = WareHous::all();
         $cotegory=Category::all();
         $product = Product::all();
+
         return view('admin.products.index', [
             'purchases' => $date,
             'agent' => $kontr,
             'ware' => $ware,
             'cotegory'=>$cotegory,
             'products'=>$product,
+
         ]);
     }
 
@@ -72,7 +74,20 @@ class PurchasesController extends Controller
      */
     public function show($id)
     {
-        //
+        $date = Purchases::OrderBy('id','desc')->get();
+        $donodono = Purchases::find($id);
+        $kontr = Agent::all();
+        $ware = WareHous::all();
+        $cotegory=Category::all();
+        $product = Product::all();
+        return view('admin.products.index', [
+            'purchases' => $date,
+            'agent' => $kontr,
+            'ware' => $ware,
+            'cotegory'=>$cotegory,
+            'products'=>$product,
+            'dono'=>$donodono,
+        ]);
     }
 
     /**
