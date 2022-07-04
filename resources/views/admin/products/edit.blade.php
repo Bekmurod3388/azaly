@@ -39,12 +39,12 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Umumiy Summla:</strong>
-                                <input type="number" name="AllSum" class="form-control" value="{{ $pur->AllSum }}">
-                            </div>
-                        </div>
+{{--                        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <strong>Umumiy Summla:</strong>--}}
+{{--                                <input type="number" name="AllSum" class="form-control" value="{{ $pur->AllSum }}">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
