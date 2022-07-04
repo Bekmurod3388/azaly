@@ -31,7 +31,6 @@ class ProductController extends Controller
         $date = Product::all();
         return view('admin.products.index', [
             'products' => $date,
-
         ]);
     }
 

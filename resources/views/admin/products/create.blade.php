@@ -6,107 +6,24 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2> Yangi mahsulot qo'shing </h2>
+                            <h2> Yangi xarid qo'shing </h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Orqaga </a>
+                            <a class="btn btn-primary" href="{{ route('admin.purchases.index') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-body">
 
-                <form action="{{route('admin.products.store')}}" method="post">
+                <form action="{{route('admin.purchases.store')}}" method="post">
                     @csrf
                     <div class="row">
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Nom:</strong>
-                                <input type="text" name="name" class="form-control mb-3" placeholder="Nom" required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Kod:</strong>
-                                <input type="text" name="cod" class="form-control mb-3" placeholder="Kod" required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong> Sotib olish baxosi: </strong>
-                                <input type="number" name="buy_sum" class="form-control mb-3" placeholder="Sum"
-                                       required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong> Sotish baxosi: </strong>
-                                <input type="number" name="sell_sum" class="form-control mb-3" placeholder="Sum"
-                                       required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong> Aksiyada sotish baxosi: </strong>
-                                <input type="number" name="sell_sale_sum" class="form-control mb-3"
-                                       placeholder="Sum" required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong> Soni: </strong>
-                                <input type="number" name="count" class="form-control mb-3"
-                                       placeholder="Soni" required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong> Status: </strong>
-                                <input type="number" name="count" class="form-control mb-3"
-                                       placeholder="Status" required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong> Optom sotish bahosi: </strong>
-                                <input type="number" name="optom_baho" class="form-control mb-3"
-                                       placeholder=" Optom baho " required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong> Dona sotish bahosi: </strong>
-                                <input type="number" name="dona_baho" class="form-control mb-3"
-                                       placeholder=" Dona baho " required>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="building"> Kategoriya </label>
-                                <select name="category_id" required id="building" class="form-select form-control"
-                                        required>
-                                    <option value=""> Kategoriya tanlang</option>
-                                    @foreach($cate as $cat)
-                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="building"> Xarid </label>
-                                <select name="category_id" required id="building" class="form-select form-control"
+                                <label for="building"> Omborxona </label>
+                                <select name="warehouse_id" required id="warehouse" class="form-select form-control"
                                         required>
                                     <option value=""> Xaridni tanlang</option>
                                     @foreach($cate as $cat)
@@ -115,56 +32,37 @@
                                 </select>
                             </div>
                         </div>
-
-{{--                        <div class="col-xs-12 col-sm-12 col-md-12">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="building"> Omborxona </label>--}}
-{{--                                <select name="shelf_id" required id="warehouse" class="form-select form-control"--}}
-{{--                                        required>--}}
-{{--                                    <option value=""> Omborxonani tanlang</option>--}}
-{{--                                    @foreach($ware as $w)--}}
-{{--                                        <option value="{{$w->id}}">{{$w->name}}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="building"> Tokcha </label>
-                                <select name="shelf_id" required id="shelf" class="form-select form-control" required>
-                                    <option value=""> Tokchani tanlang</option>
+                                <strong> Kontragent: </strong>
+                                <select name="kontragent_id" required id="building" class="form-select form-control"
+                                        required>
+                                    <option value=""> Kontragent tanlang</option>
+                                    @foreach($agent as $cat)
+                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
-{{--                        <div class="col-xs-12 col-sm-12 col-md-12">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="building"> O'lcham </label> <br>--}}
-{{--                                @foreach($size as $size)--}}
-{{--                                    <input type="checkbox" name="size_id[]" id="adopted" value="{{$size->id}}">--}}
-{{--                                    <label> {{$size->Size}} </label><br>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong> Artikul: </strong>
-                            <input type="text" name="sale" class="form-control mb-3" placeholder="Artikul" required>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong> Umumiy Summa: </strong>
+                                <input type="number" name="AllSum" class="form-control mb-3" placeholder="AllSum"
+                                       required>
+                            </div>
                         </div>
-                    </div>
 
                     </div>
+
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <button type="submit" class="btn btn-primary">Saqlash</button>
                     </div>
 
-
                 </form>
 
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 
