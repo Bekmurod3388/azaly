@@ -15,13 +15,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->integer('code');
+            $table->integer('purchase_id');
             $table->string('name');
-            $table->integer('buy_sum');
-            $table->integer('sell_sum');
-            $table->integer('sell_sale_sum');
-            $table->integer('category_id');
-            $table->integer('sale_count');
-            $table->integer('sale');
+            $table->string('artikul');
+            $table->string('category_id');
+            $table->integer('sum_came');
+            $table->string('status');
+            $table->integer('count');
+            $table->integer('percent');
+            $table->integer('sum_sell_optom');
+            $table->integer('sum_sell');
+            $table->integer('sheelf_id');
             $table->timestamps();
         });
     }
