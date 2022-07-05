@@ -146,8 +146,6 @@
                                                     </label>
                                                     <select class="form-select" name="parent_id" id="parent_id1" >
 
-
-
                                                     </select>
                                                 </div>
 

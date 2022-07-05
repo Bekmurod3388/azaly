@@ -145,7 +145,9 @@ class PurchasesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Purchases::update($request->all());
+        $date = Product::find($id);
+        $date->warehouse_id  = $request->warehouse_id ;
+        $date->save();
         return redirect()->route('admin.purchases.index');
     }
 
