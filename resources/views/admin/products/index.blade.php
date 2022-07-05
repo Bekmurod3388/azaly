@@ -232,7 +232,6 @@
                                 @method('PUT')
                                 @csrf
                                 <div class="row">
-
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Omborxona:</strong>
@@ -666,7 +665,6 @@
 
 @section('script')
     @if(session('success'))
-
         <script>
             swal({
                 icon: 'success',
@@ -737,8 +735,8 @@
             }
             // alert(id);
 
-            $('#editForm').attr('action', '/admin/purchases/' + id);
-            modal1.style.display = "block";
+            $('#editForm_1').attr('action', '/admin/purchases/' + id);
+            modal1_1.style.display = "block";
         }
 
         function show(id) {
