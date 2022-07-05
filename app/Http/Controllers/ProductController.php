@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Product_warehouse;
+use App\Models\Purchases;
 use App\Models\Shelf;
 use App\Models\Size;
 use App\Models\WareHous;
@@ -76,8 +77,14 @@ class ProductController extends Controller
         $date->shelf_id = $request->shelf_id;
         $date->status = $request->status;
         $date->artikul = $request->artikul;
-//
         $date->save();
+
+        $pp = Purchases::find($request->purchase_id);
+        $oldSum = $pp->AllSum;
+        $pp->AllSum = $oldSum + $date->sum_came;
+        $pp->save();
+
+
 //        if ($request->size_id != NULL) {
 //            foreach ($request->size_id as $size) {
 //                $data = new Product_warehouse();
@@ -90,7 +97,8 @@ class ProductController extends Controller
 //        } else {
 //            return redirect()->back()->withErrors(' kamida 1 ta kategoriyta tanlanishi kerak');
 //        }
-        return redirect()->route('admin.products.index');
+
+        return redirect()->route('admin.purchases.index');
     }
 
     /**
@@ -103,9 +111,11 @@ class ProductController extends Controller
     {
         $date = Product::find($id);
         $cate = Category::all();
+        $shelfs = Shelf::all();
         return view('admin.products.show', [
-            'products' => $date,
+            'product' => $date,
             'cate' => $cate,
+            'shelfs'=>$shelfs,
         ]);
     }
 
@@ -153,7 +163,7 @@ class ProductController extends Controller
         $date->sale = $request->sale;
         $date->save();
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.purchases.index');
     }
 
     /**
@@ -165,6 +175,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.purchases.index');
     }
 }

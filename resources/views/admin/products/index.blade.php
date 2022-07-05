@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 @section('content')
 
@@ -65,10 +64,10 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th> Omborxona </th>
-                            <th> Kontragent </th>
-                            <th> Umumiy Baxosi </th>
-                            <th> Vaqti </th>
+                            <th> Omborxona</th>
+                            <th> Kontragent</th>
+                            <th> Umumiy Baxosi</th>
+                            <th> Vaqti</th>
 
                             <th class="w-25">Amallar</th>
                         </tr>
@@ -95,21 +94,24 @@
                                 <td>
                                     @can('product-list')
 
-{{--                                            <a class="btn btn-info" href="{{ route('admin.purchases.show',$purchase->id) }}">--}}
-{{--                                                <i class="fa fa-eye"></i>--}}
-{{--                                            </a>--}}
-                                        <button class="btn btn-warning" onclick="fayzullo({{$purchase->id}})"><i
-                                                class="fa fa-eye"></i>
-                                        </button>
+                                        <a class="btn btn-info"
+                                           href="{{ route('admin.purchases.index', ['id' => $purchase->id],) }}">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+
+                                        {{--                                        <button class="btn btn-warning" onclick="fayzullo({{$purchase->id}},{{$purchase->warehouse_id}})"><i--}}
+                                        {{--                                                class="fa fa-eye"></i>--}}
+                                        {{--                                        </button>--}}
                                     @endcan
                                     @can('product-edit')
 
-                                        <a class="btn btn-warning" href="{{ route('admin.purchases.edit',$purchase->id) }}">
+                                        <a class="btn btn-warning"
+                                           href="{{ route('admin.purchases.edit',$purchase->id) }}">
                                             <i class="fa fa-pen"></i>
                                         </a>
                                     @endcan
                                     @can('product-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}
+                                        {{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}--}}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
                                             <span class="btn-label">
@@ -123,96 +125,96 @@
                         @endforeach
                     </table>
 
-{{--                    <div class="container">--}}
-{{--                        <div class="row justify-content-center">--}}
-{{--                            @if ($categories->links())--}}
-{{--                                <div class="mt-4 p-4 box has-text-centered">--}}
-{{--                                    {{ $categories->links() }}--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            @if ($purchases->links())
+                                <div class="mt-4 p-4 box has-text-centered">
+                                    {{ $purchases->links() }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
 
                 </div>
                 <br><br><br>
-
-{{--                <div class="row">--}}
-{{--                    <div class="col-lg-12 margin-tb">--}}
-{{--                        <div class="pull-left">--}}
-{{--                            <h2>Mahsulotlar:</h2>--}}
-{{--                        </div>--}}
-{{--                        <div class="pull-right">--}}
-{{--                            @can('product-create')--}}
-{{--                                <a class="btn btn-success" href="{{ route('admin.products.create') }}"> Qo'shish </a>--}}
-{{--                            @endcan--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-                <hr>
-
-{{--                <div class="card-body">--}}
-{{--                    <table class="table table-bordered table-hover">--}}
-{{--                        <tr>--}}
-{{--                            <th>Id</th>--}}
-{{--                            <th>Kod</th>--}}
-{{--                            <th>Nom</th>--}}
-{{--                            <th>Kelgan Baho</th>--}}
-{{--                            <th> Soni </th>--}}
-{{--                            <th> Tokcha raqami </th>--}}
-
-{{--                            <th class="w-25">Amallar</th>--}}
-{{--                        </tr>--}}
-{{--                        @foreach ($products as $key => $product)--}}
-{{--                            <tr>--}}
-{{--                                <td>{{ $key+1 }}</td>--}}
-{{--                                <td>{{ $product->name }}</td>--}}
-{{--                                <td>{{ $product->buy_sum }}</td>--}}
-{{--                                <td>{{ $product->sell_sum }}</td>--}}
-
-{{--                                <td>--}}
-{{--                                    @can('product-list')--}}
-{{--                                        <a class="btn btn-info" href="{{ route('admin.products.show',$product->id) }}">--}}
-{{--                                            <i class="fa fa-eye"></i>--}}
-{{--                                        </a>--}}
-{{--                                    @endcan--}}
-{{--                                    @can('product-edit')--}}
-{{--                                        <a class="btn btn-warning" href="{{ route('admin.products.edit',$product->id) }}">--}}
-{{--                                            <i class="fa fa-pen"></i>--}}
-{{--                                        </a>--}}
-{{--                                    @endcan--}}
-{{--                                    @can('product-delete')--}}
-{{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $product->id],'style'=>'display:inline']) !!}--}}
-{{--                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-{{--                                                data-toggle="tooltip">--}}
-{{--                                            <span class="btn-label">--}}
-{{--                                                <i class="fa fa-trash"></i>--}}
-{{--                                            </span>--}}
-{{--                                        </button>--}}
-{{--                                        {!! Form::close() !!}--}}
-{{--                                    @endcan--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
-{{--                    </table>--}}
-
-{{--                    --}}{{--                    <div class="container">--}}
-{{--                    --}}{{--                        <div class="row justify-content-center">--}}
-{{--                    --}}{{--                            @if ($categories->links())--}}
-{{--                    --}}{{--                                <div class="mt-4 p-4 box has-text-centered">--}}
-{{--                    --}}{{--                                    {{ $categories->links() }}--}}
-{{--                    --}}{{--                                </div>--}}
-{{--                    --}}{{--                            @endif--}}
-{{--                    --}}{{--                        </div>--}}
-{{--                    --}}{{--                    </div>--}}
-{{--                </div>--}}
-
             </div>
         </div>
 
 
-
-
         <div class="col-md-12">
+
+
+            {{--  Mahsulotlar: ( index )--}}
+            @if($layout == 'index')
+                <div id="show_table" class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-lg-12 margin-tb">
+                                <div class="pull-left">
+                                    <h2> Mahsulotlar: </h2>
+                                </div>
+                                <div class="pull-right">
+                                    @can('category-create')
+                                        {{--  <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
+                                        <input type="hidden" id="hidden_input" value="0">
+                                        <button class="btn btn-success" id="myBtn"> Qo'shish</button>
+                                    @endcan
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <tr>
+                                       <th>Id</th>
+                                    <th>Nomi</th>
+                                    <th>Kelgan bahosi</th>
+                                    <th>Tokcha raqami</th>
+                                    <th class="w-25">Amallar</th>
+                                </tr>
+                                @foreach ($products as $key => $p)
+                                    <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $p->name }}</td>
+                                        <td>{{ $p->sum_came }}</td>
+                                        <td> {{ $p->shelf_id }}</td>
+
+                                        <td>
+                                            @can('category-list')
+
+                                                <a class="btn btn-info"
+                                                   href="{{ route('admin.products.show',$p->id) }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @endcan
+                                            @can('size-edit')
+                                                {{--                                              <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">--}}
+                                                {{--                                                    <i class="fa fa-pen"></i>--}}
+                                                {{--                                                </a>--}}
+                                                <button class="btn btn-warning" onclick="edit({{$p->id}})">
+                                                    <i class="fa fa-pen"> </i>
+                                                </button>
+                                            @endcan
+                                            {{--                                        @can('size-delete')--}}
+                                            {{--                                            {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy',$p->id],'style'=>'display:inline']) !!}--}}
+                                            {{--                                            <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+                                            {{--                                                    data-toggle="tooltip">--}}
+                                            {{--                                        <span class="btn-label">--}}
+                                            {{--                                            <i class="fa fa-trash"></i>--}}
+                                            {{--                                        </span>--}}
+                                            {{--                                            </button>--}}
+                                            {{--                                            {!! Form::close() !!}--}}
+                                            {{--                                        @endcan--}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            <!-- The Modal -->
             <div class="form">
 
                 <div id="myModal" class="modal">
@@ -248,48 +250,49 @@
 
                                             <div class="form-group">
                                                 <strong>Artikul:</strong>
-                                                <input type="text" name="artikul" class="form-control mb-3" >
+                                                <input type="text" name="artikul" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Status:</strong>
-                                                <input type="text" name="status" class="form-control mb-3" >
+                                                <input type="text" name="status" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Foiz:</strong>
-                                                <input type="number" name="percent" class="form-control mb-3" >
+                                                <input type="number" name="percent" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Soni:</strong>
-                                                <input type="number" name="count" class="form-control mb-3" >
+                                                <input type="number" name="count" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Kelgan bahosi:</strong>
-                                                <input type="number" name="sum_came" class="form-control mb-3" >
+                                                <input type="number" name="sum_came" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Dona sotish bahosi:</strong>
-                                                <input type="number" name="sum_sell" class="form-control mb-3" >
+                                                <input type="number" name="sum_sell" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Optom sotish bahosi:</strong>
-                                                <input type="number" name="sum_sell_optom" class="form-control mb-3" >
+                                                <input type="number" name="sum_sell_optom" class="form-control mb-3">
                                             </div>
 
 
                                             <div class="form-group">
-
-                                                <input  type="hidden" name="purchase_id" id="purchase_id1"  class="form-control mb-3" value="" >
+                                                <input type="hidden" name="purchase_id" id="purchase_id1"
+                                                       class="form-control mb-3" value="{{ $idd }}">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong> Kotegoriya: </strong>
-                                                <select name="category_id"  id="building" class="form-select form-control"
+                                                <select name="category_id" id="building"
+                                                        class="form-select form-control"
                                                         required>
                                                     <option value=""> Kotegoriya tanglang</option>
                                                     @foreach($cotegory as $cat)
@@ -298,21 +301,16 @@
                                                 </select>
                                             </div>
 
-
-{{--                                            <div class="col-xs-12 col-sm-12 col-md-12">--}}
                                             <div class="form-group">
                                                 <strong> Tokcha tanlang: </strong>
-                                                <select name="shelf_id"  id="building" class="form-select form-control"
+                                                <select name="shelf_id" id="shelf_id" class="form-select form-control"
                                                         required>
                                                     <option value=""> Tokcha tanlang</option>
-
-                                                    @foreach($ware as $cat)
+                                                    @foreach($shelfs as $cat)
                                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                     @endforeach
-
                                                 </select>
                                             </div>
-{{--                                            </div>--}}
 
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -324,9 +322,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- The Modal -->
-
 
                 <div id="myModal1" class="modal">
                     <!-- Modal content -->
@@ -350,70 +345,62 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Nomi:</strong>
-                                                <input type="text" name="name" class="form-control mb-3">
+                                                <input type="text" name="name" id="name" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Kod:</strong>
-                                                <input type="text" name="cod" class="form-control mb-3" >
+                                                <input type="number" name="cod" id="cod" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Artikul:</strong>
-                                                <input type="text" name="artikul" class="form-control mb-3" >
+                                                <input type="text" name="artikul" id="artikul"
+                                                       class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Status:</strong>
-                                                <input type="text" name="status" class="form-control mb-3">
+                                                <input type="text" name="status" id="status" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Foiz:</strong>
-                                                <input type="text" name="percent" class="form-control mb-3" >
+                                                <input type="number" name="percent" id="percent"
+                                                       class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Soni:</strong>
-                                                <input type="text" name="count" class="form-control mb-3" >
+                                                <input type="number" name="count" id="count" class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Kelgan bahosi:</strong>
-                                                <input type="text" name="sum_came" class="form-control mb-3" >
+                                                <input type="number" name="sum_came" id="sum_came"
+                                                       class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Dona sotish bahosi:</strong>
-                                                <input type="text" name="sum_sell" class="form-control mb-3" >
+                                                <input type="number" name="sum_sell" id="sum_sell"
+                                                       class="form-control mb-3">
                                             </div>
 
                                             <div class="form-group">
                                                 <strong>Optom sotish bahosi:</strong>
-                                                <input type="text" name="sum_sell_optom" class="form-control mb-3" >
+                                                <input type="number" name="sum_sell_optom" id="sum_sell_optom"
+                                                       class="form-control mb-3">
                                             </div>
-
-
-
-                                            <div class="form-group">
-                                                <strong> Xarid: </strong>
-                                                <select name="kontragent_id" required id="building" class="form-select form-control"
-                                                        required>
-                                                    <option value=""> Xaridni tanlang</option>
-                                                    @foreach($purchases as $purchase)
-                                                        <option value="{{$purchase->id}}">{{$purchase->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
 
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong> Kontragent: </strong>
-                                                    <select name="kontragent_id" required id="building" class="form-select form-control"
+                                                    <select name="kontragent_id" required id="kontragent_id"
+                                                            class="form-select form-control"
                                                             required>
-                                                        <option value=""> Kontragent tanlang</option>
+                                                        <option> Kontragent tanlang</option>
                                                         @foreach($cotegory as $cat)
                                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                         @endforeach
@@ -421,20 +408,20 @@
                                                 </div>
                                             </div>
 
-
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong> Tokcha tanlang: </strong>
-                                                    <select name="kontragent_id" required id="building" class="form-select form-control"
+                                                    <select name="shelf_id" required id="shelf_id"
+                                                            class="form-select form-control"
                                                             required>
-                                                        <option value=""> Tokcha tanlang</option>
-                                                        @foreach($ware as $cat)
+                                                        @foreach($shelfs as $cat)
                                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                             <button type="submit" class="btn btn-primary">Saqlash</button>
                                         </div>
@@ -445,82 +432,9 @@
                     </div>
                 </div>
 
-
             </div>
-            <div id="show_table" style="display: none"  class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-lg-12 margin-tb">
-                            <div class="pull-left">
-                                <h2> Mahsulotlar: </h2>
-                            </div>
-                            <div class="pull-right">
-                                @can('category-create')
-                            {{--  <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
-                                    <input type="hidden" id="hidden_input" value="0">
-                                    <button class="btn btn-success" id="myBtn" > Qo'shish</button>
-                                @endcan
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card-body">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>Id</th>
-                                <th>Nomi</th>
-                                <th>Kelgan bahosi</th>
-                                <th>Tokcha raqami</th>
-                                <th class="w-25">Amallar</th>
-                            </tr>
-                            @foreach ($products as $key => $p)
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $p->name }}</td>
-                                <td>{{ $p->sell_came }}</td>
-                                <td> {{ $p->shelf_id }}</td>
 
-                                <td>
-                                @can('category-list')
 
-                                    <a class="btn btn-info" href="{{ route('admin.products.show',$p->id) }}" >
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                @endcan
-                                    @can('size-edit')
-                                                <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">
-                                                    <i class="fa fa-pen"></i>
-                                                </a>
-                                        <button class="btn btn-warning" onclick="edit({{$p->id}})"><i
-                                                class="fa fa-pen"></i></button>
-                                    @endcan
-                                            @can('size-delete')
-                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy',$size->id],'style'=>'display:inline']) !!}
-                                                <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                        data-toggle="tooltip">
-                                        <span class="btn-label">
-                                            <i class="fa fa-trash"></i>
-                                        </span>
-                                                </button>
-                                                {!! Form::close() !!}
-                                            @endcan
-                                </td>
-                            </tr>
-                            @endforeach
-                        </table>
-
-                        {{--                    <div class="container">--}}
-                        {{--                        <div class="row justify-content-center">--}}
-                        {{--                            @if ($categories->links())--}}
-                        {{--                                <div class="mt-4 p-4 box has-text-centered">--}}
-                        {{--                                    {{ $categories->links() }}--}}
-                        {{--                                </div>--}}
-                        {{--                            @endif--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -541,7 +455,6 @@
         </script>
     @endif
     <script>
-        {{--let warehouses = @json($sizes);--}}
         var modal = document.getElementById("myModal");
         var modal1 = document.getElementById("myModal1");
 
@@ -549,6 +462,7 @@
 
         var span = document.getElementsByClassName("close")[0];
         var span1 = document.getElementsByClassName("close")[1];
+        var products = @json($products)
 
         // When the user clicks the button, open the modal
         btn.onclick = function () {
@@ -557,35 +471,59 @@
 
         function edit(id) {
             // alert(id);
-            for (let i = 0; i < warehouses.length; i++) {
-                if (id == warehouses[i]['id']) {
-                    $('#name').val(warehouses[i]['Size']);
+            for (let i = 0; i < products.length; i++) {
+                if (id == products[i]['id']) {
+                    $('#name').val(products[i]['name']);
+                    $('#cod').val(products[i]['cod']);
+                    $('#artikul').val(products[i]['artikul']);
+                    $('#status').val(products[i]['status']);
+                    $('#percent').val(products[i]['percent']);
+                    $('#count').val(products[i]['count']);
+                    $('#sum_came').val(products[i]['sum_came']);
+                    $('#sum_sell').val(products[i]['sum_sell']);
+                    $('#sum_sell_optom').val(products[i]['sum_sell_optom']);
+                    $('#sum_sell_optom').val(products[i]['sum_sell_optom']);
+                    $('#kontragent_id').val(products[i]['kontragent_id']);
+                    $('#shelf_id').val(products[i]['shelf_id']);
                     break;
                 }
             }
             // alert(id);
 
-            $('#editForm').attr('action', '/admin/sizes/' + id);
+            $('#editForm').attr('action', '/admin/products/' + id);
             modal1.style.display = "block";
         }
 
-        function fayzullo(id) {
-            document.getElementById("hidden_input").value=id;
-            console.log(document.getElementById("hidden_input").value)
-            //table ga qiymat barib chiqasan qaysiki purchase_id==id table row
-            document.getElementById("purchase_id1").value=document.getElementById("hidden_input").value;
 
 
+        {{--function fayzullo(id, omborid) {--}}
+
+        {{--    document.getElementById("hidden_input").value=id;--}}
+        {{--    console.log(document.getElementById("hidden_input").value)--}}
+        {{--    //table ga qiymat barib chiqasan qaysiki purchase_id==id table row--}}
+        {{--    document.getElementById("purchase_id1").value=document.getElementById("hidden_input").value;--}}
 
 
-            document.getElementById('show_table').style.display="block";
+        {{--    let rooms = @json($shelfs);--}}
+        {{--    console.log(rooms);--}}
+        {{--    // $('#floor').on('change', function () {--}}
+        {{--    //     var room_id = $(this).val();--}}
+        {{--        $('#shelf_id').empty();--}}
+        {{--        $('#shelf_id').append("<option value='none'>Tokchani tanlang</option>")--}}
+        {{--        for (let i = 0; i < rooms.length; i++) {--}}
+        {{--            if (omborid == rooms[i].warehouse_id) {--}}
+        {{--                var option = document.createElement("option");   // Create with DOM--}}
+        {{--                option.innerHTML = rooms[i].name;--}}
+        {{--                option.value = rooms[i].id;--}}
+        {{--                $('#shelf_id').append(option);--}}
+        // });
 
-
-
-
-            // $('#editForm').attr('action', '/admin/sizes/' + id);
-            // modal1.style.display = "block";
-        }
+        //     document.getElementById('show_table').style.display="block";
+        //
+        //
+        //     $('#editForm').attr('action', '/admin/sizes/' + id);
+        //     modal1.style.display = "block";
+        // }
 
 
         // When the user clicks on <span> (x), close the modal

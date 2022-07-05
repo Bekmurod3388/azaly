@@ -9,7 +9,7 @@
                             <h2> Mahsulot </h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Orqaga</a>
+                            <a class="btn btn-primary" href="{{ route('admin.purchases.index') }}"> Orqaga</a>
                         </div>
                     </div>
                 </div>
@@ -23,21 +23,26 @@
                             {{ $product->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Sotib olish baxosi:</strong>
-                            {{ $product->buy_sum }}
+                            <strong>Kod:</strong>
+                            {{ $product->code }}
                         </div>
                         <div class="form-group">
-                            <strong>Sotish baxosi:</strong>
-                            {{ $product->sell_sum }}
+                            <strong>Artikul:</strong>
+                            {{ $product->artikul }}
                         </div>
                         <div class="form-group">
-                            <strong>Aksiyada sotish baxosi :</strong>
-                            {{ $product->sell_sale_sum }}
+                            <strong>Status:</strong>
+                            {{ $product->status }}
                         </div>
                         <div class="form-group">
-                            <strong>sotish soni:</strong>
-                            {{ $product->sale_count }}
+                            <strong>Foiz:</strong>
+                            {{ $product->percent }}
                         </div>
+                        <div class="form-group">
+                            <strong>Soni:</strong>
+                            {{ $product->count }}
+                        </div>
+
                         <div class="form-group">
                             <strong> Kategoriya :</strong>
                             @foreach($cate as $cat)
@@ -48,8 +53,25 @@
                         </div>
 
                         <div class="form-group">
-                            <strong>Aksiya:</strong>
-                            {{ $product->sale }}
+                            <strong> Tokcha :</strong>
+                            @foreach($shelfs as $cat)
+                                @if( $product->shelf_id == $cat->id )
+                                    {{ $cat->name }}
+                                @endif
+                            @endforeach
+                        </div>
+
+                        <div class="form-group">
+                            <strong>Kelgan bahosi:</strong>
+                            {{ $product->sum_came }}
+                        </div>
+                         <div class="form-group">
+                            <strong>Dona sotish bahosi:</strong>
+                            {{ $product->sum_sell }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Optom sotish bahosi:</strong>
+                            {{ $product->sum_sell_optom }}
                         </div>
 
                     </div>
