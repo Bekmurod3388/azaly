@@ -21,7 +21,7 @@
                     <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
-                                <div class="flex-shrink-0 me-3">
+                                <div class="flex-shrink-0 ml-3">
                                     <div class="avatar">
                                         <img src="{{ asset('/assets/img/avatars/1.png') }}" alt
                                              class="w-px-40 h-auto rounded-circle"/>
