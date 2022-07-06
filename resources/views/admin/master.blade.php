@@ -23,13 +23,15 @@
     <link rel="stylesheet" href="{{ asset('/assets/vendor/css/theme-default.css') }}"
           class="template-customizer-theme-css"/>
     <link rel="stylesheet" href="{{ asset('/assets/css/demo.css') }}"/>
+
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"/>
     <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/apex-charts/apex-charts.css') }}"/>
     @yield('link')
     <!-- Page CSS -->
-
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
     <script src="{{asset('/asset/js/core/jquery.3.2.1.min.js')}}"></script>
     <!-- Fonts and icons -->
@@ -49,8 +51,7 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{asset('/asset/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/asset/css/atlantis.min.css')}}">
-
+    <link rel="stylesheet" href="{{asset('/asset/css/atlantis.min.css')}}"
 
     <!-- Helpers -->
     <script src="{{ asset('/assets/vendor/js/helpers.js') }}"></script>
@@ -159,6 +160,28 @@
     @endif
 
 
+</script>
+<script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
 </script>
 
 @yield('script')

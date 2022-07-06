@@ -36,6 +36,13 @@
                     <div data-i18n="Analytics"> Kontragentlar </div>
                 </a>
             </li>
+            <li class="menu-item {{  request()->routeIs('admin.menu') ? 'active' : '' }}">
+                <a href="{{ route('admin.menu') }}" class="menu-link">
+{{--                    <i class="bi bi-list"></i>--}}
+                    <i class="menu-icon tf-icons fas fa-list"></i>
+                    <div data-i18n="Analytics"> Menu </div>
+                </a>
+            </li>
         @endcan
         @can('category-list')
             <li class="menu-item {{  request()->routeIs('admin.categories.index') ? 'active' : '' }}">
