@@ -41,6 +41,9 @@
             cursor: pointer;
         }
     </style>
+
+
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -59,11 +62,12 @@
                 </div>
                 <hr>
 
-{{--                create--}}
                 <!-- The Modal -->
 
                 <div class="card-body">
 
+
+{{--                create--}}
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
                         <!-- Modal content -->
@@ -145,9 +149,6 @@
                                                         Parent-kategoriya:
                                                     </label>
                                                     <select class="form-select" name="parent_id" id="parent_id1" >
-
-
-
                                                     </select>
                                                 </div>
 
@@ -257,15 +258,16 @@
             for (let i = 0; i < warehouses['data'].length; i++) {
                 console.log(i);
 
-
                 if (id == warehouses['data'][i]['id']) {
 
                     console.log('ifni ichi');
                     $('#namecat').val(warehouses['data'][i]['name']);
                     $('#parent_id1').find('option').remove();
+
                     if(warehouses['data'][i]['parent_id'] == 0){
                         $('#parent_id1').append('<option value='+0+'selected >'+'Yo\'q'+'</option>');
                     }
+
                     for (let j = 0; j < warehouses['data'].length; j++) {
                         if(warehouses['data'][i]['parent_id']==warehouses['data'][j]['id']){
                             $('#parent_id1').append('<option value='+warehouses['data'][j]['id']+'selected >'
@@ -276,9 +278,6 @@
                             $('#parent_id1').append('<option value='+warehouses['data'][j]['id']+'>'
                                 +warehouses['data'][j]['name']+'</option>');
                         }
-
-
-
 
                     }
                     break;

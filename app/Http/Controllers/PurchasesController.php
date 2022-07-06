@@ -18,13 +18,39 @@ class PurchasesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $date = Purchases::OrderBy('id','desc')->get();
+        $id = $request['id'];
+
+        if ($id != NULL)
+            $layout = 'index';
+        else
+            $layout = '';
+
+        if ($id != NULL){
+            $ombor_id = Purchases::find($id)->warehouse_id;
+            $idi = Purchases::find($id);
+            $idd = $idi->id;
+        }
+        else
+            $idd = 0;
+
+
+        $date = Purchases::OrderBy('id','desc')->paginate(4);
         $kontr = Agent::all();
         $ware = WareHous::all();
         $cotegory=Category::all();
-        $product = Product::all();
+
+        if ($id == NULL)
+            $product = Product::all();
+        else
+            $product = Product::where('purchase_id', $id)->get();
+            $size = Size::all();
+        if ($id == NULL)
+            $shelf = Shelf::all();
+        else
+            $shelf = Shelf::where('warehouse_id', $ombor_id)->get();
+
 
         return view('admin.products.index', [
             'purchases' => $date,
@@ -32,7 +58,10 @@ class PurchasesController extends Controller
             'ware' => $ware,
             'cotegory'=>$cotegory,
             'products'=>$product,
-
+            'size'=>$size,
+            'shelfs'=>$shelf,
+            'layout' => $layout,
+            'idd'=>$idd,
         ]);
     }
 
@@ -50,7 +79,6 @@ class PurchasesController extends Controller
         return view('admin.products.create', [
             'agent' => $kontr,
             'ware' => $ware,
-
         ]);
     }
 
@@ -117,7 +145,9 @@ class PurchasesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Purchases::update($request->all());
+        $date = Product::find($id);
+        $date->warehouse_id  = $request->warehouse_id ;
+        $date->save();
         return redirect()->route('admin.purchases.index');
     }
 
