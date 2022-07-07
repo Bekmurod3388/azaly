@@ -6,6 +6,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Psy\Util\Str;
 
 class CategoryController extends Controller
 {
@@ -56,16 +57,8 @@ class CategoryController extends Controller
         $category['name'] = $request['name'];
         $data=$request['name'];
         $data=strtolower($data);
-        $slug='';
-        for($i=0;$i<strlen($data);$i++){
-            if($data[$i]==' '){
-                $slug.='-';
-            }else{
-                if($data[$i]>='a' && $data[$i]<='z'){
-                    $slug.=$data[$i];
-                }
-            }
-        }
+        $slug=str_slug($data,'-');
+
         $bormi=Category::all()->where('slug',$slug);
         if(count($bormi)>0){
             return redirect()->route('admin.categories.index')
@@ -121,17 +114,8 @@ class CategoryController extends Controller
 
             $category['name'] = $request['name'];
             $data = $request['name'];
-            $data = strtolower($data);
-            $slug = '';
-            for ($i = 0; $i < strlen($data); $i++) {
-                if ($data[$i] == ' ') {
-                    $slug .= '-';
-                } else {
-                    if ($data[$i] >= 'a' && $data[$i] <= 'z') {
-                        $slug .= $data[$i];
-                    }
-                }
-            }
+            $slug=str_slug($data,'-');
+
             $bormi = Category::all()->where('slug', $slug);
             if (count($bormi) > 0) {
                 return redirect()->back()
@@ -139,7 +123,7 @@ class CategoryController extends Controller
             }
             $category['slug'] = $slug;
         }
-        $category['parent_id'] = $request['parent_id'];
+        $category['parent_id'] =(int) $request['parent_id'];
 
         $category->save();
         return redirect()->route('admin.categories.index')->with('success','category updated successfully');
