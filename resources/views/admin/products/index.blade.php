@@ -370,6 +370,7 @@
                                             <h2> Qo'shish </h2>
                                         @endcan
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -701,6 +702,7 @@
 
         // console.log(products);
 
+        console.log(btn)
         // When the user clicks the button, open the modal
         btn.onclick = function () {
             modal.style.display = "block";
@@ -851,30 +853,30 @@
         });
     </script>
 
-    <script>
+{{--    <script>--}}
 
-        let errors = @json($errors->all());
-        @if($errors->any())
-        console.log(errors);
+{{--        let errors = @json($errors->all());--}}
+{{--        @if($errors->any())--}}
+{{--        console.log(errors);--}}
 
-        let msg = '';
-        for (let i = 0; i < errors.length; i++) {
-            msg += (i + 1) + '-xatolik ' + errors[i] + '\n';
-            // msg += errors[i] + '\n';
-        }
-        console.log(msg);
-        if (msg != '') {
-            swal({
-                icon: 'error',
-                title: 'Xatolik',
-                text: msg,
-                confirmButtonText: 'Continue',
-            })
-        }
-        @endif
+{{--        let msg = '';--}}
+{{--        for (let i = 0; i < errors.length; i++) {--}}
+{{--            msg += (i + 1) + '-xatolik ' + errors[i] + '\n';--}}
+{{--            // msg += errors[i] + '\n';--}}
+{{--        }--}}
+{{--        console.log(msg);--}}
+{{--        if (msg != '') {--}}
+{{--            swal({--}}
+{{--                icon: 'error',--}}
+{{--                title: 'Xatolik',--}}
+{{--                text: msg,--}}
+{{--                confirmButtonText: 'Continue',--}}
+{{--            })--}}
+{{--        }--}}
+{{--        @endif--}}
 
 
-    </script>
+{{--    </script>--}}
 
 @endsection
 
