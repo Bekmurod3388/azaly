@@ -21,67 +21,62 @@
         </div>
     </nav>
   <div class="container tabcontent" id="London">
-      <div class="row pt-2">
-          <a   href="#" class="col-md-6 d-flex text-black menu ">
-              <i class="fa  fa-car cars text-center ml-2 mt-2"></i>
+      <div class="row">
+          <div class="col-md-6">
+              <div class="text-black ">
+                  <div class="row pt-2">
+                      <a   href="#" class=" d-flex text-black menu ">
+                          <i class="fas fa-money-check-alt cars text-center ml-2 mt-2"></i>
 
 
-              <div class="pl-5">
-                  <h2>Sotib olish</h2>
-                  <p>Yetkazib beruvchilardan ish haqi uchun tovarlarni qabul qilishni ro'yxatdan o'tkazish .</p></div>
-          </a>
+                          <div class="pl-5">
+                              <h2>Naqd pul almashtirish</h2>
+                              <p>Naqd smenalarni boshqarish.Deraza uchun statistikani ko'rish</p></div>
+                      </a>
 
 
-          <a   href="#" class="col-md-6 d-flex text-black menu">
-              <i class="fas fa-archive cars text-center ml-2 mt-2"></i>
-              <div class="pl-5">
-                  <h2>Amalga oshirish</h2>
-                  <p>tovarni xaridorga sotish</p></div>
 
-          </a>
-      </div>
-      <div class="row pt-4">
-          <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-              <i class="fas fa-sync-alt cars ml-2 mt-2 "></i>
-              <div class="pl-5">
-                  <h2>Yetkazib beruvchiga qaytish</h2>
-                  <p>Tovarlarni etkazib beruvchiga qaytarish.</p></div>
+                  </div>
+                  <div class="row pt-2">
+                      <a   href="#" class=" d-flex text-black menu ">
+                          <i class="fas fa-tasks cars text-center ml-2 mt-2"></i>
 
-          </a>
-          <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-              <i class="fas fa-list cars text-center ml-2 mt-2"></i>
-              <div class="pl-5">
-                  <h2>Inventarizatsiya</h2>
-                  <p>Haqiqiy inventarizatsiyani dastur ma'lumotlari bilan taqqoslash</p></div>
 
-          </a>
-      </div>
-      <div class="row pt-2">
-          <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-              <i class="fas fa-fax cars text-center ml-2 mt-2"></i>
+                          <div class="pl-5">
+                              <h2>Savdo ro'yxatga olish</h2>
+                              <p>Kassirning ish joylari chakana savdo va tovarlarni qaytarish.</p></div>
+                      </a>
+
+
+
+                  </div>
+                  <div class="row pt-2">
+                      <a   href="#" class=" d-flex text-black menu ">
+                          <i class="fas fa-chart-bar cars text-center ml-2 mt-2"></i>
 
               <div class="pl-5">
-                  <h2>Ko'chirish</h2>
+                  <h2>ko'chirish</h2>
                   <p>Omborlar va do'konlar o'rtasida tovarlarni ko'chirish</p></div>
 
-          </a>
-          <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-              <i class="fas fa-calculator cars text-center ml-2 mt-2"></i>
-              <div class="pl-5">
-                  <h2>Qayta baholash</h2>
-                  <p>Nomenklatutlarning har bir pozitsiyasi uchun o'rtacha vaznning tavsifi</p></div>
+                          <div class="pl-5">
+                              <h2>Kassa hisoboti</h2>
+                              <p>Sotilgan tovarlar ro'yxatini ko'rish.Kassaning moliyaviy natijalari</p></div>
+                      </a>
 
-          </a>
-      </div>
-      <div class="row pt-4">
-          <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-              <i class="fas fa-archive cars text-center ml-2 mt-2"></i>
-              <div class="pl-5">
-                  <h2>Yozib Olish / Yozish</h2>
-                  <p>Hujjatlar yordamida nomenklaturaning joriy sonini sozlash hisobdan chiqarish va kiritish</p></div>
 
-          </a>
 
+                  </div>
+              </div>
+
+          </div>
+          <div class="col-md-6">
+              <div class="d-flex text-black ">
+                  <div class="border w-100 p-2  h-100 d-flex">
+                      dsfer
+                  </div>
+              </div>
+
+          </div>
       </div>
   </div>
     <div class="container tabcontent" id="Paris">
@@ -165,8 +160,6 @@
                     <p>Narx g'oyasini yaratish va o'zgartirish dasturda yaratilgan</p></div>
             </a>
         </div>
-
-
         <div class="row pt-4">
             <a   href="#" class="col-md-6 d-flex text-black menu p-2">
                 <i class="fas fa-file-signature cars text-center ml-4 mt-2"></i>
@@ -210,7 +203,6 @@
                     <p>Bundan tashqari, nomenklaturaning xususiyatlari.</p></div>
             </a>
         </div>
-
         <div class="row pt-4">
  <a   href="#" class="col-md-6 d-flex text-black menu p-2">
                     <i class="fas fa-people-carry cars text-center ml-4 mt-2"></i>
@@ -250,9 +242,7 @@
 
             </a>
         </div>
-
         <div class="row pt-4">
-
             <a   href="#" class="col-md-6 d-flex text-black menu p-2">
                 <i class="fas fa-passport cars text-center ml-4 mt-2"></i>
                 <div class="pl-5">
@@ -260,7 +250,6 @@
                     <p>Kassani yaratish va o'zgartirish.Savdo uskunalari uskunalari joriy kassani sozlash</p></div>
 
             </a>
-
             <a   href="#" class="col-md-6 d-flex text-black menu p-2">
                 <i class="fas fa-link cars text-center ml-4 mt-2"></i>
                 <div class="pl-5">
