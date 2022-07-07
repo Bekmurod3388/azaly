@@ -118,7 +118,7 @@
                                         </button>
                                     @endcan
                                     @can('product-delete')
-                                        {{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}--}}
+                                                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
                                             <span class="btn-label">
@@ -332,16 +332,16 @@
                                             </button>
                                         @endcan
 
-                                        {{--                                        @can('size-delete')--}}
-                                        {{--                                            {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy',$p->id],'style'=>'display:inline']) !!}--}}
-                                        {{--                                            <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-                                        {{--                                                    data-toggle="tooltip">--}}
-                                        {{--                                        <span class="btn-label">--}}
-                                        {{--                                            <i class="fa fa-trash"></i>--}}
-                                        {{--                                        </span>--}}
-                                        {{--                                            </button>--}}
-                                        {{--                                            {!! Form::close() !!}--}}
-                                        {{--                                        @endcan--}}
+                                                                              @can('product-delete')
+                                                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $p->id],'style'=>'display:inline']) !!}
+                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                data-toggle="tooltip">
+                                            <span class="btn-label">
+                                                <i class="fa fa-trash"></i>
+                                            </span>
+                                        </button>
+                                        {!! Form::close()!!}
+                                    @endcan
 
                                     </td>
 
