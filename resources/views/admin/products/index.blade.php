@@ -118,7 +118,7 @@
                                         </button>
                                     @endcan
                                     @can('product-delete')
-                                        {{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}--}}
+                                                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
                                             <span class="btn-label">
@@ -332,16 +332,16 @@
                                             </button>
                                         @endcan
 
-                                        {{--                                        @can('size-delete')--}}
-                                        {{--                                            {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy',$p->id],'style'=>'display:inline']) !!}--}}
-                                        {{--                                            <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-                                        {{--                                                    data-toggle="tooltip">--}}
-                                        {{--                                        <span class="btn-label">--}}
-                                        {{--                                            <i class="fa fa-trash"></i>--}}
-                                        {{--                                        </span>--}}
-                                        {{--                                            </button>--}}
-                                        {{--                                            {!! Form::close() !!}--}}
-                                        {{--                                        @endcan--}}
+                                                                              @can('product-delete')
+                                                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $p->id],'style'=>'display:inline']) !!}
+                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                data-toggle="tooltip">
+                                            <span class="btn-label">
+                                                <i class="fa fa-trash"></i>
+                                            </span>
+                                        </button>
+                                        {!! Form::close()!!}
+                                    @endcan
 
                                     </td>
 
@@ -483,6 +483,12 @@
                                 @method('PUT')
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
+
+                                        <div class="form-group">
+                                            <input type="hidden" name="purchase_id" id="purchase_id1"
+                                                   class="form-control mb-3" value="{{ $idd }}">
+                                        </div>
+
                                         <div class="form-group">
                                             <strong>Nomi:</strong>
                                             <input type="text" name="name" id="name" class="form-control mb-3">
@@ -490,7 +496,7 @@
 
                                         <div class="form-group">
                                             <strong>Kod:</strong>
-                                            <input type="number" name="cod" id="cod" class="form-control mb-3">
+                                            <input type="number" name="code" id="cod" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
@@ -534,9 +540,11 @@
                                         </div>
 
 
+
+
                                         <div class="form-group">
                                             <strong> Kotegoriya: </strong>
-                                            <select name="kontragent_id" required id="kontragent_id"
+                                            <select name="category_id" required id="kontragent_id"
                                                     class="form-select form-control"
                                                     required>
                                                 <option> Kotegoriyani tanlang</option>
@@ -683,9 +691,11 @@
         var btn = document.getElementById("myBtn");
         var btn1 = document.getElementById("myBtn1");
 
-        var span = document.getElementsByClassName("close")[0];
-        var span1 = document.getElementsByClassName("close")[1];
-        var span2 = document.getElementsByClassName("close")[2];
+        var span = document.getElementsByClassName("close")[2];
+        var span1 = document.getElementsByClassName("close")[3];
+        var span2 = document.getElementsByClassName("close")[4];
+        var span_1 = document.getElementsByClassName("close")[0];
+        var span1_1 = document.getElementsByClassName("close")[1];
         var products = @json($products);
         var purchases = @json($purchases);
 
@@ -803,10 +813,12 @@
         span2.onclick = function () {
             modal2.style.display = "none";
         }
-        span.onclick = function () {
+        span_1.onclick = function () {
             modal_1.style.display = "none";
         }
-
+        span1_1.onclick = function () {
+            modal1_1.style.display = "none";
+        }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
