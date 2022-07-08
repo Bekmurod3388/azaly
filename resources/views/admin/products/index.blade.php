@@ -370,7 +370,6 @@
                                             <h2> Qo'shish </h2>
                                         @endcan
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -539,8 +538,6 @@
                                             <input type="number" name="sum_sell_optom" id="sum_sell_optom"
                                                    class="form-control mb-3">
                                         </div>
-
-
 
 
                                         <div class="form-group">
@@ -822,6 +819,7 @@
             modal1_1.style.display = "none";
         }
 
+
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == modal) {
@@ -829,6 +827,9 @@
             }
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+            if (event.target == modal_1) {
+                modal_1.style.display = "none";
             }
         }
     </script>

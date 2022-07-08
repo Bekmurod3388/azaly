@@ -162,6 +162,9 @@
                             </div>
                         </div>
                     </div>
+
+
+{{--                    index--}}
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
