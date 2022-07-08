@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 @section('content')
     <style>
@@ -67,7 +66,7 @@
                 <div class="card-body">
 
 
-{{--                create--}}
+                    {{--   create--}}
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
                         <!-- Modal content -->
@@ -92,16 +91,16 @@
                                             <label for="name">
                                                 Kategoriya nomi:
                                             </label>
-                                            <input type="text" name="name" class="form-control mb-3" id="name"  required>
+                                            <input type="text" name="name" class="form-control mb-3" id="name" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="parent_id">
                                                 Parent-kategoriya:
                                             </label>
-                                            <select class="form-select" name="parent_id" id="parent_id" >
+                                            <select class="form-select" name="parent_id" id="parent_id">
                                                 <option value="0" selected>Yo'q</option>
                                                 @foreach($categories as $cat)
-                                                    <option value="{{$cat->id}}" >{{$cat->name}}</option>
+                                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -114,9 +113,8 @@
                         </div>
                     </div>
 
-                    <!-- The Modal -->
 
-{{--   edit--}}
+                    {{--   edit--}}
                     <!-- The Modal -->
                     <div id="myModal1" class="modal">
                         <!-- Modal content -->
@@ -142,13 +140,14 @@
                                                     <label for="name">
                                                         Kategoriya nomi:
                                                     </label>
-                                                    <input type="text" name="name" class="form-control mb-3" id="namecat"  required>
+                                                    <input type="text" name="name" class="form-control mb-3"
+                                                           id="namecat" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="parent_id">
                                                         Parent-kategoriya:
                                                     </label>
-                                                    <select class="form-select" name="parent_id" id="parent_id1" >
+                                                    <select class="form-select" name="parent_id" id="parent_id1">
                                                     </select>
                                                 </div>
 
@@ -164,7 +163,7 @@
                     </div>
 
 
-{{--                    index--}}
+                    {{--  index--}}
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
@@ -185,15 +184,15 @@
                                 </td>
                                 @endif
                                 <td>
-{{--                                    @can('category-list')--}}
-{{--                                        <a class="btn btn-info" href="{{ route('admin.categories.show',$cat->id) }}">--}}
-{{--                                            <i class="fa fa-eye"></i>--}}
-{{--                                        </a>--}}
-{{--                                    @endcan--}}
+                                    {{--                                    @can('category-list')--}}
+                                    {{--                                        <a class="btn btn-info" href="{{ route('admin.categories.show',$cat->id) }}">--}}
+                                    {{--                                            <i class="fa fa-eye"></i>--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    @endcan--}}
                                     @can('category-edit')
 
-                                            <button class="btn btn-warning" onclick="edit({{ $cat->id }})"><i
-                                                    class="fa fa-pen"></i></button>
+                                        <button class="btn btn-warning" onclick="edit({{ $cat->id }})"><i
+                                                class="fa fa-pen"></i></button>
                                     @endcan
                                     @can('category-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.categories.destroy', $cat->id],'style'=>'display:inline']) !!}
@@ -220,6 +219,8 @@
                             @endif
                         </div>
                     </div>
+
+
                 </div>
 
 
@@ -245,7 +246,7 @@
         console.log(warehouses);
         var modal = document.getElementById("myModal");
         var modal1 = document.getElementById("myModal1");
-        let sel=document.getElementById('parent_id');
+        let sel = document.getElementById('parent_id');
         var btn = document.getElementById("myBtn");
 
         var span = document.getElementsByClassName("close")[0];
@@ -267,19 +268,18 @@
                     $('#namecat').val(warehouses['data'][i]['name']);
                     $('#parent_id1').find('option').remove();
 
-                    if(warehouses['data'][i]['parent_id'] == 0){
-                        $('#parent_id1').append('<option value='+0+'selected >'+'Yo\'q'+'</option>');
+                    if (warehouses['data'][i]['parent_id'] == 0) {
+                        $('#parent_id1').append('<option value=' + 0 + 'selected >' + 'Yo\'q' + '</option>');
                     }
 
                     for (let j = 0; j < warehouses['data'].length; j++) {
-                        if(warehouses['data'][i]['parent_id']==warehouses['data'][j]['id']){
-                            $('#parent_id1').append('<option value='+warehouses['data'][j]['id']+'selected >'
-                                +warehouses['data'][j]['name']+'</option>');
-                            $('#parent_id1').append('<option value='+0+'>'+'Yo\'q'+'</option>');
-                        }
-                        else{
-                            $('#parent_id1').append('<option value='+warehouses['data'][j]['id']+'>'
-                                +warehouses['data'][j]['name']+'</option>');
+                        if (warehouses['data'][i]['parent_id'] == warehouses['data'][j]['id']) {
+                            $('#parent_id1').append('<option value=' + warehouses['data'][j]['id'] + 'selected >'
+                                + warehouses['data'][j]['name'] + '</option>');
+                            $('#parent_id1').append('<option value=' + 0 + '>' + 'Yo\'q' + '</option>');
+                        } else {
+                            $('#parent_id1').append('<option value=' + warehouses['data'][j]['id'] + '>'
+                                + warehouses['data'][j]['name'] + '</option>');
                         }
 
                     }
