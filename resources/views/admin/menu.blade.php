@@ -147,7 +147,72 @@
             <a   href="#" class="col-md-6 d-flex text-black menu p-2">
                 <i class="fas fa-briefcase cars text-center ml-4 mt-2"></i>
                 <div class="pl-5">
-                    <h2>Ishlar ro'yxati</h2>
+                    <h2>Ishlar ro'yxati</
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    3h2>
                     <p>
                         Nomenklatura ro'yxatini boshqarish va ularning xususiyatlari (narx, shtrix,kodlar va boshqalar)</p></div>
             </a>

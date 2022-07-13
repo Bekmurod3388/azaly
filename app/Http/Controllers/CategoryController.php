@@ -47,7 +47,8 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CategoryRequest $request
+     * @param $filaname
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request)
@@ -55,6 +56,12 @@ class CategoryController extends Controller
 
         $category = new Category();
         $category['name'] = $request['name'];
+        if($request->file('img')){
+            $file=$request->file('img');
+            $filename=time().$file->getClientOriginalExtension();
+            $file->move(public_path('public/Image'),$filename);
+            $category['img']=$filename;
+        }
         $data=$request['name'];
         $data=strtolower($data);
         $slug=str_slug($data,'-');
@@ -116,6 +123,15 @@ class CategoryController extends Controller
             $data = $request['name'];
             $slug=str_slug($data,'-');
 
+            if($request->hasFile('img')){
+                $destination='public/Image'.$category->img;
+                $file=$request->file('img');
+                $extention=$file->getClientOriginalExtension();
+                $filename=time().'.'.$extention;
+                $file->move('public/Image/',$filename);
+                $category->img=$filename;
+            }
+
             $bormi = Category::all()->where('slug', $slug);
             if (count($bormi) > 0) {
                 return redirect()->back()
@@ -126,6 +142,7 @@ class CategoryController extends Controller
         $category['parent_id'] =(int) $request['parent_id'];
 
         $category->save();
+
         return redirect()->route('admin.categories.index')->with('success','category updated successfully');
     }
 

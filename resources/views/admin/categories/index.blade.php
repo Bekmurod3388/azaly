@@ -85,8 +85,9 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{route('admin.categories.store')}}" method="post">
+                                    <form action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data">
                                         @csrf
+                                        @method('POST')
                                         <div class="form-group">
                                             <label for="name">
                                                 Kategoriya nomi:
@@ -104,6 +105,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
+                                            <div class="form-group">
+                                                <label for=rasm">Rasm</label>
+                                                <input required="" type="file" name="img" class="form-control" id="rasm" placeholder="rasm nomi">
+                                            </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary" value="Saqlash">
                                         </div>
@@ -131,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="" method="post" id="editForm">
+                                    <form action="" method="post" id="editForm" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
@@ -152,6 +158,10 @@
                                                 </div>
 
                                             </div>
+                                            <div class="form-group">
+                                                <label for=rasm">Rasm</label>
+                                                <input required="" type="file" name="img3" class="form-control" id="rasm" placeholder="rasm nomi">
+                                            </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                                 <button type="submit" class="btn btn-primary">Saqlash</button>
                                             </div>
@@ -169,20 +179,28 @@
                             <th>Id</th>
                             <th class="w-25">Kategoriya nomi</th>
                             <th class="">Slug</th>
+
                             <th class="w-25">Parent : kategoriya</th>
+                            <th class="w-25">img</th>
                             <th class="w-25">Harakat</th>
+
                         </tr>
                         @foreach ($categories as $key => $cat)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $cat->name }}</td>
                                 <td>{{ $cat->slug }}</td>
+
                                 <td>
                                     @if( $cat->parent_id==0)
                                         Yo'q @else
                                         {{$cat->cat2->name}}
                                 </td>
                                 @endif
+                               <td> <img src="{{ url('public/Image/'.$cat->img) }}"
+                                     style="height: 100px; width: 150px;">
+                               </td>
+
                                 <td>
                                     {{--                                    @can('category-list')--}}
                                     {{--                                        <a class="btn btn-info" href="{{ route('admin.categories.show',$cat->id) }}">--}}

@@ -30,6 +30,11 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
+                                <label for="services">Rasm</label>
+                                <input required="" type="file" name="img3" class="form-control" id="photo_name" placeholder="rasm nomi">
+                            </div></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
                                 <strong>Havola:</strong>
                                 <input type="text" name="slug" class="form-control mb-3" placeholder="Havola">
 {{--                                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control mb-3')) !!}--}}
