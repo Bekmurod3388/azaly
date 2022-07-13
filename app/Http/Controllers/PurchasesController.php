@@ -40,6 +40,8 @@ class PurchasesController extends Controller
         $kontr = Agent::all();
         $ware = WareHous::all();
         $cotegory=Category::all();
+        $product_all = Product::all();
+
 
         if ($id == NULL)
             $product = Product::all();
@@ -58,6 +60,7 @@ class PurchasesController extends Controller
             'ware' => $ware,
             'cotegory'=>$cotegory,
             'products'=>$product,
+            'product_all'=>$product_all,
             'size'=>$size,
             'shelfs'=>$shelf,
             'layout' => $layout,
