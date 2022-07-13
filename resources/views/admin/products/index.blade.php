@@ -806,6 +806,7 @@
         function izlash() {
             let product_id = document.getElementById('pro_id').value;
             console.log(product_id);
+            let a = 0;
 
             for (let i = 0; i < product_all.length; i++) {
 
@@ -819,50 +820,35 @@
                     $('#count').text("Oldingi kelgan soni:" + product_all[i]['count']);
                     $('#kelgan').text("Oldingi kelgan bahosi:" + product_all[i]['sum_came']);
                     $('#dona').text("Oldingi dona sotish bahosi:" + product_all[i]['sum_sell']);
-
                     $('#optom').text("Oldingi optom sotish bahosi:" + product_all[i]['sum_sell_optom']);
                     $('#category_id').val(product_all[i]['category_id']);
                     $('#kontragent_id').val(product_all[i]['kontragent_id']);
                     $('#shelf_idd').val(product_all[i]['shelf_id']);
+                    a = 0;
                     break;
+                } else {
+                    a = 1;
                 }
             }
+
+            if (a) {
+                swal({
+                    title: `Bunday maxsulot hali sizda mavjud emas..`,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    buttons: [, 'OK']
+
+                });
+            }
+
+
         }
+
 
         function optom1() {
             var optom = document.getElementById("optom").value;
         }
-
-
-        {{--function fayzullo(id, omborid) {--}}
-
-        {{--    document.getElementById("hidden_input").value=id;--}}
-        {{--    console.log(document.getElementById("hidden_input").value)--}}
-        {{--    //table ga qiymat barib chiqasan qaysiki purchase_id==id table row--}}
-        {{--    document.getElementById("purchase_id1").value=document.getElementById("hidden_input").value;--}}
-
-
-        {{--    let rooms = @json($shelfs);--}}
-        {{--    console.log(rooms);--}}
-        {{--    // $('#floor').on('change', function () {--}}
-        {{--    //     var room_id = $(this).val();--}}
-        {{--        $('#shelf_id').empty();--}}
-        {{--        $('#shelf_id').append("<option value='none'>Tokchani tanlang</option>")--}}
-        {{--        for (let i = 0; i < rooms.length; i++) {--}}
-        {{--            if (omborid == rooms[i].warehouse_id) {--}}
-        {{--                var option = document.createElement("option");   // Create with DOM--}}
-        {{--                option.innerHTML = rooms[i].name;--}}
-        {{--                option.value = rooms[i].id;--}}
-        {{--                $('#shelf_id').append(option);--}}
-        // });
-
-        //     document.getElementById('show_table').style.display="block";
-        //
-        //
-        //     $('#editForm').attr('action', '/admin/sizes/' + id);
-        //     modal1.style.display = "block";
-        // }
-
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
