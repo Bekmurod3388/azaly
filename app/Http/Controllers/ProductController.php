@@ -16,9 +16,9 @@ class ProductController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:product-create', ['only' => ['create','store']]);
-        $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:product-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:product-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
             'shelf' => $shelf,
             'ware' => $ware,
             'cate' => $cate,
-            'products'=>$products
+            'products' => $products
         ]);
     }
 
@@ -115,7 +115,7 @@ class ProductController extends Controller
         return view('admin.products.show', [
             'product' => $date,
             'cate' => $cate,
-            'shelfs'=>$shelfs,
+            'shelfs' => $shelfs,
         ]);
     }
 
@@ -136,7 +136,7 @@ class ProductController extends Controller
         $cate = Category::all();
         return view('admin.products.edit', [
             'product' => $product,
-            'pro_ware'=>$product_warehouse,
+            'pro_ware' => $product_warehouse,
             'size' => $size,
             'shelf' => $shelf,
             'ware' => $ware,
@@ -162,7 +162,7 @@ class ProductController extends Controller
         $date->sum_came = $request->sum_came;
         $date->status = $request->status;
         $date->count = $request->count;
-        $date->percent = $request->percent  ;
+        $date->percent = $request->percent;
         $date->sum_sell_optom = $request->sum_sell_optom;
         $date->sum_sell = $request->sum_sell;
         $date->shelf_id = $request->shelf_id;
