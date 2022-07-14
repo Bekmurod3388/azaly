@@ -383,60 +383,70 @@
                                         <div class="form-group">
                                             <strong> Maxsulot ID:</strong>
                                             <div class="d-flex justify-content-between">
-                                            <input type="number" name="product_id" id="pro_id" class="form-control mb-3">
-                                            <button class="btn btn-outline-primary mb-3" style="width: 20%" onclick="izlash()" >Izlash</button>
+                                                <input type="number" name="product_id" id="pro_id"
+                                                       class="form-control mb-3">
+                                                <button class="btn btn-outline-primary mb-3" style="width: 20%"
+                                                        onclick="izlash()">Izlash
+                                                </button>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Nomi:</strong>
-
                                             <input type="text" name="name" id="name" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Kod:</strong>
-                                            <input type="number" name="code"  id="code" class="form-control mb-3">
+                                            <input type="number" name="code" id="code" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Artikul:</strong>
-                                            <input type="text" name="artikul" id="artikul" class="form-control mb-3">
+                                            <p id="artikul" style="color: red"></p>
+                                            <input type="text" name="artikul" id="artikull" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Status:</strong>
+                                            {{--                                            <p id="status" style="color: red"></p>--}}
                                             <input type="text" name="status" id="status" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Foiz:</strong>
-                                            <input type="number" name="percent"  id="percent" class="form-control mb-3">
+                                            <p id="percent" style="color: red"></p>
+                                            <input type="number" name="percent" id="percentt" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Soni:</strong>
-                                            <input type="number" name="count" id="count" class="form-control mb-3">
+                                            <p id="count" style="color: red"></p>
+                                            <input type="number" name="count" id="countt" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Kelgan bahosi:</strong>
-                                            <p id="kelgan" style="color: red" ></p>
-                                            <input type="number" required name="sum_came" id="sum_came" class="form-control mb-3">
+                                            <p id="kelgan" style="color: red"></p>
+                                            <input type="number" required name="sum_came" id="sum_came"
+                                                   class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Dona sotish bahosi:</strong>
-                                            <p id="dona" style="color: red" ></p>
-                                            <p id="dona1" style="color: red" ></p>
-                                            <input type="number" required name="sum_sell" id="sum_sell" class="form-control mb-3">
+                                            <p id="dona" style="color: red"></p>
+                                            <p id="dona1" style="color: red"></p>
+                                            <input type="number" required name="sum_sell" id="sum_sell"
+                                                   class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Optom sotish bahosi:</strong>
-                                            <p id="optom" style="color: red" ></p>
-                                            <button id="optom1" required onclick="optom" style="display: none">Tanlash</button>
-                                            <input type="number" name="sum_sell_optom" id="sum_sell_optom" class="form-control mb-3">
+                                            <p id="optom" style="color: red"></p>
+                                            <button id="optom1" required onclick="optom" style="display: none">Tanlash
+                                            </button>
+                                            <input type="number" name="sum_sell_optom" id="sum_sell_optom"
+                                                   class="form-control mb-3">
                                         </div>
 
 
@@ -459,7 +469,7 @@
 
                                         <div class="form-group">
                                             <strong> Tokcha tanlang: </strong>
-                                            <select name="shelf_id" id="shelf_id" class="form-select form-control"
+                                            <select name="shelf_id" id="shelf_idd" class="form-select form-control"
                                                     required>
                                                 <option value=""> Tokcha tanlang</option>
                                                 @foreach($shelfs as $cat)
@@ -701,7 +711,7 @@
             })
         </script>
     @endif
-    <script >
+    <script>
         var modal = document.getElementById("myModal");
         var modal_1 = document.getElementById("myModal_1");
         var modal1 = document.getElementById("myModal1");
@@ -792,70 +802,53 @@
             // $('#editForm').attr('action', '/admin/products/' + id);
             modal2.style.display = "block";
         }
- function izlash()
- {
-    let product_id=document.getElementById('pro_id').value;
-     console.log(product_id);
+
+        function izlash() {
+            let product_id = document.getElementById('pro_id').value;
+            console.log(product_id);
+            let a = 0;
+
+            for (let i = 0; i < product_all.length; i++) {
+
+                if (product_id == product_all[i]['id']) {
+                    $('#name').val(product_all[i]['name']);
+                    $('#code').val(product_all[i]['code']);
+                    // $('#pbi').val(product_all[i]['name']+' matn');
+                    $('#artikul').text("Oldingi kelgan artukuli:" + product_all[i]['artikul']);
+                    $('#status').val(product_all[i]['status']);
+                    $('#percent').text("Oldingi kelgan foizi: " + product_all[i]['percent']);
+                    $('#count').text("Oldingi kelgan soni:" + product_all[i]['count']);
+                    $('#kelgan').text("Oldingi kelgan bahosi:" + product_all[i]['sum_came']);
+                    $('#dona').text("Oldingi dona sotish bahosi:" + product_all[i]['sum_sell']);
+                    $('#optom').text("Oldingi optom sotish bahosi:" + product_all[i]['sum_sell_optom']);
+                    $('#category_id').val(product_all[i]['category_id']);
+                    $('#kontragent_id').val(product_all[i]['kontragent_id']);
+                    $('#shelf_idd').val(product_all[i]['shelf_id']);
+                    a = 0;
+                    break;
+                } else {
+                    a = 1;
+                }
+            }
+
+            if (a) {
+                swal({
+                    title: `Bunday maxsulot hali sizda mavjud emas..`,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    buttons: [, 'OK']
+
+                });
+            }
 
 
-
-     for (let i = 0; i < product_all.length; i++) {
-
-
-         if ( product_id == product_all[i]['id']) {
-             $('#name').val(product_all[i]['name']);
-             $('#code').val(product_all[i]['code']);
-             // $('#pbi').val(product_all[i]['name']+' matn');
-             $('#artikul').val(product_all[i]['artikul']);
-             $('#status').val(product_all[i]['status']);
-             $('#percent').val(product_all[i]['percent']);
-             $('#count').val(product_all[i]['count']);
-             $('#kelgan').text("Oldingi kelgan bahosi:"+product_all[i]['sum_came']);
-             $('#dona').text("Oldingi dona sotish bahosi:"+product_all[i]['sum_sell']);
-
-             $('#optom').text("Oldingi optom sotish bahosi:"+product_all[i]['sum_sell_optom']);
-             $('#category_id').val(product_all[i]['category_id']);
-             $('#kontragent_id').val(product_all[i]['kontragent_id']);
-             $('#shelf_id1').val(product_all[i]['shelf_id']);
-             break;
-         }
-     }
- }
-
- function optom1(){
-            var optom=document.getElementById("optom").value;
- }
+        }
 
 
-        {{--function fayzullo(id, omborid) {--}}
-
-        {{--    document.getElementById("hidden_input").value=id;--}}
-        {{--    console.log(document.getElementById("hidden_input").value)--}}
-        {{--    //table ga qiymat barib chiqasan qaysiki purchase_id==id table row--}}
-        {{--    document.getElementById("purchase_id1").value=document.getElementById("hidden_input").value;--}}
-
-
-        {{--    let rooms = @json($shelfs);--}}
-        {{--    console.log(rooms);--}}
-        {{--    // $('#floor').on('change', function () {--}}
-        {{--    //     var room_id = $(this).val();--}}
-        {{--        $('#shelf_id').empty();--}}
-        {{--        $('#shelf_id').append("<option value='none'>Tokchani tanlang</option>")--}}
-        {{--        for (let i = 0; i < rooms.length; i++) {--}}
-        {{--            if (omborid == rooms[i].warehouse_id) {--}}
-        {{--                var option = document.createElement("option");   // Create with DOM--}}
-        {{--                option.innerHTML = rooms[i].name;--}}
-        {{--                option.value = rooms[i].id;--}}
-        {{--                $('#shelf_id').append(option);--}}
-        // });
-
-        //     document.getElementById('show_table').style.display="block";
-        //
-        //
-        //     $('#editForm').attr('action', '/admin/sizes/' + id);
-        //     modal1.style.display = "block";
-        // }
-
+        function optom1() {
+            var optom = document.getElementById("optom").value;
+        }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {

@@ -27,19 +27,18 @@ class PurchasesController extends Controller
         else
             $layout = '';
 
-        if ($id != NULL){
+        if ($id != NULL) {
             $ombor_id = Purchases::find($id)->warehouse_id;
             $idi = Purchases::find($id);
             $idd = $idi->id;
-        }
-        else
+        } else
             $idd = 0;
 
 
-        $date = Purchases::OrderBy('id','desc')->paginate(4);
+        $date = Purchases::OrderBy('id', 'desc')->paginate(4);
         $kontr = Agent::all();
         $ware = WareHous::all();
-        $cotegory=Category::all();
+        $cotegory = Category::all();
         $product_all = Product::all();
 
 
@@ -47,7 +46,7 @@ class PurchasesController extends Controller
             $product = Product::all();
         else
             $product = Product::where('purchase_id', $id)->get();
-            $size = Size::all();
+        $size = Size::all();
         if ($id == NULL)
             $shelf = Shelf::all();
         else
@@ -58,13 +57,13 @@ class PurchasesController extends Controller
             'purchases' => $date,
             'agent' => $kontr,
             'ware' => $ware,
-            'cotegory'=>$cotegory,
-            'products'=>$product,
-            'product_all'=>$product_all,
-            'size'=>$size,
-            'shelfs'=>$shelf,
+            'cotegory' => $cotegory,
+            'products' => $product,
+            'product_all' => $product_all,
+            'size' => $size,
+            'shelfs' => $shelf,
             'layout' => $layout,
-            'idd'=>$idd,
+            'idd' => $idd,
         ]);
     }
 
@@ -88,7 +87,7 @@ class PurchasesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -100,31 +99,31 @@ class PurchasesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $date = Purchases::OrderBy('id','desc')->get();
+        $date = Purchases::OrderBy('id', 'desc')->get();
         $donodono = Purchases::find($id);
         $kontr = Agent::all();
         $ware = WareHous::all();
-        $cotegory=Category::all();
+        $cotegory = Category::all();
         $product = Product::all();
         return view('admin.products.index', [
             'purchases' => $date,
             'agent' => $kontr,
             'ware' => $ware,
-            'cotegory'=>$cotegory,
-            'products'=>$product,
-            'dono'=>$donodono,
+            'cotegory' => $cotegory,
+            'products' => $product,
+            'dono' => $donodono,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -133,7 +132,7 @@ class PurchasesController extends Controller
         $kontr = Agent::all();
         $ware = WareHous::all();
         return view('admin.products.edit', [
-            'pur'=>$pur,
+            'pur' => $pur,
             'agent' => $kontr,
             'ware' => $ware,
         ]);
@@ -142,14 +141,14 @@ class PurchasesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $date = Purchases::find($id);
-        $date->warehouse_id  = $request->warehouse_id ;
+        $date->warehouse_id = $request->warehouse_id;
         $date->save();
         return redirect()->route('admin.purchases.index');
     }
@@ -157,13 +156,13 @@ class PurchasesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $date = Purchases::find($id);
-        $date ->delete();
+        $date->delete();
         return redirect()->route('admin.purchases.index');
     }
 }
