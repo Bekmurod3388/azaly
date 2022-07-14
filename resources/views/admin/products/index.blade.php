@@ -46,14 +46,13 @@
     <div class="col-md-12">
 
         {{--  Xaridlar: ( index )--}}
-
         <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
                             <h2>Xaridlar:</h2>
-                            <p id="pbi">zzz</p>
+                            <p id="pbi"></p>
                         </div>
                         <div class="pull-right">
                             @can('product-create')
@@ -156,7 +155,7 @@
             <div id="myModal_1" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="close" id="get">&times;</span>
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
@@ -712,20 +711,23 @@
         </script>
     @endif
     <script>
-        var modal = document.getElementById("myModal");
         var modal_1 = document.getElementById("myModal_1");
-        var modal1 = document.getElementById("myModal1");
+        var modal_1 = document.getElementById("myModal_1");
         var modal1_1 = document.getElementById("myModal1_1");
+        var modal = document.getElementById("myModal");
+        var modal1 = document.getElementById("myModal1");
         var modal2 = document.getElementById("myModal2");
 
-        var btn = document.getElementById("myBtn");
         var btn1 = document.getElementById("myBtn1");
+        var btn = document.getElementById("myBtn");
 
+        var span0 = document.getElementsByClassName("close")[0];
+        // var span0 = document.getElementById("get");
+        var span01 = document.getElementsByClassName("close")[1];
         var span = document.getElementsByClassName("close")[2];
         var span1 = document.getElementsByClassName("close")[3];
         var span2 = document.getElementsByClassName("close")[4];
-        var span_1 = document.getElementsByClassName("close")[0];
-        var span1_1 = document.getElementsByClassName("close")[1];
+
         var products = @json($products);
         var product_all = @json($product_all);
         var purchases = @json($purchases);
@@ -734,13 +736,13 @@
 
         console.log(btn)
         // When the user clicks the button, open the modal
+        btn1.onclick = function () {
+            modal_1.style.display = "block";
+        }
         btn.onclick = function () {
             modal.style.display = "block";
         }
 
-        btn1.onclick = function () {
-            modal_1.style.display = "block";
-        }
 
         function edit(id) {
             // alert(id);
@@ -851,6 +853,12 @@
         }
 
         // When the user clicks on <span> (x), close the modal
+        span0.onclick = function () {
+            modal_1.style.display = "none";
+        }
+        span01.onclick = function () {
+            modal1_1.style.display = "none";
+        }
         span.onclick = function () {
             modal.style.display = "none";
         }
@@ -860,13 +868,6 @@
         span2.onclick = function () {
             modal2.style.display = "none";
         }
-        span_1.onclick = function () {
-            modal_1.style.display = "none";
-        }
-        span1_1.onclick = function () {
-            modal1_1.style.display = "none";
-        }
-
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
