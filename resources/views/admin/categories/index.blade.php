@@ -156,12 +156,12 @@
                                                     <select class="form-select" name="parent_id" id="parent_id1">
                                                     </select>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for=rasm">Rasm</label>
+                                                    <input required="" type="file" name="img" class="form-control" id="rasm" placeholder="rasm nomi">
+                                                </div>
+                                            </div>
 
-                                            </div>
-                                            <div class="form-group">
-                                                <label for=rasm">Rasm</label>
-                                                <input required="" type="file" name="img3" class="form-control" id="rasm" placeholder="rasm nomi">
-                                            </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                                 <button type="submit" class="btn btn-primary">Saqlash</button>
                                             </div>
@@ -197,7 +197,7 @@
                                         {{$cat->cat2->name}}
                                 </td>
                                 @endif
-                               <td> <img src="{{ url('public/Image/'.$cat->img) }}"
+                               <td> <img src="{{ asset('Image/'.$cat->img) }}"
                                      style="height: 100px; width: 150px;">
                                </td>
 
@@ -266,6 +266,7 @@
         var modal1 = document.getElementById("myModal1");
         let sel = document.getElementById('parent_id');
         var btn = document.getElementById("myBtn");
+        let rasm=document.getElementById('rasm');
 
         var span = document.getElementsByClassName("close")[0];
         var span1 = document.getElementsByClassName("close")[1];

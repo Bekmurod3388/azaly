@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Psy\Util\Str;
@@ -116,21 +117,20 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
+
+//        dd($request->validated());
         $category =  Category::find($id);
+
         if($category['name'] != $request['name']) {
 
             $category['name'] = $request['name'];
             $data = $request['name'];
             $slug=str_slug($data,'-');
 
-            if($request->hasFile('img')){
-                $destination='public/Image'.$category->img;
-                $file=$request->file('img');
-                $extention=$file->getClientOriginalExtension();
-                $filename=time().'.'.$extention;
-                $file->move('public/Image/',$filename);
-                $category->img=$filename;
-            }
+            \Illuminate\Support\Facades\File::delete(public_path('Image/'.$category['img']));
+            $filename=time().'.'.$request->img->getClientOriginalExtension();
+            $request->img->move('Image',$filename);
+            $category['img']=$filename;
 
             $bormi = Category::all()->where('slug', $slug);
             if (count($bormi) > 0) {
@@ -154,6 +154,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+
+        \Illuminate\Support\Facades\File::delete(public_path('Image/'.$category['img']));
         $id=$category->id;
         $eski=Category::all()->where('parent_id',$id);
         foreach ($eski as $e){
