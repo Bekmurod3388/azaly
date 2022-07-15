@@ -712,7 +712,7 @@
     @endif
     <script>
         var modal_1 = document.getElementById("myModal_1");
-        var modal_1 = document.getElementById("myModal_1");
+        // var modal_1 = document.getElementById("myModal_1");
         var modal1_1 = document.getElementById("myModal1_1");
         var modal = document.getElementById("myModal");
         var modal1 = document.getElementById("myModal1");
@@ -727,6 +727,25 @@
         var span = document.getElementsByClassName("close")[2];
         var span1 = document.getElementsByClassName("close")[3];
         var span2 = document.getElementsByClassName("close")[4];
+
+
+        span0.onclick = function () {
+            modal_1.style.display = "none";
+        }
+        span01.onclick = function () {
+            modal1_1.style.display = "none";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        span1.onclick = function () {
+            modal1.style.display = "none";
+        }
+        span2.onclick = function () {
+            modal2.style.display = "none";
+        }
+
+
 
         var products = @json($products);
         var product_all = @json($product_all);
@@ -853,21 +872,7 @@
         }
 
         // When the user clicks on <span> (x), close the modal
-        span0.onclick = function () {
-            modal_1.style.display = "none";
-        }
-        span01.onclick = function () {
-            modal1_1.style.display = "none";
-        }
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-        span1.onclick = function () {
-            modal1.style.display = "none";
-        }
-        span2.onclick = function () {
-            modal2.style.display = "none";
-        }
+
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
