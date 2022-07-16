@@ -93,11 +93,20 @@ class SizeController extends Controller
     public function update(Request $request, $id)
     {
 //        Size::where('id', $id)->update($request->all());
-        $d = Size::all()->where('Size', $id);
 
-        $data = Size::find($id);
-        $data->Size = $request->size;
+         $data = Size::find($id);
+        if($request->size!=$data->Size){
+            $bormi=Size::all()->where('Size',$request->size);
+            if(count($bormi)>0){
+                return redirect()->back()
+                    ->withErrors("Bu nomdagi o'lcham oldin foydalanilgan. Iltimos boshqa o'lchamdan foydalaning !");
+            }
+         $data->Size = $request->size;
+     }
+
+
         $data->save();
+
         return redirect()->route('admin.sizes.index')->with('success', 'Size o`zgartirildi.');
 
     }
