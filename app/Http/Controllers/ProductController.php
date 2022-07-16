@@ -76,11 +76,12 @@ class ProductController extends Controller
         $date->artikul = $request->artikul;
         $date->category_id = $request->category_id;
         $date->save();
-        $last = Product::orderBy('id', 'desc')->first();
-        $id = $last->id;
+//        $last = Product::orderBy('id', 'desc')->first();
+        $id = $date->id;
+//        dd($id);
 
         $data = new Product_log();
-        $data->product_id = $request->$id;
+        $data->product_id = $id;
         $data->purchase_id = $request->purchase_id;
         $data->count = $request->count;
         $data->shelf_id = $request->shelf_id;
@@ -95,20 +96,6 @@ class ProductController extends Controller
         $pp->AllSum = $oldSum + $date->sum_came;
         $pp->save();
 
-
-//        if ($request->size_id != NULL) {
-//            foreach ($request->size_id as $size) {
-//                $data = new Product_warehouse();
-//                $data->shelf_id = $request->shelf_id;
-//                $data->product_id = $date->id;
-//                $data->count = $request->count;
-//                $data->size_id = $size;
-//                $data->save();
-//            }
-//        } else {
-//            return redirect()->back()->withErrors(' kamida 1 ta kategoriyta tanlanishi kerak');
-//        }
-
         return redirect()->route('admin.purchases.index');
     }
 
@@ -118,8 +105,7 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         $date = Product::find($id);
         $cate = Category::all();
         $shelfs = Shelf::all();
@@ -165,19 +151,23 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $date = Product::find($id);
-        $date->code = $request->code;
-        $date->purchase_id = $request->purchase_id;
+
         $date->name = $request->name;
+        $date->code = $request->code;
         $date->artikul = $request->artikul;
         $date->category_id = $request->category_id;
-        $date->sum_came = $request->sum_came;
-
-        $date->count = $request->count;
-
-        $date->sum_sell_optom = $request->sum_sell_optom;
-        $date->sum_sell = $request->sum_sell;
-        $date->shelf_id = $request->shelf_id;
         $date->save();
+        $idd = $date->id;
+        $data = Product_log::all()->where('product_id',$idd);
+        $data->product_id = $idd;
+        $data->purchase_id = $request->purchase_id;
+        $data->count = $request->count;
+        $data->shelf_id = $request->shelf_id;
+        $data->sum_came = $request->sum_came;
+        $data->sum_sell = $request->sum_sell;
+        $data->sum_sell_optom = $request->sum_sell_optom;
+        $data->count_sell_optom = $request->count_sell_optom;
+        $data->save();
 
         return redirect()->route('admin.purchases.index');
     }
