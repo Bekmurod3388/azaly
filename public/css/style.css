@@ -1,6 +1,9 @@
 .menu:hover{border: 1px solid black;background-color: #98d1cc;border: none;}
 .cars{
-    font-size: 75px;
+    font-size:70px;
+
+
+    /*border:1px solid red;*/
 }
 /* Style the tab */
 .tab {
@@ -36,4 +39,17 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+.naqd{
+    font-size: 60px;
+}
+.shartnoma{
+    font-size: 65px;
+}
+.tab{
+    background-color:blue
+}
+.tablinks{
+    font-size: 16px;
+    font-family: sans-serif;
 }
