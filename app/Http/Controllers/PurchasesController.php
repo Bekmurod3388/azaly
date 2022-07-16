@@ -166,11 +166,19 @@ class PurchasesController extends Controller
         return redirect()->route('admin.purchases.index');
     }
     public  function baho(Request $request){
-//        dd($request);
+
         $id=$request->id;
         $products=Product::where('purchase_id',$id)->get();
+        foreach ($products as $product){
+            $product['sum_came']+=$request->baho;
+            $product->save();
+        }
+        $count = $products->count();
+        $allsum=Purchases::find($id);
+        //dd($allsum);
+        $allsum['AllSum']+=($request['baho']*$count);
+        $allsum->save();
 
-//        dd($products);
-        //        return view('admin.products.baho');
+        return redirect()->route('admin.purchases.index');
     }
 }
