@@ -127,10 +127,7 @@ class CategoryController extends Controller
             $data = $request['name'];
             $slug=str_slug($data,'-');
 
-            \Illuminate\Support\Facades\File::delete(public_path('Image/'.$category['img']));
-            $filename=time().'.'.$request->img->getClientOriginalExtension();
-            $request->img->move('Image',$filename);
-            $category['img']=$filename;
+
 
             $bormi = Category::all()->where('slug', $slug);
             if (count($bormi) > 0) {
@@ -140,6 +137,10 @@ class CategoryController extends Controller
             $category['slug'] = $slug;
         }
         $category['parent_id'] =(int) $request['parent_id'];
+        \Illuminate\Support\Facades\File::delete(public_path('Image/'.$category['img']));
+        $filename=time().'.'.$request->img->getClientOriginalExtension();
+        $request->img->move('Image',$filename);
+        $category['img']=$filename;
 
         $category->save();
 
