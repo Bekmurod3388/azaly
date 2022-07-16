@@ -165,4 +165,12 @@ class PurchasesController extends Controller
         $date->delete();
         return redirect()->route('admin.purchases.index');
     }
+    public  function baho(Request $request){
+//        dd($request);
+        $id=$request->id;
+        $products=Product::where('purchase_id',$id)->get();
+
+//        dd($products);
+        //        return view('admin.products.baho');
+    }
 }

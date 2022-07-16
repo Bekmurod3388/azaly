@@ -33,6 +33,7 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::get('menu', function () {
         return view('admin.menu');
     })->name('menu');
+    Route::post('baho', [App\Http\Controllers\PurchasesController::class, 'baho'])->name('baho');
 });
 
 Route::prefix('api')->name('api.')->group(function () {

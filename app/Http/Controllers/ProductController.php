@@ -64,6 +64,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $date = new Product();
         $date->code = $request->code;
         $date->purchase_id = $request->purchase_id;

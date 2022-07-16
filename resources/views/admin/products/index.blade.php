@@ -127,6 +127,10 @@
                                         </button>
                                         {!! Form::close() !!}
                                     @endcan
+                                        <button class="btn btn-info" onclick="add({{ $purchase->id }})">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -211,6 +215,8 @@
 
                 </div>
             </div>
+
+
 
             {{--Edit--}}
             <div id="myModal1_1" class="modal">
@@ -687,6 +693,7 @@
 
                 </div>
             </div>
+            @include('admin.products.baho')
 
         </div>
 
@@ -717,6 +724,7 @@
         var modal = document.getElementById("myModal");
         var modal1 = document.getElementById("myModal1");
         var modal2 = document.getElementById("myModal2");
+        var modal5 = document.getElementById("myModal5");
 
         var btn1 = document.getElementById("myBtn1");
         var btn = document.getElementById("myBtn");
@@ -727,6 +735,7 @@
         var span = document.getElementsByClassName("close")[2];
         var span1 = document.getElementsByClassName("close")[3];
         var span2 = document.getElementsByClassName("close")[4];
+        var span5 = document.getElementsByClassName("close")[5];
 
 
         span0.onclick = function () {
@@ -744,7 +753,9 @@
         span2.onclick = function () {
             modal2.style.display = "none";
         }
-
+        span5.onclick = function () {
+            modal5.style.display = "none";
+        }
 
 
         var products = @json($products);
@@ -802,6 +813,7 @@
             modal1_1.style.display = "block";
         }
 
+
         function show(id) {
             for (let i = 0; i < products.length; i++) {
                 if (id == products[i]['id']) {
@@ -822,6 +834,11 @@
             }
             // $('#editForm').attr('action', '/admin/products/' + id);
             modal2.style.display = "block";
+        }
+
+        function add(id){
+            $('#xarid_id').val(id);
+            modal5.style.display = "block";
         }
 
         function izlash() {
