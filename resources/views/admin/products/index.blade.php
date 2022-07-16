@@ -72,7 +72,7 @@
                             <th> Umumiy Baxosi</th>
                             <th> Vaqti</th>
 
-                            <th class="w-25">Amallar</th>
+                            <th class="" style="width: 30%">Amallar</th>
                         </tr>
                         @foreach ($purchases as $key => $purchase)
                             <tr>
@@ -418,6 +418,17 @@
 {{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
 {{--                                        </div>--}}
 
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Status:</strong>--}}
+{{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
+{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
+{{--                                        </div>--}}
+
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Foiz:</strong>--}}
+{{--                                            <p id="percent" style="color: red"></p>--}}
+{{--                                            <input type="number" name="percent" id="percentt" class="form-control mb-3">--}}
+{{--                                        </div>--}}
 
                                         <div class="form-group">
                                             <strong>Soni:</strong>
@@ -539,16 +550,16 @@
                                                    class="form-control mb-3">
                                         </div>
 
-                                        <div class="form-group">
-                                            <strong>Status:</strong>
-                                            <input type="text" name="status" id="status" class="form-control mb-3">
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Status:</strong>--}}
+{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
+{{--                                        </div>--}}
 
-                                        <div class="form-group">
-                                            <strong>Foiz:</strong>
-                                            <input type="number" name="percent" id="percent"
-                                                   class="form-control mb-3">
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Foiz:</strong>--}}
+{{--                                            <input type="number" name="percent" id="percent"--}}
+{{--                                                   class="form-control mb-3">--}}
+{{--                                        </div>--}}
 
                                         <div class="form-group">
                                             <strong>Soni:</strong>
@@ -640,15 +651,15 @@
                                         <strong>Artikul:</strong>
                                         <p id="artikul1"></p>
                                     </div>
-                                    <div class="form-group">
-                                        <strong>Status:</strong>
-                                        <p id="status1"></p>
-                                    </div>
-                                    <div class="form-group">
-                                        <strong>Foiz:</strong>
-                                        <p id="percent1"></p>
+{{--                                    <div class="form-group">--}}
+{{--                                        <strong>Status:</strong>--}}
+{{--                                        <p id="status1"></p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <strong>Foiz:</strong>--}}
+{{--                                        <p id="percent1"></p>--}}
 
-                                    </div>
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <strong>Soni:</strong>
                                         <p id="count1"></p>
@@ -703,6 +714,7 @@
     </div>
 
 @endsection
+
 
 
 
@@ -782,8 +794,8 @@
                     $('#name').val(products[i]['name']);
                     $('#cod').val(products[i]['code']);
                     $('#artikul').val(products[i]['artikul']);
-                    $('#status').val(products[i]['status']);
-                    $('#percent').val(products[i]['percent']);
+                    // $('#status').val(products[i]['status']);
+                    // $('#percent').val(products[i]['percent']);
                     $('#count').val(products[i]['count']);
                     $('#sum_came').val(products[i]['sum_came']);
                     $('#sum_sell').val(products[i]['sum_sell']);
@@ -844,7 +856,7 @@
 
         function izlash() {
             let product_id = document.getElementById('pro_id').value;
-            console.log(product_id);
+
             let a = 0;
 
             for (let i = 0; i < product_all.length; i++) {
