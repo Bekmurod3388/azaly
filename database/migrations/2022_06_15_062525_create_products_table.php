@@ -16,17 +16,10 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('code');
-            $table->integer('purchase_id');
             $table->string('name');
+            $table->string('status')->default(0);
             $table->string('artikul');
             $table->string('category_id');
-            $table->integer('sum_came');
-            $table->string('status')->default(0);
-            $table->integer('count');
-            $table->integer('percent')->nullable();
-            $table->integer('sum_sell_optom');
-            $table->integer('sum_sell');
-            $table->integer('shelf_id');
             $table->timestamps();
         });
     }

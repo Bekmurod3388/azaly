@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Size;
 use Illuminate\Http\Request;
 
@@ -92,11 +93,10 @@ class SizeController extends Controller
     public function update(Request $request, $id)
     {
 //        Size::where('id', $id)->update($request->all());
-        $d = $request->validate([
-            'size' => 'unique'
-        ]);
+        $d = Size::all()->where('Size', $id);
+
         $data = Size::find($id);
-        $data->Size = $d->size;
+        $data->Size = $request->size;
         $data->save();
         return redirect()->route('admin.sizes.index')->with('success', 'Size o`zgartirildi.');
 

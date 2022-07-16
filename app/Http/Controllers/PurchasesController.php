@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agent;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Product_log;
 use App\Models\Purchases;
 use App\Models\Shelf;
 use App\Models\Size;
@@ -43,9 +44,9 @@ class PurchasesController extends Controller
 
 
         if ($id == NULL)
-            $product = Product::all();
+            $product_log = Product_log::all();
         else
-            $product = Product::where('purchase_id', $id)->get();
+            $product_log = Product_log::where('purchase_id', $id)->get();
         $size = Size::all();
         if ($id == NULL)
             $shelf = Shelf::all();
@@ -58,7 +59,7 @@ class PurchasesController extends Controller
             'agent' => $kontr,
             'ware' => $ware,
             'cotegory' => $cotegory,
-            'products' => $product,
+            'product_logs' => $product_log,
             'product_all' => $product_all,
             'size' => $size,
             'shelfs' => $shelf,

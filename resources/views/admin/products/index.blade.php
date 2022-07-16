@@ -33,7 +33,6 @@
             font-size: 28px;
             font-weight: bold;
         }
-
         .close:hover,
         .close:focus {
             color: #000;
@@ -73,7 +72,7 @@
                             <th> Umumiy Baxosi</th>
                             <th> Vaqti</th>
 
-                            <th class="w-25">Amallar</th>
+                            <th class="" style="width: 30%">Amallar</th>
                         </tr>
                         @foreach ($purchases as $key => $purchase)
                             <tr>
@@ -291,30 +290,31 @@
                     <div class="card-body">
                         <table class="table table-bordered table-hover">
                             <tr>
-                                <th>Id</th>
+                                <th>N%</th>
+                                <th>ID</th>
                                 <th>Nomi</th>
                                 <th>Tokcha</th>
                                 <th>Kotegoriya</th>
+                                <th>Baxosi</th>
+                                <th>Soni</th>
                                 <th class="w-25">Amallar</th>
                             </tr>
-                            @foreach ($products as $key => $p)
+                            @foreach ($product_logs as $key => $p)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $p->name }}</td>
+                                    <td>{{ $p->id }}</td>
+                                    <td>{{ $p->products->name }}</td>
 
-                                    <td>
-                                        @foreach($shelfs as $cat)
-                                            @if( $p->shelf_id == $cat->id )
-                                                {{ $cat->name }}
-                                            @endif
-                                        @endforeach
+                                    <td>{{$p->shelfs->name}}
                                     </td>
                                     <td>
-                                        @foreach($cotegory as $cat)
-                                            @if( $p->category_id == $cat->id )
-                                                {{ $cat->name }}
-                                            @endif
-                                        @endforeach
+                                        {{ $p->products->category->name }}
+                                    </td>
+                                    <td>
+                                        {{ $p->sum_came }}
+                                    </td>
+                                    <td>
+                                        {{ $p->count}}
                                     </td>
 
                                     <td>
@@ -412,17 +412,23 @@
                                             <input type="text" name="artikul" id="artikull" class="form-control mb-3">
                                         </div>
 
-                                        <div class="form-group">
-                                            <strong>Status:</strong>
-                                            {{--                                            <p id="status" style="color: red"></p>--}}
-                                            <input type="text" name="status" id="status" class="form-control mb-3">
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Status:</strong>--}}
+{{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
+{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
+{{--                                        </div>--}}
 
-                                        <div class="form-group">
-                                            <strong>Foiz:</strong>
-                                            <p id="percent" style="color: red"></p>
-                                            <input type="number" name="percent" id="percentt" class="form-control mb-3">
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Status:</strong>--}}
+{{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
+{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
+{{--                                        </div>--}}
+
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Foiz:</strong>--}}
+{{--                                            <p id="percent" style="color: red"></p>--}}
+{{--                                            <input type="number" name="percent" id="percentt" class="form-control mb-3">--}}
+{{--                                        </div>--}}
 
                                         <div class="form-group">
                                             <strong>Soni:</strong>
@@ -439,10 +445,16 @@
 
                                         <div class="form-group">
                                             <strong>Dona sotish bahosi:</strong>
-                                            <p id="dona" style="color: red"></p>
-                                            <p id="dona1" style="color: red"></p>
+{{--                                            <p id="dona" style="color: red"></p>--}}
+{{--                                            <p id="dona1" style="color: red"></p>--}}
                                             <input type="number" required name="sum_sell" id="sum_sell"
                                                    class="form-control mb-3">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <strong>Optom Soni:</strong>
+                                            <p id="percent" style="color: red"></p>
+                                            <input type="number" name="count_sell_optom" id="count_sell_optomm" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
@@ -538,16 +550,16 @@
                                                    class="form-control mb-3">
                                         </div>
 
-                                        <div class="form-group">
-                                            <strong>Status:</strong>
-                                            <input type="text" name="status" id="status" class="form-control mb-3">
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Status:</strong>--}}
+{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
+{{--                                        </div>--}}
 
-                                        <div class="form-group">
-                                            <strong>Foiz:</strong>
-                                            <input type="number" name="percent" id="percent"
-                                                   class="form-control mb-3">
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <strong>Foiz:</strong>--}}
+{{--                                            <input type="number" name="percent" id="percent"--}}
+{{--                                                   class="form-control mb-3">--}}
+{{--                                        </div>--}}
 
                                         <div class="form-group">
                                             <strong>Soni:</strong>
@@ -639,15 +651,15 @@
                                         <strong>Artikul:</strong>
                                         <p id="artikul1"></p>
                                     </div>
-                                    <div class="form-group">
-                                        <strong>Status:</strong>
-                                        <p id="status1"></p>
-                                    </div>
-                                    <div class="form-group">
-                                        <strong>Foiz:</strong>
-                                        <p id="percent1"></p>
+{{--                                    <div class="form-group">--}}
+{{--                                        <strong>Status:</strong>--}}
+{{--                                        <p id="status1"></p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <strong>Foiz:</strong>--}}
+{{--                                        <p id="percent1"></p>--}}
 
-                                    </div>
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <strong>Soni:</strong>
                                         <p id="count1"></p>
@@ -717,6 +729,7 @@
             })
         </script>
     @endif
+
     <script>
         var modal_1 = document.getElementById("myModal_1");
         // var modal_1 = document.getElementById("myModal_1");
@@ -758,8 +771,8 @@
         }
 
 
-        var products = @json($products);
-        var product_all = @json($product_all);
+        {{--var products = @json($products);--}}
+        {{--var product_all = @json($product_all);--}}
         var purchases = @json($purchases);
 
         // console.log(products);
@@ -781,8 +794,8 @@
                     $('#name').val(products[i]['name']);
                     $('#cod').val(products[i]['code']);
                     $('#artikul').val(products[i]['artikul']);
-                    $('#status').val(products[i]['status']);
-                    $('#percent').val(products[i]['percent']);
+                    // $('#status').val(products[i]['status']);
+                    // $('#percent').val(products[i]['percent']);
                     $('#count').val(products[i]['count']);
                     $('#sum_came').val(products[i]['sum_came']);
                     $('#sum_sell').val(products[i]['sum_sell']);
@@ -843,7 +856,7 @@
 
         function izlash() {
             let product_id = document.getElementById('pro_id').value;
-            console.log(product_id);
+
             let a = 0;
 
             for (let i = 0; i < product_all.length; i++) {

@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-      'name','buy_sum','sell_sum','sell_sale_sum','sale_count','category_id','sale',
+      'name','code','status','artikul','category_id',
     ];
 
     public function category(){
         return $this->belongsTo(Category::class,'category_id');
     }
+    public function shelf_uchun(){
+        return $this->belongsTo(Product_log::class,'product_id');
+    }
+
+
     use HasFactory;
 }

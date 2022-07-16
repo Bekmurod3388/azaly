@@ -10,5 +10,6 @@ class Purchases extends Model
     protected $fillable = [
         'warehouse_id','kontragent_id'
     ];
+
     use HasFactory;
 }
