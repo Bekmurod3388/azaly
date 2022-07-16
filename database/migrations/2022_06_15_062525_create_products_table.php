@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('artikul');
             $table->string('category_id');
             $table->integer('sum_came');
-            $table->string('status');
+            $table->string('status')->default(0);
             $table->integer('count');
-            $table->integer('percent');
+            $table->integer('percent')->nullable();
             $table->integer('sum_sell_optom');
             $table->integer('sum_sell');
             $table->integer('shelf_id');

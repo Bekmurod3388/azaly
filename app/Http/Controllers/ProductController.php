@@ -74,10 +74,8 @@ class ProductController extends Controller
         $date->count = $request->count;
         $date->category_id = $request->category_id;
         $date->sum_came = $request->sum_came;
-        $date->percent = $request->percent;
         $date->sum_sell = $request->sum_sell;
         $date->shelf_id = $request->shelf_id;
-        $date->status = $request->status;
         $date->artikul = $request->artikul;
         $date->save();
 
@@ -162,9 +160,9 @@ class ProductController extends Controller
         $date->artikul = $request->artikul;
         $date->category_id = $request->category_id;
         $date->sum_came = $request->sum_came;
-        $date->status = $request->status;
+
         $date->count = $request->count;
-        $date->percent = $request->percent;
+
         $date->sum_sell_optom = $request->sum_sell_optom;
         $date->sum_sell = $request->sum_sell;
         $date->shelf_id = $request->shelf_id;
