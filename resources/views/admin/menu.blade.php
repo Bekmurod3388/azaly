@@ -51,15 +51,7 @@
 
                   </div>
                   <div class="row pt-2">
-                      <a   href="#" class=" d-flex text-black menu ">
-                          <i class="fas fa-chart-bar cars text-center ml-4 mt-2"></i>
 
-
-
-                          <div class="pl-5">
-                              <h2>Kassa hisoboti</h2>
-                              <p>Sotilgan tovarlar ro'yxatini ko'rish.Kassaning moliyaviy natijalari</p></div>
-                      </a>
 
 
 
@@ -69,9 +61,14 @@
           </div>
           <div class="col-md-6">
               <div class="d-flex text-black ">
-                  <div class="border w-100 p-2  h-100 d-flex">
-                      bu yerda nima bolishini bilmadm
-                  </div>
+{{--                  <div class="border w-100 p-2  h-100 d-flex">--}}
+                          <a   href="#" class=" d-flex text-black menu ">
+                          <i class="fas fa-chart-bar cars text-center ml-3 mt-2"></i>
+                          <div class="pl-5">
+                              <h2>Kassa hisoboti</h2>
+                              <p>Sotilgan tovarlar ro'yxatini ko'rish.Kassaning moliyaviy natijalari</p></div>
+                      </a>
+{{--                  </div>--}}
               </div>
 
           </div>
@@ -89,11 +86,12 @@
             </a>
 
 
-            <a   href="#" class="col-md-6 d-flex text-black menu">
-                <i class="fas fa-archive cars text-center ml-3 mt-2"></i>
+            <a   href="#" class="col-md-6 d-flex text-black menu p-2 " >
+                <i class="fas fa-calculator cars text-center ml-4 " ></i>
                 <div class="pl-5">
-                    <h2>Amalga oshirish</h2>
-                    <p>Tovarni xaridorga sotish</p></div>
+                    <h2>Qayta baholash</h2>
+                    <p>Nomenklatutlarning har bir pozitsiyasi uchun o'rtacha vaznning tavsifi</p></div>
+
 
             </a>
         </div>
@@ -122,25 +120,18 @@
                     <p>Omborlar va do'konlar o'rtasida tovarlarni ko'chirish</p></div>
 
             </a>
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2 " >
-                <i class="fas fa-calculator cars text-center ml-4 " ></i>
-                <div class="pl-5">
-                    <h2>Qayta baholash</h2>
-                    <p>Nomenklatutlarning har bir pozitsiyasi uchun o'rtacha vaznning tavsifi</p></div>
-
-
-            </a>
-        </div>
-        <div class="row pt-2">
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2 ">
-                <i class="fas fa-archive cars text-center ml-4 pl-2 "></i>
-                <div class="pl-5">
-                    <h2>Yozib Olish / Yozish</h2>
-                    <p>Hujjatlar yordamida nomenklaturaning joriy sonini sozlash hisobdan chiqarish va kiritish</p></div>
-
-            </a>
 
         </div>
+{{--        <div class="row pt-2">--}}
+{{--            <a   href="#" class="col-md-6 d-flex text-black menu p-2 ">--}}
+{{--                <i class="fas fa-archive cars text-center ml-4 pl-2 "></i>--}}
+{{--                <div class="pl-5">--}}
+{{--                    <h2>Yozib Olish / Yozish</h2>--}}
+{{--                    <p>Hujjatlar yordamida nomenklaturaning joriy sonini sozlash hisobdan chiqarish va kiritish</p></div>--}}
+
+{{--            </a>--}}
+
+{{--        </div>--}}
     </div>
     <div class="container tabcontent" id="german">
         <div class="row pt-4">
@@ -149,8 +140,8 @@
                 <div class="pl-5">
                     <h2>Ishlar ro'yxati</h2>
 
-                    <p>
-                        Nomenklatura ro'yxatini boshqarish va ularning xususiyatlari (narx, shtrix,kodlar va boshqalar)</p></div>
+                    <p>Nomenklatura ro'yxatini boshqarish va ularning xususiyatlari (narx, shtrix,kodlar va boshqalar)</p>
+                </div>
             </a>
 
             <a   href="#" class="col-md-6 d-flex text-black menu p-2">
@@ -167,26 +158,21 @@
                     <h2>Shartnoma</h2>
                     <p>Yozuv ma'lumotlarini yaratish va o'zgartirish</p></div>
             </a>
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-ruler cars text-center ml-3 mt-2"></i>
-                <div class="pl-5">
-                    <h2>Birliklar</h2>
-                    <p>Kulrang sochlarni boshqarish nomenklaturani o'zgartirish yaratish,o'zgartirish, tartibni o'rnatish</p></div>
-            </a>
-        </div>
-        <div class="row ">
-            <a   href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu p-2">
+       <a   href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu p-2">
                 <i class="fas fa-handshake cars text-center naqd pl-3 "></i>
                 <div class="pl-5">
                     <h2>Xaridorlar</h2>
                     <p>Xaridor ma'lumotlarini yaratish va o'zgartirish</p></div>
             </a>
-            <a   href="{{ route('admin.sizes.index') }}" class="col-md-6 d-flex text-black menu ">
-                <i class="fas fa-child cars text-center ml-5 mt-1"></i>
-                <div class="pl-5">
-                    <h2>Hajmi</h2>
-                    <p>Bundan tashqari, nomenklaturaning xususiyatlari</p></div>
-            </a>
+        </div>
+        <div class="row ">
+
+{{--            <a   href="{{ route('admin.sizes.index') }}" class="col-md-6 d-flex text-black menu ">--}}
+{{--                <i class="fas fa-child cars text-center ml-5 mt-1"></i>--}}
+{{--                <div class="pl-5">--}}
+{{--                    <h2>Hajmi</h2>--}}
+{{--                    <p>Bundan tashqari, nomenklaturaning xususiyatlari</p></div>--}}
+{{--            </a>--}}
 
         </div>
         <div class="row pt-2">
@@ -196,21 +182,22 @@
                     <h2>Xaridor kartalari</h2>
                     <p>Diskont,jamg'arma,bonus kartalari va sovg'a sertifikatlarini boshqarish</p></div>
             </a>
-            <a   href="{{ route('admin.agent.index') }}" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-people-carry cars text-center ml-4 mt-2"></i>
-                <div class="pl-5">
-                    <h2>Sotuvchilar</h2>
-                    <p>Savdo ma'lumotlarini yaratish va o'zgartirish, bonuslarni boshqarish</p></div>
-            </a>
-        </div>
-        <div class="row pt-1">
-
+{{--            <a   href="{{ route('admin.agent.index') }}" class="col-md-6 d-flex text-black menu p-2">--}}
+{{--                <i class="fas fa-people-carry cars text-center ml-4 mt-2"></i>--}}
+{{--                <div class="pl-5">--}}
+{{--                    <h2>Sotuvchilar</h2>--}}
+{{--                    <p>Savdo ma'lumotlarini yaratish va o'zgartirish, bonuslarni boshqarish</p></div>--}}
+{{--            </a>--}}
             <a   href="#" class="col-md-6 d-flex text-black menu p-2">
                 <i class="fas fa-palette cars text-center ml-3 mt-2"></i>
                 <div class="pl-5">
                     <h2>Boshqa ma'lumotnomalar</h2>
                     <p>Qo'shimcha ma'lumotnomalar: mamlakatlar, brendlar,ishlab chiqaruvchilar</p></div>
             </a>
+        </div>
+        <div class="row pt-1">
+
+
 
 
     </div>
@@ -238,13 +225,12 @@
             </a>
         </div>
         <div class="row ">
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-passport cars text-center pl-4 mt-2"></i>
-                <div class="pl-5" style="margin-left: 2%">
-                    <h2>Kassalar</h2>
-                    <p>Kassani yaratish va o'zgartirish.Savdo uskunalari uskunalari joriy kassani sozlash</p></div>
-
-            </a>
+{{--            <a   href="#" class="col-md-6 d-flex text-black menu p-2">--}}
+{{--                <i class="fas fa-passport cars text-center pl-4 mt-2"></i>--}}
+{{--                <div class="pl-5" style="margin-left: 2%">--}}
+{{--                    <h2>Kassalar</h2>--}}
+{{--                    <p>Kassani yaratish va o'zgartirish.Savdo uskunalari uskunalari joriy kassani sozlash</p></div>--}}
+{{--            </a>--}}
             <a   href="#" class="col-md-6 d-flex text-black menu">
                 <i class="fas fa-link cars text-center pl-4 mt-2"></i>
                 <div class="pl-5">
@@ -252,25 +238,32 @@
                     <p>Dasturning ishlash rejimini belgilaydigan asosiy variantlar</p></div>
 
             </a>
+            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
+                <i class="fas fa-gavel cars text-center pl-3 mt-2"></i>
+                <div class="pl-5" style="margin-left: 2%">
+                    <h2>Xizmat</h2>
+                    <p>Qo'shimcha savdo buxgalteriya xususiyatlari, zaxira ma'lumotlar bazasi</p></div>
+
+            </a>
         </div>
 
         <div class="row ">
 
-            <a   href="{{ route('admin.roles.index') }}" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-user headset cars text-center pl-4 mt-2"></i>
-                <div class="pl-5" style="margin-left: 2%">
-                    <h2>Boshqaruv</h2>
-                    <p>Korxona hisobvaraqlarida moliyaviy boshqaruv</p></div>
+{{--            <a   href="{{ route('admin.roles.index') }}" class="col-md-6 d-flex text-black menu p-2">--}}
+{{--                <i class="fas fa-user headset cars text-center pl-4 mt-2"></i>--}}
+{{--                <div class="pl-5" style="margin-left: 2%">--}}
+{{--                    <h2>Boshqaruv</h2>--}}
+{{--                    <p>Korxona hisobvaraqlarida moliyaviy boshqaruv</p></div>--}}
 
-            </a>
+{{--            </a>--}}
 
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-cogs cars text-center pl-3 mt-2"></i>
-                <div class="pl-5">
-                    <h2>Sozlanmalar</h2>
-                    <p>Har bir qurilma uchun noyob sozlamalarni o'rnatish uchun qo'shimcha imkoniyatlar</p></div>
+{{--            <a   href="#" class="col-md-6 d-flex text-black menu p-2">--}}
+{{--                <i class="fas fa-cogs cars text-center pl-3 mt-2"></i>--}}
+{{--                <div class="pl-5">--}}
+{{--                    <h2>Sozlanmalar</h2>--}}
+{{--                    <p>Har bir qurilma uchun noyob sozlamalarni o'rnatish uchun qo'shimcha imkoniyatlar</p></div>--}}
 
-            </a>
+{{--            </a>--}}
         </div>
 
         <div class="row pt-2">
@@ -283,43 +276,37 @@
 
             </a>
 
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-money-check-alt cars naqd
-                 text-center pl-4 mt-2"></i>
-                <div class="pl-5">
-                    <h2>Valyuta kursini belgilang</h2>
-                    <p>Qo'shimcha valyuta kursini belgilash</p></div>
+{{--            <a   href="#" class="col-md-6 d-flex text-black menu p-2">--}}
+{{--                <i class="fas fa-money-check-alt cars naqd--}}
+{{--                 text-center pl-4 mt-2"></i>--}}
+{{--                <div class="pl-5">--}}
+{{--                    <h2>Valyuta kursini belgilang</h2>--}}
+{{--                    <p>Qo'shimcha valyuta kursini belgilash</p></div>--}}
 
-            </a>
+{{--            </a>--}}
 
 
         </div>
         <div class="row ">
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-percent cars pl-4 mt-2"></i>
-                <div class="pl-5" style="margin-left: 2%">
-                    <h2>Aksiyalar</h2>
-                    <p>Turli nomenklatura guruhlari uchun chegirmalarni qabul qilish shartlarini yaratish va boshqarish</p></div>
+{{--            <a   href="#" class="col-md-6 d-flex text-black menu p-2">--}}
+{{--                <i class="fas fa-percent cars pl-4 mt-2"></i>--}}
+{{--                <div class="pl-5" style="margin-left: 2%">--}}
+{{--                    <h2>Aksiyalar</h2>--}}
+{{--                    <p>Turli nomenklatura guruhlari uchun chegirmalarni qabul qilish shartlarini yaratish va boshqarish</p></div>--}}
 
-            </a>
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-id-badge cars text-center pl-5 mt-2"></i>
-                <div class="pl-5 ">
-                    <h2>Litsenziyani boshqarish</h2>
-                    <p>Litsenziya ma'lumotlarini ko'rish va o'zgartirish</p></div>
+{{--            </a>--}}
+{{--            <a   href="#" class="col-md-6 d-flex text-black menu p-2">--}}
+{{--                <i class="fas fa-id-badge cars text-center pl-5 mt-2"></i>--}}
+{{--                <div class="pl-5 ">--}}
+{{--                    <h2>Litsenziyani boshqarish</h2>--}}
+{{--                    <p>Litsenziya ma'lumotlarini ko'rish va o'zgartirish</p></div>--}}
 
-            </a>
+{{--            </a>--}}
 
         </div>
 
         <div class="row">
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-gavel cars text-center pl-3 mt-2"></i>
-                <div class="pl-5" style="margin-left: 2%">
-                    <h2>Xizmat</h2>
-                    <p>Qo'shimcha savdo buxgalteriya xususiyatlari, zaxira ma'lumotlar bazasi</p></div>
 
-            </a>
 
         </div>
     </div>
