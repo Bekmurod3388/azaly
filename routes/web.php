@@ -30,6 +30,7 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('purchases', \App\Http\Controllers\PurchasesController::class);
     Route::resource('shelf', \App\Http\Controllers\ShelfController::class);
     Route::resource('agent', \App\Http\Controllers\AgentController::class);
+    Route::resource('sendback', \App\Http\Controllers\SendbackController::class);
     Route::get('menu', function () {
         return view('admin.menu');
     })->name('menu');
