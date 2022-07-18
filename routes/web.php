@@ -30,9 +30,10 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('purchases', \App\Http\Controllers\PurchasesController::class);
     Route::resource('shelf', \App\Http\Controllers\ShelfController::class);
     Route::resource('agent', \App\Http\Controllers\AgentController::class);
-    Route::get('menu', function () {
-        return view('admin.menu');
-    })->name('menu');
+
+    Route::get('/return',[\App\Http\Controllers\QaytishController::class,'index'])->name('return.index');
+
+    Route::get('menu', function () {return view('admin.menu');})->name('menu');
     Route::post('baho', [App\Http\Controllers\PurchasesController::class, 'baho'])->name('baho');
 });
 

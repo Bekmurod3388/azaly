@@ -98,10 +98,10 @@
             </a>
         </div>
         <div class="row pt-4">
-            <a   href="#" class="col-md-6 d-flex text-black menu ">
+            <a   href="{{route('admin.return.index')}}" class="col-md-6 d-flex text-black menu ">
                 <i class="fas fa-sync-alt cars ml-4 mt-2 "></i>
                 <div class="pl-5">
-                    <h2>Yetkazib beruvchiga qaytish</h2>
+                    <h2>Yetkazib beruvchiga qaytarish</h2>
                     <p>Tovarlarni etkazib beruvchiga qaytarish.</p></div>
 
             </a>
