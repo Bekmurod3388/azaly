@@ -41,6 +41,7 @@ class PurchasesController extends Controller
         $ware = WareHous::all();
         $cotegory = Category::all();
         $product_all = Product::all();
+        $product_log_all = Product_log::all();
 
 
         if ($id == NULL)
@@ -60,7 +61,9 @@ class PurchasesController extends Controller
             'ware' => $ware,
             'cotegory' => $cotegory,
             'product_logs' => $product_log,
+            'product_log_all' => $product_log_all,
             'product_all' => $product_all,
+            'products'=>$product_all,
             'size' => $size,
             'shelfs' => $shelf,
             'layout' => $layout,

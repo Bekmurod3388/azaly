@@ -33,6 +33,7 @@
             font-size: 28px;
             font-weight: bold;
         }
+
         .close:hover,
         .close:focus {
             color: #000;
@@ -126,9 +127,9 @@
                                         </button>
                                         {!! Form::close() !!}
                                     @endcan
-                                        <button class="btn btn-info" onclick="add({{ $purchase->id }})">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
+                                    <button class="btn btn-info" onclick="add({{ $purchase->id }})">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
 
                                 </td>
                             </tr>
@@ -216,7 +217,6 @@
             </div>
 
 
-
             {{--Edit--}}
             <div id="myModal1_1" class="modal">
                 <!-- Modal content -->
@@ -290,13 +290,13 @@
                     <div class="card-body">
                         <table class="table table-bordered table-hover">
                             <tr>
-                                <th>N%</th>
+                                <th>TR</th>
                                 <th>ID</th>
                                 <th>Nomi</th>
-                                <th>Tokcha</th>
-                                <th>Kotegoriya</th>
                                 <th>Baxosi</th>
                                 <th>Soni</th>
+                                <th>Kotegoriya</th>
+                                <th>Tokcha</th>
                                 <th class="w-25">Amallar</th>
                             </tr>
                             @foreach ($product_logs as $key => $p)
@@ -304,17 +304,16 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $p->id }}</td>
                                     <td>{{ $p->products->name }}</td>
-
-                                    <td>{{$p->shelfs->name}}
-                                    </td>
-                                    <td>
-                                        {{ $p->products->category->name }}
-                                    </td>
                                     <td>
                                         {{ $p->sum_came }}
                                     </td>
                                     <td>
                                         {{ $p->count}}
+                                    </td>
+                                    <td>
+                                        {{ $p->products->category->name }}
+                                    </td>
+                                    <td>{{$p->shelfs->name}}
                                     </td>
 
                                     <td>
@@ -326,7 +325,7 @@
                                         {{--                                                </a>--}}
                                         {{--                                            @endcan--}}
 
-                                        <button class="btn btn-info" onclick="show({{$p->id}})">
+                                        <button class="btn btn-info" onclick="show({{$p->products->id}})">
                                             <i class="fa fa-eye"> </i>
                                         </button>
 
@@ -334,7 +333,7 @@
                                             {{--                                              <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">--}}
                                             {{--                                                    <i class="fa fa-pen"></i>--}}
                                             {{--                                                </a>--}}
-                                            <button class="btn btn-warning" onclick="edit({{$p->id}})">
+                                            <button class="btn btn-warning" onclick="edit({{$p->products->id}})">
                                                 <i class="fa fa-pen"> </i>
                                             </button>
                                         @endcan
@@ -412,23 +411,23 @@
                                             <input type="text" name="artikul" id="artikull" class="form-control mb-3">
                                         </div>
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <strong>Status:</strong>--}}
-{{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
-{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="form-group">--}}
+                                        {{--                                            <strong>Status:</strong>--}}
+                                        {{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
+                                        {{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
+                                        {{--                                        </div>--}}
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <strong>Status:</strong>--}}
-{{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
-{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="form-group">--}}
+                                        {{--                                            <strong>Status:</strong>--}}
+                                        {{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
+                                        {{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
+                                        {{--                                        </div>--}}
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <strong>Foiz:</strong>--}}
-{{--                                            <p id="percent" style="color: red"></p>--}}
-{{--                                            <input type="number" name="percent" id="percentt" class="form-control mb-3">--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="form-group">--}}
+                                        {{--                                            <strong>Foiz:</strong>--}}
+                                        {{--                                            <p id="percent" style="color: red"></p>--}}
+                                        {{--                                            <input type="number" name="percent" id="percentt" class="form-control mb-3">--}}
+                                        {{--                                        </div>--}}
 
                                         <div class="form-group">
                                             <strong>Soni:</strong>
@@ -445,8 +444,8 @@
 
                                         <div class="form-group">
                                             <strong>Dona sotish bahosi:</strong>
-{{--                                            <p id="dona" style="color: red"></p>--}}
-{{--                                            <p id="dona1" style="color: red"></p>--}}
+                                            {{--                                            <p id="dona" style="color: red"></p>--}}
+                                            {{--                                            <p id="dona1" style="color: red"></p>--}}
                                             <input type="number" required name="sum_sell" id="sum_sell"
                                                    class="form-control mb-3">
                                         </div>
@@ -454,7 +453,8 @@
                                         <div class="form-group">
                                             <strong>Optom Soni:</strong>
                                             <p id="percent" style="color: red"></p>
-                                            <input type="number" name="count_sell_optom" id="count_sell_optomm" class="form-control mb-3">
+                                            <input type="number" name="count_sell_optom" id="count_sell_optomm"
+                                                   class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
@@ -536,58 +536,57 @@
 
                                         <div class="form-group">
                                             <strong>Nomi:</strong>
-                                            <input type="text" name="name" id="name" class="form-control mb-3">
+                                            <input type="text" name="name" id="namee" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Kod:</strong>
-                                            <input type="number" name="code" id="cod" class="form-control mb-3">
+                                            <input type="number" name="code" id="codee" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Artikul:</strong>
-                                            <input type="text" name="artikul" id="artikul"
+                                            <input type="text" name="artikul" id="artikule"
                                                    class="form-control mb-3">
                                         </div>
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <strong>Status:</strong>--}}
-{{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
-{{--                                        </div>--}}
-
-{{--                                        <div class="form-group">--}}
-{{--                                            <strong>Foiz:</strong>--}}
-{{--                                            <input type="number" name="percent" id="percent"--}}
-{{--                                                   class="form-control mb-3">--}}
-{{--                                        </div>--}}
+                                        <div class="form-group">
+                                            <strong>Status:</strong>
+                                            <input type="text" name="status" id="statuse" class="form-control mb-3">
+                                        </div>
 
                                         <div class="form-group">
                                             <strong>Soni:</strong>
-                                            <input type="number" name="count" id="count" class="form-control mb-3">
+                                            <input type="number" name="count" id="counte" class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Kelgan bahosi:</strong>
-                                            <input type="number" name="sum_came" id="sum_came"
+                                            <input type="number" name="sum_came" id="sum_camee"
                                                    class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Dona sotish bahosi:</strong>
-                                            <input type="number" name="sum_sell" id="sum_sell"
+                                            <input type="number" name="sum_sell" id="sum_selle"
+                                                   class="form-control mb-3">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <strong>Optom sotish soni:</strong>
+                                            <input type="number" name="count_sell_optom" id="count_sell_optome"
                                                    class="form-control mb-3">
                                         </div>
 
                                         <div class="form-group">
                                             <strong>Optom sotish bahosi:</strong>
-                                            <input type="number" name="sum_sell_optom" id="sum_sell_optom"
+                                            <input type="number" name="sum_sell_optom" id="sum_sell_optome"
                                                    class="form-control mb-3">
                                         </div>
 
-
                                         <div class="form-group">
                                             <strong> Kotegoriya: </strong>
-                                            <select name="category_id" required id="kontragent_id"
+                                            <select name="category_id" required id="category_ide"
                                                     class="form-select form-control"
                                                     required>
                                                 <option> Kotegoriyani tanlang</option>
@@ -599,7 +598,7 @@
 
                                         <div class="form-group">
                                             <strong> Tokcha tanlang: </strong>
-                                            <select name="shelf_id" required id="shelf_id"
+                                            <select name="shelf_id" required id="shelf_ide"
                                                     class="form-select form-control"
                                                     required>
                                                 @foreach($shelfs as $cat)
@@ -651,50 +650,52 @@
                                         <strong>Artikul:</strong>
                                         <p id="artikul1"></p>
                                     </div>
-{{--                                    <div class="form-group">--}}
-{{--                                        <strong>Status:</strong>--}}
-{{--                                        <p id="status1"></p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <strong>Foiz:</strong>--}}
-{{--                                        <p id="percent1"></p>--}}
+                                    <div class="form-group">
+                                        <strong>Status:</strong>
+                                        <p id="status1"></p>
+                                    </div>
 
-{{--                                    </div>--}}
+                                    {{--                                    <div class="form-group">--}}
+                                    {{--                                        <strong>Foiz:</strong>--}}
+                                    {{--                                        <p id="percent1"></p>--}}
+                                    {{--                                    </div>--}}
+
                                     <div class="form-group">
                                         <strong>Soni:</strong>
                                         <p id="count1"></p>
                                     </div>
 
-                                    {{--                                                                                                    <div class="form-group">--}}
-                                    {{--                                                                                                        <strong> Kategoriya :</strong>--}}
-                                    {{--                                                                                                        <p id="kontragent_id1"></p>--}}
+                                    <div class="form-group">
+                                        <strong> Kategoriya :</strong>
+                                        <p id="cotegory_id"></p>
+                                    </div>
 
-                                    {{--                                                                                                        {{ $product->category->name }}--}}
-                                    {{--                                                                                                    </div>--}}
-
-                                    {{--                                                                                                    <div class="form-group">--}}
-                                    {{--                                                                                                        <strong> Tokcha :</strong>--}}
-                                    {{--                                                                                                        @foreach($shelfs as $cat)--}}
-                                    {{--                                                                                                            @if( $product->shelf_id == $cat->id )--}}
-                                    {{--                                                                                                                {{ $cat->name }}--}}
-                                    {{--                                                                                                            @endif--}}
-                                    {{--                                                                                                        @endforeach--}}
-                                    {{--                                                                                                    </div>--}}
+                                    <div class="form-group">
+                                        <strong> Tokcha :</strong>
+                                        <p id="shelf_id1"></p>
+                                        {{--                                    @foreach($shelfs as $cat)--}}
+                                        {{--                                        @if( $product->shelf_id == $cat->id )--}}
+                                        {{--                                            {{ $cat->name }}--}}
+                                        {{--                                        @endif--}}
+                                        {{--                                    @endforeach--}}
+                                    </div>
 
                                     <div class="form-group">
                                         <strong>Kelgan bahosi:</strong>
                                         <p id="sum_came1"></p>
-                                        {{--                                                                {{ $product->sum_came }}--}}
                                     </div>
                                     <div class="form-group">
                                         <strong>Dona sotish bahosi:</strong>
                                         <p id="sum_sell1"></p>
-                                        {{--                                                                {{ $product->sum_sell }}--}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <strong>Optom sotish soni:</strong>
+                                        <p id="count_sell_optom1"></p>
                                     </div>
                                     <div class="form-group">
                                         <strong>Optom sotish bahosi:</strong>
                                         <p id="sum_sell_optom1"></p>
-                                        {{--                                                                {{ $product->sum_sell_optom }}--}}
                                     </div>
 
                                 </div>
@@ -705,6 +706,7 @@
 
                 </div>
             </div>
+
             @include('admin.products.baho')
 
         </div>
@@ -771,11 +773,12 @@
         }
 
 
-        {{--var products = @json($products);--}}
-        {{--var product_all = @json($product_all);--}}
+        var products = @json($products);
+        var product_all = @json($product_all);
         var purchases = @json($purchases);
+        var product_log_all = @json($product_log_all);
 
-        // console.log(products);
+        console.log(product_log_all);
 
         console.log(btn)
         // When the user clicks the button, open the modal
@@ -788,22 +791,26 @@
 
 
         function edit(id) {
-            // alert(id);
+
             for (let i = 0; i < products.length; i++) {
                 if (id == products[i]['id']) {
-                    $('#name').val(products[i]['name']);
-                    $('#cod').val(products[i]['code']);
-                    $('#artikul').val(products[i]['artikul']);
-                    // $('#status').val(products[i]['status']);
-                    // $('#percent').val(products[i]['percent']);
-                    $('#count').val(products[i]['count']);
-                    $('#sum_came').val(products[i]['sum_came']);
-                    $('#sum_sell').val(products[i]['sum_sell']);
-                    $('#sum_sell_optom').val(products[i]['sum_sell_optom']);
-                    $('#sum_sell_optom').val(products[i]['sum_sell_optom']);
-                    $('#kontragent_id').val(products[i]['category_id']);
-                    $('#shelf_id').val(products[i]['shelf_id']);
-                    break;
+                    $('#namee').val(products[i]['name']);
+                    $('#codee').val(products[i]['code']);
+                    $('#artikule').val(products[i]['artikul']);
+                    $('#statuse').val(products[i]['status']);
+                    $('#cotegory_ide').val(products[i]['category_id']);
+                }
+            }
+
+            for (let i = 0; i < product_log_all.length; i++) {
+                if (id == product_log_all[i]['product_id']) {
+                    $('#counte').val(product_log_all[i]['count']);
+                    $('#sum_camee').val(product_log_all[i]['sum_came']);
+                    $('#sum_selle').val(product_log_all[i]['sum_sell']);
+                    $('#sum_sell_optome').val(product_log_all[i]['sum_sell_optom']);
+                    $('#count_sell_optome').val(product_log_all[i]['count_sell_optom']);
+                    $('#kontragent_ide').val(product_log_all[i]['kontragent_id']);
+                    $('#shelf_ide').val(product_log_all[i]['shelf_id']);
                 }
             }
             // alert(id);
@@ -828,28 +835,33 @@
 
 
         function show(id) {
+            modal2.style.display = "block";
+
             for (let i = 0; i < products.length; i++) {
                 if (id == products[i]['id']) {
                     $('#name1').text(products[i]['name']);
                     $('#code1').text(products[i]['code']);
                     $('#artikul1').text(products[i]['artikul']);
                     $('#status1').text(products[i]['status']);
-                    $('#percent1').text(products[i]['percent']);
-                    $('#count1').text(products[i]['count']);
-                    $('#sum_came1').text(products[i]['sum_came']);
-                    $('#sum_sell1').text(products[i]['sum_sell']);
-                    $('#sum_sell_optom1').text(products[i]['sum_sell_optom']);
-                    $('#sum_sell_optom1').text(products[i]['sum_sell_optom']);
-                    $('#kontragent_id1').text(products[i]['kontragent_id']);
-                    $('#shelf_id1').text(products[i]['shelf_id']);
-                    break;
+                    $('#cotegory_id1').text(products[i]['category_id']);
                 }
             }
-            // $('#editForm').attr('action', '/admin/products/' + id);
-            modal2.style.display = "block";
+
+            for (let i = 0; i < product_log_all.length; i++) {
+                if (id == product_log_all[i]['product_id']) {
+                    $('#count1').text(product_log_all[i]['count']);
+                    $('#sum_came1').text(product_log_all[i]['sum_came']);
+                    $('#sum_sell1').text(product_log_all[i]['sum_sell']);
+                    $('#sum_sell_optom1').text(product_log_all[i]['sum_sell_optom']);
+                    $('#count_sell_optom1').text(product_log_all[i]['count_sell_optom']);
+                    $('#kontragent_id1').text(product_log_all[i]['kontragent_id']);
+                    $('#shelf_id1').text(product_log_all[i]['shelf_id']);
+                }
+            }
+
         }
 
-        function add(id){
+        function add(id) {
             $('#xarid_id').val(id);
             modal5.style.display = "block";
         }

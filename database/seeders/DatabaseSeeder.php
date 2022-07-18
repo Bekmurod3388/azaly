@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agent;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
+            CategorySeeder::class,
+            AgentSeeder::class,
+            WerehouseSeeder::class,
+            ShelfsSeeder::class,
            PermissionSeeder::class,
            CreateAdminUserSeeder::class,
         ]);
