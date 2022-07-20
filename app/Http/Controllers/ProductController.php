@@ -92,7 +92,7 @@ class ProductController extends Controller
 
         $pp = Purchases::find($request->purchase_id);
         $oldSum = $pp->AllSum;
-        $pp->AllSum = $oldSum + $data->sum_came;
+        $pp->AllSum = $oldSum + $data->sum_came*$data->count;
         $pp->save();
 
         return redirect()->route('admin.purchases.index');

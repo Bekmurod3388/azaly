@@ -76,17 +76,23 @@ class QaytishController extends Controller
         $maxsulot = Product_log::where('product_id', $request->product_id)->where('purchase_id', $request->purchase_id)->get();
 
         $date = new Qaytganlar();
-        $date->soni = $request->soni;
-        $date->product_id = $request->product_id;
-        $date->purchase_id =   $request->purchase_id;
-        $date->agent_id = $xarid['0']['kontragent_id'];
-        $date->shelf_id = $maxsulot['0']['shelf_id'];
-        $date->save();
+        if($maxsulot['0']['count']>=$request->soni){
+            $date->soni = $request->soni;
+            $date->product_id = $request->product_id;
+            $date->purchase_id =   $request->purchase_id;
+            $date->agent_id = $xarid['0']['kontragent_id'];
+            $date->shelf_id = $maxsulot['0']['shelf_id'];
+            $date->save();
 
-        $maxsulot['0']['count']= $maxsulot['0']['count']-$request->soni;
-        $xarid['0']['AllSum'] =  $xarid['0']['AllSum'] - ($request->soni*$maxsulot['0']['sum_came']);
-        $maxsulot['0']->save();
-        $xarid['0']->save();
+            $maxsulot['0']['count']= $maxsulot['0']['count']-$request->soni;
+            $xarid['0']['AllSum'] =  $xarid['0']['AllSum'] - ($request->soni*$maxsulot['0']['sum_came']);
+            $maxsulot['0']->save();
+            $xarid['0']->save();
+        }else{
+            return redirect()->back()
+                ->withErrors("Kalla bomi !");
+        }
+
         return redirect()->route('admin.return.index');
 
 
