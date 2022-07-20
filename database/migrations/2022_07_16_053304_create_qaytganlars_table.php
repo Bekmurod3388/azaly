@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('soni');
             $table->integer('product_id');
+            $table->integer('purchase_id');
             $table->integer('agent_id');
             $table->integer('shelf_id');
             $table->timestamps();
