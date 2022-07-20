@@ -70,7 +70,6 @@ class ProductController extends Controller
         $date = new Product();
 
         $date->code = $request->code;
-        $date->purchase_id = $request->purchase_id;
         $date->name = $request->name;
         $date->code = $request->code;
         $date->artikul = $request->artikul;
