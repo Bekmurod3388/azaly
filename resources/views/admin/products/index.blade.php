@@ -434,9 +434,9 @@
                     $('#name').val(product_all[i]['name']);
                     $('#code').val(product_all[i]['code']);
                     // $('#pbi').val(product_all[i]['name']+' matn');
-                    $('#artikul').text("Oldingi kelgan artukuli:" + product_all[i]['artikul']);
+                    $('#artikul').val(product_all[i]['artikul']);
                     $('#status').val(product_all[i]['status']);
-                    $('#percent').text("Oldingi kelgan foizi: " + product_all[i]['percent']);
+                    // $('#percent').text("Oldingi kelgan foizi: " + product_all[i]['percent']);
                     $('#count').text("Oldingi kelgan soni:" + product_all[i]['count']);
                     $('#kelgan').text("Oldingi kelgan bahosi:" + product_all[i]['sum_came']);
                     $('#dona').text("Oldingi dona sotish bahosi:" + product_all[i]['sum_sell']);

@@ -90,7 +90,7 @@ class QaytishController extends Controller
             $xarid['0']->save();
         }else{
             return redirect()->back()
-                ->withErrors("Kalla bomi !");
+                ->withErrors("Noto'g'ri miqdor kiritdingiz !");
         }
 
         return redirect()->route('admin.return.index');
