@@ -175,7 +175,7 @@
 
                                 <div class="form-group">
                                     <strong>Dona sotish bahosi:</strong>
-                                    {{--                                            <p id="dona" style="color: red"></p>--}}
+                                                                                <p id="dona" style="color: red"></p>
                                     {{--                                            <p id="dona1" style="color: red"></p>--}}
                                     <input type="number" required name="sum_sell" id="sum_sell"
                                            class="form-control mb-3">
