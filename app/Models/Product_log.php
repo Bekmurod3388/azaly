@@ -19,6 +19,19 @@ class Product_log extends Model
     public function shelfs(){
         return $this->belongsTo(Shelf::class,'shelf_id');
     }
+    public function  product_api(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class,'product_id','id');
+    }
+    public function  purchase_api(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Purchases::class,'purchase_id','id');
+    }
+    public function  shelf_api(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Shelf::class,'shelf_id','id');
+    }
+
 
     use HasFactory;
 }

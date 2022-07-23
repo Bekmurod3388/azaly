@@ -41,3 +41,12 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
 Route::prefix('api')->name('api.')->group(function () {
     Route::resource('categories', \App\Http\Controllers\Api\CategoryController::class);
 });
+Route::prefix('api')->name('api.')->group(function () {
+    Route::resource('products', \App\Http\Controllers\Api\ProductsController::class);
+});
+Route::prefix('api')->name('api.')->group(function () {
+    Route::get('/products/categories/{slug}', [\App\Http\Controllers\Api\ProductsController::class,'category']);
+});
+
+
+

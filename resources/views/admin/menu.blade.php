@@ -136,31 +136,31 @@
     <div class="container tabcontent" id="german">
         <div class="row pt-4">
             <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-briefcase cars text-center ml-4 pt-3"></i>
-                <div class="pl-5 pt-2">
+                <i class="fas fa-briefcase cars text-center pl-4 pt-3"></i>
+                <div class="pl-4 pt-2">
                     <h2>Ishlar ro'yxati</h2>
 
                     <p>Nomenklatura ro'yxatini boshqarish va ularning xususiyatlari (narx, shtrix,kodlar va boshqalar)</p>
                 </div>
             </a>
 
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-money-check-alt cars text-center  pt-3"></i>
-                <div class="pl-4 pt-2">
+            <a   href="#" class="col-md-6 d-flex text-black menu ">
+                <i class="fas fa-money-check-alt cars text-center pl-4  pt-3"></i>
+                <div class="pl-4 pt-3">
                     <h2>Narxlarning turlari</h2>
                     <p>Narx g'oyasini yaratish va o'zgartirish dasturda yaratilgan</p></div>
             </a>
         </div>
-        <div class="row pt-2">
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
+        <div class="row ">
+            <a   href="#" class="col-md-6 d-flex text-black menu">
                 <i class="fas fa-file-signature cars text-center shartnoma pl-3 pt-3"></i>
-                <div class="pl-5 pt-2">
+                <div class="pl-4 pt-2">
                     <h2>Shartnoma</h2>
                     <p>Yozuv ma'lumotlarini yaratish va o'zgartirish</p></div>
             </a>
        <a   href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-handshake cars text-center naqd pl-3 "></i>
-                <div class="pl-5">
+                <i class="fas fa-handshake cars text-center naqd pl-4 pt-2 "></i>
+                <div class="pl-4 " style="margin-left: 2%;">
                     <h2>Xaridorlar</h2>
                     <p>Xaridor ma'lumotlarini yaratish va o'zgartirish</p></div>
             </a>
@@ -175,10 +175,10 @@
 {{--            </a>--}}
 
         </div>
-        <div class="row pt-2">
+        <div class="row ">
             <a   href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu">
-                <i class="fab fa-cc-mastercard cars ml-1 mt-2"></i>
-                <div class="pl-5">
+                <i class="fab fa-cc-mastercard cars pl-3 pt-3"></i>
+                <div class="pl-4 pt-3" >
                     <h2>Xaridor kartalari</h2>
                     <p>Diskont,jamg'arma,bonus kartalari va sovg'a sertifikatlarini boshqarish</p></div>
             </a>
@@ -188,9 +188,9 @@
 {{--                    <h2>Sotuvchilar</h2>--}}
 {{--                    <p>Savdo ma'lumotlarini yaratish va o'zgartirish, bonuslarni boshqarish</p></div>--}}
 {{--            </a>--}}
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-palette cars text-center ml-3 mt-2"></i>
-                <div class="pl-5">
+            <a   href="#" class="col-md-6 d-flex text-black menu ">
+                <i class="fas fa-palette cars text-center pl-4 pt-3" ></i>
+                <div class="pl-4 pt-2" style="margin-left:2%">
                     <h2>Boshqa ma'lumotnomalar</h2>
                     <p>Qo'shimcha ma'lumotnomalar: mamlakatlar, brendlar,ishlab chiqaruvchilar</p></div>
             </a>
@@ -216,7 +216,7 @@
 
             </a>
 
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
+            <a   href="#" class="col-md-6 d-flex text-black menu ">
                 <i class="fas fa-signal cars text-center pl-3 pt-3"></i>
                 <div class="pl-4 pt-2">
                     <h2>Hisobot dizayneri</h2>
@@ -238,7 +238,7 @@
                     <p>Dasturning ishlash rejimini belgilaydigan asosiy variantlar</p></div>
 
             </a>
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
+            <a   href="#" class="col-md-6 d-flex text-black menu">
                 <i class="fas fa-gavel cars text-center pl-3 pt-3"></i>
                 <div class="pl-4 pt-2" style="margin-left: 2%">
                     <h2>Xizmat</h2>
@@ -266,11 +266,11 @@
 {{--            </a>--}}
         </div>
 
-        <div class="row pt-2">
+        <div class="row">
 
-            <a   href="#" class="col-md-6 d-flex text-black menu p-2">
-                <i class="fas fa-user-friends cars text-center naqd pl-3 "></i>
-                <div class="pl-4 pt-2">
+            <a   href="#" class="col-md-6 d-flex text-black menu">
+                <i class="fas fa-user-friends cars text-center naqd pl-3 pt-3 "></i>
+                <div class="pl-4 pt-2" style="font-size:5%;">
                     <h2>Xodimlar</h2>
                     <p>Dastur foydalanuvchisini moliyaviy boshqarish va ularning kirish grafikasi</p></div>
 
