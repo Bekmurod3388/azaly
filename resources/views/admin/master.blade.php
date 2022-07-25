@@ -65,7 +65,7 @@
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
         <!-- Menu -->
-        @include('admin.sidebar')
+{{--        @include('admin.sidebar')--}}
         <!-- / Menu -->
 
         <!-- Layout container -->
@@ -79,6 +79,7 @@
                 <!-- Content -->
                 {{--                @include('alerts')--}}
                 <div class="container-xxl flex-grow-1 container-p-y">
+
                     @yield('content')
                 </div>
                 <!-- Content -->

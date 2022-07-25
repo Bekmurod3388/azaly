@@ -18,24 +18,24 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         @can('role-list')
-            <li class="menu-item {{  request()->routeIs('admin.users.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.users.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-users"></i>
-                    <div data-i18n="Analytics"> Foydalanuvchilar </div>
-                </a>
-            </li>
-            <li class="menu-item {{  request()->routeIs('admin.roles.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.roles.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-user-shield"></i>
-                    <div data-i18n="Analytics"> Rollarni boshqarish </div>
-                </a>
-            </li>
-            <li class="menu-item {{  request()->routeIs('admin.agent.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.agent.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-user-tie"></i>
-                    <div data-i18n="Analytics"> Kontragentlar </div>
-                </a>
-            </li>
+{{--            <li class="menu-item {{  request()->routeIs('admin.users.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.users.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-users"></i>--}}
+{{--                    <div data-i18n="Analytics"> Foydalanuvchilar </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.roles.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.roles.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-user-shield"></i>--}}
+{{--                    <div data-i18n="Analytics"> Rollarni boshqarish </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="menu-item {{  request()->routeIs('admin.agent.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.agent.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-user-tie"></i>--}}
+{{--                    <div data-i18n="Analytics"> Kontragentlar </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
             <li class="menu-item {{  request()->routeIs('admin.menu') ? 'active' : '' }}">
                 <a href="{{ route('admin.menu') }}" class="menu-link">
 {{--                    <i class="bi bi-list"></i>--}}
@@ -45,28 +45,28 @@
             </li>
         @endcan
         @can('category-list')
-            <li class="menu-item {{  request()->routeIs('admin.categories.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.categories.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-list-alt"></i>
-                    <div data-i18n="Analytics"> Kategoriyalar </div>
-                </a>
-            </li>
+{{--            <li class="menu-item {{  request()->routeIs('admin.categories.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.categories.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-list-alt"></i>--}}
+{{--                    <div data-i18n="Analytics"> Kategoriyalar </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         @endcan
         @can('size-list')
-            <li class="menu-item {{  request()->routeIs('admin.sizes.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.sizes.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-money-check "></i>
-                    <div data-i18n="Analytics"> O'lchamlar </div>
-                </a>
-            </li>
+{{--            <li class="menu-item {{  request()->routeIs('admin.sizes.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.sizes.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-money-check "></i>--}}
+{{--                    <div data-i18n="Analytics"> O'lchamlar </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         @endcan
         @can('warehouse-list')
-            <li class="menu-item {{  request()->routeIs('admin.warehouses.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.warehouses.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-warehouse"></i>
-                    <div data-i18n="Analytics"> Omborxona </div>
-                </a>
-            </li>
+{{--            <li class="menu-item {{  request()->routeIs('admin.warehouses.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.warehouses.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-warehouse"></i>--}}
+{{--                    <div data-i18n="Analytics"> Omborxona </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         @endcan
 
 
@@ -80,12 +80,12 @@
 {{--        @endcan--}}
 
         @can('product-list')
-            <li class="menu-item {{  request()->routeIs('admin.purchases.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.purchases.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons fas fa-tshirt"></i>
-                    <div data-i18n="Analytics"> Xaridlar </div>
-                </a>
-            </li>
+{{--            <li class="menu-item {{  request()->routeIs('admin.purchases.index') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('admin.purchases.index') }}" class="menu-link">--}}
+{{--                    <i class="menu-icon tf-icons fas fa-tshirt"></i>--}}
+{{--                    <div data-i18n="Analytics"> Xaridlar </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         @endcan
     </ul>
 </aside>

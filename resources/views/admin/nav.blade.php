@@ -7,11 +7,15 @@
             <i class="bx bx-menu bx-sm"></i>
         </a>
     </div>
+    <span class="app-brand-logo demo">
 
+               <img style="width: 70px; height: 60px; " src="{{ asset('/assets/img/avatars/logo.jpg') }}" alt="Bu rasm">
+              </span>
     <div class="navbar-nav-right d-flex align-items-center justify-content-end" id="navbar-collapse">
 
         <ul class="navbar-nav flex-row align-items-center ">
             <li class="nav-item navbar-dropdown  dropdown">
+
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar">
                         <img src="{{ asset('/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle"/>
