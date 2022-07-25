@@ -63,7 +63,7 @@ class PurchasesController extends Controller
             'product_logs' => $product_log,
             'product_log_all' => $product_log_all,
             'product_all' => $product_all,
-            'products'=>$product_all,
+            'products' => $product_all,
             'size' => $size,
             'shelfs' => $shelf,
             'layout' => $layout,
@@ -169,19 +169,22 @@ class PurchasesController extends Controller
         $date->delete();
         return redirect()->route('admin.purchases.index');
     }
-    public  function baho(Request $request){
 
-        $id=$request->id;
-        $products=Product_log::where('purchase_id',$id)->get();
-        foreach ($products as $product){
-            $product['sum_came']+=$request->baho;
+    public function baho(Request $request)
+    {
+
+        $id = $request->id;
+        $products = Product_log::where('purchase_id', $id)->get();
+        foreach ($products as $product) {
+            $product['sum_came'] += $request->baho;
             $product->save();
+
+            $count = $product['count'];
+            $allsum = Purchases::find($id);
+            $allsum['AllSum'] += ( $request['baho'] * $count );
+            $allsum->save();
+
         }
-        $count = $products->count();
-        $allsum=Purchases::find($id);
-        //dd($allsum);
-        $allsum['AllSum']+=($request['baho']*$count);
-        $allsum->save();
 
         return redirect()->route('admin.purchases.index');
     }

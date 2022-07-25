@@ -1,4 +1,5 @@
 @extends('admin.master')
+
 @section('content')
 
     <style>
@@ -215,7 +216,6 @@
 
                 </div>
             </div>
-
 
             {{--Edit--}}
             <div id="myModal1_1" class="modal">
