@@ -54,6 +54,12 @@
                             <h2>Xaridlar:</h2>
                             <p id="pbi"></p>
                         </div>
+                        <div class="pull-right">
+                            <a class="btn btn-default"
+                               href="{{ route('admin.return.history') }}">
+                                <i class="fa fa-book-reader"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -199,7 +205,6 @@
             modal1.style.display = "block";
         }
 
-
         function show(id) {
             modal2.style.display = "block";
 
@@ -227,13 +232,12 @@
 
         }
 
-
         function add(id) {
             $('#xarid_id').val(id);
             modal5.style.display = "block";
         }
 
-        function  returnn( id ){
+        function returnn(id) {
 
             modal1.style.display = "block";
 
@@ -244,7 +248,6 @@
                 }
             }
         }
-
 
 
         // When the user clicks anywhere outside of the modal, close it
@@ -260,7 +263,6 @@
             }
         }
     </script>
-
 
 @endsection
 
