@@ -172,7 +172,7 @@ class PurchasesController extends Controller
     public  function baho(Request $request){
 
         $id=$request->id;
-        $products=Product::where('purchase_id',$id)->get();
+        $products=Product_log::where('purchase_id',$id)->get();
         foreach ($products as $product){
             $product['sum_came']+=$request->baho;
             $product->save();
