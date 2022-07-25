@@ -182,4 +182,5 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('admin.purchases.index');
     }
+
 }
