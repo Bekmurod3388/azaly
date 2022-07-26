@@ -31,9 +31,13 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('shelf', \App\Http\Controllers\ShelfController::class);
     Route::resource('agent', \App\Http\Controllers\AgentController::class);
 
-    Route::get('/return',[\App\Http\Controllers\QaytishController::class,'index'])->name('return.index');
-    Route::post('/return/store',[\App\Http\Controllers\QaytishController::class,'store'])->name('return.store');
+    Route::get('/return', [\App\Http\Controllers\QaytishController::class, 'index'])->name('return.index');
+    Route::get('/return/history', [\App\Http\Controllers\QaytishController::class, 'history'])->name('return.history');
+    Route::post('/return/store', [\App\Http\Controllers\QaytishController::class, 'store'])->name('return.store');
 
+    Route::get('menu', function () {
+        return view('admin.menu');
+    })->name('menu');
 //    Route::get('menu', function () {return view('admin.menu');})->name('menu');
     Route::post('baho', [App\Http\Controllers\PurchasesController::class, 'baho'])->name('baho');
 });

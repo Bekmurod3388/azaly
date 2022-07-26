@@ -98,5 +98,16 @@ class QaytishController extends Controller
 
     }
 
+    public  function history(){
+
+        $data = Qaytganlar::all();
+
+        return view('admin.menu.historyes',[
+            'products'=>$data,
+        ]);
+
+
+    }
+
 
 }
