@@ -43,95 +43,21 @@
 
     <!-- The Modal -->
     <div class="col-md-12">
-        <div class="form">
-
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-lg-12 margin-tb">
-                                    <div class="pull-left">
-                                        @can('size-create')
-                                            <h2> Qo'shish </h2>
-                                        @endcan
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <form action="{{route('admin.sizes.store')}}" method="post">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>razmer:</strong>
-                                            <input type="text" name="size" class="form-control mb-3" placeholder="Size">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary">Saqlash</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- The Modal -->
-
-
-            <div id="myModal1" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-lg-12 margin-tb">
-                                    <div class="pull-left">
-                                        <h2> Razmer tahrirlash </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <form action="" method="post" id="editForm">
-                                @csrf
-                                @method('PUT')
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Razmer:</strong>
-                                            <input type="text" name="size" class="form-control" id="name">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary">Saqlash</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        {{--index--}}
         <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
-                        <div class="pull-left">
-                            <h2> Razmerlar: </h2>
+                        <div class="pull">
+                            <h2> Razmerlar </h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
-                                {{--                                <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
                                 <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
+                        </div>
+                        <div class="pull-left">
+                            <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
@@ -188,7 +114,88 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="form">
+
+            {{--create--}}
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-lg-12 margin-tb">
+                                    <div class="pull-left">
+                                        @can('size-create')
+                                            <h2> Qo'shish </h2>
+                                        @endcan
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{route('admin.sizes.store')}}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>razmer:</strong>
+                                            <input type="text" name="size" class="form-control mb-3" placeholder="Size">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{--edit--}}
+            <div id="myModal1" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-lg-12 margin-tb">
+                                    <div class="pull-left">
+                                        <h2> Razmer tahrirlash </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="post" id="editForm">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Razmer:</strong>
+                                            <input type="text" name="size" class="form-control" id="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
+
 @endsection
 
 @section('script')
