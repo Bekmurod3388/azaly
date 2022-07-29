@@ -283,7 +283,7 @@
 
             </a>
 
-            <a   href="#" class="col-md-6 d-flex text-black menu ">
+            <a   href="{{route('admin.custumers.index')}}" class="col-md-6 d-flex text-black menu ">
                 <i class="fas fa-signal cars text-center pl-3 pt-3"></i>
                 <div class="pl-4 pt-2">
                     <h2>Hisobot dizayneri</h2>
