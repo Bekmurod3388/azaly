@@ -8,8 +8,9 @@
         </a>
     </div>
     <span class="app-brand-logo demo">
-
+        <a href="{{ route('admin.home') }}">
                <img style="width: 70px; height: 60px; " src="{{ asset('/assets/img/avatars/logo.jpg') }}" alt="Bu rasm">
+        </a>
               </span>
     <div class="navbar-nav-right d-flex align-items-center justify-content-end" id="navbar-collapse">
 
