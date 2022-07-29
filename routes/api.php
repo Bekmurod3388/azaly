@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(["prefix"=>"todo"],function(){
+    Route::get("/get/{id}",[App\Http\Controllers\Api\Products_logController::class,"get"]);
+    Route::get("/gets",[App\Http\Controllers\Api\Products_logController::class,"gets"]);
+    Route::post("/store",[App\Http\Controllers\Api\Products_logController::class,"store"]);
+    Route::put("/update/{id}",[App\Http\Controllers\Api\Products_logController::class,"update"]);
+    Route::delete("/delete/{id}",[App\Http\Controllers\Api\Products_logController::class,"delete"]);
+});

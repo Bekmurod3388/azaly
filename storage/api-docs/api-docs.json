@@ -1,0 +1,333 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Product_log",
+        "description": "Product Log api",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/todo/store": {
+            "post": {
+                "tags": [
+                    "Product_log"
+                ],
+                "summary": "Producta yaratish",
+                "description": "Product log",
+                "operationId": "b8b80550e42255865ef8137c6ec1ffdc",
+                "requestBody": {
+                    "description": "Product_Log id",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "purchase_id",
+                                    "product_id",
+                                    "sum_came",
+                                    "count",
+                                    "sum_sell_optom",
+                                    "count_sell_optom",
+                                    "sum_sell",
+                                    "shelf_id"
+                                ],
+                                "properties": {
+                                    "purchase_id": {
+                                        "type": "integer",
+                                        "format": "purchase_id",
+                                        "example": "1"
+                                    },
+                                    "product_id": {
+                                        "type": "integer",
+                                        "format": "product_id",
+                                        "example": "1"
+                                    },
+                                    "sum_came": {
+                                        "type": "integer",
+                                        "format": "sum_came",
+                                        "example": "35"
+                                    },
+                                    "count": {
+                                        "type": "integer",
+                                        "format": "count",
+                                        "example": "35"
+                                    },
+                                    "sum_sell_optom": {
+                                        "type": "integer",
+                                        "format": "sum_sell_optom",
+                                        "example": "35"
+                                    },
+                                    "count_sell_optom": {
+                                        "type": "integer",
+                                        "format": "count_sell_optom",
+                                        "example": "35"
+                                    },
+                                    "sum_sell": {
+                                        "type": "integer",
+                                        "format": "sum_sell",
+                                        "example": "35"
+                                    },
+                                    "shelf_id": {
+                                        "type": "integer",
+                                        "format": "shelf_id",
+                                        "example": "35"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "qayta ishlanmaydigan tarkib",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Kechirasiz, kiritish toʻldirilgan. Iltimos, yana bir bor urinib ko'ring"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Muvaffaqiyatli operatsiyaMuvaffaqiyatli operatsiya"
+                    },
+                    "400": {
+                        "description": "Dars allaqachon tugagan"
+                    },
+                    "401": {
+                        "description": "Tasdiqlanmagan"
+                    },
+                    "403": {
+                        "description": "Bu harakat ruxsatsiz."
+                    }
+                }
+            }
+        },
+        "api/todo/update/{id}": {
+            "put": {
+                "tags": [
+                    "Product_log"
+                ],
+                "summary": "vakansiyani yangilashvakansiyani yangilash",
+                "description": "vakansiyani yangilash",
+                "operationId": "e424ae31dfe72ef1c87e31634d4331ab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vakansiya identifikatori",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": " hisobga olish ma'lumotlari",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "purchase_id",
+                                    "product_id",
+                                    "sum_came",
+                                    "count",
+                                    "sum_sell_optom",
+                                    "count_sell_optom",
+                                    "sum_sell",
+                                    "shelf_id"
+                                ],
+                                "properties": {
+                                    "purchase_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "product_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "sum_came": {
+                                        "type": "number",
+                                        "example": "23"
+                                    },
+                                    "count": {
+                                        "type": "number",
+                                        "example": "3"
+                                    },
+                                    "sum_sell_optom": {
+                                        "type": "number",
+                                        "example": "78"
+                                    },
+                                    "count_sell_optom": {
+                                        "type": "number",
+                                        "example": "5"
+                                    },
+                                    "sum_cell": {
+                                        "type": "number",
+                                        "example": "5"
+                                    },
+                                    "shelf_id": {
+                                        "type": "number",
+                                        "example": "3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Muvaffaqiyatli operatsiya"
+                    },
+                    "403": {
+                        "description": "Taqiqlangan"
+                    }
+                }
+            }
+        },
+        "/api/todo/get/{id": {
+            "get": {
+                "tags": [
+                    "Product_log"
+                ],
+                "summary": "Productlarn korish",
+                "description": "Korish",
+                "operationId": "Productlarni korish",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product .log -id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Muvaffaqiyatli operatsiya"
+                    },
+                    "404": {
+                        "description": "Ob'ekt topilmadi"
+                    },
+                    "401": {
+                        "description": "Ruxsatsiz"
+                    }
+                }
+            }
+        },
+        "/api/todo/gets": {
+            "get": {
+                "tags": [
+                    "Product_log"
+                ],
+                "summary": "Mahsulotlar roʻyxatini oling",
+                "operationId": "0dc415f5d10734da38cc07821dbfb56b",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "_id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "purchase_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "product_id": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "sum_came": {
+                                                        "type": "string",
+                                                        "example": "4"
+                                                    },
+                                                    "count": {
+                                                        "type": "string",
+                                                        "example": "3"
+                                                    },
+                                                    "sell_cum_optom": {
+                                                        "type": "string",
+                                                        "example": "6"
+                                                    },
+                                                    "count_sell_optom": {
+                                                        "type": "string",
+                                                        "example": "5"
+                                                    },
+                                                    "sum_sell": {
+                                                        "type": "string",
+                                                        "example": "3"
+                                                    },
+                                                    "shelf_id": {
+                                                        "type": "string",
+                                                        "example": "2"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/todo/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Product_log"
+                ],
+                "summary": "Mahsulotni ochirish",
+                "operationId": "2d9b07104e5a254aec444cfc2d634c94",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "barcha muvaffaqiyatlarni o'chirish"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
