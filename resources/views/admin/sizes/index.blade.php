@@ -54,10 +54,13 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
-                                    <div class="pull-left">
+                                    <div class="pull-right">
                                         @can('size-create')
                                             <h2> Qo'shish </h2>
                                         @endcan
+                                    </div>
+                                    <div class="pull-left">
+                                        <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
                                     </div>
                                 </div>
                             </div>

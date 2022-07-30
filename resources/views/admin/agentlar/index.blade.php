@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 @section('content')
     <style>
@@ -41,29 +40,34 @@
             cursor: pointer;
         }
     </style>
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
+
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
-                        <div class="pull-left">
-                            <h2>Agentlar ro'yhati</h2>
+                        <div class="pull">
+                            <h2>Agentlar </h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
-                                <button onclick="store()" class="btn btn-success btn-lg" >
+                                <button onclick="store()" class="btn btn-success btn-lg">
                                     <i class="bi bi-plus-lg"></i>
                                     Agent qo'shish
                                 </button>
                             @endcan
+                        </div>
+                        <div class="pull-left">
+                            <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
                 <hr>
 
                 <!-- The Modal -->
-
                 <div class="card-body">
+
                     <div id="myModal" class="modal">
 
                         <!-- Modal content -->
@@ -76,19 +80,8 @@
                                         <label for="name">
                                             Agent nomi:
                                         </label>
-                                        <input type="text" name="name" class="form-control mb-3" id="name"  required>
+                                        <input type="text" name="name" class="form-control mb-3" id="name" required>
                                     </div>
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="parent_id">--}}
-{{--                                            Parent-kategoriya:--}}
-{{--                                        </label>--}}
-{{--                                        <select class="form-select" name="parent_id" id="parent_id" >--}}
-{{--                                            <option value="0" selected>Yo'q</option>--}}
-{{--                                            @foreach($agentlar as $agent)--}}
-{{--                                                <option value="{{$agent->id}}" >{{$cat->name}}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary" value="Saqlash">
                                     </div>
@@ -97,6 +90,8 @@
                         </div>
 
                     </div>
+
+
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th class="col-1">Id</th>
@@ -108,13 +103,11 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $agent->name }}</td>
-
-
                                 <td>
 
-                                        <a class="btn btn-info" href="{{ route('admin.agent.show',$agent->id) }}">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
+                                    <a class="btn btn-info" href="{{ route('admin.agent.show',$agent->id) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
 
                                     @can('category-edit')
                                         <a class="btn btn-warning" href="{{ route('admin.agent.edit',$agent->id) }}">
@@ -137,20 +130,14 @@
                     </table>
 
 
-{{--                    <div class="container">--}}
-{{--                        <div class="row justify-content-center">--}}
-{{--                            @if ($agentlar->links())--}}
-{{--                                <div class="mt-4 p-4 box has-text-centered">--}}
-{{--                                    {{ $agentlar->links() }}--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
+
+
 
 @section('script')
     @if(session('success'))

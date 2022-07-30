@@ -50,8 +50,8 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
-                        <div class="pull-left">
-                            <h2>Xaridlar:</h2>
+                        <div class="pull">
+                            <h2>Xaridlar </h2>
                             <p id="pbi"></p>
                         </div>
                         <div class="pull-right">
@@ -59,6 +59,9 @@
                                href="{{ route('admin.return.history') }}">
                                 <i class="fa fa-book-reader"></i>
                             </a>
+                        </div>
+                        <div class="pull-left">
+                            <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>

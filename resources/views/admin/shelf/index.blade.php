@@ -133,16 +133,16 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
-                        <div class="pull-left">
-                            <h2> Tokchalar: </h2>
+                        <div class="pull">
+                            <h2> Tokchalar </h2>
                         </div>
                         <div class="pull-right">
                             @can('shelf-create')
-                                {{--                                <a class="btn btn-success" href="{{ route('admin.shelf.create', ['id' => $id ]) }}">--}}
-                                {{--                                    Qo'shish </a>--}}
                                 <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
-
+                        </div>
+                        <div class="pull-left">
+                            <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
