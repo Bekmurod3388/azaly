@@ -57,7 +57,6 @@
                         </div>
                         <div class="pull-right">
                             @can('product-create')
-                                {{--                                <a class="btn btn-success" href="{{ route('admin.purchases.create') }}"> Qo'shish </a>--}}
                                 <input type="hidden" id="hidden_input" value="0">
                                 <button class="btn btn-success" id="myBtn1"> Qo'shish</button>
                             @endcan
@@ -79,22 +78,15 @@
 
                             <th class="" style="width: 30%">Amallar</th>
                         </tr>
+
                         @foreach ($purchases as $key => $purchase)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>
-                                    @foreach($agent as $w)
-                                        @if($w->id == $purchase->kontragent_id )
-                                            {{ $w->name }}
-                                        @endif
-                                    @endforeach
+                                    {{ $purchase->omborlar->name}}
                                 </td>
                                 <td>
-                                    @foreach($ware as $w)
-                                        @if($w->id == $purchase->warehouse_id )
-                                            {{ $w->name }}
-                                        @endif
-                                    @endforeach
+                                    {{ $purchase->agentlar->id }}
                                 </td>
                                 <td>{{ $purchase->AllSum }}</td>
                                 <td>{{ $purchase->created_at }}</td>
@@ -107,19 +99,13 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        {{--                                        <button class="btn btn-warning" onclick="fayzullo({{$purchase->id}},{{$purchase->warehouse_id}})"><i--}}
-                                        {{--                                                class="fa fa-eye"></i>--}}
-                                        {{--                                        </button>--}}
                                     @endcan
                                     @can('product-edit')
 
-                                        {{--                                        <a class="btn btn-warning"--}}
-                                        {{--                                           href="{{ route('admin.purchases.edit',$purchase->id) }}">--}}
-                                        {{--                                            <i class="fa fa-pen"></i>--}}
-                                        {{--                                        </a>--}}
                                         <button class="btn btn-warning" onclick="edit_1({{$purchase->id}})">
                                             <i class="fa fa-pen"> </i>
                                         </button>
+
                                     @endcan
                                     @can('product-delete')
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}
@@ -269,8 +255,8 @@
         </div>
 
 
-
-@include('admin.products.maxsulotlar')
+        {{--Products Modal --}}
+        @include('admin.products.maxsulotlar')
 
 
     </div>
