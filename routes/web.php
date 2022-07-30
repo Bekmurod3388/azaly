@@ -55,8 +55,6 @@ Route::prefix('api')->name('api.')->group(function () {
 });
 
 Route::get('/', function () {
-    $user = User::find(1);
-    Debugbar::error($user);
     return view('welcome');
 });
 

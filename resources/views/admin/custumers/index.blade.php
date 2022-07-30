@@ -40,13 +40,13 @@
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->passport }}</td>
                                     <td>{{ $user->discount }}</td>
-                                    <td>{{ $user->keshback }}</td>
-                                    <td> {{ $user->cotegory }}</td>
+                                    <td>{{ $user->keashback }}</td>
+                                        <td> {{ $user->categorea }}</td>
                                     <td >
 
                                         <form action="{{ route('admin.custumers.destroy',$user->id) }}" method="POST">
 
-                                            <a class="btn btn-info" href="{{ route('admin.custumers.show',$user->id) }}"><i class="fa fa-eye"></i></a>
+{{--                                            <a class="btn btn-info" href="{{ route('admin.custumers.show',$user->id) }}"><i class="fa fa-eye"></i></a>--}}
 
                                             <a class="btn btn-primary" href="{{ route('admin.custumers.edit',$user->id) }}"><i
                                                     class="fa fa-pen"></i></a>
