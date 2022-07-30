@@ -5,16 +5,13 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
-                        <div class="pull">
+                        <div class="pull-left">
                             <h2> Rollarni boshqarish </h2>
                         </div>
                         <div class="pull-right">
                             @can('role-create')
                                 <a class="btn btn-success" href="{{ route('admin.roles.create') }}"> Qo'shish </a>
                             @endcan
-                        </div>
-                        <div class="pull-left">
-                            <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>

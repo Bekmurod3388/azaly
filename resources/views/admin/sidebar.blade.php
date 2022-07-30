@@ -1,8 +1,8 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo d-flex justify-content-center">
-
         <a href="{{ route('admin.home') }}" class="app-brand-link">
               <span class="app-brand-logo demo">
+
                <img style="width: 100px; height: 100px; " src="{{ asset('/assets/img/avatars/logo.jpg') }}" alt="Bu rasm">
               </span>
 {{--            <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin Panel</span>--}}
