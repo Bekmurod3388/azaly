@@ -56,6 +56,9 @@ Route::prefix('api')->name('api.')->group(function () {
     Route::get('/products/categories/{slug}', [\App\Http\Controllers\Api\ProductsController::class,'category']);
 });
 
+Route::get('/', function () {
+    return view('welcome');
+});
 //Route::get('/', function () {
 //    $user = User::find(1);
 //    Debugbar::error($user);

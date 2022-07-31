@@ -71,7 +71,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">Keshbek</label>
-                                <input required="" type="number" name="keshback" class="form-control" id="discount"
+                                <input required="" type="number" name="keashback" class="form-control" id="discount"
                                        placeholder="Keshbek">
                             </div>
                         </div>
@@ -79,11 +79,11 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="building"> Category</label>
-                                <select name="warehouse_id" required id="warehouse" class="form-select form-control"
+                                <select name="categorea" required id="warehouse" class="form-select form-control"
                                         required>
-                                    <option value=""> Omborxona tanlang</option>
-                                    @foreach( $costumers as $cat)
-                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+{{--                                    <option value=""> Omborxona tanlang</option>--}}
+                                    @foreach( $cost as $c)
+                                        <option value="{{$c->id}}">{{$c->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
