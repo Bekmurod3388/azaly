@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Custumer_category;
 use App\Models\Custumer_log;
+use App\Models\Custumers;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class Custumer_logController extends Controller
@@ -16,9 +18,14 @@ class Custumer_logController extends Controller
     public function index()
     {
         $data = Custumer_log::all();
-
+        $c = Custumer_category::all();
+        $m = Custumers::all();
+        $p = Product::all();
         return view('admin.custumer_logs.index', [
             'custumer_logs' => $data,
+            'customer_categories'=>$c,
+            'custumers'=>$m,
+            'products'=>$p,
         ]);
     }
 
@@ -40,7 +47,10 @@ class Custumer_logController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Custumer_log::create($request->all());
+
+        return redirect()->route('admin.custumer_logs.index');
+
     }
 
     /**
@@ -74,7 +84,9 @@ class Custumer_logController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Custumer_log::where('id', $id)->update(['custumer_id'=>$request->custumer_id,'product_id'=>$request->product_id,'custumer_category_id'=>$request->custumer_category_id,'price' => $request->price,'count'=>$request->count]);
+        return redirect()->route('admin.custumer_logs.index');
+
     }
 
     /**
@@ -85,6 +97,8 @@ class Custumer_logController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Custumer_log::find($id);
+        $data->delete();
+        return redirect()->route('admin.custumer_logs.index');
     }
 }

@@ -71,28 +71,29 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th class="w-25"> Nomi </th>
-                            <th class=""> Mahsulot </th>
-                            <th class=""> Kategoriyasi </th>
-                            <th class=""> Narxi </th>
-                            <th class=""> Soni </th>
-                            <th class="w-25"> Harakat </th>
+                            <th class="w-25"> Nomi</th>
+                            <th class=""> Mahsulot</th>
+                            <th class=""> Kategoriyasi</th>
+                            <th class=""> Narxi</th>
+                            <th class=""> Soni</th>
+                            <th class="w-25"> Harakat</th>
 
                         </tr>
                         @foreach ($custumer_logs as $key => $cat)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $cat->id }}</td>
+                                <td>{{ $cat->custumer->name }}</td>
                                 <td>{{ $cat->product->name }}</td>
-                                <td>{{ $cat->customer_category->name }}</td>
-
+                                <td>{{ $cat->category->name }}</td>
+                                <td>{{ $cat->price }}</td>
+                                <td>{{ $cat->count }}</td>
                                 <td>
                                     @can('category-edit')
                                         <button class="btn btn-warning" onclick="edit({{ $cat->id }})"><i
                                                 class="fa fa-pen"></i></button>
                                     @endcan
                                     @can('category-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.custumer_categories.destroy', $cat->id],'style'=>'display:inline']) !!}
+                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.custumer_logs.destroy', $cat->id],'style'=>'display:inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                 data-toggle="tooltip">
                                             <span class="btn-label">
@@ -108,7 +109,6 @@
 
 
                     {{--   create--}}
-                    <!-- The Modal -->
                     <div id="create_modal" class="modal">
                         <!-- Modal content -->
                         <div class="modal-content">
@@ -126,21 +126,58 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{route('admin.custumer_categories.store')}}" method="post"
+                                    <form action="{{route('admin.custumer_logs.store')}}" method="post"
                                           enctype="multipart/form-data">
                                         @csrf
                                         @method('POST')
+
+
+                                        <div class="form-group">
+                                            <label for="building"> Mijoz </label>
+                                            <select name="custumer_id" required id="warehouse"
+                                                    class="form-select form-control"
+                                                    required>
+                                                @foreach( $custumers as $c)
+                                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="building"> Maxsulot </label>
+                                            <select name="product_id" required id="warehouse"
+                                                    class="form-select form-control"
+                                                    required>
+                                                @foreach( $products as $c)
+                                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="building"> Kategoriya </label>
+                                            <select name="custumer_category_id" required id="warehouse"
+                                                    class="form-select form-control"
+                                                    required>
+                                                @foreach( $customer_categories as $c)
+                                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
                                         <div class="form-group">
                                             <label for="name">
-                                                Kategoriya nomi:
+                                                Narxi
                                             </label>
-                                            <input type="text" name="name" class="form-control mb-3" id="name" required>
+                                            <input type="number" name="price" class="form-control mb-3" id="name"
+                                                   required>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">
-                                                Aksiya foizi:
+                                                Soni
                                             </label>
-                                            <input type="number" name="sale" class="form-control mb-3" id="name"
+                                            <input type="number" name="count" class="form-control mb-3" id="name"
                                                    required>
                                         </div>
 
@@ -155,7 +192,6 @@
 
 
                     {{--   edit--}}
-                    <!-- The Modal -->
                     <div id="edit_modal" class="modal">
                         <!-- Modal content -->
                         <div class="modal-content">
@@ -170,35 +206,68 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="card-body">
                                     <form action="" method="post" id="editForm" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
 
-                                                <div class="form-group">
-                                                    <label for="name">
-                                                        Kategoriya nomi:
-                                                    </label>
-                                                    <input type="text" name="name" class="form-control mb-3"
-                                                           id="namee" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="name">
-                                                        Aksiya foizi:
-                                                    </label>
-                                                    <input type="text" name="sale" class="form-control mb-3"
-                                                           id="salee" required>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                <button type="submit" class="btn btn-primary">Saqlash</button>
-                                            </div>
-
+                                        <div class="form-group">
+                                            <label for="building"> Mijoz </label>
+                                            <select name="custumer_id" required id="custumerr"
+                                                    class="form-select form-control"
+                                                    required>
+{{--                                                <option value="" id="custumerrr"> </option>--}}
+                                            @foreach( $custumers as $c)
+                                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="building"> Maxsulot </label>
+                                            <select name="product_id" required id="productt"
+                                                    class="form-select form-control"
+                                                    required>
+{{--                                                <option value="" id="producttt"> </option>--}}
+                                                @foreach( $products as $c)
+                                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="building"> Kategoriya </label>
+                                            <select name="custumer_category_id" required id="categoryy"
+                                                    class="form-select form-control"
+                                                    required>
+{{--                                                <option value="" id="categoryyy"> </option>--}}
+                                            @foreach( $customer_categories as $c)
+                                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="name">
+                                                Narxi
+                                            </label>
+                                            <input type="number" name="price" class="form-control mb-3" id="pricee"
+                                                   required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">
+                                                Soni
+                                            </label>
+                                            <input type="number" name="count" class="form-control mb-3" id="countt"
+                                                   required>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                            <button type="submit" class="btn btn-primary">Saqlash</button>
+                                        </div>
+
                                     </form>
                                 </div>
                             </div>
@@ -228,13 +297,14 @@
     @endif
 
     <script>
-        let category = @json($custumer_logs);
-        // console.log(category);
+        let custumer = @json($custumer_logs);
+        let custumers = @json($custumers);
+        let product = @json($products);
+        let category = @json($customer_categories);
+
         var modal = document.getElementById("create_modal");
         var modal1 = document.getElementById("edit_modal");
-
         var btn = document.getElementById("myBtn");
-
 
         var span = document.getElementsByClassName("close")[0];
         var span1 = document.getElementsByClassName("close")[1];
@@ -247,19 +317,32 @@
         function edit(id) {
             // console.log(id)
             // console.log(category)
-            for (let i = 0; i < category.length; i++) {
+            for (let i = 0; i < custumer.length; i++) {
 
+                if (id == custumer[i]['id']) {
+                    $('#pricee').val(custumer[i]['price']);
+                    $('#countt').val(custumer[i]['count']);
+                }
+                if (id == custumers[i]['id']) {
+                    $('#custumerr').val(custumers[i]['id']);
+                    $('#custumerrr').text(custumers[i]['name']);
+
+                }
+                 if (id == product[i]['id']) {
+                    $('#productt').val(product[i]['id']);
+                    $('#producttt').text(product[i]['name']);
+
+                }
                 if (id == category[i]['id']) {
-
-                    $('#namee').val(category[i]['name']);
-                    $('#salee').val(category[i]['sale']);
+                    $('#categoryy').val(custumer[i]['id']);
+                    $('#categoryyy').text(custumer[i]['name']);
 
                 }
 
             }
 
             modal1.style.display = "block";
-            $('#editForm').attr('action', '/admin/custumer_categories/' + id);
+            $('#editForm').attr('action', '/admin/custumer_logs/' + id);
 
         }
 

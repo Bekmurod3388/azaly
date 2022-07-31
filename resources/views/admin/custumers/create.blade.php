@@ -81,7 +81,6 @@
                                 <label for="building"> Category</label>
                                 <select name="categorea" required id="warehouse" class="form-select form-control"
                                         required>
-{{--                                    <option value=""> Omborxona tanlang</option>--}}
                                     @foreach( $cost as $c)
                                         <option value="{{$c->id}}">{{$c->name}}</option>
                                     @endforeach

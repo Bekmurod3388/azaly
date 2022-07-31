@@ -149,16 +149,20 @@
                 </div>
 
                 <div class="row pt-2">
+                    <a href="{{ route('admin.custumers.index') }}" class="col-md-6 d-flex text-black menu p-2">
+                        <i class="fas fa-handshake cars text-center naqd pl-4 pt-2 "></i>
+                        <div class="pl-4 " style="margin-left: 3%;">
+                            <h2> Xaridorlar </h2>
+                            <p>Xaridor ma'lumotlarini yaratish va o'zgartirish</p></div>
+                    </a>
+
                     <a href="{{ route('admin.custumer_logs.index') }}" class="col-md-6 d-flex text-black menu ">
                         <i class="menu-icon tf-icons fas fa-list-alt naqd cars text-center pl-4 pt-3"></i>
 
                         <div class="pl-5 pt-1">
                             <h2> Mijozlar </h2>
-
                             <p> Custumer Log </p></div>
                     </a>
-
-
 
 
                 </div>
@@ -253,18 +257,14 @@
                     </a>
                 </div>
                 <div class="row ">
+
                     <a href="#" class="col-md-6 d-flex text-black menu">
                         <i class="fas fa-file-signature cars text-center shartnoma pl-3 pt-3"></i>
                         <div class="pl-4 pt-2" style="margin-left: 1%;">
                             <h2>Shartnoma</h2>
                             <p>Yozuv ma'lumotlarini yaratish va o'zgartirish</p></div>
                     </a>
-                    <a href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu p-2">
-                        <i class="fas fa-handshake cars text-center naqd pl-4 pt-2 "></i>
-                        <div class="pl-4 " style="margin-left: 3%;">
-                            <h2>Xaridorlar</h2>
-                            <p>Xaridor ma'lumotlarini yaratish va o'zgartirish</p></div>
-                    </a>
+
                 </div>
                 <div class="row ">
 
