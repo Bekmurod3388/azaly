@@ -48,11 +48,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull">
-                            <h2>Kategoriyalar ro'yhati</h2>
+                            <h2> Mijoz Kategoriyalar ro'yhati</h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
-                                {{-- <a class="btn btn-success" href="{{ route('admin.warehouses.create') }}"> Create New WarseHouses</a>--}}
                                 <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
                         </div>
@@ -68,9 +67,45 @@
                 <div class="card-body">
 
 
+                    {{--  index--}}
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Id</th>
+                            <th class="w-25">Kategoriya nomi</th>
+                            <th class="">Sale</th>
+                            <th class="w-25">Harakat</th>
+
+                        </tr>
+                        @foreach ($custumer_categories as $key => $cat)
+                            <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $cat->name }}</td>
+                                <td>{{ $cat->sale }}</td>
+
+                                <td>
+                                    @can('category-edit')
+                                        <button class="btn btn-warning" onclick="edit({{ $cat->id }})"><i
+                                                class="fa fa-pen"></i></button>
+                                    @endcan
+                                    @can('category-delete')
+                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.custumer_categories.destroy', $cat->id],'style'=>'display:inline']) !!}
+                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                data-toggle="tooltip">
+                                            <span class="btn-label">
+                                                <i class="fa fa-trash"></i>
+                                            </span>
+                                        </button>
+                                        {!! Form::close() !!}
+                                    @endcan
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+
+
                     {{--   create--}}
                     <!-- The Modal -->
-                    <div id="myModal" class="modal">
+                    <div id="create_modal" class="modal">
                         <!-- Modal content -->
                         <div class="modal-content">
                             <span class="close">&times;</span>
@@ -87,7 +122,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data">
+                                    <form action="{{route('admin.custumer_categories.store')}}" method="post"
+                                          enctype="multipart/form-data">
                                         @csrf
                                         @method('POST')
                                         <div class="form-group">
@@ -97,21 +133,13 @@
                                             <input type="text" name="name" class="form-control mb-3" id="name" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="parent_id">
-                                                Parent-kategoriya:
+                                            <label for="name">
+                                                Aksiya foizi:
                                             </label>
-                                            <select class="form-select" name="parent_id" id="parent_id">
-                                                <option value="0" selected>Yo'q</option>
-                                                @foreach($categories as $cat)
-                                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                                @endforeach
-                                            </select>
+                                            <input type="number" name="sale" class="form-control mb-3" id="name"
+                                                   required>
                                         </div>
 
-                                            <div class="form-group">
-                                                <label for=rasm">Rasm</label>
-                                                <input required="" type="file" name="img" class="form-control" id="rasm" placeholder="rasm nomi">
-                                            </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary" value="Saqlash">
                                         </div>
@@ -124,7 +152,7 @@
 
                     {{--   edit--}}
                     <!-- The Modal -->
-                    <div id="myModal1" class="modal">
+                    <div id="edit_modal" class="modal">
                         <!-- Modal content -->
                         <div class="modal-content">
                             <span class="close">&times;</span>
@@ -144,99 +172,32 @@
                                         @method('PUT')
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
+
                                                 <div class="form-group">
                                                     <label for="name">
                                                         Kategoriya nomi:
                                                     </label>
                                                     <input type="text" name="name" class="form-control mb-3"
-                                                           id="namecat" required>
+                                                           id="namee" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="parent_id">
-                                                        Parent-kategoriya:
+                                                    <label for="name">
+                                                        Aksiya foizi:
                                                     </label>
-                                                    <select class="form-select" name="parent_id" id="parent_id1">
-                                                    </select>
+                                                    <input type="text" name="sale" class="form-control mb-3"
+                                                           id="salee" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for=rasm">Rasm</label>
-                                                    <input required="" type="file" name="img" class="form-control" id="rasm" placeholder="rasm nomi">
-                                                </div>
+
                                             </div>
 
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                                 <button type="submit" class="btn btn-primary">Saqlash</button>
                                             </div>
+
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-                    {{--  index--}}
-                    <table class="table table-bordered table-hover">
-                        <tr>
-                            <th>Id</th>
-                            <th class="w-25">Kategoriya nomi</th>
-                            <th class="">Slug</th>
-
-                            <th class="w-25">Parent : kategoriya</th>
-                            <th class="w-25">img</th>
-                            <th class="w-25">Harakat</th>
-
-                        </tr>
-                        @foreach ($categories as $key => $cat)
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $cat->name }}</td>
-                                <td>{{ $cat->slug }}</td>
-
-                                <td>
-                                    @if( $cat->parent_id==0)
-                                        Yo'q @else
-                                        {{$cat->cat2->name}}
-                                </td>
-                                @endif
-                               <td> <img src="{{ asset('Image/'.$cat->img) }}"
-                                     style="height: 100px; width: 150px;">
-                               </td>
-
-                                <td>
-                                    {{--                                    @can('category-list')--}}
-                                    {{--                                        <a class="btn btn-info" href="{{ route('admin.categories.show',$cat->id) }}">--}}
-                                    {{--                                            <i class="fa fa-eye"></i>--}}
-                                    {{--                                        </a>--}}
-                                    {{--                                    @endcan--}}
-                                    @can('category-edit')
-
-                                        <button class="btn btn-warning" onclick="edit({{ $cat->id }})"><i
-                                                class="fa fa-pen"></i></button>
-                                    @endcan
-                                    @can('category-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.categories.destroy', $cat->id],'style'=>'display:inline']) !!}
-                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                data-toggle="tooltip">
-                                            <span class="btn-label">
-                                                <i class="fa fa-trash"></i>
-                                            </span>
-                                        </button>
-                                        {!! Form::close() !!}
-                                    @endcan
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
-
-
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            @if ($categories->links())
-                                <div class="mt-4 p-4 box has-text-centered">
-                                    {{ $categories->links() }}
-                                </div>
-                            @endif
                         </div>
                     </div>
 
@@ -262,13 +223,13 @@
     @endif
 
     <script>
-        let warehouses = @json($categories);
-        console.log(warehouses);
-        var modal = document.getElementById("myModal");
-        var modal1 = document.getElementById("myModal1");
-        let sel = document.getElementById('parent_id');
+        let category = @json($custumer_categories);
+        // console.log(category);
+        var modal = document.getElementById("create_modal");
+        var modal1 = document.getElementById("edit_modal");
+
         var btn = document.getElementById("myBtn");
-        let rasm=document.getElementById('rasm');
+
 
         var span = document.getElementsByClassName("close")[0];
         var span1 = document.getElementsByClassName("close")[1];
@@ -279,37 +240,22 @@
         }
 
         function edit(id) {
-            console.log(id);
-            for (let i = 0; i < warehouses['data'].length; i++) {
-                console.log(i);
+            // console.log(id)
+            // console.log(category)
+            for (let i = 0; i < category.length; i++) {
 
-                if (id == warehouses['data'][i]['id']) {
+                if (id == category[i]['id']) {
 
-                    console.log('ifni ichi');
-                    $('#namecat').val(warehouses['data'][i]['name']);
-                    $('#parent_id1').find('option').remove();
+                    $('#namee').val(category[i]['name']);
+                    $('#salee').val(category[i]['sale']);
 
-                    if (warehouses['data'][i]['parent_id'] == 0) {
-                        $('#parent_id1').append('<option value=' + 0 + 'selected >' + 'Yo\'q' + '</option>');
-                    }
-
-                    for (let j = 0; j < warehouses['data'].length; j++) {
-                        if (warehouses['data'][i]['parent_id'] == warehouses['data'][j]['id']) {
-                            $('#parent_id1').append('<option value=' + warehouses['data'][j]['id'] + 'selected >'
-                                + warehouses['data'][j]['name'] + '</option>');
-                            $('#parent_id1').append('<option value=' + 0 + '>' + 'Yo\'q' + '</option>');
-                        } else {
-                            $('#parent_id1').append('<option value=' + warehouses['data'][j]['id'] + '>'
-                                + warehouses['data'][j]['name'] + '</option>');
-                        }
-
-                    }
-                    break;
                 }
+
             }
 
-            $('#editForm').attr('action', '/admin/categories/' + id);
             modal1.style.display = "block";
+            $('#editForm').attr('action', '/admin/custumer_categories/' + id);
+
         }
 
         // When the user clicks on <span> (x), close the modal
@@ -331,6 +277,7 @@
         }
     </script>
     <script>
+
         $('.show_confirm').click(function (event) {
             var form = $(this).closest("form");
             var name = $(this).data("name");

@@ -32,6 +32,8 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('shelf', \App\Http\Controllers\ShelfController::class);
     Route::resource('agent', \App\Http\Controllers\AgentController::class);
     Route::resource('custumers', \App\Http\Controllers\CustumersController::class);
+    Route::resource('custumer_categories', \App\Http\Controllers\Custumer_categoryController::class);
+    Route::resource('custumer_logs', \App\Http\Controllers\Custumer_logController::class);
 
     Route::get('/return', [\App\Http\Controllers\QaytishController::class, 'index'])->name('return.index');
     Route::get('/return/history', [\App\Http\Controllers\QaytishController::class, 'history'])->name('return.history');
