@@ -78,7 +78,7 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label for="building"> Category</label>
+                                <label for="building"> Kategoriya </label>
                                 <select name="categorea" required id="warehouse" class="form-select form-control"
                                         required>
                                     @foreach( $cost as $c)

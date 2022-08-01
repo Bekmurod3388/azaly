@@ -23,11 +23,12 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             CategorySeeder::class,
-            AgentSeeder::class,
+//            AgentSeeder::class,
             WerehouseSeeder::class,
             ShelfsSeeder::class,
-           PermissionSeeder::class,
+//           PermissionSeeder::class,
            CreateAdminUserSeeder::class,
+
         ]);
     }
 }

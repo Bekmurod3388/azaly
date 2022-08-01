@@ -116,13 +116,13 @@
                             <p>Foydalanuvchiar haqida malumot </p></div>
                     </a>
 
-                    <a href="{{ route('admin.roles.index') }}" class=" col-md-6 d-flex text-black menu ">
+                    <a href="{{ route('admin.custumers.index') }}" class=" col-md-6 d-flex text-black menu ">
                         <i class="menu-icon tf-icons fas fa-user-shield cars text-center pl-4 pt-3"></i>
 
 
                         <div class="pl-5 pt-2" style="margin-left: -5.6%;">
-                            <h2>Rollarni boshqarish</h2>
-                            <p>Rollarni boshqarish </p></div>
+                            <h2>Mijozlar</h2>
+                            <p>Mijozlar ro'yhati</p></div>
                     </a>
 
 
@@ -140,7 +140,7 @@
                         <i class="menu-icon tf-icons fas fa-list-alt naqd cars text-center pl-4 pt-3"></i>
 
                         <div class="pl-5 pt-1">
-                            <h2> Haridor Kategoriyalar </h2>
+                            <h2> Xaridor Kategoriyalar </h2>
                             <p> Kategoriyalar haqida </p>
                         </div>
                     </a>
@@ -157,10 +157,12 @@
                     </a>
 
                     <a href="{{ route('admin.custumer_logs.index') }}" class="col-md-6 d-flex text-black menu ">
-                        <i class="menu-icon tf-icons fas fa-list-alt naqd cars text-center pl-4 pt-3"></i>
+                        <i class="menu-icon tf-icons fas fa-user-tie cars text-center naqd pl-4 pt-3 "></i>
 
-                        <div class="pl-5 pt-1">
-                            <h2> Mijozlar </h2>
+
+
+                            <div class="pl-5 pt-1">
+                            <h2> Sotish </h2>
                             <p> Custumer Log </p></div>
                     </a>
 
@@ -260,29 +262,24 @@
 
                     <a href="#" class="col-md-6 d-flex text-black menu">
                         <i class="fas fa-file-signature cars text-center shartnoma pl-3 pt-3"></i>
-                        <div class="pl-4 pt-2" style="margin-left: 1%;">
+                        <div class="pl-4 pt-2" style="margin-left: 2%;">
                             <h2>Shartnoma</h2>
                             <p>Yozuv ma'lumotlarini yaratish va o'zgartirish</p></div>
                     </a>
-
-                </div>
-                <div class="row ">
-
-                    {{--            <a   href="{{ route('admin.sizes.index') }}" class="col-md-6 d-flex text-black menu ">--}}
-                    {{--                <i class="fas fa-child cars text-center ml-5 mt-1"></i>--}}
-                    {{--                <div class="pl-5">--}}
-                    {{--                    <h2>Hajmi</h2>--}}
-                    {{--                    <p>Bundan tashqari, nomenklaturaning xususiyatlari</p></div>--}}
-                    {{--            </a>--}}
-
-                </div>
-                <div class="row ">
                     <a href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu">
                         <i class="fab fa-cc-mastercard cars pl-3 pt-3"></i>
-                        <div class="pl-4 pt-3">
+                        <div class="pl-4 pt-3" style="margin-left: 2.8%;">
                             <h2>Xaridor kartalari</h2>
                             <p>Diskont,jamg'arma,bonus kartalari va sovg'a sertifikatlarini boshqarish</p></div>
                     </a>
+                </div>
+                <div class="row ">
+{{--                    <a href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu">--}}
+{{--                        <i class="fab fa-cc-mastercard cars pl-3 pt-3"></i>--}}
+{{--                        <div class="pl-4 pt-3">--}}
+{{--                            <h2>Xaridor kartalari</h2>--}}
+{{--                            <p>Diskont,jamg'arma,bonus kartalari va sovg'a sertifikatlarini boshqarish</p></div>--}}
+{{--                    </a>--}}
                     {{--            <a   href="{{ route('admin.agent.index') }}" class="col-md-6 d-flex text-black menu p-2">--}}
                     {{--                <i class="fas fa-people-carry cars text-center ml-4 mt-2"></i>--}}
                     {{--                <div class="pl-5">--}}
@@ -326,7 +323,7 @@
                     {{--                    <h2>Kassalar</h2>--}}
                     {{--                    <p>Kassani yaratish va o'zgartirish.Savdo uskunalari uskunalari joriy kassani sozlash</p></div>--}}
                     {{--            </a>--}}
-                    <a href="#" class="col-md-6 d-flex text-black menu">
+                    <a href="route('admin.roles.index'" class="col-md-6 d-flex text-black menu">
                         <i class="fas fa-link cars text-center pl-4 pt-3"></i>
                         <div class="pl-4 pt-2">
                             <h2>Konfiguratsiya</h2>

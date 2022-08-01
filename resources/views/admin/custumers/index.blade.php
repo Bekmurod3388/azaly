@@ -22,6 +22,7 @@
                 <div class="card-body">
                     <table class="table table-bordered table-hover" style="font-size: 12px;">
                         <tr>
+
                             <th style="width: 2%">Id</th>
                             <th>F.I.Sh</th>
                             <th>Olgan Tavar</th>
@@ -30,7 +31,7 @@
                             <th>Passport</th>
                             <th>Chegirma</th>
                             <th>Keshbek</th>
-                            <th  class="w-25">Categotya</th>
+                            <th  class="w-25">Kategoriya</th>
                             <th class="w-25">Amallar</th>
                         </tr>
                         @foreach ($data as $key => $user)

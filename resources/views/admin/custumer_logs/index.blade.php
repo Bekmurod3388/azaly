@@ -51,9 +51,9 @@
                             <h2> Mijozlar ro'yhati</h2>
                         </div>
                         <div class="pull-right">
-                            @can('category-create')
+{{--                            @can('category-create')--}}
                                 <button class="btn btn-success" id="myBtn"> Qo'shish</button>
-                            @endcan
+{{--                            @endcan--}}
                         </div>
                         <div class="pull-left">
                             <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
@@ -71,7 +71,7 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Id</th>
-                            <th class="w-25"> Nomi</th>
+                            <th class=""> Nomi</th>
                             <th class=""> Mahsulot</th>
                             <th class=""> Kategoriyasi</th>
                             <th class=""> Narxi</th>
