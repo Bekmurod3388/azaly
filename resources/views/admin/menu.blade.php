@@ -323,7 +323,7 @@
                     {{--                    <h2>Kassalar</h2>--}}
                     {{--                    <p>Kassani yaratish va o'zgartirish.Savdo uskunalari uskunalari joriy kassani sozlash</p></div>--}}
                     {{--            </a>--}}
-                    <a href="route('admin.roles.index'" class="col-md-6 d-flex text-black menu">
+                    <a href="{{route('admin.roles.index')}}" class="col-md-6 d-flex text-black menu">
                         <i class="fas fa-link cars text-center pl-4 pt-3"></i>
                         <div class="pl-4 pt-2">
                             <h2>Konfiguratsiya</h2>

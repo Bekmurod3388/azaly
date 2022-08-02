@@ -9,9 +9,9 @@
                             <h2> Foydalanuvchilar </h2>
                         </div>
                         <div class="pull-right">
-                            @can('role-create')
+{{--                            @can('role-create')--}}
                                 <a class="btn btn-success" href="{{ route('admin.custumers.create') }}"> Qo`shish </a>
-                            @endcan
+{{--                            @endcan--}}
                         </div>
                         <div class="pull-left">
                             <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
@@ -31,7 +31,7 @@
                             <th>Passport</th>
                             <th>Chegirma</th>
                             <th>Keshbek</th>
-                            <th  class="w-25">Kategoriya</th>
+                            <th  class="">Kategoriya</th>
                             <th class="w-25">Amallar</th>
                         </tr>
                         @foreach ($data as $key => $user)

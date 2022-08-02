@@ -56,10 +56,10 @@
                             <p id="pbi"></p>
                         </div>
                         <div class="pull-right">
-                            @can('product-create')
+{{--                            @can('product-create')--}}
                                 <input type="hidden" id="hidden_input" value="0">
                                 <button class="btn btn-success" id="myBtn1"> Qo'shish</button>
-                            @endcan
+{{--                            @endcan--}}
                         </div>
                         <div class="pull-left">
                             <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>

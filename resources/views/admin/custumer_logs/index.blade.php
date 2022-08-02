@@ -142,17 +142,18 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
                                         <div class="form-group">
-                                            <label for="building"> Maxsulot </label>
+                                            <label for="building"> Mahsulot </label>
                                             <select name="product_id" required id="warehouse"
                                                     class="form-select form-control"
                                                     required>
-                                                @foreach( $products as $c)
+                                                @foreach( $customer_categories as $c)
                                                     <option value="{{$c->id}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+
+
 
                                         <div class="form-group">
                                             <label for="building"> Kategoriya </label>
@@ -285,6 +286,21 @@
 
 
 @section('script')
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#mytable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    $('#mahsulot').val($(this).text());
+                });
+            });
+        });
+    </script>
+
+
+
     @if(session('success'))
 
         <script>

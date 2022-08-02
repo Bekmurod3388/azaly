@@ -27,7 +27,7 @@ class CustumersController extends Controller
      */
     public function create()
     {
-        $costumers = WareHous::all();
+        $costumers = Category::all();
       return view('admin.custumers.create',[
           'cost'=> $costumers,
       ]);
