@@ -127,6 +127,7 @@
                         </div>
                         <div class="pull-right">
                             @can('category-create')
+                                {{-- <a class="btn btn-success" href="{{ route('admin.warehouses.create') }}"> Create New WarseHouses</a>--}}
                                 <button class="btn btn-success" id="myBtn"> Qo'shish</button>
                             @endcan
                         </div>

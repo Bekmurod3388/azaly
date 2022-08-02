@@ -47,7 +47,6 @@
     <div class="col-md-12">
         <div class="form">
 
-
             <div id="myModal" class="modal">
 
                 <!-- Modal content -->
@@ -86,10 +85,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
+            <!-- The Modal -->
 
             <div id="myModal1" class="modal">
                 <!-- Modal content -->

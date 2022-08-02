@@ -48,7 +48,7 @@ class PurchasesController extends Controller
             $product_log = Product_log::all();
         else
             $product_log = Product_log::where('purchase_id', $id)->get();
-            $size = Size::all();
+        $size = Size::all();
         if ($id == NULL)
             $shelf = Shelf::all();
         else

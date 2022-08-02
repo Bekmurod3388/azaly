@@ -1,3 +1,4 @@
+
 {{--  Mahsulotlar: ( index )--}}
 @if($layout == 'index')
     <div id="show_table" class="card">
@@ -30,39 +31,58 @@
                         <th class="w-25">Amallar</th>
                     </tr>
                     @foreach ($product_logs as $key => $p)
-                        @if($p->count > 0 )
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $p->id }}</td>
-                                <td>{{ $p->products->name }}</td>
-                                <td>
-                                    {{ $p->sum_came }}
-                                </td>
-                                <td>
-                                    {{ $p->count}}
-                                </td>
-                                <td>
-                                    {{ $p->products->category->name }}
-                                </td>
-                                <td>{{$p->shelfs->name}}
-                                </td>
+                        <tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $p->id }}</td>
+                            <td>{{ $p->products->name }}</td>
+                            <td>
+                                {{ $p->sum_came }}
+                            </td>
+                            <td>
+                                {{ $p->count}}
+                            </td>
+                            <td>
+                                {{ $p->products->category->name }}
+                            </td>
+                            <td>{{$p->shelfs->name}}
+                            </td>
 
-                                <td>
+                            <td>
+                                {{--                                                                                    @can('category-list')--}}
 
-                                    <button class="btn btn-info" onclick="show({{$p->products->id}})">
-                                        <i class="fa fa-eye"> </i>
+                                {{--                                                <a class="btn btn-info"--}}
+                                {{--                                                   href="{{ route('admin.products.show',$p->id) }}">--}}
+                                {{--                                                    <i class="fa fa-eye"></i>--}}
+                                {{--                                                </a>--}}
+                                {{--                                            @endcan--}}
+
+                                <button class="btn btn-info" onclick="show({{$p->products->id}})">
+                                    <i class="fa fa-eye"> </i>
+                                </button>
+
+                                @can('size-edit')
+                                    {{--                                              <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">--}}
+                                    {{--                                                    <i class="fa fa-pen"></i>--}}
+                                    {{--                                                </a>--}}
+                                    <button class="btn btn-warning" onclick="edit({{$p->products->id}})">
+                                        <i class="fa fa-pen"> </i>
                                     </button>
+                                @endcan
 
-                                    @can('size-edit')
-                                        <button class="btn btn-warning" onclick="edit({{$p->products->id}})">
-                                            <i class="fa fa-pen"> </i>
-                                        </button>
-                                    @endcan
+                                @can('product-delete')
+                                    {{--                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $p->id],'style'=>'display:inline']) !!}--}}
+                                    {{--                                                <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+                                    {{--                                                        data-toggle="tooltip">--}}
+                                    {{--                                                <span class="btn-label">--}}
+                                    {{--                                                    <i class="fa fa-trash"></i>--}}
+                                    {{--                                                </span>--}}
+                                    {{--                                                </button>--}}
+                                    {{--                                                {!! Form::close()!!}--}}
+                                @endcan
 
-                                </td>
+                            </td>
 
-                            </tr>
-                        @endif
+                        </tr>
                     @endforeach
                 </table>
             </div>
@@ -155,7 +175,7 @@
 
                                 <div class="form-group">
                                     <strong>Dona sotish bahosi:</strong>
-                                    <p id="dona" style="color: red"></p>
+                                                                                <p id="dona" style="color: red"></p>
                                     {{--                                            <p id="dona1" style="color: red"></p>--}}
                                     <input type="number" required name="sum_sell" id="sum_sell"
                                            class="form-control mb-3">
@@ -216,7 +236,6 @@
             </div>
         </div>
     </div>
-
 
     {{--Edit--}}
     <div id="myModal1" class="modal">
@@ -329,7 +348,6 @@
         </div>
     </div>
 
-
     {{--Show--}}
     <div id="myModal2" class="modal">
         <!-- Modal content -->
@@ -418,6 +436,51 @@
         </div>
     </div>
 
-    @include('admin.products.baho')
+
+    {{--baho--}}
+    <div id="myModal5" class="modal">
+        <div class="modal-content">
+            <span class="close" id="get">&times;</span>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-12 margin-tb">
+                            <div class="pull-left">
+                                <h2> baho </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <form action="{{route('admin.baho')}}" method="post">
+                        @csrf
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <input type="hidden" id="xarid_id" name="id">
+                                <div class="form-group">
+                                    <strong>Baho</strong>
+                                    <input type="number" name="baho" id="name" class="form-control mb-3">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary">Saqlash</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
 
 </div>

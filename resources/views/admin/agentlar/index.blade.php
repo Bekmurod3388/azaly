@@ -44,10 +44,11 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
+
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull">
-                            <h2>Agentlar ro'yhati</h2>
+                            <h2>Agentlar </h2>
                         </div>
                         <div class="pull-right">
                             @can('category-create')
@@ -65,8 +66,8 @@
                 <hr>
 
                 <!-- The Modal -->
-
                 <div class="card-body">
+
                     <div id="myModal" class="modal">
 
                         <!-- Modal content -->
@@ -81,17 +82,6 @@
                                         </label>
                                         <input type="text" name="name" class="form-control mb-3" id="name" required>
                                     </div>
-                                    {{--                                    <div class="form-group">--}}
-                                    {{--                                        <label for="parent_id">--}}
-                                    {{--                                            Parent-kategoriya:--}}
-                                    {{--                                        </label>--}}
-                                    {{--                                        <select class="form-select" name="parent_id" id="parent_id" >--}}
-                                    {{--                                            <option value="0" selected>Yo'q</option>--}}
-                                    {{--                                            @foreach($agentlar as $agent)--}}
-                                    {{--                                                <option value="{{$agent->id}}" >{{$cat->name}}</option>--}}
-                                    {{--                                            @endforeach--}}
-                                    {{--                                        </select>--}}
-                                    {{--                                    </div>--}}
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary" value="Saqlash">
                                     </div>
@@ -100,6 +90,8 @@
                         </div>
 
                     </div>
+
+
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th class="col-1">Id</th>
@@ -111,8 +103,6 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $agent->name }}</td>
-
-
                                 <td>
 
                                     <a class="btn btn-info" href="{{ route('admin.agent.show',$agent->id) }}">
@@ -140,20 +130,14 @@
                     </table>
 
 
-                    {{--                    <div class="container">--}}
-                    {{--                        <div class="row justify-content-center">--}}
-                    {{--                            @if ($agentlar->links())--}}
-                    {{--                                <div class="mt-4 p-4 box has-text-centered">--}}
-                    {{--                                    {{ $agentlar->links() }}--}}
-                    {{--                                </div>--}}
-                    {{--                            @endif--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
+
+
 
 @section('script')
     @if(session('success'))

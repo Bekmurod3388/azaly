@@ -30,7 +30,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
         $categories = Category::paginate(10);
         return view('admin.categories.index',compact('categories'));
     }

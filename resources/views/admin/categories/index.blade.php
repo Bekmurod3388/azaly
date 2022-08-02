@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+
     <style>
         /* The Modal (background) */
         .modal {
@@ -40,8 +41,6 @@
             cursor: pointer;
         }
     </style>
-
-
 
     <div class="col-md-12">
         <div class="card">

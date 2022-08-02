@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,9 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('purchases', \App\Http\Controllers\PurchasesController::class);
     Route::resource('shelf', \App\Http\Controllers\ShelfController::class);
     Route::resource('agent', \App\Http\Controllers\AgentController::class);
+    Route::resource('custumers', \App\Http\Controllers\CustumersController::class);
+    Route::resource('custumer_categories', \App\Http\Controllers\Custumer_categoryController::class);
+    Route::resource('custumer_logs', \App\Http\Controllers\Custumer_logController::class);
 
     Route::get('/return', [\App\Http\Controllers\QaytishController::class, 'index'])->name('return.index');
     Route::get('/return/history', [\App\Http\Controllers\QaytishController::class, 'history'])->name('return.history');
@@ -52,5 +56,12 @@ Route::prefix('api')->name('api.')->group(function () {
     Route::get('/products/categories/{slug}', [\App\Http\Controllers\Api\ProductsController::class,'category']);
 });
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
+//Route::get('/', function () {
+//    $user = User::find(1);
+//    Debugbar::error($user);
+//    return view('welcome');
+//});
 

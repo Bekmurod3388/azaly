@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull">
-                            <h2>Xaridlar:</h2>
+                            <h2>Xaridlar </h2>
                             <p id="pbi"></p>
                         </div>
                         <div class="pull-right">

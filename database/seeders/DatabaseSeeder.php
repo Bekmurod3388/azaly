@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             ShelfsSeeder::class,
            PermissionSeeder::class,
            CreateAdminUserSeeder::class,
+
         ]);
     }
 }
