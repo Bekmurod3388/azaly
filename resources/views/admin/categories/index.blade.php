@@ -200,7 +200,7 @@
                                         {{$cat->cat2->name}}
                                 </td>
                                 @endif
-                               <td> <img src="{{ asset('Image/'.$cat->img) }}"
+                               <td> <img src="{{ asset('images/categories/'.$cat->img) }}"
                                      style="height: 100px; width: 150px;">
                                </td>
 
