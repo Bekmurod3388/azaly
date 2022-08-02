@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Custumers;
 use App\Models\WareHous;
+use App\Rules\PassportNumber;
+use App\Rules\PhoneNumber;
 use Illuminate\Http\Request;
 
 class CustumersController extends Controller
@@ -41,7 +43,11 @@ class CustumersController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
+        $validated = $request->validate([
+            'phone' => new PhoneNumber(),
+            'passport' => new PassportNumber(),
+        ]);
+
         $zz=new Custumers;
         $zz->name=$request->name;
         $zz->received_goods=$request->received_goods;
