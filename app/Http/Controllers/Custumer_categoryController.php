@@ -40,6 +40,8 @@ class Custumer_categoryController extends Controller
      */
     public function store(Request $request)
     {
+
+
         Custumer_category::create($request->all());
         return redirect()->route('admin.custumer_categories.index');
 
