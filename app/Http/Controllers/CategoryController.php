@@ -18,11 +18,12 @@ class CategoryController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:category-create', ['only' => ['create','store']]);
-        $this->middleware('permission:category-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:category-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:category-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,101 +32,87 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(10);
-        return view('admin.categories.index',compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('admin.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param CategoryRequest $request
-     * @param $filaname
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(CategoryRequest $request)
     {
-
         $category = new Category();
         $category['name'] = $request['name'];
-        if($request->file('img')){
-            $file=$request->file('img');
-            $filename=time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('images/categories'),$filename);
-            $category['img']=$filename;
-        }
-        $data=$request['name'];
-        $data=strtolower($data);
-//        $slug=str_slug($data,'-');
 
-        $bormi=Category::all()->where('slug','slug');
-        if(count($bormi)>0){
+        if ($request->file('img')) {
+            $file = $request->file('img');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/categories'), $filename);
+            $category['img'] = $filename;
+        }
+
+        $data = $request['name'];
+        $data = strtolower($data);
+        $slug = str_slug($data, '-');
+
+        $bormi = Category::all()->where('slug', $slug);
+        if (count($bormi) > 0) {
             return redirect()->route('admin.categories.index')
                 ->withErrors("Bu nomdagi kategoriyadan oldin foydalanilgan. Iltimos boshqa nomdan foydalaning !");
         }
-        $category['slug'] = 'slug';
+
+        $category['slug'] = $slug;
         $category['parent_id'] = $request['parent_id'];
         $category->save();
-        return redirect()->route('admin.categories.index')->with('success','category created successfully');
+
+        return redirect()->route('admin.categories.index')->with('success', 'category created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $category = Category::find($id);
-        return view('admin.categories.show',[
-            'category'=>$category,
+        return view('admin.categories.show', [
+            'category' => $category,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $c=Category::all();
+        $c = Category::all();
         $category = Category::find($id);
-        return view('admin.categories.edit',[
-            'category'=>$category,
-            'categories'=>$c
+        return view('admin.categories.edit', [
+            'category' => $category,
+            'categories' => $c
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(CategoryRequest $request, $id)
     {
 
 //        dd($request->validated());
-        $category =  Category::find($id);
+        $category = Category::find($id);
 
-        if($category['name'] != $request['name']) {
+        if ($category['name'] != $request['name']) {
 
             $category['name'] = $request['name'];
             $data = $request['name'];
-            $slug=str_slug($data,'-');
-
+            $slug = str_slug($data, '-');
 
 
             $bormi = Category::all()->where('slug', $slug);
@@ -135,36 +122,31 @@ class CategoryController extends Controller
             }
             $category['slug'] = $slug;
         }
-        $category['parent_id'] =(int) $request['parent_id'];
-        \Illuminate\Support\Facades\File::delete(public_path('images/categories'.$category['img']));
-        $filename=time().'.'.$request->img->getClientOriginalExtension();
-        $request->img->move('images/categories',$filename);
-        $category['img']=$filename;
+        $category['parent_id'] = (int)$request['parent_id'];
+        \Illuminate\Support\Facades\File::delete(public_path('images/categories' . $category['img']));
+        $filename = time() . '.' . $request->img->getClientOriginalExtension();
+        $request->img->move('images/categories', $filename);
+        $category['img'] = $filename;
 
         $category->save();
 
-        return redirect()->route('admin.categories.index')->with('success','category updated successfully');
+        return redirect()->route('admin.categories.index')->with('success', 'category updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Category $category)
     {
 
-        \Illuminate\Support\Facades\File::delete(public_path('Image/'.$category['img']));
-        $id=$category->id;
-        $eski=Category::all()->where('parent_id',$id);
-        foreach ($eski as $e){
-            $t=Category::find($e->id);
-            $t->parent_id=0;
+        \Illuminate\Support\Facades\File::delete(public_path('Image/' . $category['img']));
+        $id = $category->id;
+        $eski = Category::all()->where('parent_id', $id);
+        foreach ($eski as $e) {
+            $t = Category::find($e->id);
+            $t->parent_id = 0;
             $t->save();
         }
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('success','category created successfully');
+        return redirect()->route('admin.categories.index')->with('success', 'category created successfully');
 
     }
 }
