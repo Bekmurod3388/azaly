@@ -41,53 +41,135 @@
         }
     </style>
 
-    <!-- The Modal -->
     <div class="col-md-12">
-
         <div class="card">
             <div class="card-header">
+
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
-                        <div class="pull-left">
-                            <h2> Omborxonalar </h2>
+                        <div class="pull">
+                            <h2>Omborxonalar </h2>
                         </div>
                         <div class="pull-right">
-
-
-{{--                                <input type="hidden" id="kochir_id" >--}}
-                                <a class="btn btn-success" id="myBtn6"  href="{{route('admin.kochirish.create')}}" > Qo'shish</a>
-
+                            @can('category-create')
+                                <button onclick="store()" class="btn btn-success btn-lg">
+                                    <i class="bi bi-plus-lg"></i>
+                                    Qo'shish
+                                </button>
+                            @endcan
+                        </div>
+                        <div class="pull-left">
+                            <a class="btn btn-primary" href="{{ route('admin.kochirish.index') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
                 <hr>
+
+                <!-- The Modal -->
                 <div class="card-body">
+
+                    <div id="myModal6" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div class="container p-1 border">
+                                <form action="{{route('admin.kochirish.store')}}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="name">
+                                           Omborxonalar
+                                        </label>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+{{--                                                <strong> Kontragent: </strong>--}}
+                                                <select name="ombor1" required id="building"
+                                                        class="form-select form-control"
+                                                        required>
+                                                    <option value=""> Qayerdan</option>
+                                                    @foreach($kochirish2 as $cat)
+                                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <br>
+                                                <select name="ombor2" required id="building"
+                                                        class="form-select form-control"
+                                                        required>
+                                                    <option value=""> Qayerga</option>
+                                                    @foreach($kochirish2 as $cat)
+                                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary" value="Saqlash">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                     <table class="table table-bordered table-hover">
                         <tr>
-                            <th>Id</th>
-                            <th>Omborxona 1</th>
-                            <th>Omborxona 2</th>
-                            <th class="w-25">Amallar</th>
+                            <th class="col-1">Id</th>
+                            <th class="col-1">Ombor1</th>
+                            <th class="col-1">ombor2</th>
+                            <th class="col-1">amalla</th>
+
                         </tr>
-                        @foreach ($kochirish as $key => $size)
+                        @foreach ($kochirish as $key => $agent)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $size->ombor1}}</td>
-                                <td>{{ $size->ombor2}}</td>
+                                <td>{{ $agent->ombor1 }}</td>
+                                <td>{{ $agent->ombor2 }}</td>
                                 <td>
-                                    <a href="{{route('admin.kochirish.show',$size->id)}}" class="btn btn-primary"> <i class="fa fa-eye"> </i></a>
 
+                                    <a class="btn btn-info"  href="{{route('admin.kochirilganlar.show',$agent->id)}}" >
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+{{--                                    @can('category-edit')--}}
+{{--                                        <a class="btn btn-warning" href="{{ route('admin.agent.edit',$agent->id) }}">--}}
+{{--                                            <i class="fa fa-pen"></i>--}}
+{{--                                        </a>--}}
+{{--                                    @endcan--}}
+{{--                                    @can('category-delete')--}}
+{{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.agent.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
+{{--                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+{{--                                                data-toggle="tooltip">--}}
+{{--                                            <span class="btn-label">--}}
+{{--                                                <i class="fa fa-trash"></i>--}}
+{{--                                            </span>--}}
+{{--                                        </button>--}}
+{{--                                        {!! Form::close() !!}--}}
+{{--                                    @endcan--}}
                                 </td>
                             </tr>
                         @endforeach
                     </table>
-
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            @if ($kochirish->links())
+                                <div class="mt-4 p-4 box has-text-centered">
+                                    {{ $kochirish->links() }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-{{--    @include('admin.kochirish.create')--}}
+    @if($layout === 'index')
+@include('admin.kochirish.show')
+    @endif
 @endsection
+
+
 
 @section('script')
     @if(session('success'))
@@ -101,44 +183,29 @@
         </script>
     @endif
     <script>
-        {{--let warehouses = @json($sizes);--}}
-        var modal = document.getElementById("myModal");
-        // var modal1 = document.getElementById("myModal1");
+        let errors = @json($errors->all());
+        @if($errors->any())
+        console.log(errors);
 
-        var btn = document.getElementById("myBtn");
-
-        var span = document.getElementsByClassName("close")[0];
-        var span1 = document.getElementsByClassName("close")[1];
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
+        let msg = '';
+        for (let i = 0; i < errors.length; i++) {
+            msg += (i + 1) + '-xatolik ' + errors[i] + '\n';
         }
-
-
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
+        console.log(msg);
+        if (msg != '') {
+            swal({
+                icon: 'error',
+                title: 'Xatolik',
+                text: msg,
+                confirmButtonText: 'Continue',
+            })
         }
-        span1.onclick = function () {
-            modal1.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        @endif
     </script>
     <script>
         $('.show_confirm').click(function (event) {
             var form = $(this).closest("form");
-            var name = $(this).data("ware_house_id");
+            var name = $(this).data("name");
             event.preventDefault();
             swal({
                 title: `Haqiqatan ham bu yozuvni oʻchirib tashlamoqchimisiz?`,
@@ -156,28 +223,71 @@
     </script>
 
     <script>
+        // Get the modal
+        var modal = document.getElementById("myModal6");
+        var modal2 = document.getElementById("myModal2");
 
-        let errors = @json($errors->all());
-        @if($errors->any())
-        console.log(errors);
+        // Get the button that opens the modal
+        // var btn = document.getElementById("myBtn");
 
-        let msg = '';
-        for (let i = 0; i < errors.length; i++) {
-            msg += (i + 1) + '-xatolik ' + errors[i] + '\n';
-            // msg += errors[i] + '\n';
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
+
+        // When the user clicks the button, open the modal
+        // btn.onclick = function () {
+        //     modal.style.display = "block";
+        // }
+        function store() {
+            modal.style.display = "block";
         }
-        console.log(msg);
-        if (msg != '') {
-            swal({
-                icon: 'error',
-                title: 'Xatolik',
-                text: msg,
-                confirmButtonText: 'Continue',
-            })
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
         }
-        @endif
+        span2.onclick = function () {
+            modal2.style.display = "none";
+        }
 
 
+        var kochirish=@json($kochirish);
+
+        function show(id) {
+            modal2.style.display = "block";
+
+            for (let i = 0; i < kochirish.length; i++) {
+                if (id == kochirish[i]['id']) {
+                    $('#name1').text(kochirish[i]['ombor1']);
+                    $('#code1').text(kochirish[i]['ombor2']);
+                    // $('#artikul1').text(products[i]['artikul']);
+                }
+            }
+
+            // for (let i = 0; i < product_log_all.length; i++) {
+            //     if (id == product_log_all[i]['product_id']) {
+            //         $('#count1').text(product_log_all[i]['count']);
+            //         $('#sum_came1').text(product_log_all[i]['sum_came']);
+            //         $('#sum_sell1').text(product_log_all[i]['sum_sell']);
+            //         $('#sum_sell_optom1').text(product_log_all[i]['sum_sell_optom']);
+            //         $('#count_sell_optom1').text(product_log_all[i]['count_sell_optom']);
+            //         $('#kontragent_id1').text(product_log_all[i]['kontragent_id']);
+            //         $('#shelf_id1').text(product_log_all[i]['shelf_id']);
+            //     }
+            // }
+
+        }
+
+
+
+
+
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
-
 @endsection

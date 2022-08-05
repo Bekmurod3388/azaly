@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\Category;
+use App\Models\Kochirilganlar;
 use App\Models\Product;
 use App\Models\Product_log;
 use App\Models\Purchases;
@@ -12,7 +13,7 @@ use App\Models\Size;
 use App\Models\WareHous;
 use Illuminate\Http\Request;
 
-class PurchasesController extends Controller
+class KochirilganlarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -55,7 +56,7 @@ class PurchasesController extends Controller
             $shelf = Shelf::where('warehouse_id', $ombor_id)->get();
 
 
-        return view('admin.products.index', [
+        return view('admin.kochirish.show', [
             'purchases' => $date,
             'agent' => $kontr,
             'ware' => $ware,
@@ -78,114 +79,78 @@ class PurchasesController extends Controller
      */
     public function create()
     {
-        $kontr = Agent::all();
-        $ware = WareHous::all();
-        $date = Product::all();
-
-        return view('admin.products.create', [
-            'agent' => $kontr,
-            'ware' => $ware,
-        ]);
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Purchases::create($request->all());
-        return redirect()->route('admin.purchases.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  \App\Models\Kochirilganlar  $kochirilganlar
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $date = Purchases::OrderBy('id', 'desc')->get();
-        $donodono = Purchases::find($id);
-        $kontr = Agent::all();
-        $ware = WareHous::all();
-        $cotegory = Category::all();
-        $product = Product::all();
-        return view('admin.products.index', [
-            'purchases' => $date,
-            'agent' => $kontr,
-            'ware' => $ware,
-            'cotegory' => $cotegory,
-            'products' => $product,
-            'dono' => $donodono,
+
+        if ($id != NULL)
+            $layout = 'index';
+        else
+            $layout = '';
+
+        if ($id != NULL) {
+            $ombor_id = Purchases::find($id);
+//            $idi = Purchases::find($id);
+
+        } else
+            $idd = 0;
+        return view('admin.kochirish.index', [
+            'layout'=>$layout,
+            'ombor'=>$ombor_id,
+
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  \App\Models\Kochirilganlar  $kochirilganlar
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Kochirilganlar $kochirilganlar)
     {
-        $pur = Purchases::find($id);
-        $kontr = Agent::all();
-        $ware = WareHous::all();
-        return view('admin.products.edit', [
-            'pur' => $pur,
-            'agent' => $kontr,
-            'ware' => $ware,
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Kochirilganlar  $kochirilganlar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Kochirilganlar $kochirilganlar)
     {
-        $date = Purchases::find($id);
-        $date->warehouse_id = $request->warehouse_id;
-        $date->save();
-        return redirect()->route('admin.purchases.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  \App\Models\Kochirilganlar  $kochirilganlar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kochirilganlar $kochirilganlar)
     {
-        $date = Purchases::find($id);
-        $date->delete();
-        return redirect()->route('admin.purchases.index');
-    }
-
-    public function baho(Request $request)
-    {
-
-        $id = $request->id;
-        $products = Product_log::where('purchase_id', $id)->get();
-        foreach ($products as $product) {
-            $product['sum_came'] += $request->baho;
-            $product->save();
-
-            $count = $product['count'];
-            $allsum = Purchases::find($id);
-            $allsum['AllSum'] += ( $request['baho'] * $count );
-            $allsum->save();
-
-        }
-
-        return redirect()->route('admin.purchases.index');
+        //
     }
 }

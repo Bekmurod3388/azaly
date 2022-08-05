@@ -60,6 +60,7 @@
                                     <i class="fa fa-eye"> </i>
                                 </button>
 
+
                                 @can('size-edit')
                                     {{--                                              <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">--}}
                                     {{--                                                    <i class="fa fa-pen"></i>--}}

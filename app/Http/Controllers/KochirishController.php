@@ -13,12 +13,21 @@ class KochirishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $kochir=Kochirish::all();
-//        dd($kochir);
+$id = $request['id'];
+dd($id);
+        if ($id != NULL)
+            $layout = 'index';
+        else
+            $layout = '';
+        $kochir=Kochirish::find($id);
+        $kochir=Kochirish::paginate(4);
+        $kochir1=WareHous::all();
+
         return  view('admin.kochirish.index',[
-            'kochirish'=>$kochir
+            'kochirish'=>$kochir,
+            'kochirish2'=>$kochir1
         ]);
     }
 
@@ -30,8 +39,9 @@ class KochirishController extends Controller
     public function create()
     {
         $kochir=WareHous::all();
-        return  view('admin.kochirish.create',[
-            'kochirish'=>$kochir
+//        dd($kochir);
+        return  view('admin.kochirish.index',[
+            'kochirish2'=>$kochir
         ]);
     }
 
@@ -48,7 +58,7 @@ class KochirishController extends Controller
         $kochir->ombor1=$request->ombor1;
         $kochir->ombor2=$request->ombor2;
         $kochir->save();
-        return  redirect()->route('admin.kochirish.index');
+        return  redirect()->route('admin.kochirish.index')->with('success', 'Agent yaratildi');
     }
 
     /**
@@ -59,9 +69,14 @@ class KochirishController extends Controller
      */
     public function show($id)
     {
-        $kochir=Kochirish::find($id);
-        return view('admin.kochirish.show',[
-            'kochirish'=>$kochir
+
+
+//        dd($kochir);
+
+        return view('admin.kochirish.index',[
+            'kochirish'=>$kochir,
+            'layout'=>$layout
+
         ]);
     }
 
