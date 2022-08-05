@@ -11,6 +11,8 @@ class Kochirish extends Model
     protected $table='kochirishes';
     protected  $fillable=['ombor1','ombor2'];
     public  function ware_house(){
-        return $this->belongsTo(WareHous::class,'ware_house_id','id');
+        return $this->belongsTo(WareHous::class,'ombor1','id');
     }
+
+
 }
