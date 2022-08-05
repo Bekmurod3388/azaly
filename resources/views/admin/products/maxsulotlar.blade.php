@@ -480,7 +480,53 @@
         </div>
     </div>
 
+{{--    --}}{{----}}{{--kochirish-}}--}}{{--`--}}
+{{--    <div id="myModal6" class="modal">--}}
+{{--        <div class="modal-content">--}}
+{{--            <span class="close" id="get">&times;</span>--}}
+{{--            <div class="card">--}}
+{{--                <div class="card-header">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-lg-12 margin-tb">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h2> Kochirish </h2>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="card-body">--}}
 
+{{--                    <form action="{{route('admin.kochirish.store')}}" method="post">--}}
+{{--                        @csrf--}}
+{{--                        <div class="row">--}}
+
+{{--                            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <strong> Omborxonani tanlang</strong>--}}
+{{--                                    <input type="hidden" id="kochir_id" name="id">--}}
+{{--                                    <select name="ware_house_id" required id=""--}}
+{{--                                            class="form-select form-control" required>--}}
+{{--                                        @foreach($kochirish as $cat)--}}
+{{--                                            <option value="{{$cat->id}}">{{$cat->name}}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+
+{{--                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">--}}
+{{--                            <button type="submit" class="btn btn-primary">Saqlash</button>--}}
+{{--                        </div>--}}
+
+{{--                    </form>--}}
+
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--        </div>--}}
+{{--    </div>--}}
 
 
 </div>

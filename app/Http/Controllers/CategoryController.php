@@ -64,7 +64,7 @@ class CategoryController extends Controller
         }
         $data=$request['name'];
         $data=strtolower($data);
-//        $slug=str_slug($data,'-');
+        $slug=str_slug($data,'-');
 
         $bormi=Category::all()->where('slug','slug');
         if(count($bormi)>0){

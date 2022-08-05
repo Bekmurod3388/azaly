@@ -286,9 +286,11 @@
         var modal1 = document.getElementById("myModal1");
         var modal2 = document.getElementById("myModal2");
         var modal5 = document.getElementById("myModal5");
+        var modal6 = document.getElementById("myModal6");
 
         var btn1 = document.getElementById("myBtn1");
         var btn = document.getElementById("myBtn");
+        var btn6 = document.getElementById("myBtn6");
 
         var span0 = document.getElementsByClassName("close")[0];
         // var span0 = document.getElementById("get");
@@ -297,6 +299,7 @@
         var span1 = document.getElementsByClassName("close")[3];
         var span2 = document.getElementsByClassName("close")[4];
         var span5 = document.getElementsByClassName("close")[5];
+        var span6 = document.getElementsByClassName("close")[6];
 
 
         span0.onclick = function () {
@@ -317,12 +320,16 @@
         span5.onclick = function () {
             modal5.style.display = "none";
         }
+        span6.onclick = function () {
+            modal6.style.display = "none";
+        }
 
 
         var products = @json($products);
         var product_all = @json($product_all);
         var purchases = @json($purchases);
         var product_log_all = @json($product_log_all);
+        {{--var korish = @json($product_log_all);--}}
 
         console.log(product_log_all);
 
@@ -334,7 +341,9 @@
         btn.onclick = function () {
             modal.style.display = "block";
         }
-
+        btn6.onclick = function () {
+            modal6.style.display = "block";
+        }
 
         function edit(id) {
 
@@ -407,10 +416,16 @@
 
         }
 
+
         function add(id) {
             $('#xarid_id').val(id);
             modal5.style.display = "block";
         }
+    function  kochir(){
+        // $('#mybtn6').val(id);
+        alert('dcsdvvr')
+        modal6.style.display = "block";
+    }
 
         function izlash() {
             let product_id = document.getElementById('pro_id').value;
