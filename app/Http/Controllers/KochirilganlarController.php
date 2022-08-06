@@ -23,7 +23,7 @@ class KochirilganlarController extends Controller
     public function index(Request $request)
     {
         $id = $request['id'];
-
+     dd($id);
         if ($id != NULL)
             $layout = 'index';
         else
@@ -56,7 +56,7 @@ class KochirilganlarController extends Controller
             $shelf = Shelf::where('warehouse_id', $ombor_id)->get();
 
 
-        return view('admin.kochirish.show', [
+        return view('admin.kochirish.index', [
             'purchases' => $date,
             'agent' => $kontr,
             'ware' => $ware,

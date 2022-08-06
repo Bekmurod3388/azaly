@@ -37,9 +37,12 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('kochirish', \App\Http\Controllers\KochirishController::class);
     Route::resource('kochirilganlar', \App\Http\Controllers\KochirilganlarController::class);
 
-    Route::get('/return', [\App\Http\Controllers\QaytishController::class, 'index'])->name('return.index');
-    Route::get('/return/history', [\App\Http\Controllers\QaytishController::class, 'history'])->name('return.history');
-    Route::post('/return/store', [\App\Http\Controllers\QaytishController::class, 'store'])->name('return.store');
+    Route::resource('return', \App\Http\Controllers\QaytishController::class);
+
+
+//    Route::get('/return', [\App\Http\Controllers\QaytishController::class, 'index'])->name('return.index');
+    Route::get('/return/history', [\App\Http\Controllers\QaytishController::class, 'show'])->name('return.history');
+//    Route::post('/return/store', [\App\Http\Controllers\QaytishController::class, 'store'])->name('return.store');
 
     Route::get('menu', function () {
         return view('admin.menu');

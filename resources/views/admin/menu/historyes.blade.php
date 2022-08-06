@@ -36,13 +36,13 @@
                                     {{ $pur->agenti->name  }}
                                 </td>
                                 <td>
-                                    {{ $pur->xaridi->id  }}
+                                    {{ $pur->xaridi->id }}
                                 </td>
                                 <td>
-                                    {{ $pur->polkasi->name }}
+                                    {{ $pur->polkasi->name}}
                                 </td>
                                 <td>
-                                    {{ $pur->maxsuloti->name  }}
+                                    {{ $pur->maxsuloti->name }}
                                 </td>
 
                                 <td>{{ $pur->soni }}</td>

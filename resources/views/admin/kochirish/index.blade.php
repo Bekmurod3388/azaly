@@ -128,7 +128,7 @@
                                 <td>{{ $agent->ombor2 }}</td>
                                 <td>
 
-                                    <a class="btn btn-info"  href="{{route('admin.kochirilganlar.show',$agent->id)}}" >
+                                    <a class="btn btn-info"  href="{{route('admin.kochirilganlar.index', ['id' => $agent->id],)}}" >
                                         <i class="fa fa-eye"></i>
                                     </a>
 
@@ -163,10 +163,12 @@
                 </div>
             </div>
         </div>
+
+        @include('admin.kochirish.show')
     </div>
-    @if($layout === 'index')
-@include('admin.kochirish.show')
-    @endif
+
+
+
 @endsection
 
 

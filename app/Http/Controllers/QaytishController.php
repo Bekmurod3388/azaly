@@ -98,7 +98,7 @@ class QaytishController extends Controller
 
     }
 
-    public  function history(){
+    public  function show(){
 
         $data = Qaytganlar::all();
 

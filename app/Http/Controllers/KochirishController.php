@@ -13,15 +13,10 @@ class KochirishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-$id = $request['id'];
-dd($id);
-        if ($id != NULL)
-            $layout = 'index';
-        else
-            $layout = '';
-        $kochir=Kochirish::find($id);
+
+
         $kochir=Kochirish::paginate(4);
         $kochir1=WareHous::all();
 
