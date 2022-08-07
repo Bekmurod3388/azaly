@@ -161,7 +161,7 @@
 
 
 
-                            <div class="pl-5 pt-1">
+                        <div class="pl-5 pt-1">
                             <h2> Sotish </h2>
                             <p> Custumer Log </p></div>
                     </a>
@@ -193,7 +193,7 @@
                     </a>
                 </div>
                 <div class="row  pt-2">
-                    <a href="" class="col-md-6 d-flex text-black menu ">
+                    <a href="{{route('admin.return.index')}}" class="col-md-6 d-flex text-black menu ">
                         <i class="fas fa-sync-alt cars pl-4 pt-3 "></i>
                         <div class="pl-5 pt-2">
                             <h2>Yetkazib beruvchiga qaytarish</h2>
@@ -201,10 +201,12 @@
 
                     </a>
                     <a href="#" class="col-md-6 d-flex text-black menu ">
+
                         <i class="fas fa-list cars text-center pl-3 pt-3"></i>
                         <div class="pl-5 pt-2">
-                            <h2>Inventarizatsiya</h2>
-                            <p>Haqiqiy inventarizatsiyani dastur ma'lumotlari bilan taqqoslash</p></div>
+                            <h2>Inventarizotsiya</h2>
+                            <p>Inventarizotsiya</p>
+                        </div>
 
                     </a>
                 </div>
@@ -255,7 +257,8 @@
                         <div class="pl-4 pt-3" style="margin-left:3.1%;">
                             <h2>Narxlarning turlari</h2>
 
-                            <p>Narx g'oyasini yaratish va o'zgartirish dasturda yaratilgan</p></div>
+                            <p>Narx g'oyasini yaratish va o'zgartirish dasturda yaratilgan</p>
+                        </div>
                     </a>
                 </div>
                 <div class="row ">
@@ -274,12 +277,12 @@
                     </a>
                 </div>
                 <div class="row ">
-{{--                    <a href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu">--}}
-{{--                        <i class="fab fa-cc-mastercard cars pl-3 pt-3"></i>--}}
-{{--                        <div class="pl-4 pt-3">--}}
-{{--                            <h2>Xaridor kartalari</h2>--}}
-{{--                            <p>Diskont,jamg'arma,bonus kartalari va sovg'a sertifikatlarini boshqarish</p></div>--}}
-{{--                    </a>--}}
+                    {{--                    <a href="{{ route('admin.purchases.index') }}" class="col-md-6 d-flex text-black menu">--}}
+                    {{--                        <i class="fab fa-cc-mastercard cars pl-3 pt-3"></i>--}}
+                    {{--                        <div class="pl-4 pt-3">--}}
+                    {{--                            <h2>Xaridor kartalari</h2>--}}
+                    {{--                            <p>Diskont,jamg'arma,bonus kartalari va sovg'a sertifikatlarini boshqarish</p></div>--}}
+                    {{--                    </a>--}}
                     {{--            <a   href="{{ route('admin.agent.index') }}" class="col-md-6 d-flex text-black menu p-2">--}}
                     {{--                <i class="fas fa-people-carry cars text-center ml-4 mt-2"></i>--}}
                     {{--                <div class="pl-5">--}}

@@ -301,7 +301,6 @@
         var span5 = document.getElementsByClassName("close")[5];
         var span6 = document.getElementsByClassName("close")[6];
 
-
         span0.onclick = function () {
             modal_1.style.display = "none";
         }

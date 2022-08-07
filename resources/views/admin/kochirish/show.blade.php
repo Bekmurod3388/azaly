@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 {{--  Mahsulotlar: ( index )--}}
-@if($layout == 'index')
+
     <div id="show_table" class="card">
         <div class="card-header">
             <div class="row">
@@ -478,5 +478,4 @@
 
 
 {{--</div>--}}
-@endif
 @endsection

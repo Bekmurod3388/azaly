@@ -78,11 +78,11 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">
-                                           Omborxonalar
+                                            Omborxonalar
                                         </label>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-{{--                                                <strong> Kontragent: </strong>--}}
+                                                {{--                                                <strong> Kontragent: </strong>--}}
                                                 <select name="ombor1" required id="building"
                                                         class="form-select form-control"
                                                         required>
@@ -117,8 +117,8 @@
                         <tr>
                             <th class="col-1">Id</th>
                             <th class="col-1">Ombor1</th>
-                            <th class="col-1">ombor2</th>
-                            <th class="col-1">amalla</th>
+                            <th class="col-1">Ombor2</th>
+                            <th class="col-1">Amallar</th>
 
                         </tr>
                         @foreach ($kochirish as $key => $agent)
@@ -128,25 +128,26 @@
                                 <td>{{ $agent->ombor2 }}</td>
                                 <td>
 
-                                    <a class="btn btn-info"  href="{{route('admin.kochirilganlar.index', ['id' => $agent->id],)}}" >
+                                    <a class="btn btn-info"
+                                       href="{{route('admin.kochirilganlar.index', ['id' => $agent->id],)}}">
                                         <i class="fa fa-eye"></i>
                                     </a>
 
-{{--                                    @can('category-edit')--}}
-{{--                                        <a class="btn btn-warning" href="{{ route('admin.agent.edit',$agent->id) }}">--}}
-{{--                                            <i class="fa fa-pen"></i>--}}
-{{--                                        </a>--}}
-{{--                                    @endcan--}}
-{{--                                    @can('category-delete')--}}
-{{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.agent.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
-{{--                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-{{--                                                data-toggle="tooltip">--}}
-{{--                                            <span class="btn-label">--}}
-{{--                                                <i class="fa fa-trash"></i>--}}
-{{--                                            </span>--}}
-{{--                                        </button>--}}
-{{--                                        {!! Form::close() !!}--}}
-{{--                                    @endcan--}}
+                                    {{--                                    @can('category-edit')--}}
+                                    {{--                                        <a class="btn btn-warning" href="{{ route('admin.agent.edit',$agent->id) }}">--}}
+                                    {{--                                            <i class="fa fa-pen"></i>--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    @endcan--}}
+                                    {{--                                    @can('category-delete')--}}
+                                    {{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.agent.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
+                                    {{--                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+                                    {{--                                                data-toggle="tooltip">--}}
+                                    {{--                                            <span class="btn-label">--}}
+                                    {{--                                                <i class="fa fa-trash"></i>--}}
+                                    {{--                                            </span>--}}
+                                    {{--                                        </button>--}}
+                                    {{--                                        {!! Form::close() !!}--}}
+                                    {{--                                    @endcan--}}
                                 </td>
                             </tr>
                         @endforeach
@@ -164,10 +165,39 @@
             </div>
         </div>
 
-        @include('admin.kochirish.show')
+        <div id="show_table" class="card hidden">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-12 margin-tb">
+                        <div class="pull-left">
+                            <h2> Mahsulotlar: </h2>
+                        </div>
+                        <div class="pull-right">
+                            @can('category-create')
+                                {{--  <a class="btn btn-success" href="{{ route('admin.sizes.create') }}"> Create New Size</a>--}}
+                                <input type="hidden" id="hidden_input" value="0">
+                                <button class="btn btn-success" id="myBtn"> Qo'shish</button>
+                            @endcan
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>TR</th>
+                            <th>ID</th>
+                            <th>Nomi</th>
+                            <th>Soni</th>
+                            <th>Bahosi</th>
+                            <th class="w-25">Amallar</th>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-
-
 
 @endsection
 
@@ -253,7 +283,7 @@
         }
 
 
-        var kochirish=@json($kochirish);
+        var kochirish =@json($kochirish);
 
         function show(id) {
             modal2.style.display = "block";
@@ -279,10 +309,6 @@
             // }
 
         }
-
-
-
-
 
 
         // When the user clicks anywhere outside of the modal, close it
