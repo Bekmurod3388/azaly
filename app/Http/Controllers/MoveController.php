@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kochirish;
-use App\Models\WareHous;
+use App\Models\Move;
 use Illuminate\Http\Request;
 
-class KochirishController extends Controller
+class MoveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class KochirishController extends Controller
      */
     public function index()
     {
-
-
-        $kochir=Kochirish::paginate(4);
+        $kochir=Move::paginate(4);
         $kochir1=WareHous::all();
 
         return  view('admin.kochirish.index',[
@@ -34,7 +31,6 @@ class KochirishController extends Controller
     public function create()
     {
         $kochir=WareHous::all();
-//        dd($kochir);
         return  view('admin.kochirish.index',[
             'kochirish2'=>$kochir
         ]);
@@ -48,8 +44,7 @@ class KochirishController extends Controller
      */
     public function store(Request $request)
     {
-
-        $kochir= new Kochirish();
+        $kochir= new Move();
         $kochir->ombor1=$request->ombor1;
         $kochir->ombor2=$request->ombor2;
         $kochir->save();
@@ -59,29 +54,21 @@ class KochirishController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kochirish  $kochirish
+     * @param  \App\Models\Move  $move
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Move $move)
     {
-
-
-//        dd($kochir);
-
-        return view('admin.kochirish.index',[
-            'kochirish'=>$kochir,
-            'layout'=>$layout
-
-        ]);
+      //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kochirish  $kochirish
+     * @param  \App\Models\Move  $move
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kochirish $kochirish)
+    public function edit(Move $move)
     {
         //
     }
@@ -90,10 +77,10 @@ class KochirishController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kochirish  $kochirish
+     * @param  \App\Models\Move  $move
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kochirish $kochirish)
+    public function update(Request $request, Move $move)
     {
         //
     }
@@ -101,10 +88,10 @@ class KochirishController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kochirish  $kochirish
+     * @param  \App\Models\Move  $move
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kochirish $kochirish)
+    public function destroy(Move $move)
     {
         //
     }

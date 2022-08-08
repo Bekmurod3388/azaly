@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kochirish extends Model
+class Move extends Model
 {
     use HasFactory;
-    protected $table='kochirishes';
-    protected  $fillable=['ombor1','ombor2'];
+    protected $table='moves';
+    protected  $fillable=['ombor1_id','ombor2_id'];
     public  function ware_house(){
-        return $this->belongsTo(WareHous::class,'ombor1','id');
+        return $this->belongsTo(WareHous::class,'ombor1_id','id');
     }
-
-
 }

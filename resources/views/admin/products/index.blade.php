@@ -56,10 +56,10 @@
                             <p id="pbi"></p>
                         </div>
                         <div class="pull-right">
-{{--                            @can('product-create')--}}
+                            @can('product-create')
                                 <input type="hidden" id="hidden_input" value="0">
                                 <button class="btn btn-success" id="myBtn1"> Qo'shish</button>
-{{--                            @endcan--}}
+                            @endcan
                         </div>
                         <div class="pull-left">
                             <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
@@ -147,9 +147,8 @@
 
             {{--Create--}}
             <div id="myModal_1" class="modal">
-                <!-- Modal content -->
                 <div class="modal-content">
-                    <span class="close" id="get">&times;</span>
+                    <span class=" close " id="get" >&times;</span>
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
@@ -280,7 +279,6 @@
 
     <script>
         var modal_1 = document.getElementById("myModal_1");
-        // var modal_1 = document.getElementById("myModal_1");
         var modal1_1 = document.getElementById("myModal1_1");
         var modal = document.getElementById("myModal");
         var modal1 = document.getElementById("myModal1");
@@ -292,33 +290,48 @@
         var btn = document.getElementById("myBtn");
         var btn6 = document.getElementById("myBtn6");
 
-        var span0 = document.getElementsByClassName("close")[0];
-        // var span0 = document.getElementById("get");
-        var span01 = document.getElementsByClassName("close")[1];
-        var span = document.getElementsByClassName("close")[2];
-        var span1 = document.getElementsByClassName("close")[3];
-        var span2 = document.getElementsByClassName("close")[4];
+        btn1.onclick = function () {
+            modal_1.style.display = "block";
+        }
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        btn6.onclick = function () {
+            modal6.style.display = "block";
+        }
+
+
+        var span = document.getElementsByClassName("close")[0];
+        var span1 = document.getElementsByClassName("close")[1];
+        var span2 = document.getElementsByClassName("close")[2];
+        var span3 = document.getElementsByClassName("close")[3];
+        var span4 = document.getElementsByClassName("close")[4];
         var span5 = document.getElementsByClassName("close")[5];
         var span6 = document.getElementsByClassName("close")[6];
-
-        span0.onclick = function () {
+        span.onclick = function () {
             modal_1.style.display = "none";
         }
-        span01.onclick = function () {
+
+        span1.onclick = function () {
             modal1_1.style.display = "none";
         }
-        span.onclick = function () {
+
+        span2.onclick = function () {
             modal.style.display = "none";
         }
-        span1.onclick = function () {
+
+        span3.onclick = function () {
             modal1.style.display = "none";
         }
-        span2.onclick = function () {
+
+        span4.onclick = function () {
             modal2.style.display = "none";
         }
+
         span5.onclick = function () {
             modal5.style.display = "none";
         }
+
         span6.onclick = function () {
             modal6.style.display = "none";
         }
@@ -331,18 +344,6 @@
         {{--var korish = @json($product_log_all);--}}
 
         console.log(product_log_all);
-
-        console.log(btn)
-        // When the user clicks the button, open the modal
-        btn1.onclick = function () {
-            modal_1.style.display = "block";
-        }
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-        btn6.onclick = function () {
-            modal6.style.display = "block";
-        }
 
         function edit(id) {
 
@@ -420,11 +421,12 @@
             $('#xarid_id').val(id);
             modal5.style.display = "block";
         }
-    function  kochir(){
-        // $('#mybtn6').val(id);
-        alert('dcsdvvr')
-        modal6.style.display = "block";
-    }
+
+        function kochir() {
+            // $('#mybtn6').val(id);
+            alert('dcsdvvr')
+            modal6.style.display = "block";
+        }
 
         function izlash() {
             let product_id = document.getElementById('pro_id').value;

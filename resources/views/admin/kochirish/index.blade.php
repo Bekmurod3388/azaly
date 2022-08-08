@@ -41,6 +41,7 @@
         }
     </style>
 
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -70,7 +71,7 @@
 
                     <div id="myModal6" class="modal">
 
-                        <!-- Modal content -->
+                        <!-- Index -->
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <div class="container p-1 border">
@@ -132,22 +133,6 @@
                                        href="{{route('admin.kochirilganlar.index', ['id' => $agent->id],)}}">
                                         <i class="fa fa-eye"></i>
                                     </a>
-
-                                    {{--                                    @can('category-edit')--}}
-                                    {{--                                        <a class="btn btn-warning" href="{{ route('admin.agent.edit',$agent->id) }}">--}}
-                                    {{--                                            <i class="fa fa-pen"></i>--}}
-                                    {{--                                        </a>--}}
-                                    {{--                                    @endcan--}}
-                                    {{--                                    @can('category-delete')--}}
-                                    {{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.agent.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
-                                    {{--                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-                                    {{--                                                data-toggle="tooltip">--}}
-                                    {{--                                            <span class="btn-label">--}}
-                                    {{--                                                <i class="fa fa-trash"></i>--}}
-                                    {{--                                            </span>--}}
-                                    {{--                                        </button>--}}
-                                    {{--                                        {!! Form::close() !!}--}}
-                                    {{--                                    @endcan--}}
                                 </td>
                             </tr>
                         @endforeach
@@ -165,6 +150,7 @@
             </div>
         </div>
 
+        {{--Create--}}
         <div id="show_table" class="card hidden">
             <div class="card-header">
                 <div class="row">
