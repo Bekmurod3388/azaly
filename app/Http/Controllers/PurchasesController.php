@@ -66,7 +66,7 @@ class PurchasesController extends Controller
             'products' => $product_all,
             'size' => $size,
             'shelfs' => $shelf,
-
+            'layout'=>$layout,
             'idd' => $idd,
         ]);
     }
