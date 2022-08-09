@@ -25,7 +25,6 @@
                             <div class="form-group">
                                 <strong>Name:</strong>
                                 <input type="text" name="name" class="form-control mb-3" placeholder="Name" required>
-{{--                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control mb-3')) !!}--}}
                             </div>
                         </div>
 

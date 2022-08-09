@@ -15,4 +15,5 @@ class Kochirish extends Model
     }
 
 
+
 }

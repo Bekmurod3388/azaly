@@ -11,6 +11,6 @@ class Kochirilganlar extends Model
     use HasFactory;
     protected  $fillable=['kochirish_id','nomi','soni','bahosi'];
     public  function kochirish(){
-        return $this->belongsTo(Kochirish::class,'kochirish_id','id');
+        return $this->belongsTo(Kochirish::class);
     }
 }

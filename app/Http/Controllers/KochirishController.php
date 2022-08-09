@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kochirilganlar;
 use App\Models\Kochirish;
 use App\Models\WareHous;
 use Illuminate\Http\Request;
@@ -17,12 +18,17 @@ class KochirishController extends Controller
     {
 
 
-        $kochir=Kochirish::paginate(4);
-        $kochir1=WareHous::all();
+        $kochirish=Kochirish::paginate(4);
+        $kochirilganlar=Kochirilganlar::paginate(6);
+        $warehouse=WareHous::all();
 
         return  view('admin.kochirish.index',[
-            'kochirish'=>$kochir,
-            'kochirish2'=>$kochir1
+            'kochirish'=>$kochirish,
+            'kochirilganlar'=>$kochirilganlar,
+            'warehouse'=>$warehouse,
+
+
+
         ]);
     }
 
@@ -33,11 +39,9 @@ class KochirishController extends Controller
      */
     public function create()
     {
-        $kochir=WareHous::all();
-//        dd($kochir);
-        return  view('admin.kochirish.index',[
-            'kochirish2'=>$kochir
-        ]);
+
+
+
     }
 
     /**
@@ -53,7 +57,7 @@ class KochirishController extends Controller
         $kochir->ombor1=$request->ombor1;
         $kochir->ombor2=$request->ombor2;
         $kochir->save();
-        return  redirect()->route('admin.kochirish.index')->with('success', 'Agent yaratildi');
+        return  redirect()->route('admin.kochirish.index')->with('success', 'Kochirish  bajarildi');
     }
 
     /**
@@ -67,12 +71,12 @@ class KochirishController extends Controller
 
 
 //        dd($kochir);
-
-        return view('admin.kochirish.index',[
-            'kochirish'=>$kochir,
-            'layout'=>$layout
-
-        ]);
+//
+//        return view('admin.kochirish.index',[
+//            'kochirish'=>$kochir,
+//            'layout'=>$layout
+//
+//        ]);
     }
 
     /**
