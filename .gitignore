@@ -4,6 +4,7 @@
 /public/Image
 /public/assets
 /storage/*.key
+/storage/debugbar
 /vendor
 .env
 .env.backup
