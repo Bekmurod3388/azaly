@@ -34,9 +34,8 @@ Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(funct
     Route::resource('custumers', \App\Http\Controllers\CustumersController::class);
     Route::resource('custumer_categories', \App\Http\Controllers\Custumer_categoryController::class);
     Route::resource('custumer_logs', \App\Http\Controllers\Custumer_logController::class);
-    Route::resource('kochirish', \App\Http\Controllers\KochirishController::class);
+    Route::resource('moves', \App\Http\Controllers\MoveController::class);
     Route::resource('kochirilganlar', \App\Http\Controllers\KochirilganlarController::class);
-
     Route::resource('return', \App\Http\Controllers\QaytishController::class);
 
 

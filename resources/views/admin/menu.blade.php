@@ -211,7 +211,7 @@
                     </a>
                 </div>
                 <div class="row ">
-                    <a href="{{route('admin.kochirish.index')}}" class="col-md-6 d-flex text-black menu  ">
+                    <a href="{{route('admin.moves.index')}}" class="col-md-6 d-flex text-black menu  ">
                         <i class="fas fa-fax cars text-center  pl-4  pt-3"></i>
 
                         <div class="pl-5 pt-2" style="margin-left: -0.3%">

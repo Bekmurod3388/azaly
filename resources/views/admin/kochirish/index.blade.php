@@ -60,7 +60,7 @@
                             @endcan
                         </div>
                         <div class="pull-left">
-                            <a class="btn btn-primary" href="{{ route('admin.kochirish.index') }}"> Orqaga </a>
+                            <a class="btn btn-primary" href="{{ route('admin.moves.index') }}"> Orqaga </a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <div class="container p-1 border">
-                                <form action="{{route('admin.kochirish.store')}}" method="post">
+                                <form action="{{route('admin.moves.store')}}" method="post">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">

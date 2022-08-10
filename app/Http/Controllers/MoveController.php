@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Move;
+use App\Models\WareHous;
 use Illuminate\Http\Request;
 
 class MoveController extends Controller
@@ -21,6 +22,7 @@ class MoveController extends Controller
             'kochirish'=>$kochir,
             'kochirish2'=>$kochir1
         ]);
+
     }
 
     /**
