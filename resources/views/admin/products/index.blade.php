@@ -100,24 +100,24 @@
                                         </a>
 
                                     @endcan
-                                    @can('product-edit')
+{{--                                    @can('product-edit')--}}
 
-                                        <button class="btn btn-warning" onclick="edit_1({{$purchase->id}})">
-                                            <i class="fa fa-pen"> </i>
-                                        </button>
+{{--                                        <button class="btn btn-warning" onclick="edit_1({{$purchase->id}})">--}}
+{{--                                            <i class="fa fa-pen"> </i>--}}
+{{--                                        </button>--}}
 
-                                    @endcan
-                                    @can('product-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}
-                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                data-toggle="tooltip">
-                                            <span class="btn-label">
-                                                <i class="fa fa-trash"></i>
-                                            </span>
-                                        </button>
-                                        {!! Form::close() !!}
-                                    @endcan
-                                    <button class="btn btn-info" onclick="add({{ $purchase->id }})">
+{{--                                    @endcan--}}
+{{--                                    @can('product-delete')--}}
+{{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}--}}
+{{--                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+{{--                                                data-toggle="tooltip">--}}
+{{--                                            <span class="btn-label">--}}
+{{--                                                <i class="fa fa-trash"></i>--}}
+{{--                                            </span>--}}
+{{--                                        </button>--}}
+{{--                                        {!! Form::close() !!}--}}
+{{--                                    @endcan--}}
+                                    <button class="btn btn-primary" onclick="add({{ $purchase->id }})">
                                         <i class="fa fa-plus"></i>
                                     </button>
 
