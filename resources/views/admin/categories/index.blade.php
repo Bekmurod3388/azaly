@@ -160,7 +160,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for=rasm">Rasm</label>
-                                                    <input required="" type="file" name="img" class="form-control" id="rasm" placeholder="rasm nomi">
+                                                    <input  type="file" name="img" class="form-control" id="rasm" placeholder="rasm nomi">
                                                 </div>
                                             </div>
 

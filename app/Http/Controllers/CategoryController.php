@@ -7,6 +7,7 @@ use App\Models\Category;
 use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Matcher\Not;
 use Psy\Util\Str;
 
 class CategoryController extends Controller
@@ -51,7 +52,7 @@ class CategoryController extends Controller
         if ($request->file('img')) {
             $file = $request->file('img');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images/categories'), $filename);
+            $file->move(public_path('images/categories/'), $filename);
             $category['img'] = $filename;
         }
 
@@ -124,10 +125,18 @@ class CategoryController extends Controller
             $category['slug'] = $slug;
         }
         $category['parent_id'] = (int)$request['parent_id'];
-        \Illuminate\Support\Facades\File::delete(public_path('images/categories' . $category['img']));
+
+//dd($request->img);
+//        dd(public_path('images/categories/' . $category['img']));
+        if($request->file()==null) {
+
+
+        }else{
+            \Illuminate\Support\Facades\File::delete(public_path('images/categories/' . $category['img']));
         $filename = time() . '.' . $request->img->getClientOriginalExtension();
-        $request->img->move('images/categories', $filename);
+        $request->img->move('images/categories/', $filename);
         $category['img'] = $filename;
+        }
 
         $category->save();
 

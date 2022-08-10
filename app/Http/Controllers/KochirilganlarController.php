@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agent;
 use App\Models\Category;
 use App\Models\Kochirilganlar;
+use App\Models\Kochirish;
 use App\Models\Product;
 use App\Models\Product_log;
 use App\Models\Purchases;
@@ -22,64 +23,37 @@ class KochirilganlarController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $request['id'];
-     dd($id);
-        if ($id != NULL)
-            $layout = 'index';
-        else
-            $layout = '';
 
-        if ($id != NULL) {
-            $ombor_id = Purchases::find($id)->warehouse_id;
-            $idi = Purchases::find($id);
-            $idd = $idi->id;
-        } else
-            $idd = 0;
+//
+        $idd= $request['id'];
+
+     $logika=Kochirilganlar::where('kochirish_id', $idd)->get();
+//dd($logika);
+
+        $kochirish=Kochirish::paginate(4);
+        $kochirilganlar=Kochirilganlar::paginate(6);
+        $warehouse=WareHous::all();
 
 
-        $date = Purchases::OrderBy('id', 'desc')->paginate(4);
-        $kontr = Agent::all();
-        $ware = WareHous::all();
-        $cotegory = Category::all();
-        $product_all = Product::all();
-        $product_log_all = Product_log::all();
+        return view('admin.kochirish.index',compact(
+            'warehouse',
+            'kochirish',
+            'kochirilganlar',
+            'logika',
+            'idd'));
 
 
-        if ($id == NULL)
-            $product_log = Product_log::all();
-        else
-            $product_log = Product_log::where('purchase_id', $id)->get();
-        $size = Size::all();
-        if ($id == NULL)
-            $shelf = Shelf::all();
-        else
-            $shelf = Shelf::where('warehouse_id', $ombor_id)->get();
-
-
-        return view('admin.kochirish.index', [
-            'purchases' => $date,
-            'agent' => $kontr,
-            'ware' => $ware,
-            'cotegory' => $cotegory,
-            'product_logs' => $product_log,
-            'product_log_all' => $product_log_all,
-            'product_all' => $product_all,
-            'products' => $product_all,
-            'size' => $size,
-            'shelfs' => $shelf,
-
-            'idd' => $idd,
-        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+
+        return  view('admin.kochirish.index');
     }
 
     /**
@@ -90,7 +64,28 @@ class KochirilganlarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request);
+//
+//        dd($request);
+//        dd($request->idd);
+        $kochir=$request->validate(
+            [
+                'nomi'=>'required',
+                'soni'=>'required',
+                'bahosi'=>'required'
+                ]
+
+        );
+        $kochirish=new Kochirilganlar();
+        $kochirish->nomi=$request->nomi;
+        $kochirish->soni=$request->soni;
+        $kochirish->bahosi=$request->bahosi;
+        $kochirish->kochirish_id=$request->kochirish_id;
+//        dd($request->kochirish_id);
+
+        $kochirish->save();
+
+        return  view('admin.kochirish.index');
     }
 
     /**

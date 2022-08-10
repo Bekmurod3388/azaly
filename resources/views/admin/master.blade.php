@@ -61,6 +61,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('/assets/js/config.js') }}"></script>
+    <link rel="stylesheet" href="{{asset('select2/css/select2.min.css')}}">
 </head>
 
 <body>
@@ -189,6 +190,13 @@
 </script>
 
 @yield('script')
+
+<script src="{{asset('select2/js/select2.full.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 </body>
 </html>
 @else
