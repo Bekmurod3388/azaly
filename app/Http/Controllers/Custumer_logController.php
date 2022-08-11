@@ -47,6 +47,36 @@ class Custumer_logController extends Controller
      */
     public function store(Request $request)
     {
+        $log=new Custumer_log();
+        $idsi=0;
+        if($request->is_new==1){
+            $mijoz=new Custumers();
+            $mijoz->name=$request->mijoz_name;
+            $mijoz->category_id=$request->category_id;
+            $mijoz->passport=$request->mijoz_passport;
+            $mijoz->passport=$request->mijoz_telefon;
+            $mijoz->save();
+            $idsi=$mijoz->id;
+        }else{
+            $idsi=$request->custumer_id;
+        }
+        $log->custumer_id=$idsi;
+        $log->product_id=$request->product_id;
+        $log->count=$request->count;
+
+        $product=Product::find($request->product_id);
+        if($request->count >$product->count_sell_optom){
+            $log->price=$request->count*$product->sum_sell_optom;
+        } else{
+            $log->price=$request->count*$product->sum_sell;
+        }
+        dd($log);
+
+
+
+
+
+
         Custumer_log::create($request->all());
 
         return redirect()->route('admin.custumer_logs.index');
@@ -84,7 +114,12 @@ class Custumer_logController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Custumer_log::where('id', $id)->update(['custumer_id'=>$request->custumer_id,'product_id'=>$request->product_id,'custumer_category_id'=>$request->custumer_category_id,'price' => $request->price,'count'=>$request->count]);
+        Custumer_log::where('id', $id)->
+        update(['custumer_id'=>$request->custumer_id,
+            'product_id'=>$request->product_id,
+            'custumer_category_id'=>$request->custumer_category_id,
+            'price' => $request->price,
+            'count'=>$request->count]);
         return redirect()->route('admin.custumer_logs.index');
 
     }
