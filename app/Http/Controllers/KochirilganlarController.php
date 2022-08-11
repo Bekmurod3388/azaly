@@ -6,6 +6,7 @@ use App\Models\Agent;
 use App\Models\Category;
 use App\Models\Kochirilganlar;
 use App\Models\Kochirish;
+use App\Models\Move;
 use App\Models\Product;
 use App\Models\Product_log;
 use App\Models\Purchases;
@@ -30,7 +31,7 @@ class KochirilganlarController extends Controller
      $logika=Kochirilganlar::where('kochirish_id', $idd)->get();
 //dd($logika);
 
-        $kochirish=Kochirish::paginate(4);
+        $kochirish=Move::paginate(4);
         $kochirilganlar=Kochirilganlar::paginate(6);
         $warehouse=WareHous::all();
 
