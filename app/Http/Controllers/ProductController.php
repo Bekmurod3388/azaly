@@ -65,19 +65,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $date = new Product();
-
         $date->code = $request->code;
         $date->name = $request->name;
         $date->code = $request->code;
         $date->artikul = $request->artikul;
         $date->category_id = $request->category_id;
+        $date->sum_sell = $request->sum_sell;
+        $date->sum_sell_optom = $request->sum_sell_optom;
+        $date->count_sell_optom = $request->count_sell_optom;
         $date->save();
 //        $last = Product::orderBy('id', 'desc')->first();
         $id = $date->id;
-//        dd($id);
 
         $data = new Product_log();
         $data->product_id = $id;
@@ -85,9 +84,6 @@ class ProductController extends Controller
         $data->count = $request->count;
         $data->shelf_id = $request->shelf_id;
         $data->sum_came = $request->sum_came;
-        $data->sum_sell = $request->sum_sell;
-        $data->sum_sell_optom = $request->sum_sell_optom;
-        $data->count_sell_optom = $request->count_sell_optom;
         $data->save();
 
         $pp = Purchases::find($request->purchase_id);
@@ -155,19 +151,20 @@ class ProductController extends Controller
         $date->code = $request->code;
         $date->artikul = $request->artikul;
         $date->category_id = $request->category_id;
+        $date->sum_sell = $request->sum_sell;
+        $date->sum_sell_optom = $request->sum_sell_optom;
+        $date->count_sell_optom = $request->count_sell_optom;
         $date->save();
+
         $idd = $date->id;
+
         $data = Product_log::all()->where('product_id',$idd);
         $data->product_id = $idd;
         $data->purchase_id = $request->purchase_id;
         $data->count = $request->count;
         $data->shelf_id = $request->shelf_id;
         $data->sum_came = $request->sum_came;
-        $data->sum_sell = $request->sum_sell;
-        $data->sum_sell_optom = $request->sum_sell_optom;
-        $data->count_sell_optom = $request->count_sell_optom;
         $data->save();
-
         return redirect()->route('admin.purchases.index');
     }
 

@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('status')->default(0);
             $table->string('artikul');
+            $table->integer('sum_sell');
+            $table->integer('sum_sell_optom');
+            $table->integer('count_sell_optom');
             $table->string('category_id');
             $table->timestamps();
         });

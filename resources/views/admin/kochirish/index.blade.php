@@ -81,9 +81,21 @@
                             <td class="col-3 text-center ">
 
                                 <a class="btn btn-info"
-                                   href="{{route('admin.moves.index', ['id' => $agent->id],)}}">
+                                   href="{{route('admin.moves.index', ['id' => $agent->ombor1_id],)}}">
                                     <i class="fa fa-eye"></i>
                                 </a>
+
+{{--                                @can('product-delete')--}}
+{{--                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.moves.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
+{{--                                    <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+{{--                                            data-toggle="tooltip">--}}
+{{--                                            <span class="btn-label">--}}
+{{--                                                <i class="fa fa-trash"></i>--}}
+{{--                                            </span>--}}
+{{--                                    </button>--}}
+{{--                                    {!! Form::close() !!}--}}
+{{--                                @endcan--}}
+
                             </td>
                         </tr>
                     @endforeach
