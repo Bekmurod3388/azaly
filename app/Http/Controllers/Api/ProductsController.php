@@ -26,7 +26,7 @@ class ProductsController extends Controller
 
     public function category($category)
     {
-        return $this->success(Product::query()->where('category_id', $category)->get());
+        return Product::query()->where('category_id', $category)->get();
     }
 
 
