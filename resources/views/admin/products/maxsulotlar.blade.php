@@ -1,4 +1,5 @@
 
+
 {{--  Mahsulotlar: ( index )--}}
 @if($layout == 'index')
     <div id="show_table" class="card">
@@ -48,37 +49,15 @@
                             </td>
 
                             <td>
-                                {{--                                                                                    @can('category-list')--}}
-
-                                {{--                                                <a class="btn btn-info"--}}
-                                {{--                                                   href="{{ route('admin.products.show',$p->id) }}">--}}
-                                {{--                                                    <i class="fa fa-eye"></i>--}}
-                                {{--                                                </a>--}}
-                                {{--                                            @endcan--}}
 
                                 <button class="btn btn-info" onclick="show({{$p->products->id}})">
                                     <i class="fa fa-eye"> </i>
                                 </button>
 
-
                                 @can('size-edit')
-                                    {{--                                              <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">--}}
-                                    {{--                                                    <i class="fa fa-pen"></i>--}}
-                                    {{--                                                </a>--}}
                                     <button class="btn btn-warning" onclick="edit({{$p->products->id}})">
                                         <i class="fa fa-pen"> </i>
                                     </button>
-                                @endcan
-
-                                @can('product-delete')
-                                    {{--                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $p->id],'style'=>'display:inline']) !!}--}}
-                                    {{--                                                <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-                                    {{--                                                        data-toggle="tooltip">--}}
-                                    {{--                                                <span class="btn-label">--}}
-                                    {{--                                                    <i class="fa fa-trash"></i>--}}
-                                    {{--                                                </span>--}}
-                                    {{--                                                </button>--}}
-                                    {{--                                                {!! Form::close()!!}--}}
                                 @endcan
 
                             </td>
@@ -95,15 +74,15 @@
 <div class="form">
 
     {{--Create--}}
-    <div id="myModal" class="modal">
+    <div id="product_create" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
+                            <span class="btn" onclick="och1()"><b>X</b></span>
                                 @can('size-create')
                                     <h2> Qo'shish </h2>
                                 @endcan
@@ -143,24 +122,6 @@
                                     <input type="text" name="artikul" id="artikull" class="form-control mb-3">
                                 </div>
 
-                                {{--                                        <div class="form-group">--}}
-                                {{--                                            <strong>Status:</strong>--}}
-                                {{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
-                                {{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
-                                {{--                                        </div>--}}
-
-                                {{--                                        <div class="form-group">--}}
-                                {{--                                            <strong>Status:</strong>--}}
-                                {{--                                            --}}{{--                                            <p id="status" style="color: red"></p>--}}
-                                {{--                                            <input type="text" name="status" id="status" class="form-control mb-3">--}}
-                                {{--                                        </div>--}}
-
-                                {{--                                        <div class="form-group">--}}
-                                {{--                                            <strong>Foiz:</strong>--}}
-                                {{--                                            <p id="percent" style="color: red"></p>--}}
-                                {{--                                            <input type="number" name="percent" id="percentt" class="form-control mb-3">--}}
-                                {{--                                        </div>--}}
-
                                 <div class="form-group">
                                     <strong>Soni:</strong>
                                     <p id="count" style="color: red"></p>
@@ -176,8 +137,7 @@
 
                                 <div class="form-group">
                                     <strong>Dona sotish bahosi:</strong>
-                                                                                <p id="dona" style="color: red"></p>
-                                    {{--                                            <p id="dona1" style="color: red"></p>--}}
+                                    <p id="dona" style="color: red"></p>
                                     <input type="number" required name="sum_sell" id="sum_sell"
                                            class="form-control mb-3">
                                 </div>
@@ -239,15 +199,14 @@
     </div>
 
     {{--Edit--}}
-    <div id="myModal1" class="modal">
-        <!-- Modal content -->
+    <div id="product_edit" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
+                                <span class="btn" onclick="och1()"><b>X</b></span>
                                 <h2> Mahsulotni tahrirlash </h2>
                             </div>
                         </div>
@@ -350,15 +309,15 @@
     </div>
 
     {{--Show--}}
-    <div id="myModal2" class="modal">
+    <div id="product_show" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
+                                <span class="btn" onclick="och1()"><b>X</b></span>
                                 <h2> Mahsulot </h2>
                             </div>
                         </div>
@@ -371,6 +330,7 @@
                             <div class="form-group">
                                 <strong>Nom:</strong>
                                 <p id="name1"></p>
+
                             </div>
                             <div class="form-group">
                                 <strong>Kod:</strong>
@@ -385,11 +345,6 @@
                                 <p id="status1"></p>
                             </div>
 
-                            {{--                                    <div class="form-group">--}}
-                            {{--                                        <strong>Foiz:</strong>--}}
-                            {{--                                        <p id="percent1"></p>--}}
-                            {{--                                    </div>--}}
-
                             <div class="form-group">
                                 <strong>Soni:</strong>
                                 <p id="count1"></p>
@@ -403,11 +358,6 @@
                             <div class="form-group">
                                 <strong> Tokcha :</strong>
                                 <p id="shelf_id1"></p>
-                                {{--                                    @foreach($shelfs as $cat)--}}
-                                {{--                                        @if( $product->shelf_id == $cat->id )--}}
-                                {{--                                            {{ $cat->name }}--}}
-                                {{--                                        @endif--}}
-                                {{--                                    @endforeach--}}
                             </div>
 
                             <div class="form-group">
@@ -439,15 +389,15 @@
 
 
     {{--baho--}}
-    <div id="myModal5" class="modal">
+    <div id="baxo" class="modal">
         <div class="modal-content">
-            <span class="close" id="get">&times;</span>
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
-                                <h2> baho </h2>
+                                <span class="btn" onclick="och1()"><b>X</b></span>
+                                <h2> Baho </h2>
                             </div>
                         </div>
                     </div>
@@ -481,53 +431,6 @@
         </div>
     </div>
 
-{{--    --}}{{----}}{{--kochirish-}}--}}{{--`--}}
-{{--    <div id="myModal6" class="modal">--}}
-{{--        <div class="modal-content">--}}
-{{--            <span class="close" id="get">&times;</span>--}}
-{{--            <div class="card">--}}
-{{--                <div class="card-header">--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-lg-12 margin-tb">--}}
-{{--                            <div class="pull-left">--}}
-{{--                                <h2> Kochirish </h2>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-body">--}}
-
-{{--                    <form action="{{route('admin.kochirish.store')}}" method="post">--}}
-{{--                        @csrf--}}
-{{--                        <div class="row">--}}
-
-{{--                            <div class="col-xs-12 col-sm-12 col-md-12">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <strong> Omborxonani tanlang</strong>--}}
-{{--                                    <input type="hidden" id="kochir_id" name="id">--}}
-{{--                                    <select name="ware_house_id" required id=""--}}
-{{--                                            class="form-select form-control" required>--}}
-{{--                                        @foreach($kochirish as $cat)--}}
-{{--                                            <option value="{{$cat->id}}">{{$cat->name}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
-
-{{--                        </div>--}}
-
-{{--                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">--}}
-{{--                            <button type="submit" class="btn btn-primary">Saqlash</button>--}}
-{{--                        </div>--}}
-
-{{--                    </form>--}}
-
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-{{--    </div>--}}
 
 
 </div>
