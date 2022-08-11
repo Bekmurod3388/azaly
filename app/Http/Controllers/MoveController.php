@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Move;
+use App\Models\Product;
+use App\Models\Purchases;
 use App\Models\WareHous;
 use Illuminate\Http\Request;
 
@@ -13,14 +15,27 @@ class MoveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $kochir=Move::paginate(4);
-        $kochir1=WareHous::all();
+
+        $id = $request['id'];
+        if ($id != NULL){
+            $layout = 'index';
+            $ombor_id = Purchases::find($id)->get();
+            dd($ombor_id);
+        }
+        else{
+            $layout = '';
+        }
+
+        $kochir1=Move::paginate(4);
+        $kochir2=WareHous::all();
 
         return  view('admin.kochirish.index',[
-            'kochirish'=>$kochir,
-            'kochirish2'=>$kochir1
+            'kochirish'=>$kochir1,
+            'kochirish2'=>$kochir2,
+            'layout'=>$layout,
+
         ]);
 
     }
@@ -47,10 +62,10 @@ class MoveController extends Controller
     public function store(Request $request)
     {
         $kochir= new Move();
-        $kochir->ombor1=$request->ombor1;
-        $kochir->ombor2=$request->ombor2;
+        $kochir->ombor1_id=$request->ombor1_id;
+        $kochir->ombor2_id=$request->ombor2_id;
         $kochir->save();
-        return  redirect()->route('admin.kochirish.index')->with('success', 'Agent yaratildi');
+        return  redirect()->route('admin.moves.index')->with('success', 'Agent yaratildi');
     }
 
     /**
