@@ -203,6 +203,7 @@
         $('#oddiy1').select2();
         $('#oddiy2').select2();
         $('#oddiy3').select2();
+        $('#oddiy4').select2();
 
     });
 

@@ -296,7 +296,6 @@
         var product_all = @json($product_all);
         var purchases = @json($purchases);
         var product_log_all = @json($product_log_all);
-        {{--var korish = @json($product_log_all);--}}
 
 
         function edit(id) {
@@ -338,7 +337,6 @@
                     $('#sum_sell_optom1').text(products[i]['sum_sell_optom']);
                     $('#count_sell_optom1').text(products[i]['count_sell_optom']);
                     $('#cotegory_id1').text(products[i]['category_id']);
-                    alert(id)
                 }
             }
 
@@ -407,10 +405,7 @@
             var optom = document.getElementById("optom").value;
         }
 
-        // When the user clicks on <span> (x), close the modal
 
-
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == purchase_create) {
                 prchase_create.style.display = "none";
