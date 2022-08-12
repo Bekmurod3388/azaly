@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('product_id');
             $table->integer('sum_came');
             $table->integer('count');
+            $table->integer('current_count');
             $table->integer('shelf_id');
             $table->integer('percent')->nullable();
             $table->timestamps();

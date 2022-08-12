@@ -85,16 +85,16 @@
                                     <i class="fa fa-eye"></i>
                                 </a>
 
-{{--                                @can('product-delete')--}}
-{{--                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.moves.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
-{{--                                    <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-{{--                                            data-toggle="tooltip">--}}
-{{--                                            <span class="btn-label">--}}
-{{--                                                <i class="fa fa-trash"></i>--}}
-{{--                                            </span>--}}
-{{--                                    </button>--}}
-{{--                                    {!! Form::close() !!}--}}
-{{--                                @endcan--}}
+                                {{--                                @can('product-delete')--}}
+                                {{--                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.moves.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
+                                {{--                                    <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+                                {{--                                            data-toggle="tooltip">--}}
+                                {{--                                            <span class="btn-label">--}}
+                                {{--                                                <i class="fa fa-trash"></i>--}}
+                                {{--                                            </span>--}}
+                                {{--                                    </button>--}}
+                                {{--                                    {!! Form::close() !!}--}}
+                                {{--                                @endcan--}}
 
                             </td>
                         </tr>
@@ -118,9 +118,9 @@
             <div class="card-body">
                 <div id="create" class="modal">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
                         <div class="container p-1 border">
                             <form action="{{route('admin.moves.store')}}" method="post">
+                                <span class=" btn " onclick="och()"><b>X</b></span>
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">
@@ -188,6 +188,15 @@
                                 <th>Bahosi</th>
                                 <th class="w-25">Amallar</th>
                             </tr>
+                            <tr>
+                                @foreach($products as $k=>$p )
+                                    <td>{{$k+1}}</td>
+                                    <td>{{$p->product_id}}</td>
+                                    <td>{{$p->name}}</td>
+                                    <td>{{$p->count}}</td>
+                                    <td>{{$p->sum_came}}</td>
+                                @endforeach
+                            </tr>
 
                         </table>
                     </div>
@@ -213,6 +222,8 @@
             })
         </script>
     @endif
+
+    {{--    Error--}}
     <script>
         let errors = @json($errors->all());
         @if($errors->any())
@@ -233,6 +244,8 @@
         }
         @endif
     </script>
+
+    {{--    Delete--}}
     <script>
         $('.show_confirm').click(function (event) {
             var form = $(this).closest("form");
@@ -256,7 +269,6 @@
     <script>
         // Get the modal
         var create_modal = document.getElementById("create");
-        // var modal2 = document.getElementById("myModal2");
 
         // Get the button that opens the modal
         // var btn = document.getElementById("myBtn");
@@ -271,7 +283,7 @@
         }
 
         // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
+        function och() {
             create_modal.style.display = "none";
         }
 

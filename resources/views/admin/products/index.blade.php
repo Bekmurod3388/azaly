@@ -270,7 +270,7 @@
 
         var btn1 = document.getElementById("myBtn1");
         var btn = document.getElementById("myBtn");
-        var btn6 = document.getElementById("myBtn6");
+        // var btn6 = document.getElementById("myBtn6");
 
         btn1.onclick = function () {
             purchase_create.style.display = "block";
@@ -278,9 +278,9 @@
         btn.onclick = function () {
             product_create.style.display = "block";
         }
-        btn6.onclick = function () {
-            modal6.style.display = "block";
-        }
+        // btn6.onclick = function () {
+        //     modal6.style.display = "block";
+        // }
 
 
         function och1() {
@@ -292,8 +292,6 @@
 
         }
 
-
-
         var products = @json($products);
         var product_all = @json($product_all);
         var purchases = @json($purchases);
@@ -302,11 +300,7 @@
 
 
         function edit(id) {
-            $('#editForm').attr('action', '/admin/products/' + id);
-            product_edit.style.display = "block";
-
             for (let i = 0; i < product_all.length; i++) {
-
                 if (id == product_all[i]['id']) {
                     $('#namee').val(product_all[i]['name']);
                     $('#codee').val(product_all[i]['code']);
@@ -327,9 +321,8 @@
                     $('#shelf_ide').val(product_log_all[i]['shelf_id']);
                 }
             }
-
-
-
+            $('#editForm').attr('action', '/admin/products/' + id);
+            product_edit.style.display = "block";
 
         }
 
@@ -347,8 +340,6 @@
 
 
         function show(id) {
-
-            product_show.style.display = "block";
 
             for (let i = 0; i < product_all.length; i++) {
                 if (id == product_all[i]['id']) {
@@ -372,6 +363,7 @@
                     $('#shelf_id1').text(product_log_all[i]['shelf_id']);
                 }
             }
+            product_show.style.display = "block";
             alert(id)
 
         }
@@ -383,16 +375,13 @@
         }
 
         function kochir() {
-            // $('#mybtn6').val(id);
             alert('dcsdvvr')
             modal6.style.display = "block";
         }
 
         function izlash() {
             let product_id = document.getElementById('pro_id').value;
-
             let a = 0;
-
             for (let i = 0; i < product_all.length; i++) {
 
                 if (product_id == product_all[i]['id']) {
@@ -440,14 +429,20 @@
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == purchase_create) {
+                prchase_create.style.display = "none";
             }
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == product_create) {
+                product_create.style.display = "none";
             }
-            if (event.target == modal_1) {
-                modal_1.style.display = "none";
+            if (event.target == baxo) {
+                baxo.style.display = "none";
+            }
+            if (event.target == product_show) {
+                product_show.style.display = "none";
+            }
+            if (event.target == product_edit) {
+                product_edit.style.display = "none";
             }
         }
     </script>
