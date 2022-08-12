@@ -76,8 +76,6 @@
                             <th class=""> Soni</th>
                             <th class=""> Narxi</th>
                             <th class=""> Sana</th>
-                            <th class="w-25"> Harakat</th>
-
                         </tr>
                         @foreach ($custumer_logs as $key => $cat)
                             <tr>
@@ -87,22 +85,6 @@
                                 <td>{{ $cat->count }}</td>
                                 <td>{{ number_format($cat->price,0,' ','.') }}</td>
                                 <td>{{date_format($cat->created_at,"d.m.Y H:i:s")}}</td>
-                                <td>
-                                    @can('category-edit')
-                                        <button class="btn btn-warning" onclick="edit({{ $cat->id }})"><i
-                                                class="fa fa-pen"></i></button>
-                                    @endcan
-                                    @can('category-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.custumer_logs.destroy', $cat->id],'style'=>'display:inline']) !!}
-                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                data-toggle="tooltip">
-                                            <span class="btn-label">
-                                                <i class="fa fa-trash"></i>
-                                            </span>
-                                        </button>
-                                        {!! Form::close() !!}
-                                    @endcan
-                                </td>
                             </tr>
                         @endforeach
                     </table>
