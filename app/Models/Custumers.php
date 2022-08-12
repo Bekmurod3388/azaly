@@ -11,4 +11,7 @@ class Custumers extends Model
     protected $fillable=[
         'name', 'received_goods ', 'bonus_money', 'phone', 'passport', 'discount', 'keashback', 'categorea'
     ];
+    public function category(){
+        return $this->belongsTo(Custumer_category::class,'catogry_id');
+    }
 }

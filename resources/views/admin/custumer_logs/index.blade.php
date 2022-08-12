@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull">
-                            <h2> Mijozlar ro'yhati</h2>
+                            <h2> Savdo ro'yhati</h2>
                         </div>
                         <div class="pull-right">
                             {{--                            @can('category-create')--}}
@@ -70,23 +70,23 @@
                     {{--  index--}}
                     <table class="table table-bordered table-hover">
                         <tr>
-                            <th>Id</th>
-                            <th class=""> Nomi</th>
-                            <th class=""> Mahsulot</th>
-                            <th class=""> Kategoriyasi</th>
-                            <th class=""> Narxi</th>
+                            <th>#</th>
+                            <th class=""> Maxsulot</th>
+                            <th class=""> Mijoz</th>
                             <th class=""> Soni</th>
+                            <th class=""> Narxi</th>
+                            <th class=""> Sana</th>
                             <th class="w-25"> Harakat</th>
 
                         </tr>
                         @foreach ($custumer_logs as $key => $cat)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $cat->custumer->name }}</td>
                                 <td>{{ $cat->product->name }}</td>
-                                <td>{{ $cat->category->name }}</td>
-                                <td>{{ $cat->price }}</td>
+                                <td>{{ $cat->custumer->name }}</td>
                                 <td>{{ $cat->count }}</td>
+                                <td>{{ number_format($cat->price,0,' ','.') }}</td>
+                                <td>{{date_format($cat->created_at,"d.m.Y H:i:s")}}</td>
                                 <td>
                                     @can('category-edit')
                                         <button class="btn btn-warning" onclick="edit({{ $cat->id }})"><i
@@ -133,52 +133,51 @@
 
 
                                         <div class="form-group">
-                                            <label for="building"> Mijoz </label>
-                                            <select name="custumer_id" required id="warehouse"
-                                                    class="form-select form-control"
-                                                    required>
-                                                @foreach( $custumers as $c)
-                                                    <option value="{{$c->id}}">{{$c->name}}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="oddiy1"> Mijoz </label>
+                                            <div class="d-flex justify-content-between align-items-center">
+
+                                                <select id="oddiy1" style="width: 85%;"
+                                                        name="custumer_id" required>
+                                                    <option value="0" selected>Tanlang</option>
+                                                    @foreach( $custumers as $c)
+                                                        <option value="{{$c->id}}" {{$c->id==old('custumer_id') ? 'selected':""}}>{{$c->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <span  onclick="Mijoz()" class="btn btn-primary">Mijoz qo'shish</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="building"> Mahsulot </label>
-                                            <select name="product_id" required id="warehouse"
-                                                    class="form-select form-control"
-                                                    required>
-                                                @foreach( $customer_categories as $c)
-                                                    <option value="{{$c->id}}">{{$c->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="building"> Kategoriya </label>
-                                            <select name="custumer_category_id" required id="warehouse"
-                                                    class="form-select form-control"
-                                                    required>
-                                                @foreach( $customer_categories as $c)
-                                                    <option value="{{$c->id}}">{{$c->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="name">
-                                                Narxi
+                                        <input type="hidden" value="0"  name="is_new" id="is_new">
+                                        <div class="form-group " id="div1" style="display: none">
+                                            <label for="mijoz_name">
+                                                Mijoz nomini kiriting:
                                             </label>
-                                            <input type="number" name="price" class="form-control mb-3" id="name"
-                                                   required>
+                                            <input type="text" value="{{old('mijoz_name')}}" name="mijoz_name" class="form-control mb-1" id="mijoz_name" >
+                                        </div>
+                                        <div class="form-group " id="div2" style="display: none">
+                                            <label for="oddiy3"> Mijoz kategoriyasi: </label>
+                                            <div class="d-flex justify-content-between align-items-center">
+
+                                                <select id="oddiy3" style="width: 100%;"
+                                                         name="category_id" >
+                                                    <option value="0" selected>Tanlang</option>
+
+                                                    @foreach( $customer_categories as $c)
+                                                        <option value="{{$c->id}}" {{$c->id==old('category_id') ? 'selected':""}}>{{$c->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group " id="div3" style="display: none">
+                                            <label for="mijoz_passport">
+                                                Pasport seriyasi va raqami:
+                                            </label>
+                                            <input type="text" value="{{old('mijoz_passport')}}" name="mijoz_passport" placeholder="AA0000000" class="form-control mb-1" id="mijoz_passport" >
                                         </div>
                                         <div class="form-group">
                                             <label for="name">
                                                 Soni
                                             </label>
-                                            <input type="number" name="count" class="form-control mb-3" id="name"
-                                                   required>
+                                            <input type="text" value="{{old('mijoz_telefon')}}" name="mijoz_telefon" placeholder="+998001112233" class="form-control mb-1" id="mijoz_telefon" >
                                         </div>
 
                                         <div class="form-group">
@@ -191,87 +190,36 @@
                     </div>
 
 
-                    {{--   edit--}}
-                    <div id="edit_modal" class="modal">
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="row">
-                                        <div class="col-lg-12 margin-tb">
-                                            <div class="pull-left">
-                                                <h2> Tahrirlash </h2>
+                                            <label for="oddiy2"> Mahsulot </label>
+
+                                            <div class="w-100">
+                                                <select  name="product_id" required
+                                                        id="oddiy2" style="width: 100%;" >
+                                                    <option value="0" selected>Tanlang</option>
+                                                    @foreach( $products as $c)
+                                                        <option value="{{$c->id}}" {{$c->id==old('product_id') ? 'selected':""}}>{{$c->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card-body">
-                                    <form action="" method="post" id="editForm" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PUT')
-
-                                        <div class="form-group">
-                                            <label for="building"> Mijoz </label>
-                                            <select name="custumer_id" required id="custumerr"
-                                                    class="form-select form-control"
-                                                    required>
-                                                {{--                                                <option value="" id="custumerrr"> </option>--}}
-                                                @foreach( $custumers as $c)
-                                                    <option value="{{$c->id}}">{{$c->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="building"> Maxsulot </label>
-                                            <select name="product_id" required id="productt"
-                                                    class="form-select form-control"
-                                                    required>
-                                                {{--                                                <option value="" id="producttt"> </option>--}}
-                                                @foreach( $products as $c)
-                                                    <option value="{{$c->id}}">{{$c->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="building"> Kategoriya </label>
-                                            <select name="custumer_category_id" required id="categoryy"
-                                                    class="form-select form-control"
-                                                    required>
-                                                {{--                                                <option value="" id="categoryyy"> </option>--}}
-                                                @foreach( $customer_categories as $c)
-                                                    <option value="{{$c->id}}">{{$c->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="name">
-                                                Narxi
-                                            </label>
-                                            <input type="number" name="price" class="form-control mb-3" id="pricee"
-                                                   required>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">
                                                 Soni
                                             </label>
-                                            <input type="number" name="count" class="form-control mb-3" id="countt"
+                                            <input type="number"   value="{{old('count')}}"  name="count" class="form-control mb-1" id="name"
                                                    required>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                            <button type="submit" class="btn btn-primary">Saqlash</button>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary" value="Sotish">
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
 
 
                 </div>
@@ -284,7 +232,18 @@
 
 
 @section('script')
+    <script>
+        function Mijoz(){
+            document.getElementById('div1').style.display = "block";
+            document.getElementById('div2').style.display = "block";
+            document.getElementById('div3').style.display = "block";
+            document.getElementById('div4').style.display = "block";
+            document.getElementById('is_new').value=1;
 
+
+
+        }
+    </script>
     <script>
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
@@ -298,7 +257,9 @@
     </script>
 
 
+
     @if(session('success'))
+
         <script>
             swal({
                 icon: 'success',

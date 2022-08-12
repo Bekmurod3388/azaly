@@ -22,6 +22,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- Core CSS -->
+
     <link rel="stylesheet" href="{{ asset('/assets/vendor/css/core.css') }}" class="template-customizer-core-css"/>
     <link rel="stylesheet" href="{{ asset('/assets/vendor/css/theme-default.css') }}"
           class="template-customizer-theme-css"/>
@@ -61,6 +62,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('/assets/js/config.js') }}"></script>
+
     <link rel="stylesheet" href="{{asset('select2/css/select2.min.css')}}">
 </head>
 
@@ -98,6 +100,7 @@
 </div>
 <!-- / Layout wrapper -->
 
+
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
 <script src="{{ asset('/assets/vendor/libs/jquery/jquery.js') }}"></script>
@@ -106,6 +109,7 @@
 <script src="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 <script src="{{ asset('/assets/vendor/js/menu.js') }}"></script>
 <!-- endbuild -->
+
 <!-- Vendors JS -->
 <script src="{{ asset('/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 <!-- Main JS -->
@@ -116,8 +120,10 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <script src="{{asset('/asset/js/core/jquery.3.2.1.min.js')}}"></script>
+
 <script src="{{asset('/asset/js/core/popper.min.js')}}"></script>
 <script src="{{asset('/asset/js/core/bootstrap.min.js')}}"></script>
+
 <!-- jQuery UI -->
 <script src="{{asset('/asset/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
 <script src="{{asset('/asset/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
@@ -194,8 +200,12 @@
 <script src="{{asset('select2/js/select2.full.js')}}"></script>
 <script>
     $(document).ready(function() {
-        $('.js-example-basic-single').select2();
+        $('#oddiy1').select2();
+        $('#oddiy2').select2();
+        $('#oddiy3').select2();
+
     });
+
 </script>
 </body>
 </html>
