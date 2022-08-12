@@ -6,6 +6,7 @@ use App\Models\Custumer_category;
 use App\Models\Custumer_log;
 use App\Models\Custumers;
 use App\Models\Product;
+use App\Models\Product_log;
 use Illuminate\Http\Request;
 
 class Custumer_logController extends Controller
@@ -48,6 +49,27 @@ class Custumer_logController extends Controller
     public function store(Request $request)
     {
         $log=new Custumer_log();
+        $products=Product_log::where('product_id',$request->product_id)->get();
+        $umumiySoni=$products->sum('current_count');
+        $zarur=$request->count;
+        if($umumiySoni<$request->count){
+            return redirect()->back()->withErrors("Ushbu turdagi mahsulotdan $umumiySoni ta mavjud. Siz $zarur ta sotmoqchisiz.");
+        }
+        foreach ($products as $product){
+           if( $product->current_count>$zarur){
+               $p=Product_log::find($product->id);
+               $p->current_count-=$zarur;
+               $p->save();
+               break;
+           }
+           else{
+               $zarur-=$product->current_count;
+               $p=Product_log::find($product->id);
+               $p->current_count=0;
+               $p->save();
+           }
+        }
+
         $idsi=0;
         if($request->is_new==1){
             $mijoz=new Custumers();
@@ -70,16 +92,12 @@ class Custumer_logController extends Controller
         } else{
             $log->price=$request->count*$product->sum_sell;
         }
-        dd($log);
+        $custumer=Custumers::find($idsi);
+        $custumer->bonus_money+=$log->price*$custumer->cashback/100;
+        $custumer->save();
 
-
-
-
-
-
-        Custumer_log::create($request->all());
-
-        return redirect()->route('admin.custumer_logs.index');
+        $log->save();
+        return redirect()->route('admin.custumer_logs.index')->with('success','yaratildi');
 
     }
 

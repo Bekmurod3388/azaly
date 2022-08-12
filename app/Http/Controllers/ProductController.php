@@ -82,7 +82,7 @@ class ProductController extends Controller
         $data->product_id = $id;
         $data->purchase_id = $request->purchase_id;
         $data->count = $request->count;
-        $data->current_count = $request->current_count;
+        $data->current_count = $request->count;
         $data->shelf_id = $request->shelf_id;
         $data->sum_came = $request->sum_came;
         $data->save();

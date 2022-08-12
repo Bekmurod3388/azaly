@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('category_id');
-            $table->integer('bonus_money')->nullable();
+            $table->integer('bonus_money')->default(0);
             $table->string('phone');
             $table->string('passport');
             $table->integer('discount')->nullable();
