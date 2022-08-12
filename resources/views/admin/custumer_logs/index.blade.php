@@ -51,9 +51,9 @@
                             <h2> Mijozlar ro'yhati</h2>
                         </div>
                         <div class="pull-right">
-{{--                            @can('category-create')--}}
-                                <button class="btn btn-success" id="myBtn"> Qo'shish</button>
-{{--                            @endcan--}}
+                            {{--                            @can('category-create')--}}
+                            <button class="btn btn-success" id="myBtn"> Qo'shish</button>
+                            {{--                            @endcan--}}
                         </div>
                         <div class="pull-left">
                             <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
@@ -154,7 +154,6 @@
                                         </div>
 
 
-
                                         <div class="form-group">
                                             <label for="building"> Kategoriya </label>
                                             <select name="custumer_category_id" required id="warehouse"
@@ -218,8 +217,8 @@
                                             <select name="custumer_id" required id="custumerr"
                                                     class="form-select form-control"
                                                     required>
-{{--                                                <option value="" id="custumerrr"> </option>--}}
-                                            @foreach( $custumers as $c)
+                                                {{--                                                <option value="" id="custumerrr"> </option>--}}
+                                                @foreach( $custumers as $c)
                                                     <option value="{{$c->id}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
@@ -230,7 +229,7 @@
                                             <select name="product_id" required id="productt"
                                                     class="form-select form-control"
                                                     required>
-{{--                                                <option value="" id="producttt"> </option>--}}
+                                                {{--                                                <option value="" id="producttt"> </option>--}}
                                                 @foreach( $products as $c)
                                                     <option value="{{$c->id}}">{{$c->name}}</option>
                                                 @endforeach
@@ -242,13 +241,12 @@
                                             <select name="custumer_category_id" required id="categoryy"
                                                     class="form-select form-control"
                                                     required>
-{{--                                                <option value="" id="categoryyy"> </option>--}}
-                                            @foreach( $customer_categories as $c)
+                                                {{--                                                <option value="" id="categoryyy"> </option>--}}
+                                                @foreach( $customer_categories as $c)
                                                     <option value="{{$c->id}}">{{$c->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-
 
                                         <div class="form-group">
                                             <label for="name">
@@ -288,10 +286,10 @@
 @section('script')
 
     <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#mytable tr").filter(function() {
+                $("#mytable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     $('#mahsulot').val($(this).text());
                 });
@@ -300,9 +298,7 @@
     </script>
 
 
-
     @if(session('success'))
-
         <script>
             swal({
                 icon: 'success',
@@ -344,7 +340,7 @@
                     $('#custumerrr').text(custumers[i]['name']);
 
                 }
-                 if (id == product[i]['id']) {
+                if (id == product[i]['id']) {
                     $('#productt').val(product[i]['id']);
                     $('#producttt').text(product[i]['name']);
 

@@ -54,11 +54,11 @@
                                     <i class="fa fa-eye"> </i>
                                 </button>
 
-                                @can('size-edit')
-                                    <button class="btn btn-warning" onclick="edit({{$p->products->id}})">
-                                        <i class="fa fa-pen"> </i>
-                                    </button>
-                                @endcan
+{{--                                @can('size-edit')--}}
+{{--                                    <button class="btn btn-warning" onclick="edit({{$p->products->id}})">--}}
+{{--                                        <i class="fa fa-pen"> </i>--}}
+{{--                                    </button>--}}
+{{--                                @endcan--}}
 
                             </td>
 

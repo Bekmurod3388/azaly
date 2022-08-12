@@ -83,10 +83,10 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>
-                                    {{ $purchase->omborlar->name}}
+                                    {{ $purchase->agentlar->name }}
                                 </td>
                                 <td>
-                                    {{ $purchase->agentlar->id }}
+                                    {{ $purchase->omborlar->name}}
                                 </td>
                                 <td>{{ $purchase->AllSum }}</td>
                                 <td>{{ $purchase->created_at }}</td>
@@ -326,19 +326,6 @@
 
         }
 
-        function edit_1(id) {
-            // alert(id);
-            for (let i = 0; i < purchases.length; i++) {
-                if (id == purchases[i]['id']) {
-                    $('#warehouse_id').val(products[i]['warehouse_id']);
-                    break;
-                }
-            }
-            $('#editForm_1').attr('action', '/admin/purchases/' + id);
-            modal1_1.style.display = "block";
-        }
-
-
         function show(id) {
 
             for (let i = 0; i < product_all.length; i++) {
@@ -364,10 +351,7 @@
                 }
             }
             product_show.style.display = "block";
-            alert(id)
-
         }
-
 
         function add(id) {
             $('#xarid_id').val(id);
@@ -418,7 +402,6 @@
 
 
         }
-
 
         function optom1() {
             var optom = document.getElementById("optom").value;
