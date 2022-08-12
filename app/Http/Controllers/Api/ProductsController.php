@@ -26,7 +26,7 @@ class ProductsController extends Controller
 
     public function category($category)
     {
-        return Product::query()->where('category_id', $category)->get();
+        return Product::where('category_id', $category)->get();
     }
 
 
@@ -55,7 +55,7 @@ class ProductsController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function show($id)
     {
