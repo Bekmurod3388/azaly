@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull">
-                            <h2> Foydalanuvchilar </h2>
+                            <h2> Mijozlar </h2>
                         </div>
                         <div class="pull-right">
 {{--                            @can('role-create')--}}
@@ -25,27 +25,22 @@
 
                             <th style="width: 2%">Id</th>
                             <th>F.I.Sh</th>
-{{--                            <th>Olgan Tavar</th>--}}
-                            <th>Bonus</th>
+                            <th>Kategoriyasi</th>
                             <th>Telefon</th>
                             <th>Passport</th>
-                            <th>Chegirma %</th>
-                            <th>Keshbek</th>
-                            <th  class="">Kategoriya</th>
+                            <th>Cashback(%)</th>
+                            <th>Jami cashbacklari</th>
                             <th class="w-25">Amallar</th>
                         </tr>
                         @foreach ($data as $key => $user)
-
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
-{{--                                    <td>{{ $user->received_goods }}</td>--}}
-                                    <td>{{ $user->bonus_money }}</td>
+                                    <td> {{ $user->category->name }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->passport }}</td>
-                                    <td>{{ $user->discount }}</td>
-                                    <td>{{ $user->keashback }}</td>
-                                        <td> {{ $user->categorea }}</td>
+                                    <td>{{ $user->cashback }} %</td>
+                                    <td>{{ number_format($user->bonus_money,2,'.',' ') }} so'm</td>
                                     <td >
 
                                         <form action="{{ route('admin.custumers.destroy',$user->id) }}" method="POST">

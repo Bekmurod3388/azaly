@@ -44,24 +44,7 @@ class CustumersController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'phone' => ['required',  new PhoneNumber()],
-            'passport' => new PassportNumber()
-        ]);
-
-        $zz=new Custumers;
-        $zz->name=$request->name;
-        $zz->received_goods=$request->received_goods;
-        $zz->bonus_money=$request->bonus_money;
-        $zz->phone=$request->phone;
-        $zz->passport=$request->passport;
-        $zz->discount=$request->discount;
-        $zz->keashback=$request->keashback;
-        $zz->categorea=$request->categorea;
-
-        $zz->save();
-
-        return redirect()->route('admin.custumers.index');
+       //garakmidi
     }
 
     /**
@@ -104,13 +87,10 @@ class CustumersController extends Controller
     {
         $zz= Custumers::find($id);
         $zz->name=$request->name;
-        $zz->received_goods=$request->received_goods;
-        $zz->bonus_money=$request->bonus_money;
         $zz->phone=$request->phone;
         $zz->passport=$request->passport;
-        $zz->discount=$request->discount;
-        $zz->keashback=$request->keashback;
-        $zz->categorea=$request->categorea;
+        $zz->cashback=$request->cashback;
+        $zz->category_id=$request->category_id;
 
         $zz->save();
 

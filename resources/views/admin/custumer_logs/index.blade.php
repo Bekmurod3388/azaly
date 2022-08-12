@@ -40,6 +40,14 @@
             text-decoration: none;
             cursor: pointer;
         }
+        body::-webkit-scrollbar {
+            width: 1em;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: green;
+            outline: 10px solid red;
+        }
     </style>
 
     <div class="col-md-12">
@@ -64,31 +72,32 @@
 
                 <!-- The Modal -->
 
-                <div class="card-body">
+                <div class="card-body ">
 
 
                     {{--  index--}}
-                    <table class="table table-bordered table-hover">
+                    <div class="overflow-auto" id="cards-container">
+                    <table class=" table table-bordered table-hover">
                         <tr>
                             <th>#</th>
                             <th class=""> Maxsulot</th>
-                            <th class=""> Mijoz</th>
                             <th class=""> Soni</th>
-                            <th class=""> Narxi</th>
+                            <th class=""> Mijoz</th>
+                            <th class=""> To'langan pul</th>
                             <th class=""> Sana</th>
                         </tr>
                         @foreach ($custumer_logs as $key => $cat)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $cat->product->name }}</td>
-                                <td>{{ $cat->custumer->name }}</td>
                                 <td>{{ $cat->count }}</td>
-                                <td>{{ number_format($cat->price,0,' ','.') }}</td>
+                                <td>{{ $cat->custumer->name }}</td>
+                                <td>{{ number_format($cat->price,0,'.',' ') }} so'm</td>
                                 <td>{{date_format($cat->created_at,"d.m.Y H:i:s")}}</td>
                             </tr>
                         @endforeach
                     </table>
-
+                    </div>
 
                     {{--   create--}}
                     <div id="create_modal" class="modal">
@@ -161,6 +170,12 @@
                                             </label>
                                             <input type="text" value="{{old('mijoz_telefon')}}" name="mijoz_telefon" placeholder="+998001112233" class="form-control mb-1" id="mijoz_telefon" >
                                         </div>
+                                        <div class="form-group " id="div5" style="display: none">
+                                            <label for="mijoz_cashback">
+                                                Cashback (%)
+                                            </label>
+                                            <input type="text" value="{{old('mijoz_cashback')}}" name="mijoz_cashback"  class="form-control mb-1" id="mijoz_cashback" >
+                                        </div>
                                         <div class="form-group">
 
                                             <label for="oddiy2"> Mahsulot </label>
@@ -201,6 +216,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 
@@ -211,6 +227,7 @@
             document.getElementById('div2').style.display = "block";
             document.getElementById('div3').style.display = "block";
             document.getElementById('div4').style.display = "block";
+            document.getElementById('div5').style.display = "block";
             document.getElementById('is_new').value=1;
 
 
