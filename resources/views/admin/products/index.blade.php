@@ -92,35 +92,17 @@
                                 <td>{{ $purchase->created_at }}</td>
 
                                 <td>
-                                    @can('product-list')
 
+                                    @can('product-list')
                                         <a class="btn btn-info"
                                            href="{{ route('admin.purchases.index', ['id' => $purchase->id],) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
-
                                     @endcan
-{{--                                    @can('product-edit')--}}
 
-{{--                                        <button class="btn btn-warning" onclick="edit_1({{$purchase->id}})">--}}
-{{--                                            <i class="fa fa-pen"> </i>--}}
-{{--                                        </button>--}}
-
-{{--                                    @endcan--}}
-{{--                                    @can('product-delete')--}}
-{{--                                        {!! Form::open(['method' => 'DELETE','route' => ['admin.purchases.destroy', $purchase->id],'style'=>'display:inline']) !!}--}}
-{{--                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-{{--                                                data-toggle="tooltip">--}}
-{{--                                            <span class="btn-label">--}}
-{{--                                                <i class="fa fa-trash"></i>--}}
-{{--                                            </span>--}}
-{{--                                        </button>--}}
-{{--                                        {!! Form::close() !!}--}}
-{{--                                    @endcan--}}
                                     <button class="btn btn-primary" onclick="add({{ $purchase->id }})">
                                         <i class="fa fa-plus"></i>
                                     </button>
-
                                 </td>
                             </tr>
                         @endforeach
@@ -146,14 +128,15 @@
         <div class="form">
 
             {{--Create--}}
-            <div id="myModal_1" class="modal">
+            <div id="purchase_create" class="modal">
                 <div class="modal-content">
-                    <span class=" close " id="get" >&times;</span>
+
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
+                                        <span class="btn" onclick="och1()"><b>X</b></span>
                                         <h2> Yangi xarid qo'shing </h2>
                                     </div>
                                 </div>
@@ -278,63 +261,37 @@
     @endif
 
     <script>
-        var modal_1 = document.getElementById("myModal_1");
-        var modal1_1 = document.getElementById("myModal1_1");
-        var modal = document.getElementById("myModal");
-        var modal1 = document.getElementById("myModal1");
-        var modal2 = document.getElementById("myModal2");
-        var modal5 = document.getElementById("myModal5");
-        var modal6 = document.getElementById("myModal6");
+        var purchase_create = document.getElementById("purchase_create");
+        var product_create = document.getElementById("product_create");
+        var baxo = document.getElementById("baxo");
+        var product_show = document.getElementById("product_show");
+        var product_edit = document.getElementById("product_edit");
+
 
         var btn1 = document.getElementById("myBtn1");
         var btn = document.getElementById("myBtn");
         var btn6 = document.getElementById("myBtn6");
 
         btn1.onclick = function () {
-            modal_1.style.display = "block";
+            purchase_create.style.display = "block";
         }
         btn.onclick = function () {
-            modal.style.display = "block";
+            product_create.style.display = "block";
         }
         btn6.onclick = function () {
             modal6.style.display = "block";
         }
 
 
-        var span = document.getElementsByClassName("close")[0];
-        var span1 = document.getElementsByClassName("close")[1];
-        var span2 = document.getElementsByClassName("close")[2];
-        var span3 = document.getElementsByClassName("close")[3];
-        var span4 = document.getElementsByClassName("close")[4];
-        var span5 = document.getElementsByClassName("close")[5];
-        var span6 = document.getElementsByClassName("close")[6];
-        span.onclick = function () {
-            modal_1.style.display = "none";
+        function och1() {
+            purchase_create.style.display = "none";
+            product_create.style.display = "none";
+            baxo.style.display = "none";
+            product_show.style.display = "none";
+            product_edit.style.display = "none";
+
         }
 
-        span1.onclick = function () {
-            modal1_1.style.display = "none";
-        }
-
-        span2.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        span3.onclick = function () {
-            modal1.style.display = "none";
-        }
-
-        span4.onclick = function () {
-            modal2.style.display = "none";
-        }
-
-        span5.onclick = function () {
-            modal5.style.display = "none";
-        }
-
-        span6.onclick = function () {
-            modal6.style.display = "none";
-        }
 
 
         var products = @json($products);
@@ -343,17 +300,22 @@
         var product_log_all = @json($product_log_all);
         {{--var korish = @json($product_log_all);--}}
 
-        console.log(product_log_all);
 
         function edit(id) {
+            $('#editForm').attr('action', '/admin/products/' + id);
+            product_edit.style.display = "block";
 
-            for (let i = 0; i < products.length; i++) {
-                if (id == products[i]['id']) {
-                    $('#namee').val(products[i]['name']);
-                    $('#codee').val(products[i]['code']);
-                    $('#artikule').val(products[i]['artikul']);
-                    $('#statuse').val(products[i]['status']);
-                    $('#cotegory_ide').val(products[i]['category_id']);
+            for (let i = 0; i < product_all.length; i++) {
+
+                if (id == product_all[i]['id']) {
+                    $('#namee').val(product_all[i]['name']);
+                    $('#codee').val(product_all[i]['code']);
+                    $('#artikule').val(product_all[i]['artikul']);
+                    $('#statuse').val(product_all[i]['status']);
+                    $('#sum_selle').val(product_all[i]['sum_sell']);
+                    $('#sum_sell_optome').val(product_all[i]['sum_sell_optom']);
+                    $('#count_sell_optome').val(product_all[i]['count_sell_optom']);
+                    $('#cotegory_ide').val(product_all[i]['category_id']);
                 }
             }
 
@@ -361,17 +323,14 @@
                 if (id == product_log_all[i]['product_id']) {
                     $('#counte').val(product_log_all[i]['count']);
                     $('#sum_camee').val(product_log_all[i]['sum_came']);
-                    $('#sum_selle').val(product_log_all[i]['sum_sell']);
-                    $('#sum_sell_optome').val(product_log_all[i]['sum_sell_optom']);
-                    $('#count_sell_optome').val(product_log_all[i]['count_sell_optom']);
                     $('#kontragent_ide').val(product_log_all[i]['kontragent_id']);
                     $('#shelf_ide').val(product_log_all[i]['shelf_id']);
                 }
             }
-            // alert(id);
 
-            $('#editForm').attr('action', '/admin/products/' + id);
-            modal1.style.display = "block";
+
+
+
         }
 
         function edit_1(id) {
@@ -382,23 +341,26 @@
                     break;
                 }
             }
-            // alert(id);
-
             $('#editForm_1').attr('action', '/admin/purchases/' + id);
             modal1_1.style.display = "block";
         }
 
 
         function show(id) {
-            modal2.style.display = "block";
 
-            for (let i = 0; i < products.length; i++) {
-                if (id == products[i]['id']) {
+            product_show.style.display = "block";
+
+            for (let i = 0; i < product_all.length; i++) {
+                if (id == product_all[i]['id']) {
                     $('#name1').text(products[i]['name']);
                     $('#code1').text(products[i]['code']);
                     $('#artikul1').text(products[i]['artikul']);
                     $('#status1').text(products[i]['status']);
+                    $('#sum_sell1').text(products[i]['sum_sell']);
+                    $('#sum_sell_optom1').text(products[i]['sum_sell_optom']);
+                    $('#count_sell_optom1').text(products[i]['count_sell_optom']);
                     $('#cotegory_id1').text(products[i]['category_id']);
+                    alert(id)
                 }
             }
 
@@ -406,20 +368,18 @@
                 if (id == product_log_all[i]['product_id']) {
                     $('#count1').text(product_log_all[i]['count']);
                     $('#sum_came1').text(product_log_all[i]['sum_came']);
-                    $('#sum_sell1').text(product_log_all[i]['sum_sell']);
-                    $('#sum_sell_optom1').text(product_log_all[i]['sum_sell_optom']);
-                    $('#count_sell_optom1').text(product_log_all[i]['count_sell_optom']);
                     $('#kontragent_id1').text(product_log_all[i]['kontragent_id']);
                     $('#shelf_id1').text(product_log_all[i]['shelf_id']);
                 }
             }
+            alert(id)
 
         }
 
 
         function add(id) {
             $('#xarid_id').val(id);
-            modal5.style.display = "block";
+            baxo.style.display = "block";
         }
 
         function kochir() {

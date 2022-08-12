@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Move;
 use App\Models\Product;
+use App\Models\Product_log;
 use App\Models\Purchases;
 use App\Models\WareHous;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MoveController extends Controller
 {
@@ -19,22 +21,27 @@ class MoveController extends Controller
     {
 
         $id = $request['id'];
-        if ($id != NULL){
+        if ($id != NULL) {
             $layout = 'index';
-            $ombor_id = Purchases::find($id)->get();
-            dd($ombor_id);
-        }
-        else{
+            $sql = "SELECT product_logs.*,purchases.warehouse_id
+            FROM product_logs
+            INNER JOIN purchases
+            ON product_logs.purchase_id =purchases.id
+            where warehouse_id='$id' ";
+
+            $products = DB::select($sql);
+
+        } else {
             $layout = '';
         }
 
-        $kochir1=Move::paginate(4);
-        $kochir2=WareHous::all();
+        $kochir1 = Move::paginate(4);
+        $kochir2 = WareHous::all();
 
-        return  view('admin.kochirish.index',[
-            'kochirish'=>$kochir1,
-            'kochirish2'=>$kochir2,
-            'layout'=>$layout,
+        return view('admin.kochirish.index', [
+            'kochirish' => $kochir1,
+            'kochirish2' => $kochir2,
+            'layout' => $layout,
 
         ]);
 
@@ -47,42 +54,42 @@ class MoveController extends Controller
      */
     public function create()
     {
-        $kochir=WareHous::all();
-        return  view('admin.kochirish.index',[
-            'kochirish2'=>$kochir
+        $kochir = WareHous::all();
+        return view('admin.kochirish.index', [
+            'kochirish2' => $kochir
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $kochir= new Move();
-        $kochir->ombor1_id=$request->ombor1_id;
-        $kochir->ombor2_id=$request->ombor2_id;
+        $kochir = new Move();
+        $kochir->ombor1_id = $request->ombor1_id;
+        $kochir->ombor2_id = $request->ombor2_id;
         $kochir->save();
-        return  redirect()->route('admin.moves.index')->with('success', 'Agent yaratildi');
+        return redirect()->route('admin.moves.index')->with('success', 'Kochirish yoqildi');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Move  $move
+     * @param \App\Models\Move $move
      * @return \Illuminate\Http\Response
      */
     public function show(Move $move)
     {
-      //
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Move  $move
+     * @param \App\Models\Move $move
      * @return \Illuminate\Http\Response
      */
     public function edit(Move $move)
@@ -93,8 +100,8 @@ class MoveController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Move  $move
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Move $move
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Move $move)
@@ -105,11 +112,14 @@ class MoveController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Move  $move
+     * @param \App\Models\Move $move
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Move $move)
+    public function destroy($id)
     {
-        //
+        $data = Move::find($id);
+        $data->delete();
+        return redirect()->route('admin.moves.index')->with('success', 'Kochirish ochirildi');
+
     }
 }
