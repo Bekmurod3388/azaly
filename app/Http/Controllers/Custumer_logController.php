@@ -76,7 +76,7 @@ class Custumer_logController extends Controller
             $mijoz->name=$request->mijoz_name;
             $mijoz->category_id=$request->category_id;
             $mijoz->passport=$request->mijoz_passport;
-            $mijoz->passport=$request->mijoz_telefon;
+            $mijoz->phone=$request->mijoz_telefon;
             $mijoz->save();
             $idsi=$mijoz->id;
         }else{
