@@ -10,7 +10,7 @@
                         </div>
                         <div class="pull-right">
 {{--                            @can('role-create')--}}
-                                <a class="btn btn-success" href="{{ route('admin.custumers.create') }}"> Qo`shish </a>
+{{--                                <a class="btn btn-success" href="{{ route('admin.custumers.create') }}"> Qo`shish </a>--}}
 {{--                            @endcan--}}
                         </div>
                         <div class="pull-left">
@@ -25,11 +25,11 @@
 
                             <th style="width: 2%">Id</th>
                             <th>F.I.Sh</th>
-                            <th>Olgan Tavar</th>
+{{--                            <th>Olgan Tavar</th>--}}
                             <th>Bonus</th>
                             <th>Telefon</th>
                             <th>Passport</th>
-                            <th>Chegirma</th>
+                            <th>Chegirma %</th>
                             <th>Keshbek</th>
                             <th  class="">Kategoriya</th>
                             <th class="w-25">Amallar</th>
@@ -39,7 +39,7 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->received_goods }}</td>
+{{--                                    <td>{{ $user->received_goods }}</td>--}}
                                     <td>{{ $user->bonus_money }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->passport }}</td>
@@ -58,7 +58,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+{{--                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>--}}
                                         </form>
 
                                     </td>

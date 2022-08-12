@@ -23,7 +23,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">F.I.Sh</label>
-                                <input required="" type="text" name="name" class="form-control" id="name"
+                                <input required="" type="text" name="name" class="form-control" id="name" value="{{old('name')}}"
                                        placeholder="F.I.Sh">
                             </div>
                         </div>
@@ -31,15 +31,15 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">Olgan Tavar</label>
-                                <input required="" type="text" name="received_goods" class="form-control" id="received_goods"
-                                       placeholder="Olgan Tavar">
+                                <input required="" type="text" name="received_goods" class="form-control" id="received_goods" value="{{old('received_goods')}}"
+                                      placeholder="Olgan Tavar">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">Bonus</label>
-                                <input required="" type="number" name="bonus_money" class="form-control" id="bonus_money"
+                                <input required="" type="number" name="bonus_money" class="form-control" id="bonus_money" value="{{old('bonus_money')}}"
                                        placeholder="Bonus">
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">Telefon</label>
-                                <input required="" type="number" name="phone" class="form-control" id="phone"
+                                <input required="" type="number" name="phone" class="form-control" id="phone" value="{{old('phone')}}"
                                        placeholder="+998991234567">
                             </div>
                         </div>
@@ -55,15 +55,15 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">Passport</label>
-                                <input required="" type="text" name="passport" class="form-control" id="passport"
-                                       placeholder="AA 0000000">
+                                <input required="" type="text" name="passport" class="form-control" id="passport" value="{{old('passport')}}"
+                                       placeholder="AA0000000">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">Chegirma</label>
-                                <input required="" type="number" name="discount" class="form-control" id="discount"
+                                <input required="" type="number" name="discount" class="form-control" id="discount" value="{{old('discount')}}"
                                        placeholder="Chegirma">
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="services">Keshbek</label>
-                                <input required="" type="number" name="keashback" class="form-control" id="discount"
+                                <input required="" type="number" name="keashback" class="form-control" id="discount" value="{{old('keashback')}}"
                                        placeholder="Keshbek">
                             </div>
                         </div>

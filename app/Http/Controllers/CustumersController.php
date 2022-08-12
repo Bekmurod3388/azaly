@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Custumers;
+use App\Models\Custumer_category;
 use App\Models\WareHous;
 use App\Rules\PassportNumber;
 use App\Rules\PhoneNumber;
@@ -44,8 +45,8 @@ class CustumersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'phone' => new PhoneNumber(),
-            'passport' => new PassportNumber(),
+            'phone' => ['required',  new PhoneNumber()],
+            'passport' => new PassportNumber()
         ]);
 
         $zz=new Custumers;
@@ -83,10 +84,12 @@ class CustumersController extends Controller
     public function edit($id)
     {
         $data = Custumers::find($id);
-        $costumers = WareHous::all();
+//        $costumers = WareHous::all();
+        $category= Custumer_category::all();
         return view('admin.custumers.edit',[
             'custumers'=>$data,
-            'cost'=> $costumers,
+            'cost'=> $category,
+
         ]);
     }
 
