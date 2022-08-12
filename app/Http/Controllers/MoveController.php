@@ -23,16 +23,18 @@ class MoveController extends Controller
         $id = $request['id'];
         if ($id != NULL) {
             $layout = 'index';
-            $sql = "SELECT product_logs.*,purchases.warehouse_id
+            $sql = "SELECT product_logs.*,purchases.warehouse_id,products.name
             FROM product_logs
             INNER JOIN purchases
             ON product_logs.purchase_id =purchases.id
+            inner join products on products.id =  product_logs.product_id
             where warehouse_id='$id' ";
-
             $products = DB::select($sql);
+        }
 
-        } else {
+        else {
             $layout = '';
+            $products = 1;
         }
 
         $kochir1 = Move::paginate(4);
@@ -42,6 +44,7 @@ class MoveController extends Controller
             'kochirish' => $kochir1,
             'kochirish2' => $kochir2,
             'layout' => $layout,
+            'products'=>$products,
 
         ]);
 
