@@ -40,6 +40,14 @@
             text-decoration: none;
             cursor: pointer;
         }
+        body::-webkit-scrollbar {
+            width: 1em;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: green;
+            outline: 10px solid red;
+        }
     </style>
 
     <div class="col-md-12">
@@ -51,7 +59,9 @@
                             <h2> Savdo ro'yhati</h2>
                         </div>
                         <div class="pull-right">
+                            {{--                            @can('category-create')--}}
                             <button class="btn btn-success" id="myBtn"> Qo'shish</button>
+                            {{--                            @endcan--}}
                         </div>
                         <div class="pull-left">
                             <a class="btn btn-primary" href="{{ route('admin.home') }}"> Orqaga </a>
@@ -62,16 +72,18 @@
 
                 <!-- The Modal -->
 
-                <div class="card-body">
+                <div class="card-body ">
+
 
                     {{--  index--}}
-                    <table class="table table-bordered table-hover">
+                    <div class="overflow-auto" id="cards-container">
+                    <table class=" table table-bordered table-hover">
                         <tr>
                             <th>#</th>
                             <th class=""> Maxsulot</th>
-                            <th class=""> Mijoz</th>
                             <th class=""> Soni</th>
-                            <th class=""> Narxi</th>
+                            <th class=""> Mijoz</th>
+                            <th class=""> To'langan pul</th>
                             <th class=""> Sana</th>
                             <th class="w-25"> Harakat</th>
                         </tr>
@@ -81,7 +93,8 @@
                                 <td>{{ $cat->product->name }}</td>
                                 <td>{{ $cat->custumer->name }}</td>
                                 <td>{{ $cat->count }}</td>
-                                <td>{{ number_format($cat->price,0,' ','.') }}</td>
+                                <td>{{ $cat->custumer->name }}</td>
+                                <td>{{ number_format($cat->price,0,'.',' ') }} so'm</td>
                                 <td>{{date_format($cat->created_at,"d.m.Y H:i:s")}}</td>
                                 <td>
                                     @can('category-edit')
@@ -102,7 +115,7 @@
                             </tr>
                         @endforeach
                     </table>
-
+                    </div>
 
                     {{--   create--}}
                     <div id="create_modal" class="modal">
@@ -136,33 +149,29 @@
                                                         name="custumer_id" required>
                                                     <option value="0" selected>Tanlang</option>
                                                     @foreach( $custumers as $c)
-                                                        <option
-                                                            value="{{$c->id}}" {{$c->id==old('custumer_id') ? 'selected':""}}>{{$c->name}}</option>
+                                                        <option value="{{$c->id}}" {{$c->id==old('custumer_id') ? 'selected':""}}>{{$c->name}}</option>
                                                     @endforeach
                                                 </select>
-
-                                                <span onclick="Mijoz()" class="btn btn-primary">Mijoz qo'shish</span>
+                                                <span  onclick="Mijoz()" class="btn btn-primary">Mijoz qo'shish</span>
                                             </div>
                                         </div>
-                                        <input type="hidden" value="0" name="is_new" id="is_new">
+                                        <input type="hidden" value="0"  name="is_new" id="is_new">
                                         <div class="form-group " id="div1" style="display: none">
                                             <label for="mijoz_name">
                                                 Mijoz nomini kiriting:
                                             </label>
-                                            <input type="text" value="{{old('mijoz_name')}}" name="mijoz_name"
-                                                   class="form-control mb-1" id="mijoz_name">
+                                            <input type="text" value="{{old('mijoz_name')}}" name="mijoz_name" class="form-control mb-1" id="mijoz_name" >
                                         </div>
                                         <div class="form-group " id="div2" style="display: none">
                                             <label for="oddiy3"> Mijoz kategoriyasi: </label>
                                             <div class="d-flex justify-content-between align-items-center">
 
                                                 <select id="oddiy3" style="width: 100%;"
-                                                        name="category_id">
+                                                         name="category_id" >
                                                     <option value="0" selected>Tanlang</option>
 
                                                     @foreach( $customer_categories as $c)
-                                                        <option
-                                                            value="{{$c->id}}" {{$c->id==old('category_id') ? 'selected':""}}>{{$c->name}}</option>
+                                                        <option value="{{$c->id}}" {{$c->id==old('category_id') ? 'selected':""}}>{{$c->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -184,6 +193,12 @@
                                                    id="mijoz_telefon">
                                         </div>
 
+                                        <div class="form-group " id="div5" style="display: none">
+                                            <label for="mijoz_cashback">
+                                                Cashback (%)
+                                            </label>
+                                            <input type="text" value="{{old('mijoz_cashback')}}" name="mijoz_cashback"  class="form-control mb-1" id="mijoz_cashback" >
+                                        </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary" value="Saqlash">
                                         </div>
@@ -214,14 +229,14 @@
                            required>
                 </div>
 
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Sotish">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary" value="Sotish">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -232,6 +247,7 @@
     </div>
     </div>
     </div>
+
 @endsection
 
 
@@ -242,7 +258,10 @@
             document.getElementById('div2').style.display = "block";
             document.getElementById('div3').style.display = "block";
             document.getElementById('div4').style.display = "block";
+            document.getElementById('div5').style.display = "block";
+            document.getElementById('is_new').value=1;
             document.getElementById('is_new').value = 1;
+
 
 
         }

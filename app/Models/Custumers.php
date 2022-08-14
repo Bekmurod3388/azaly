@@ -12,6 +12,6 @@ class Custumers extends Model
         'name', 'received_goods ', 'bonus_money', 'phone', 'passport', 'discount', 'keashback', 'categorea'
     ];
     public function category(){
-        return $this->belongsTo(Custumer_category::class,'catogry_id');
+        return $this->belongsTo(Custumer_category::class,'category_id');
     }
 }

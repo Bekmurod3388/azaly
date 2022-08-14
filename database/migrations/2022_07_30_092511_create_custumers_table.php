@@ -17,11 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('category_id');
-            $table->integer('bonus_money')->default(0);
+            $table->float('bonus_money')->default(0);
             $table->string('phone');
             $table->string('passport');
-            $table->integer('discount')->nullable();
-            $table->integer('cashback')->nullable();
+            $table->float('cashback')->default(0);
             $table->timestamps();
         });
     }

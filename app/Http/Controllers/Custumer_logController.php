@@ -48,6 +48,18 @@ class Custumer_logController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->is_new==1){
+        $request->validate(
+            [
+                'mijoz_name'=>"required",
+                'category_id'=>"required",
+                'mijoz_passport'=>"required",
+                'mijoz_telefon'=>"required",
+                'mijoz_cashback'=>"required",
+            ]
+        );
+        }
+
         $log=new Custumer_log();
         $products=Product_log::where('product_id',$request->product_id)->get();
         $umumiySoni=$products->sum('current_count');
@@ -77,6 +89,7 @@ class Custumer_logController extends Controller
             $mijoz->category_id=$request->category_id;
             $mijoz->passport=$request->mijoz_passport;
             $mijoz->phone=$request->mijoz_telefon;
+            $mijoz->cashback=$request->mijoz_cashback;
             $mijoz->save();
             $idsi=$mijoz->id;
         }else{
@@ -93,6 +106,8 @@ class Custumer_logController extends Controller
             $log->price=$request->count*$product->sum_sell;
         }
         $custumer=Custumers::find($idsi);
+        $sale=$custumer->category->sale;
+        $log->price=$log->price*(100-$sale)/100;
         $custumer->bonus_money+=$log->price*$custumer->cashback/100;
         $custumer->save();
 
