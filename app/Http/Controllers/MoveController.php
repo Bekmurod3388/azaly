@@ -75,6 +75,10 @@ class MoveController extends Controller
         $kochir->ombor1_id = $request->ombor1_id;
         $kochir->ombor2_id = $request->ombor2_id;
         $kochir->save();
+        $pur = new Purchases();
+        $pur->warehouse_id = $request->ombor2_id;
+        $pur->kontragent_id = 1;
+        $pur->save();
         return redirect()->route('admin.moves.index')->with('success', 'Kochirish yoqildi');
     }
 
