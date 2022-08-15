@@ -47,10 +47,10 @@ class MoveController extends Controller
     public function store(Request $request)
     {
         $kochir= new Move();
-        $kochir->ombor1=$request->ombor1;
-        $kochir->ombor2=$request->ombor2;
+        $kochir->ombor1_id=$request->ombor1;
+        $kochir->ombor2_id=$request->ombor2;
         $kochir->save();
-        return  redirect()->route('admin.kochirish.index')->with('success', 'Agent yaratildi');
+        return  redirect()->route('admin.moves.index')->with('success', 'Agent yaratildi');
     }
 
     /**

@@ -1,6 +1,6 @@
 
 {{--  Mahsulotlar: ( index )--}}
-@if($layout == 'index')
+{{--@if($layout == 'index')--}}
     <div id="show_table" class="card">
         <div class="card-header">
             <div class="row">
@@ -30,66 +30,66 @@
                         <th>Tokcha</th>
                         <th class="w-25">Amallar</th>
                     </tr>
-                    @foreach ($product_logs as $key => $p)
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $p->id }}</td>
-                            <td>{{ $p->products->name }}</td>
-                            <td>
-                                {{ $p->sum_came }}
-                            </td>
-                            <td>
-                                {{ $p->count}}
-                            </td>
-                            <td>
-                                {{ $p->products->category->name }}
-                            </td>
-                            <td>{{$p->shelfs->name}}
-                            </td>
+{{--                    @foreach ($product_logs as $key => $p)--}}
+{{--                        <tr>--}}
+{{--                            <td>{{ $key+1 }}</td>--}}
+{{--                            <td>{{ $p->id }}</td>--}}
+{{--                            <td>{{ $p->products->name }}</td>--}}
+{{--                            <td>--}}
+{{--                                {{ $p->sum_came }}--}}
+{{--                            </td>--}}
+{{--                            <td>--}}
+{{--                                {{ $p->count}}--}}
+{{--                            </td>--}}
+{{--                            <td>--}}
+{{--                                {{ $p->products->category->name }}--}}
+{{--                            </td>--}}
+{{--                            <td>{{$p->shelfs->name}}--}}
+{{--                            </td>--}}
 
-                            <td>
-                                {{--                                                                                    @can('category-list')--}}
+{{--                            <td>--}}
+{{--                                --}}{{--                                                                                    @can('category-list')--}}
 
-                                {{--                                                <a class="btn btn-info"--}}
-                                {{--                                                   href="{{ route('admin.products.show',$p->id) }}">--}}
-                                {{--                                                    <i class="fa fa-eye"></i>--}}
-                                {{--                                                </a>--}}
-                                {{--                                            @endcan--}}
+{{--                                --}}{{--                                                <a class="btn btn-info"--}}
+{{--                                --}}{{--                                                   href="{{ route('admin.products.show',$p->id) }}">--}}
+{{--                                --}}{{--                                                    <i class="fa fa-eye"></i>--}}
+{{--                                --}}{{--                                                </a>--}}
+{{--                                --}}{{--                                            @endcan--}}
 
-                                <button class="btn btn-info" onclick="show({{$p->products->id}})">
-                                    <i class="fa fa-eye"> </i>
-                                </button>
+{{--                                <button class="btn btn-info" onclick="show({{$p->products->id}})">--}}
+{{--                                    <i class="fa fa-eye"> </i>--}}
+{{--                                </button>--}}
 
 
-                                @can('size-edit')
-                                    {{--                                              <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">--}}
-                                    {{--                                                    <i class="fa fa-pen"></i>--}}
-                                    {{--                                                </a>--}}
-                                    <button class="btn btn-warning" onclick="edit({{$p->products->id}})">
-                                        <i class="fa fa-pen"> </i>
-                                    </button>
-                                @endcan
+{{--                                @can('size-edit')--}}
+{{--                                    --}}{{--                                              <a class="btn btn-warning" href="{{ route('admin.products.edit',$p->id) }}">--}}
+{{--                                    --}}{{--                                                    <i class="fa fa-pen"></i>--}}
+{{--                                    --}}{{--                                                </a>--}}
+{{--                                    <button class="btn btn-warning" onclick="edit({{$p->products->id}})">--}}
+{{--                                        <i class="fa fa-pen"> </i>--}}
+{{--                                    </button>--}}
+{{--                                @endcan--}}
 
-                                @can('product-delete')
-                                    {{--                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $p->id],'style'=>'display:inline']) !!}--}}
-                                    {{--                                                <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-                                    {{--                                                        data-toggle="tooltip">--}}
-                                    {{--                                                <span class="btn-label">--}}
-                                    {{--                                                    <i class="fa fa-trash"></i>--}}
-                                    {{--                                                </span>--}}
-                                    {{--                                                </button>--}}
-                                    {{--                                                {!! Form::close()!!}--}}
-                                @endcan
+{{--                                @can('product-delete')--}}
+{{--                                    --}}{{--                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $p->id],'style'=>'display:inline']) !!}--}}
+{{--                                    --}}{{--                                                <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
+{{--                                    --}}{{--                                                        data-toggle="tooltip">--}}
+{{--                                    --}}{{--                                                <span class="btn-label">--}}
+{{--                                    --}}{{--                                                    <i class="fa fa-trash"></i>--}}
+{{--                                    --}}{{--                                                </span>--}}
+{{--                                    --}}{{--                                                </button>--}}
+{{--                                    --}}{{--                                                {!! Form::close()!!}--}}
+{{--                                @endcan--}}
 
-                            </td>
+{{--                            </td>--}}
 
-                        </tr>
-                    @endforeach
+{{--                        </tr>--}}
+{{--                    @endforeach--}}
                 </table>
             </div>
         </div>
     </div>
-@endif
+{{--@endif--}}
 
 <!-- The Modal -->
 <div class="form">
@@ -200,8 +200,8 @@
 
 
                                 <div class="form-group">
-                                    <input type="hidden" name="purchase_id" id="purchase_id1"
-                                           class="form-control mb-3" value="{{ $idd }}">
+{{--                                    <input type="hidden" name="purchase_id" id="purchase_id1"--}}
+{{--                                           class="form-control mb-3" value="{{ $idd }}">--}}
                                 </div>
 
                                 <div class="form-group">
@@ -210,9 +210,9 @@
                                             class="form-select form-control"
                                             required>
                                         <option value=""> Kotegoriya tanglang</option>
-                                        @foreach($cotegory as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endforeach
+{{--                                        @foreach($cotegory as $cat)--}}
+{{--                                            <option value="{{$cat->id}}">{{$cat->name}}</option>--}}
+{{--                                        @endforeach--}}
                                     </select>
                                 </div>
 
@@ -221,9 +221,9 @@
                                     <select name="shelf_id" id="shelf_idd" class="form-select form-control"
                                             required>
                                         <option value=""> Tokcha tanlang</option>
-                                        @foreach($shelfs as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endforeach
+{{--                                        @foreach($shelfs as $cat)--}}
+{{--                                            <option value="{{$cat->id}}">{{$cat->name}}</option>--}}
+{{--                                        @endforeach--}}
                                     </select>
                                 </div>
 
@@ -321,9 +321,9 @@
                                             class="form-select form-control"
                                             required>
                                         <option> Kotegoriyani tanlang</option>
-                                        @foreach($cotegory as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endforeach
+{{--                                        @foreach($cotegory as $cat)--}}
+{{--                                            <option value="{{$cat->id}}">{{$cat->name}}</option>--}}
+{{--                                        @endforeach--}}
                                     </select>
                                 </div>
 
@@ -332,9 +332,9 @@
                                     <select name="shelf_id" required id="shelf_ide"
                                             class="form-select form-control"
                                             required>
-                                        @foreach($shelfs as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endforeach
+{{--                                        @foreach($shelfs as $cat)--}}
+{{--                                            <option value="{{$cat->id}}">{{$cat->name}}</option>--}}
+{{--                                        @endforeach--}}
                                     </select>
                                 </div>
                             </div>

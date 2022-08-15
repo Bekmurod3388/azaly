@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Faker\Core\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Matcher\Not;
@@ -125,20 +125,19 @@ class CategoryController extends Controller
             $category['slug'] = $slug;
         }
         $category['parent_id'] = (int)$request['parent_id'];
+        if($request->hasFile('img')){
+            $img=public_path('images/categories/').$category->img;
+            if(\Illuminate\Support\Facades\File::exists($img)){
+                File::delete($img);
+            }
 
-//dd($request->img);
-//        dd(public_path('images/categories/' . $category['img']));
-        if($request->file()==null) {
+            $file = $request->file('img');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/categories/'), $filename);
+            $category['img'] = $filename;
 
-
-        }else{
-            \Illuminate\Support\Facades\File::delete(public_path('images/categories/' . $category['img']));
-        $filename = time() . '.' . $request->img->getClientOriginalExtension();
-        $request->img->move('images/categories/', $filename);
-        $category['img'] = $filename;
         }
-
-        $category->save();
+        $category->update();
 
         return redirect()->route('admin.categories.index')->with('success', 'category updated successfully');
     }

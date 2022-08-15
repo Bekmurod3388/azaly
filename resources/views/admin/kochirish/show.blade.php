@@ -32,6 +32,7 @@
                         <th class="w-25">Amallar</th>
                     </tr>
 
+                    @foreach()
                 </table>
             </div>
         </div>
