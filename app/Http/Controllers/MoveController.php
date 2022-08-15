@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kochirilganlar;
 use App\Models\Move;
+use App\Models\Move_log;
 use App\Models\Product;
 use App\Models\Product_log;
 use App\Models\Purchases;
@@ -21,6 +23,8 @@ class MoveController extends Controller
     {
 
         $id = $request['id'];
+        $move_id = $request['move_id'];
+
         if ($id != NULL) {
             $layout = 'index';
             $sql = "SELECT product_logs.*,purchases.warehouse_id,products.name
@@ -31,21 +35,20 @@ class MoveController extends Controller
             where warehouse_id='$id' ";
             $products = DB::select($sql);
         }
-
         else {
             $layout = '';
-            $products = 1;
+            $products = Product::all();
         }
 
-        $kochir1 = Move::paginate(4);
-        $kochir2 = WareHous::all();
+        $moves = Move::all();
+        $move_logs = Move_log::where('id',$move_id)->first();
+        $omborlar = WareHous::all();
 
         return view('admin.kochirish.index', [
-            'kochirish' => $kochir1,
-            'kochirish2' => $kochir2,
+            'moves' => $moves,
+            'warehouses' => $omborlar,
             'layout' => $layout,
             'products'=>$products,
-
         ]);
 
     }
@@ -57,10 +60,7 @@ class MoveController extends Controller
      */
     public function create()
     {
-        $kochir = WareHous::all();
-        return view('admin.kochirish.index', [
-            'kochirish2' => $kochir
-        ]);
+        //
     }
 
     /**

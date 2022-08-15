@@ -16,7 +16,10 @@ class AgentSeeder extends Seeder
     public function run()
     {
         DB::table('agents')->insert([
-            'name'=>'Fayzulla',
+            'name'=>'Admin',
+        ]);
+        DB::table('agents')->insert([
+            'name'=>'Fayzullohon',
         ]);
         DB::table('agents')->insert([
             'name'=>'Diyorbek',

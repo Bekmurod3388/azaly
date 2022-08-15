@@ -74,7 +74,7 @@
                     <th class="col-3 text-center ">Amallar</th>
 
                 </tr>
-                @foreach ($kochirish as $key => $agent)
+                @foreach ($moves as $key => $agent)
                     <tr>
                         <td class="col-1 text-center "><b>{{ $key+1 }}</b></td>
                         <td class="col-3 text-center ">{{ $agent->omborxona1->name }}</td>
@@ -82,47 +82,33 @@
                         <td class="col-3 text-center ">
 
                             <a class="btn btn-info"
-                               href="{{route('admin.moves.index', ['id' => $agent->ombor1_id],)}}">
+                               href="{{route('admin.moves.index', [ 'id' => $agent->ombor1_id, 'move_id'=>$agent->id ])}}">
                                 <i class="fa fa-eye"></i>
                             </a>
-
-                            {{--                                @can('product-delete')--}}
-                            {{--                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.moves.destroy', $agent->id],'style'=>'display:inline']) !!}--}}
-                            {{--                                    <button type="submit" class="btn btn-danger btn-flat show_confirm"--}}
-                            {{--                                            data-toggle="tooltip">--}}
-                            {{--                                            <span class="btn-label">--}}
-                            {{--                                                <i class="fa fa-trash"></i>--}}
-                            {{--                                            </span>--}}
-                            {{--                                    </button>--}}
-                            {{--                                    {!! Form::close() !!}--}}
-                            {{--                                @endcan--}}
 
                         </td>
                     </tr>
                 @endforeach
             </table>
-            <div class="container">
-                <div class="row justify-content-center">
-                    @if ($kochirish->links())
-                        <div class="mt-4 p-4 box has-text-centered">
-                            {{ $kochirish->links() }}
-                        </div>
-                    @endif
-                </div>
-            </div>
-
+{{--            <div class="container">--}}
+{{--                <div class="row justify-content-center">--}}
+{{--                    @if ($kochirish->links())--}}
+{{--                        <div class="mt-4 p-4 box has-text-centered">--}}
+{{--                            {{ $kochirish->links() }}--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
 
 
         {{--Create--}}
-
         <div id="move_create" class="modal">
             <div class="modal-content">
                 <div class="container p-1 border">
                     <form action="{{route('admin.moves.store')}}" method="post">
                         <span class=" btn " onclick="och()"><b>X</b></span>
                         @csrf
-
 
                         <div class="form-group">
                             <label for="name">
@@ -134,7 +120,7 @@
                                             class="form-select form-control"
                                             required>
                                         <option value=""> Qayerdan</option>
-                                        @foreach($kochirish2 as $cat)
+                                        @foreach($warehouses as $cat)
                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                         @endforeach
                                     </select>
@@ -143,7 +129,7 @@
                                             class="form-select form-control"
                                             required>
                                         <option value=""> Qayerga</option>
-                                        @foreach($kochirish2 as $cat)
+                                        @foreach($warehouses as $cat)
                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                         @endforeach
                                     </select>
@@ -160,10 +146,12 @@
 
 
         {{-- //////////////////////////////////////////   Maxsulotlar    /////////////////////////////////////////////////////// --}}
+
+
+    {{--Index--}}
         <!-- The Modal -->
         <div class="form">
 
-            {{--Index--}}
             @if($layout == 'index')
                 <div id="show_table" class="card hidden">
                     <div class="card-header">
@@ -175,7 +163,7 @@
                                 <div class="pull-right">
                                     @can('category-create')
                                         <input type="hidden" id="hidden_input" value="0">
-                                        <button class="btn btn-success" id="myBtn" onclick="store()"  >Qo'shish</button>
+                                        <button class="btn btn-success" id="myBtn" onclick="store1()" >Qo'shish</button>
                                     @endcan
                                 </div>
                             </div>
@@ -192,7 +180,7 @@
                                     <th class="w-25">Amallar</th>
                                 </tr>
                                 <tr>
-                                    @foreach($products as $k=>$p )
+                                    @foreach($moves as $k=>$p )
                                         <td>{{$k+1}}</td>
                                         <td>{{$p->product_id}}</td>
                                         <td>{{$p->name}}</td>
@@ -208,7 +196,7 @@
             @endif
 
 
-            {{--Create--}}
+    {{--Create--}}
             <div id="move_product_create" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
@@ -217,7 +205,7 @@
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
-                                        <span class="btn" onclick="och1()"><b>X</b></span>
+                                        <span class="btn" onclick="och()"><b>X</b></span>
                                         @can('size-create')
                                             <h2> Qo'shish </h2>
                                         @endcan
@@ -226,7 +214,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('admin.products.store')}}" method="post">
+                            <form action="{{route('admin.move_logs.store')}}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -236,7 +224,7 @@
                                                 <option value="0" selected> Tanlang </option>
                                                 @foreach( $products as $c)
                                                     <option
-                                                        value="{{$c->id}}" {{$c->id==old('product_id') ? 'selected':""}}>{{$c->name}}</option>
+                                                        value="{{$c->id}}" > {{$c->name}} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -330,8 +318,10 @@
 
         // When the user clicks the button, open the modal
         function store() {
-            create_modal.style.display = "block";
             move_create.style.display = "block";
+        }
+        function store1() {
+            create_modal.style.display = "block";
         }
 
 
@@ -341,7 +331,7 @@
         }
 
 
-        var kochirish =@json($kochirish);
+        var kochirish =@json($moves);
 
         function show(id) {
             modal2.style.display = "block";
