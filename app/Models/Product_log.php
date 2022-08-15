@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product_log extends Model
 {
     protected $fillable = [
-        'purchase_id','product_id','count','status','shelf_id','sum_came','sum_sell','sum_sell_optom','count_sell_optom'
+        'purchase_id','product_id','count','current_count','status','shelf_id','sum_came'
     ];
     public function products(){
         return $this->belongsTo(Product::class,'product_id');

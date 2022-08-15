@@ -16,13 +16,11 @@ return new class extends Migration
         Schema::create('custumers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('received_goods');
-            $table->integer('bonus_money');
+            $table->integer('category_id');
+            $table->float('bonus_money')->default(0);
             $table->string('phone');
             $table->string('passport');
-            $table->integer('discount');
-            $table->integer('keashback');
-            $table->integer('categorea');
+            $table->float('cashback')->default(0);
             $table->timestamps();
         });
     }

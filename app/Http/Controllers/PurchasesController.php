@@ -32,7 +32,8 @@ class PurchasesController extends Controller
             $ombor_id = Purchases::find($id)->warehouse_id;
             $idi = Purchases::find($id);
             $idd = $idi->id;
-        } else
+        }
+        else
             $idd = 0;
 
 
@@ -42,13 +43,15 @@ class PurchasesController extends Controller
         $cotegory = Category::all();
         $product_all = Product::all();
         $product_log_all = Product_log::all();
+        $size = Size::all();
 
 
         if ($id == NULL)
             $product_log = Product_log::all();
         else
             $product_log = Product_log::where('purchase_id', $id)->get();
-        $size = Size::all();
+
+
         if ($id == NULL)
             $shelf = Shelf::all();
         else
