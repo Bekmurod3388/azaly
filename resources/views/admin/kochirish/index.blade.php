@@ -90,15 +90,15 @@
                     </tr>
                 @endforeach
             </table>
-{{--            <div class="container">--}}
-{{--                <div class="row justify-content-center">--}}
-{{--                    @if ($kochirish->links())--}}
-{{--                        <div class="mt-4 p-4 box has-text-centered">--}}
-{{--                            {{ $kochirish->links() }}--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            {{--            <div class="container">--}}
+            {{--                <div class="row justify-content-center">--}}
+            {{--                    @if ($kochirish->links())--}}
+            {{--                        <div class="mt-4 p-4 box has-text-centered">--}}
+            {{--                            {{ $kochirish->links() }}--}}
+            {{--                        </div>--}}
+            {{--                    @endif--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
         </div>
 
 
@@ -148,7 +148,7 @@
         {{-- //////////////////////////////////////////   Maxsulotlar    /////////////////////////////////////////////////////// --}}
 
 
-    {{--Index--}}
+        {{--Index--}}
         <!-- The Modal -->
         <div class="form">
 
@@ -163,7 +163,7 @@
                                 <div class="pull-right">
                                     @can('category-create')
                                         <input type="hidden" id="hidden_input" value="0">
-                                        <button class="btn btn-success" id="myBtn" onclick="store1()" >Qo'shish</button>
+                                        <button class="btn btn-success" id="myBtn" onclick="store1()">Qo'shish</button>
                                     @endcan
                                 </div>
                             </div>
@@ -176,17 +176,17 @@
                                     <th>ID</th>
                                     <th>Nomi</th>
                                     <th>Soni</th>
-                                    <th>Bahosi</th>
                                     <th class="w-25">Amallar</th>
                                 </tr>
                                 <tr>
-                                    @foreach($moves as $k=>$p )
-                                        <td>{{$k+1}}</td>
-                                        <td>{{$p->product_id}}</td>
-                                        <td>{{$p->name}}</td>
-                                        <td>{{$p->count}}</td>
-                                        <td>{{$p->sum_came}}</td>
-                                    @endforeach
+                                    @if($kochganlar!=null)
+                                        @foreach($kochganlar as $k=>$p )
+                                            <td>{{$k+1}}</td>
+                                            <td>{{$p->product_id}}</td>
+                                            <td>{{$p->maxsulot->name}}</td>
+                                            <td>{{$p->count}}</td>
+                                        @endforeach
+                                    @endif
                                 </tr>
 
                             </table>
@@ -196,7 +196,7 @@
             @endif
 
 
-    {{--Create--}}
+            {{--Create--}}
             <div id="move_product_create" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
@@ -214,17 +214,17 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('admin.move_logs.store')}}" method="post">
+                            <form action="{{route('admin.move_logs.store',['move_id'=>$move_id ])}}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <select id="oddiy4" style="width: 85%;"
                                                     name="product_id" required>
-                                                <option value="0" selected> Tanlang </option>
+                                                <option value="0" selected> Tanlang</option>
                                                 @foreach( $products as $c)
                                                     <option
-                                                        value="{{$c->id}}" > {{$c->name}} </option>
+                                                        value="{{$c->id}}"> {{$c->name}} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -258,7 +258,6 @@
 @section('script')
 
     @if(session('success'))
-
         <script>
             swal({
                 icon: 'success',
@@ -320,6 +319,7 @@
         function store() {
             move_create.style.display = "block";
         }
+
         function store1() {
             create_modal.style.display = "block";
         }

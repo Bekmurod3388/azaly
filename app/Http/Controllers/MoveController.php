@@ -37,18 +37,22 @@ class MoveController extends Controller
         }
         else {
             $layout = '';
-            $products = Product::all();
+            $move_id = 0;
         }
 
         $moves = Move::all();
-        $move_logs = Move_log::where('id',$move_id)->first();
+        $move_logs = Move_log::where('id',$move_id)->get();
         $omborlar = WareHous::all();
 
+//        dd($move_logs);
+
         return view('admin.kochirish.index', [
+            'layout' => $layout,
             'moves' => $moves,
             'warehouses' => $omborlar,
-            'layout' => $layout,
+            'kochganlar'=>$move_logs,
             'products'=>$products,
+            'move_id'=>$move_id,
         ]);
 
     }
@@ -71,10 +75,12 @@ class MoveController extends Controller
      */
     public function store(Request $request)
     {
+
         $kochir = new Move();
         $kochir->ombor1_id = $request->ombor1_id;
         $kochir->ombor2_id = $request->ombor2_id;
         $kochir->save();
+
         $pur = new Purchases();
         $pur->warehouse_id = $request->ombor2_id;
         $pur->kontragent_id = 1;

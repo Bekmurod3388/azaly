@@ -33,42 +33,40 @@ class MoveLogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-//        $request->validate([
-//            'count' => 'max:100'
-//        ]);
-
         $data = new Move_log();
-        $data->move_id = $move_id;
+        $data->move_id = $request->move_id;
         $data->product_id = $request->product_id;
         $data->count = $request->count;
 
-        $id = $request->product_id;
-        $p = Product_log::where('product_id',$id)->first();
-//        dd($p->purchase_id);
-//        $o = Purchases::find($idd);
+        $top = Product_log::where('product_id', $request->product_id)->first();
+        $date = new Product_log();
+        $date->purchase_id = $request->move_id;
+        $date->product_id = $request->product_id;
+        $date->sum_came = $top->sum_came;
+        $date->count = $request->count;
+        $date->curretn_count = $request->count;
+        $date->shelf_id = $top->shelf_id;
 
-        if ( $request->count <= $p->count ){
-            $p->count -= $request->count;
-            $p->save();
+        if ($top->count >= $request->count) {
             $data->save();
+            $date->save();
+            return redirect()->route('admin.moves.index')->with('success', ' Amal muoffaqiyatli ');
         }
-        else{
-
+        else {
+            return Redirect::back()->withErrors('Bu sondagi maxsulot omborda mavjud emas ');
         }
-
-        return redirect()->route('admin.moves.index');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Move_log  $move_log
+     * @param \App\Models\Move_log $move_log
      * @return \Illuminate\Http\Response
      */
     public function show(Move_log $move_log)
@@ -79,7 +77,7 @@ class MoveLogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Move_log  $move_log
+     * @param \App\Models\Move_log $move_log
      * @return \Illuminate\Http\Response
      */
     public function edit(Move_log $move_log)
@@ -90,8 +88,8 @@ class MoveLogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Move_log  $move_log
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Move_log $move_log
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Move_log $move_log)
@@ -102,7 +100,7 @@ class MoveLogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Move_log  $move_log
+     * @param \App\Models\Move_log $move_log
      * @return \Illuminate\Http\Response
      */
     public function destroy(Move_log $move_log)

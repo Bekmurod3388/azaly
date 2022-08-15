@@ -16,4 +16,9 @@ class Move_log extends Model
     {
         return $this->belongsTo(Move::class, 'move_id');
     }
+
+    public function maxsulot()
+    {
+        return $this->belongsTo(Product::class,'product_id');
+    }
 }
