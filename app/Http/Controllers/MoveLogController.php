@@ -44,23 +44,20 @@ class MoveLogController extends Controller
         $data->count = $request->count;
 
         $top = Product_log::where('product_id', $request->product_id)->first();
+        $top->current_count -= $request->count;
+
         $date = new Product_log();
         $date->purchase_id = $request->move_id;
         $date->product_id = $request->product_id;
         $date->sum_came = $top->sum_came;
         $date->count = $request->count;
-        $date->curretn_count = $request->count;
+        $date->current_count = $request->count;
         $date->shelf_id = $top->shelf_id;
 
-        if ($top->count >= $request->count) {
             $data->save();
             $date->save();
+            $top->save();
             return redirect()->route('admin.moves.index')->with('success', ' Amal muoffaqiyatli ');
-        }
-        else {
-            return Redirect::back()->withErrors('Bu sondagi maxsulot omborda mavjud emas ');
-        }
-
     }
 
     /**

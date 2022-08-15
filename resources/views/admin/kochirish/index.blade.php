@@ -178,16 +178,16 @@
                                     <th>Soni</th>
                                     <th class="w-25">Amallar</th>
                                 </tr>
-                                <tr>
-                                    @if($kochganlar!=null)
-                                        @foreach($kochganlar as $k=>$p )
+                                @if($kochganlar!=null)
+                                    @foreach($kochganlar as $k=>$p )
+                                        <tr>
                                             <td>{{$k+1}}</td>
                                             <td>{{$p->product_id}}</td>
                                             <td>{{$p->maxsulot->name}}</td>
                                             <td>{{$p->count}}</td>
-                                        @endforeach
-                                    @endif
-                                </tr>
+                                        </tr>
+                                    @endforeach
+                                @endif
 
                             </table>
                         </div>
@@ -222,10 +222,12 @@
                                             <select id="oddiy4" style="width: 85%;"
                                                     name="product_id" required>
                                                 <option value="0" selected> Tanlang</option>
-                                                @foreach( $products as $c)
-                                                    <option
-                                                        value="{{$c->id}}"> {{$c->name}} </option>
-                                                @endforeach
+                                                @if($products!=null)
+                                                    @foreach( $products as $c)
+                                                        <option
+                                                            value="{{$c->id}}"> {{$c->name}} </option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
 

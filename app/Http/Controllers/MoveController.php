@@ -38,10 +38,11 @@ class MoveController extends Controller
         else {
             $layout = '';
             $move_id = 0;
+            $products = null;
         }
 
         $moves = Move::all();
-        $move_logs = Move_log::where('id',$move_id)->get();
+        $move_logs = Move_log::where('move_id',$move_id)->get();
         $omborlar = WareHous::all();
 
 //        dd($move_logs);
